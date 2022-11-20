@@ -122,6 +122,7 @@ public class StudentLoginActivity extends AppCompatActivity {
                     TastyToast.makeText(StudentLoginActivity.this, "Username or Password is wrong", TastyToast.LENGTH_SHORT, TastyToast.ERROR);
                     progressBar.setVisibility(View.INVISIBLE);
                 }
+
             }
 
             @Override
