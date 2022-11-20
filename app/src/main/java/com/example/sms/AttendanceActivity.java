@@ -57,8 +57,7 @@ public class AttendanceActivity extends AppCompatActivity {
             public void onClick(View v) {
                 TastyToast.makeText(AttendanceActivity.this, "under construction", TastyToast.LENGTH_SHORT, TastyToast.ERROR).show();
 
-                DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference();
-                databaseReference.child("AAatest").child("contact").setValue("1010");
+
             }
         });
     }

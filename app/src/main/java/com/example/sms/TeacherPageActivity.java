@@ -63,6 +63,13 @@ public class TeacherPageActivity extends AppCompatActivity {
     FirebaseAuth mAuth;
 
     ProgressBar progressBar;
+    ProgressBar progressBarChangepwd;
+
+    EditText currentPwd;
+    EditText newPwd;
+    EditText confirmNewPwd;
+    Button savePwd;
+    Button cancelPwd;
 
     Teacher teacher;
     String uname;
@@ -118,6 +125,16 @@ public class TeacherPageActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 PopupMenu popupMenu = new PopupMenu(v.getContext(),v);
+
+                popupMenu.getMenu().add("Change Password").setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+                    @Override
+                    public boolean onMenuItemClick(MenuItem item) {
+                        openChangePassword();
+//                findViewById(R.id.edit_std).callOnClick();
+                        return false;
+                    }
+                });
+
                 popupMenu.getMenu().add("Logout").setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
                     @Override
                     public boolean onMenuItemClick(MenuItem item) {
@@ -298,7 +315,7 @@ public class TeacherPageActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 openProfileEdit();
-                Intent activity_pop_upIntent = new Intent(TeacherPageActivity.this,PopUp.class);
+//                Intent activity_pop_upIntent = new Intent(TeacherPageActivity.this,PopUp.class);
 //                startActivity(activity_pop_upIntent); // teacherpage owns activity_pop_up, codes under popup should not work.
             }
         });
@@ -306,6 +323,71 @@ public class TeacherPageActivity extends AppCompatActivity {
 
     } //on create close
 
+    private void openChangePassword() {
+        dialog.setContentView(R.layout.change_password);
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+
+        currentPwd = dialog.findViewById(R.id.currentpwd);
+        newPwd = dialog.findViewById(R.id.newpwd);
+        confirmNewPwd = dialog.findViewById(R.id.confirmnewpwd);
+        savePwd = dialog.findViewById(R.id.buttonSavePwd);
+        cancelPwd = dialog.findViewById(R.id.buttonCancelPwd);
+
+
+        savePwd.setOnClickListener(new View.OnClickListener() {
+            DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference();
+            @Override
+            public void onClick(View v) {
+                String currentPwdTxt = currentPwd.getText().toString();
+                String newPwdTxt = newPwd.getText().toString();
+                String confirmNewPwdTxt = confirmNewPwd.getText().toString();
+
+                if (currentPwdTxt.equals("") || newPwdTxt.equals("") || confirmNewPwdTxt.equals("")){
+                    TastyToast.makeText(TeacherPageActivity.this, "Please fill all fields", TastyToast.LENGTH_SHORT, TastyToast.ERROR);
+                }else {
+                    verifyCurrentPwd(currentPwdTxt, newPwdTxt, confirmNewPwdTxt);
+                }
+            }
+        });
+
+        cancelPwd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+                TastyToast.makeText(TeacherPageActivity.this, "Nothing Changed", TastyToast.LENGTH_SHORT, TastyToast.ERROR);
+            }
+        });
+        dialog.show();
+    }
+
+    private void verifyCurrentPwd(String currentPwdTxt, String newPwdTxt, String confirmNewPwdTxt) {
+        databaseReference.child("users").addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if (snapshot.hasChild(uname)){
+                    String dbPassword = snapshot.child(uname).child("password").getValue(String.class);
+                    if (!dbPassword.equals(currentPwdTxt)){
+                        TastyToast.makeText(TeacherPageActivity.this, "Current password is wrong", TastyToast.LENGTH_SHORT, TastyToast.ERROR);
+                    }else if (!newPwdTxt.equals(confirmNewPwdTxt)){
+                        TastyToast.makeText(TeacherPageActivity.this, "Confirm password should be new password", TastyToast.LENGTH_SHORT, TastyToast.ERROR);
+                    }else if (newPwdTxt.equals(confirmNewPwdTxt)){
+                        updatepassword(newPwdTxt);
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+    }
+
+    private void updatepassword(String newPwdTxt) {
+        databaseReference.child("users").child(uname).child("password").setValue(newPwdTxt);
+        TastyToast.makeText(this, "Password Changed", TastyToast.LENGTH_SHORT, TastyToast.SUCCESS);
+        dialog.dismiss();
+    }
 
 
     private String getCurrentDate() {
@@ -350,12 +432,12 @@ public class TeacherPageActivity extends AppCompatActivity {
         final int day = calendar.get(Calendar.DAY_OF_MONTH);
 
         if(teacher!=null){
-            fullName.setText(teacher.getFullName());
-            nickName.setText(teacher.getNickName());
+            fullName.setText(teacher.getFullName().trim());
+            nickName.setText(teacher.getNickName().trim());
             etDate.setText(teacher.getDob());
-            contactNo.setText(teacher.getContactNo());
-            emailID.setText(teacher.getEmail());
-            address.setText(teacher.getAddress());
+            contactNo.setText(teacher.getContactNo().trim());
+            emailID.setText(teacher.getEmail().trim());
+            address.setText(teacher.getAddress().trim());
 //            cropView.setImageURI(Uri.parse(teacher.getProfileuri()));
 
 
@@ -397,7 +479,7 @@ public class TeacherPageActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 dialog.dismiss();
-                Toast.makeText(TeacherPageActivity.this, "Nothing changed", Toast.LENGTH_SHORT).show();
+                TastyToast.makeText(TeacherPageActivity.this, "Nothing changed", TastyToast.LENGTH_SHORT, TastyToast.ERROR);
 //                uploadProfileImage();
 //                storageReference.putFile(imageUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
 //                    @Override
@@ -430,6 +512,7 @@ public class TeacherPageActivity extends AppCompatActivity {
                 String adrs = address.getText().toString();
 //                String profilrUri = dwnUri.toString();
 //                String uri = imageUri.toString();
+//                String profilepic = teacher.getProfileuri();
 
 
 
@@ -437,14 +520,18 @@ public class TeacherPageActivity extends AppCompatActivity {
 
 
 
-                Teacher t = new Teacher("",fName,nName,dob,cNumber,eID,adrs);
+                Teacher t = new Teacher("" ,fName,nName,dob,cNumber,eID,adrs);
 
+//                if (imageUri != null) {
+//                    uploadToFirebase(imageUri,t);
+//                }
                 if (imageUri != null) {
                     uploadToFirebase(imageUri,t);
                 }
-//                else {
-//                    uploadTeacher(t);
-//                }
+
+                else {
+                    uploadTeacher(t);
+                }
 
                 getTeacher(new TeacherCallback() {
                     @Override

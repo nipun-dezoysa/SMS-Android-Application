@@ -142,7 +142,6 @@ public class UserList extends AppCompatActivity implements SelectListener {
         EditText searchUname = findViewById(R.id.searchUname);
         String searchUsernameTxt = student.getUsername();
         TextView editRecords = findViewById(R.id.edit_std);
-
         PopupMenu popupMenu = new PopupMenu(UserList.this,recyclerView);
 //        popupMenu.getMenuInflater().inflate(R.menu.menu,popupMenu.getMenu());
 //        popupMenu.setGravity(Gravity.END);

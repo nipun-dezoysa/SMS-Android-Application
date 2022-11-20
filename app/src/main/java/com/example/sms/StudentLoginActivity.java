@@ -115,11 +115,11 @@ public class StudentLoginActivity extends AppCompatActivity {
                         finish();
 
                     } else{
-                        TastyToast.makeText(StudentLoginActivity.this, "Password is wrong", TastyToast.LENGTH_SHORT, TastyToast.ERROR);
+                        TastyToast.makeText(StudentLoginActivity.this, "Username or Password is wrong", TastyToast.LENGTH_SHORT, TastyToast.ERROR);
                         progressBar.setVisibility(View.INVISIBLE);
                     }
                 }else{
-                    TastyToast.makeText(StudentLoginActivity.this, "User does not exist in the system", TastyToast.LENGTH_SHORT, TastyToast.ERROR);
+                    TastyToast.makeText(StudentLoginActivity.this, "Username or Password is wrong", TastyToast.LENGTH_SHORT, TastyToast.ERROR);
                     progressBar.setVisibility(View.INVISIBLE);
                 }
             }

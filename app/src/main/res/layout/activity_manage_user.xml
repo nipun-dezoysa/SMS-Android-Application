@@ -74,6 +74,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:padding="8dp"
                     android:background="@drawable/switch_trcks"
                     android:paddingLeft="15dp"
                     android:paddingTop="5dp"
@@ -91,6 +92,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:padding="8dp"
                     android:paddingLeft="10dp"
                     android:paddingTop="5dp"
                     android:paddingRight="15dp"
@@ -107,23 +109,26 @@
             <LinearLayout
                 android:id="@+id/register_layout"
                 android:layout_width="match_parent"
-                android:layout_height="320dp"
+                android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:gravity="center"
                 android:orientation="vertical"
                 android:padding="25dp"
-                android:visibility="visible"
-                >
+                android:layout_marginTop="10dp"
+                android:visibility="visible">
 
 
                 <EditText
                     android:id="@+id/Username"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:padding="5dp"
+                    android:drawablePadding="5dp"
+                    android:drawableStart="@drawable/person_24"
+                    android:paddingStart="8dp"
                     android:background="@drawable/texteditbgn12"
                     android:hint="Username"
                     android:inputType="textPersonName"
-                    android:paddingLeft="20dp"
                     android:singleLine="true"
                     android:textColor="#0d6e6a"
                     android:textStyle="bold" />
@@ -133,10 +138,13 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="15dp"
+                    android:drawablePadding="5dp"
+                    android:drawableStart="@drawable/mail"
+                    android:paddingStart="8dp"
+                    android:padding="5dp"
                     android:background="@drawable/texteditbgn12"
                     android:hint="Email ID"
                     android:inputType="textEmailAddress"
-                    android:paddingLeft="20dp"
                     android:singleLine="true"
                     android:textColor="#0d6e6a"
                     android:textStyle="bold" />
@@ -146,10 +154,13 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="15dp"
+                    android:drawablePadding="5dp"
+                    android:paddingStart="8dp"
+                    android:drawableStart="@drawable/mobile"
+                    android:padding="5dp"
                     android:background="@drawable/texteditbgn12"
                     android:hint="Contact Number"
                     android:inputType="phone"
-                    android:paddingLeft="20dp"
                     android:singleLine="true"
                     android:textColor="#0d6e6a"
                     android:textStyle="bold" />
@@ -159,7 +170,11 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="15dp"
+                    android:paddingStart="8dp"
                     android:background="@drawable/texteditbgn12"
+                    android:drawablePadding="5dp"
+                    android:drawableStart="@drawable/key_24"
+                    android:padding="5dp"
                     android:hint="Password"
                     android:drawableEnd="@drawable/help"
                     android:paddingRight="10dp"
@@ -176,7 +191,11 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="15dp"
+                    android:paddingStart="8dp"
                     android:background="@drawable/texteditbgn12"
+                    android:drawablePadding="5dp"
+                    android:drawableStart="@drawable/key_24"
+                    android:padding="5dp"
                     android:hint="Confirm Password"
                     android:inputType="textPassword"
                     android:paddingLeft="20dp"
@@ -188,7 +207,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
-                    android:layout_marginTop="10dp">
+                    android:padding="10dp"
+                    android:layout_marginTop="20dp">
 
                     <CheckBox
                         android:id="@+id/checkBoxMaths"
@@ -209,7 +229,8 @@
                 <RadioGroup
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:padding="10dp">
 
                     <RadioButton
                         android:id="@+id/radioBtnGrade10"
@@ -322,13 +343,12 @@
             <LinearLayout
                 android:id="@+id/register_layout1"
                 android:layout_width="match_parent"
-                android:layout_height="340dp"
+                android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:gravity="center"
                 android:orientation="vertical"
                 android:padding="25dp"
-                android:visibility="gone"
-                >
+                android:visibility="gone">
 
 
                 <EditText
@@ -337,6 +357,9 @@
                     android:layout_height="wrap_content"
                     android:background="@drawable/texteditbgn12"
                     android:hint="Username"
+                    android:drawablePadding="5dp"
+                    android:drawableStart="@drawable/person_24"
+                    android:paddingStart="8dp"
                     android:padding="10dp"
                     android:layout_marginTop="10dp"
                     android:inputType="textPersonName"
@@ -352,6 +375,10 @@
                     android:layout_marginTop="15dp"
                     android:background="@drawable/texteditbgn12"
                     android:hint="Edit Email ID"
+                    android:padding="5dp"
+                    android:drawablePadding="5dp"
+                    android:drawableStart="@drawable/mail"
+                    android:paddingStart="8dp"
                     android:inputType="textEmailAddress"
                     android:paddingLeft="20dp"
                     android:singleLine="true"
@@ -367,6 +394,10 @@
                     android:layout_marginTop="15dp"
                     android:background="@drawable/texteditbgn12"
                     android:hint="Edit Contact Number"
+                    android:padding="5dp"
+                    android:drawablePadding="5dp"
+                    android:drawableStart="@drawable/mobile"
+                    android:paddingStart="8dp"
                     android:inputType="phone"
                     android:paddingLeft="20dp"
                     android:singleLine="true"
@@ -383,6 +414,10 @@
                     android:layout_marginTop="15dp"
                     android:background="@drawable/texteditbgn12"
                     android:hint="Change Password"
+                    android:padding="5dp"
+                    android:drawablePadding="5dp"
+                    android:drawableStart="@drawable/key_24"
+                    android:paddingStart="8dp"
                     android:inputType="textPassword"
                     android:paddingLeft="20dp"
                     android:singleLine="true"
@@ -397,6 +432,10 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="15dp"
                     android:background="@drawable/texteditbgn12"
+                    android:padding="5dp"
+                    android:drawablePadding="5dp"
+                    android:drawableStart="@drawable/key_24"
+                    android:paddingStart="8dp"
                     android:hint="Confirm Password"
                     android:inputType="textPassword"
                     android:paddingLeft="20dp"
@@ -410,7 +449,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
-                    android:layout_marginTop="10dp"
+                    android:padding="10dp"
+                    android:layout_marginTop="20dp"
                     android:visibility="gone">
 
                     <CheckBox
@@ -434,6 +474,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
+                    android:padding="10dp"
                     android:visibility="gone">
 
                     <RadioButton
@@ -455,7 +496,7 @@
                     android:layout_width="115dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:layout_marginTop="50dp"
+                    android:layout_marginTop="20dp"
                     android:layout_marginStart="24dp"
                     android:layout_marginEnd="24dp"
                     android:background="@drawable/btn"
@@ -482,97 +523,6 @@
                     android:textColor="#F8F8F8"
                     android:visibility="gone" />
 
-
-                <!--                <com.google.android.material.textfield.TextInputLayout-->
-                <!--                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"-->
-                <!--                    android:layout_marginLeft="5dp"-->
-                <!--                    android:layout_marginRight="5dp"-->
-                <!--                    android:layout_marginTop="5dp"-->
-                <!--                    android:background="@drawable/texteditbgn12"-->
-                <!--                    android:layout_width="match_parent"-->
-                <!--                    android:layout_height="wrap_content">-->
-
-                <!--                    <com.google.android.material.textfield.TextInputEditText-->
-                <!--                        android:layout_width="match_parent"-->
-                <!--                        android:layout_height="wrap_content"-->
-                <!--                        android:hint="Full Name"-->
-                <!--                        android:inputType="textPersonName"-->
-                <!--                        android:paddingLeft="10dp" />-->
-
-                <!--                </com.google.android.material.textfield.TextInputLayout>-->
-
-                <!--                <com.google.android.material.textfield.TextInputLayout-->
-                <!--                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"-->
-                <!--                    android:layout_marginLeft="5dp"-->
-                <!--                    android:layout_marginRight="5dp"-->
-                <!--                    android:layout_marginTop="5dp"-->
-                <!--                    android:background="@drawable/texteditbgn12"-->
-                <!--                    android:layout_width="match_parent"-->
-                <!--                    android:layout_height="wrap_content">-->
-
-                <!--                    <com.google.android.material.textfield.TextInputEditText-->
-                <!--                        android:layout_width="match_parent"-->
-                <!--                        android:layout_height="wrap_content"-->
-                <!--                        android:hint="Email ID"-->
-                <!--                        android:inputType="textEmailAddress"-->
-                <!--                        android:paddingLeft="10dp" />-->
-
-                <!--                </com.google.android.material.textfield.TextInputLayout>-->
-
-                <!--                <com.google.android.material.textfield.TextInputLayout-->
-                <!--                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"-->
-                <!--                    android:layout_marginLeft="5dp"-->
-                <!--                    android:layout_marginRight="5dp"-->
-                <!--                    android:layout_marginTop="5dp"-->
-                <!--                    android:background="@drawable/texteditbgn12"-->
-                <!--                    android:layout_width="match_parent"-->
-                <!--                    android:layout_height="wrap_content">-->
-
-                <!--                    <com.google.android.material.textfield.TextInputEditText-->
-                <!--                        android:layout_width="match_parent"-->
-                <!--                        android:layout_height="wrap_content"-->
-                <!--                        android:hint="Contact Number"-->
-                <!--                        android:inputType="number|phone"-->
-                <!--                        android:paddingLeft="10dp" />-->
-
-                <!--                </com.google.android.material.textfield.TextInputLayout>-->
-
-                <!--                <com.google.android.material.textfield.TextInputLayout-->
-                <!--                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"-->
-                <!--                    android:layout_marginLeft="5dp"-->
-                <!--                    android:layout_marginRight="5dp"-->
-                <!--                    android:layout_marginTop="5dp"-->
-                <!--                    android:background="@drawable/texteditbgn12"-->
-                <!--                    app:endIconMode="password_toggle"-->
-                <!--                    android:layout_width="match_parent"-->
-                <!--                    android:layout_height="wrap_content">-->
-
-                <!--                    <com.google.android.material.textfield.TextInputEditText-->
-                <!--                        android:layout_width="match_parent"-->
-                <!--                        android:layout_height="wrap_content"-->
-                <!--                        android:hint="Password"-->
-                <!--                        android:inputType="textVisiblePassword"-->
-                <!--                        android:paddingLeft="10dp" />-->
-
-                <!--                </com.google.android.material.textfield.TextInputLayout>-->
-
-                <!--                <com.google.android.material.textfield.TextInputLayout-->
-                <!--                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"-->
-                <!--                    android:layout_marginLeft="5dp"-->
-                <!--                    android:layout_marginRight="5dp"-->
-                <!--                    android:layout_marginTop="5dp"-->
-                <!--                    android:background="@drawable/texteditbgn12"-->
-                <!--                    android:layout_width="match_parent"-->
-                <!--                    android:layout_height="wrap_content">-->
-
-                <!--                    <com.google.android.material.textfield.TextInputEditText-->
-                <!--                        android:layout_width="match_parent"-->
-                <!--                        android:layout_height="wrap_content"-->
-                <!--                        android:hint="Confirm Password"-->
-                <!--                        android:inputType="textVisiblePassword"-->
-                <!--                        android:paddingLeft="10dp" />-->
-
-                <!--                </com.google.android.material.textfield.TextInputLayout>-->
 
 
             </LinearLayout>
