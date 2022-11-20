@@ -11,6 +11,7 @@ import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.webkit.MimeTypeMap;
 import android.widget.Button;
@@ -130,7 +131,6 @@ public class TeacherPageActivity extends AppCompatActivity {
                     @Override
                     public boolean onMenuItemClick(MenuItem item) {
                         openChangePassword();
-//                findViewById(R.id.edit_std).callOnClick();
                         return false;
                     }
                 });
@@ -333,6 +333,36 @@ public class TeacherPageActivity extends AppCompatActivity {
         savePwd = dialog.findViewById(R.id.buttonSavePwd);
         cancelPwd = dialog.findViewById(R.id.buttonCancelPwd);
 
+        newPwd.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                final int DRAWABLE_LEFT = 0;
+                final int DRAWABLE_TOP = 1;
+                final int DRAWABLE_RIGHT = 2;
+                final int DRAWABLE_BOTTOM = 3;
+
+                if (event.getAction() == MotionEvent.ACTION_UP){
+                    if (event.getRawX() >= (newPwd.getRight()-
+                            newPwd.getCompoundDrawables()[DRAWABLE_RIGHT].getBounds().width())) {
+                        AlertDialog.Builder builder = new AlertDialog.Builder(v.getContext());
+                        builder.setTitle("Password Patterns")
+                                .setMessage("Please follow the password pattern with at least one digit, one upper case letter, one lower case letter and one special symbol (“@#$%”). Password length should be between 6 and 15")
+                                .setPositiveButton("Okay", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        dialog.dismiss();
+
+                                    }
+                                })
+                                .show();
+//
+                    }
+                }
+                return false;
+            }
+        });
+
+
 
         savePwd.setOnClickListener(new View.OnClickListener() {
             DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference();
@@ -370,12 +400,11 @@ public class TeacherPageActivity extends AppCompatActivity {
                     String dbPassword = snapshot.child(uname).child("password").getValue(String.class);
                     if (!dbPassword.equals(currentPwdTxt)){
                         TastyToast.makeText(TeacherPageActivity.this, "Current password is wrong", TastyToast.LENGTH_SHORT, TastyToast.ERROR);
-                    }else if (!newPwdTxt.matches(passwordPattern)){
-
-                    }
-                    else if (!newPwdTxt.equals(confirmNewPwdTxt)){
+                    } else if (!newPwdTxt.matches(passwordPattern)){
+                        TastyToast.makeText(TeacherPageActivity.this, "Please follow password pattern to make a strong password", TastyToast.LENGTH_SHORT, TastyToast.ERROR);
+                    } else if (!newPwdTxt.equals(confirmNewPwdTxt)){
                         TastyToast.makeText(TeacherPageActivity.this, "Confirm password should be new password", TastyToast.LENGTH_SHORT, TastyToast.ERROR);
-                    }else if (newPwdTxt.equals(confirmNewPwdTxt)){
+                    } else if (newPwdTxt.equals(confirmNewPwdTxt)){
                         updatepassword(newPwdTxt);
                     }
                 }

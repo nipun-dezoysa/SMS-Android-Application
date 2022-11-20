@@ -4,12 +4,15 @@ import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.content.ContentResolver;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Base64;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.webkit.MimeTypeMap;
 import android.widget.Button;
@@ -26,6 +29,7 @@ import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.bumptech.glide.Glide;
@@ -47,10 +51,14 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import com.sdsmdg.tastytoast.TastyToast;
 
+import java.security.MessageDigest;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
+
+import javax.crypto.Cipher;
+import javax.crypto.spec.SecretKeySpec;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -63,12 +71,24 @@ public class StudentPageActivity extends AppCompatActivity {
     private String uname;
     Dialog dialog;
 
+    String currentOutputPassword;
+    String currentEncryptedPassword;
+    String AES = "AES";
+    String newOutputPassword;
+    String newEncryptedPassword;
+
     UserStudent student;
     ProgressBar progressBar;
 
     ImageView profileEditStd;
     Uri dwnUri;
     Uri imageUri;
+
+    EditText currentPwd;
+    EditText newPwd;
+    EditText confirmNewPwd;
+    Button savePwd;
+    Button cancelPwd;
 
     StorageReference storageReference;
 
@@ -117,6 +137,14 @@ public class StudentPageActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 PopupMenu popupMenu = new PopupMenu(v.getContext(),v);
+
+                popupMenu.getMenu().add("Change Password").setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+                    @Override
+                    public boolean onMenuItemClick(MenuItem item) {
+                        openChangePassword();
+                        return false;
+                    }
+                });
                 popupMenu.getMenu().add("Logout").setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
                     @Override
                     public boolean onMenuItemClick(MenuItem item) {
@@ -255,6 +283,144 @@ public class StudentPageActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    private void openChangePassword() {
+        dialog.setContentView(R.layout.change_password);
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+
+        currentPwd = dialog.findViewById(R.id.currentpwd);
+        newPwd = dialog.findViewById(R.id.newpwd);
+        confirmNewPwd = dialog.findViewById(R.id.confirmnewpwd);
+        savePwd = dialog.findViewById(R.id.buttonSavePwd);
+        cancelPwd = dialog.findViewById(R.id.buttonCancelPwd);
+
+        newPwd.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                final int DRAWABLE_LEFT = 0;
+                final int DRAWABLE_TOP = 1;
+                final int DRAWABLE_RIGHT = 2;
+                final int DRAWABLE_BOTTOM = 3;
+
+                if (event.getAction() == MotionEvent.ACTION_UP){
+                    if (event.getRawX() >= (newPwd.getRight()-
+                            newPwd.getCompoundDrawables()[DRAWABLE_RIGHT].getBounds().width())) {
+                        AlertDialog.Builder builder = new AlertDialog.Builder(v.getContext());
+                        builder.setTitle("Password Patterns")
+                                .setMessage("Please follow the password pattern with at least one digit, one upper case letter, one lower case letter and one special symbol (“@#$%”). Password length should be between 6 and 15")
+                                .setPositiveButton("Okay", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        dialog.dismiss();
+
+                                    }
+                                })
+                                .show();
+//
+                    }
+                }
+                return false;
+            }
+        });
+
+
+
+        savePwd.setOnClickListener(new View.OnClickListener() {
+            DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference();
+            @Override
+            public void onClick(View v) {
+                String currentPwdTxt = currentPwd.getText().toString();
+                String newPwdTxt = newPwd.getText().toString();
+                String confirmNewPwdTxt = confirmNewPwd.getText().toString();
+
+                if (currentPwdTxt.equals("") || newPwdTxt.equals("") || confirmNewPwdTxt.equals("")){
+                    TastyToast.makeText(StudentPageActivity.this, "Please fill all fields", TastyToast.LENGTH_SHORT, TastyToast.ERROR);
+                }else {
+                    try {
+                        currentOutputPassword = encrypt(currentPwdTxt, currentPwdTxt);
+                        currentEncryptedPassword = currentOutputPassword;
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+
+                    try {
+                        newOutputPassword = encrypt(newPwdTxt, newPwdTxt);
+                        newEncryptedPassword = newOutputPassword;
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+
+                    verifyCurrentPwd(currentEncryptedPassword, newPwdTxt, confirmNewPwdTxt);
+
+//                    databaseReference.child("students").child(uname).child("password").setValue(newEncryptedPassword);
+//                    TastyToast.makeText(StudentPageActivity.this, "Password Changed", TastyToast.LENGTH_SHORT, TastyToast.SUCCESS);
+//                    dialog.dismiss();
+                }
+            }
+        });
+
+        cancelPwd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+                TastyToast.makeText(StudentPageActivity.this, "Nothing Changed", TastyToast.LENGTH_SHORT, TastyToast.ERROR);
+            }
+        });
+        dialog.show();
+    }
+
+    private String encrypt(String data, String pword) throws Exception {
+        SecretKeySpec key = generateKey(pword);
+        Cipher c = Cipher.getInstance(AES);
+        c.init(Cipher.ENCRYPT_MODE, key);
+        byte[] encVal = c.doFinal(data.getBytes());
+        String encryptedValue = Base64.encodeToString(encVal, Base64.DEFAULT);
+        return encryptedValue;
+    }
+
+    private SecretKeySpec generateKey(String pword) throws Exception {
+        final MessageDigest digest = MessageDigest.getInstance("SHA-256");
+        byte[] bytes = pword.getBytes("UTF-8");
+        digest.update(bytes, 0, bytes.length);
+        byte[] key = digest.digest();
+        SecretKeySpec secretKeySpec = new SecretKeySpec(key, "AES");
+        return secretKeySpec;
+    }
+
+
+    private void verifyCurrentPwd(String currentEncryptedPassword, String newPwdTxt, String confirmNewPwdTxt) {
+        databaseReference.child("students").addListenerForSingleValueEvent(new ValueEventListener() {
+            final String passwordPattern = "((?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%]).{6,15})";
+
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if (snapshot.hasChild(uname)){
+                    String dbPassword = snapshot.child(uname).child("password").getValue(String.class);
+                    if (!dbPassword.equals(currentEncryptedPassword)){
+                        TastyToast.makeText(StudentPageActivity.this, "Current password is wrong", TastyToast.LENGTH_SHORT, TastyToast.ERROR);
+                    } else if (!newPwdTxt.matches(passwordPattern)){
+                        TastyToast.makeText(StudentPageActivity.this, "Please follow password pattern to make a strong password", TastyToast.LENGTH_SHORT, TastyToast.ERROR);
+                    } else if (!newPwdTxt.equals(confirmNewPwdTxt)){
+                        TastyToast.makeText(StudentPageActivity.this, "Confirm password should match new password", TastyToast.LENGTH_SHORT, TastyToast.ERROR);
+                    }
+                    else if (newPwdTxt.equals(confirmNewPwdTxt)){
+                        updatepassword(newEncryptedPassword);
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+    }
+
+    private void updatepassword(String newEncryptedPassword) {
+        databaseReference.child("students").child(uname).child("password").setValue(newEncryptedPassword);
+        TastyToast.makeText(this, "Password Changed", TastyToast.LENGTH_SHORT, TastyToast.SUCCESS);
+        dialog.dismiss();
     }
 
     private String getCurrentDate() {
