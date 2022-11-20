@@ -364,7 +364,7 @@ public class StudentPageActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 dialog.dismiss();
-                TastyToast.makeText(StudentPageActivity.this, "Nothing Changed", TastyToast.LENGTH_SHORT, TastyToast.ERROR);
+                TastyToast.makeText(StudentPageActivity.this, "Nothing Changed", TastyToast.LENGTH_SHORT, TastyToast.CONFUSING);
             }
         });
         dialog.show();
