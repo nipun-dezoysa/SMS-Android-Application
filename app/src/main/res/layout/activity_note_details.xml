@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".NoteDetails">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:id="@+id/menu"
+            android:background="@color/teal_700"
+            android:layout_width="match_parent"
+            android:layout_height="120dp">
+
+            <ImageView
+                android:id="@+id/noteDetail_back"
+                android:layout_width="40dp"
+                android:layout_height="35dp"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="10dp"
+                android:background="@drawable/back" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="Note Detail"
+                android:textSize="30dp"
+                android:textStyle="bold|normal" />
+
+
+
+        </RelativeLayout>
+        <!--    <androidx.appcompat.widget.Toolbar-->
+        <!--        android:id="@+id/toolbarofcreatenote"-->
+        <!--        android:layout_width="match_parent"-->
+        <!--        android:layout_height="?attr/actionBarSize">-->
+
+        <ImageView
+            android:layout_width="400dp"
+            android:layout_height="400dp"
+            android:layout_gravity="center"
+            android:src="@drawable/logo_transparentnew" />
+
+
+        <!--    </androidx.appcompat.widget.Toolbar>-->
+
+
+        <TextView
+            android:id="@+id/titleOfNoteDetail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="20dp"
+            android:layout_marginTop="140dp"
+            android:text="Note Title will display here"
+            android:textColor="@color/black"
+            android:textSize="20dp"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:id="@+id/contentOfNoteDetail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="200dp"
+            android:background="#faf7f7"
+            android:paddingLeft="20dp"
+            android:hint="Note content will display here"
+            android:padding="15dp"
+            android:textColor="@color/black"
+            android:textSize="15dp">
+
+        </TextView>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/goToEditNote"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            android:layout_gravity="bottom|end"
+            android:layout_marginRight="30dp"
+            android:layout_marginBottom="30dp"
+            android:src="@drawable/edit_note"
+            app:maxImageSize="40dp">
+
+        </com.google.android.material.floatingactionbutton.FloatingActionButton>
+
+
+
+
+    </androidx.cardview.widget.CardView>
+
+
+</LinearLayout>

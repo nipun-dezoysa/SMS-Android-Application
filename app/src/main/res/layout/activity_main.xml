@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:layout_width="500dp"
+            android:layout_height="350dp"
+            android:layout_marginTop="20dp"
+            android:src="@drawable/studentbg" />
+
+        <TextView
+            android:id="@+id/welcome"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="80dp"
+            android:text="WELCOME"
+            android:textColor="#0d6e6a"
+            android:textSize="40dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Login as"
+            android:textColor="#0d6e6a"
+            android:textSize="20dp"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/student"
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/btn"
+            android:text="Student"
+            android:textColor="@color/colorWhite" />
+
+        <Button
+            android:id="@+id/teacher"
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/btn"
+            android:text="Teacher"
+            android:textColor="@color/colorWhite" />
+
+    </LinearLayout>
+
+
+</LinearLayout>
+
+<!--<?xml version="1.0" encoding="utf-8"?>-->
+
+
+<!--<LinearLayout-->
+<!--    xmlns:android="http://schemas.android.com/apk/res/android"-->
+<!--    android:layout_width="match_parent"-->
+<!--    android:layout_height="match_parent"-->
+<!--    android:orientation="vertical"-->
+<!--    android:gravity="center_horizontal">-->
+
+<!--    <ImageView-->
+<!--        android:layout_width="500dp"-->
+<!--        android:layout_height="350dp"-->
+<!--        android:src="@drawable/studentbg"-->
+<!--        android:layout_marginTop="20dp"/>-->
+
+
+<!--    <TextView-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="WELCOME"-->
+<!--        android:textStyle="bold"-->
+<!--        android:textColor="#0d6e6a"-->
+<!--        android:textSize="40dp"-->
+<!--        android:layout_marginTop="80dp"/>-->
+
+<!--    <TextView-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="Login as"-->
+<!--        android:textSize="20dp"-->
+<!--        android:textStyle="bold"-->
+<!--        android:textColor="#0d6e6a"/>-->
+
+<!--    <Button-->
+<!--        android:layout_width="100dp"-->
+<!--        android:layout_height="50dp"-->
+<!--        android:background="@drawable/btn"-->
+<!--        android:layout_marginTop="20dp"-->
+<!--        android:text="Student"-->
+<!--        android:id="@+id/student"-->
+<!--        android:textColor="@color/colorWhite"/>-->
+
+<!--    <Button-->
+<!--        android:layout_width="100dp"-->
+<!--        android:layout_height="50dp"-->
+<!--        android:background="@drawable/btn"-->
+<!--        android:layout_marginTop="20dp"-->
+<!--        android:text="Teacher"-->
+<!--        android:id="@+id/teacher"-->
+<!--        android:textColor="@color/colorWhite"/>-->
+
+<!--</LinearLayout>-->
+
+

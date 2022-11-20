@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".TextRecognitionStud">
+
+    <RelativeLayout
+        android:background="@color/teal_700"
+        android:layout_width="match_parent"
+        android:layout_height="120dp">
+
+        <ImageView
+            android:id="@+id/txt_rec_std_back"
+            android:layout_width="40dp"
+            android:layout_height="35dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:background="@drawable/back" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="Text Recognition"
+            android:textSize="30dp"
+            android:textStyle="bold|normal" />
+
+
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:padding="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/input_img1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginEnd="5dp"
+            android:layout_weight="1"
+            android:text="Take Image"
+            app:cornerRadius="5dp"
+            app:icon="@drawable/cam_add"
+            />
+
+        <Button
+            android:id="@+id/input_scan1"
+            android:text="Recognize Text"
+            app:cornerRadius="5dp"
+            android:layout_marginStart="5dp"
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:icon="@drawable/scan"
+            />
+
+    </LinearLayout>
+
+    <ScrollView
+        android:padding="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:padding="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/img_iv1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:src="@drawable/img"
+                android:adjustViewBounds="true"
+                app:strokeWidth="5dp"/>
+
+            <TextView
+                style="@style/TextAppearance.MaterialComponents.Headline4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="Recognized Text:"/>
+
+            <EditText
+                android:id="@+id/recog_txt_et1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="12dp"/>
+        </LinearLayout>
+
+
+    </ScrollView>
+
+</LinearLayout>

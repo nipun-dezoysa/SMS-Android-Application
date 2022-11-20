@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.example.sms">
+    <!-- <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" -->
+    <!-- android:maxSdkVersion="28" /> -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CAMERA" />
+
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="false" />
+    <uses-feature
+        android:name="android.hardware.camera.autofocus"
+        android:required="false" />
+    <uses-feature
+        android:name="android.hardware.camera.flash"
+        android:required="false" />
+
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="ANDROID.PERMISSION.READ_EXTERNAL_STORAGE" />
+
+    <application
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@drawable/applogo"
+        android:label="@string/app_name"
+        android:roundIcon="@drawable/applogo"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.SMS"
+        tools:targetApi="31">
+        <activity
+            android:name=".Home_Work"
+            android:exported="false">
+<!--            <intent-filter>-->
+<!--                <action android:name="android.intent.action.MAIN" />-->
+
+<!--                <category android:name="android.intent.category.LAUNCHER" />-->
+<!--            </intent-filter>-->
+        </activity>
+        <activity
+            android:name=".Add_Attendance"
+            android:exported="false" />
+        <activity
+            android:name=".UserList"
+            android:exported="false" />
+        <activity
+            android:name=".NoteDetails"
+            android:exported="false" />
+        <activity
+            android:name=".EditNoteActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ShowActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Test2"
+            android:exported="false">
+
+            <!-- <intent-filter> -->
+            <!-- <action android:name="android.intent.action.MAIN" /> -->
+
+
+            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+            <!-- </intent-filter> -->
+        </activity>
+        <activity
+            android:name=".Test"
+            android:exported="false" />
+        <activity
+            android:name=".UpdateStud"
+            android:exported="false" />
+        <activity
+            android:name=".TextRecognitionStud"
+            android:exported="false" />
+        <activity
+            android:name=".ReportStud"
+            android:exported="false" />
+        <activity
+            android:name=".ExamsResultsStud"
+            android:exported="false" />
+        <activity
+            android:name=".ExamsResults"
+            android:exported="false" />
+        <activity
+            android:name=".NotesStud"
+            android:exported="false" />
+        <activity
+            android:name=".StudyMaterialStud"
+            android:exported="false" />
+        <activity
+            android:name=".HomeworkStud"
+            android:exported="false" />
+        <activity
+            android:name=".ScheduleStud"
+            android:exported="false" />
+        <activity
+            android:name=".AttendanceStud"
+            android:exported="false" />
+        <activity
+            android:name=".MySubjects"
+            android:exported="false" />
+        <activity android:name=".ActivityQuestions"></activity>
+        <activity
+            android:name=".TextRecognition"
+            android:exported="false">
+
+            <!-- <intent-filter> -->
+            <!-- <action android:name="android.intent.action.MAIN" /> -->
+
+
+            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+            <!-- </intent-filter> -->
+
+        </activity>
+        <activity
+            android:name=".UpdateActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ReportActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ScheduleActivity"
+            android:exported="false" />
+        <activity
+            android:name=".HomeworkActivity"
+            android:exported="false" />
+        <activity
+            android:name=".CreateNotesActivity"
+            android:exported="false" />
+        <activity
+            android:name=".NotesActivity"
+            android:exported="false" />
+        <activity
+            android:name=".StudyMaterial"
+            android:exported="false" />
+        <activity
+            android:name=".AttendanceActivity"
+            android:exported="false" />
+        <activity
+            android:name=".CropperActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Manage_User"
+            android:exported="false" />
+        <activity
+            android:name=".MainActivity"
+            android:exported="false" /> <!-- <activity -->
+        <!-- android:name=".PopUp" -->
+        <!-- android:exported="false" /> -->
+        <activity
+            android:name=".SplashScreen"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".StudentLoginActivity" />
+        <activity android:name=".TeacherLoginActivity" />
+        <activity
+            android:name=".TeacherPageActivity"
+            android:exported="false">
+
+            <!-- <intent-filter> -->
+            <!-- <action android:name="android.intent.action.MAIN" /> -->
+
+
+            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+            <!-- </intent-filter> -->
+        </activity>
+        <activity android:name=".StudentPageActivity" />
+        <activity android:name=".PopUp" />
+        <activity
+            android:name="com.yalantis.ucrop.UCropActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+    </application>
+
+</manifest>

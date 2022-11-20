@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:gravity="center_horizontal">
+
+
+    <ImageView
+        android:layout_width="420dp"
+        android:layout_height="350dp"
+        android:src="@drawable/teacherbg"
+        android:layout_marginTop="20dp"/>
+
+    <ProgressBar
+        android:id="@+id/progressBarOfTeacherLogin"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="invisible" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Login"
+        android:id="@+id/btntxtTeaLogin"
+        android:textStyle="bold"
+        android:textColor="#0d6e6a"
+        android:textSize="40sp"
+        android:layout_marginTop="1dp"
+        android:letterSpacing="0.05"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Login as a teacher"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        android:textColor="#0d6e6a"
+        android:letterSpacing="0.02"/>
+
+
+
+    <EditText
+        android:layout_width="350dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/texteditbg"
+        android:hint="Username"
+        android:drawableStart="@drawable/person_24"
+        android:drawablePadding="5dp"
+        android:id="@+id/txtTeaUserName"
+        android:singleLine="true"
+        android:paddingLeft="20dp"
+        android:textColor="#0d6e6a"
+        android:textStyle="bold"
+        />
+
+
+    <EditText
+        android:layout_width="350dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/texteditbg"
+        android:inputType="textPassword"
+        android:paddingLeft="20dp"
+        android:hint="Password"
+        android:drawableStart="@drawable/key_24"
+        android:drawablePadding="5dp"
+        android:id="@+id/txtTeaPassWord"
+        android:textColor="#0d6e6a"
+        android:textStyle="bold" />
+
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:layout_marginRight="35dp"
+        android:minHeight="48dp"
+        android:text="Forgot Password?"
+        android:textColor="#0d6e6a"
+        android:textSize="18dp"
+        android:textStyle="bold" />
+
+    <Button
+        android:layout_marginBottom="20dp"
+        android:layout_width="350dp"
+        android:layout_height="48dp"
+        android:background="@drawable/btn"
+        android:text="login"
+        android:id="@+id/btnTeaLogin"
+        android:textColor="@color/colorWhite" />
+
+</LinearLayout>

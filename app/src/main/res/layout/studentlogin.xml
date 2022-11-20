@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center_horizontal">
+
+    <ImageView
+        android:layout_width="420dp"
+        android:layout_height="331dp"
+        android:layout_marginTop="20dp"
+        android:src="@drawable/studbg" />
+
+    <ProgressBar
+        android:id="@+id/progressBarStudLogin"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone"/>
+
+    <TextView
+        android:id="@+id/btnTxtStdLogin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="1dp"
+        android:letterSpacing="0.05"
+        android:text="Login"
+        android:textColor="#0d6e6a"
+        android:textSize="40sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Login as a student"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        android:textColor="#0d6e6a"
+        android:letterSpacing="0.03"/>
+
+    <EditText
+        android:layout_width="350dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/texteditbg"
+        android:paddingLeft="20dp"
+        android:hint="Username"
+        android:drawablePadding="5dp"
+        android:id="@+id/txtStdUserName"
+        android:drawableStart="@drawable/person_24"
+        android:singleLine="true"
+        android:textColor="#0d6e6a"
+        android:textStyle="bold" />
+
+    <EditText
+        android:layout_width="350dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/texteditbg"
+        android:hint="Password"
+        android:drawableStart="@drawable/key_24"
+        android:drawablePadding="5dp"
+        android:inputType="textPassword"
+        android:id="@+id/txtStdPassword"
+        android:paddingLeft="20dp"
+        android:textColor="#0d6e6a"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:layout_marginRight="35dp"
+        android:minHeight="48dp"
+        android:text="Forgot Password?"
+        android:textColor="#0d6e6a"
+        android:textSize="18dp"
+        android:textStyle="bold" />
+
+    <Button
+        android:layout_width="350dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/btn"
+        android:text="login"
+        android:id="@+id/btnStdLogin"
+        android:textColor="@color/colorWhite" />
+
+
+</LinearLayout>

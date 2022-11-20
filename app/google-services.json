@@ -1,0 +1,77 @@
+{
+  "project_info": {
+    "project_number": "566350586702",
+    "firebase_url": "https://asms-365d0-default-rtdb.firebaseio.com",
+    "project_id": "asms-365d0",
+    "storage_bucket": "asms-365d0.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:566350586702:android:3305d0a7386af73916f41f",
+        "android_client_info": {
+          "package_name": "com.example.sms"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "566350586702-dvp7igufel0fk080d04chrju0nce1i2m.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC3NfRU4OdgKNBuUiffiSPl52II-dwuibI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "566350586702-dvp7igufel0fk080d04chrju0nce1i2m.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:566350586702:android:89142b8dcf39513916f41f",
+        "android_client_info": {
+          "package_name": "com.example.sms.asms"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "566350586702-1tg7gdkvb875gg7h6a4e7shlhsuj624i.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.sms.asms",
+            "certificate_hash": "1ee678c703e6dfaa3f4954d684c08938a72f521c"
+          }
+        },
+        {
+          "client_id": "566350586702-dvp7igufel0fk080d04chrju0nce1i2m.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC3NfRU4OdgKNBuUiffiSPl52II-dwuibI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "566350586702-dvp7igufel0fk080d04chrju0nce1i2m.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
