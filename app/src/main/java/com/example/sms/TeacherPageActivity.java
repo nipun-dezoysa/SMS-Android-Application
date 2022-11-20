@@ -362,13 +362,18 @@ public class TeacherPageActivity extends AppCompatActivity {
 
     private void verifyCurrentPwd(String currentPwdTxt, String newPwdTxt, String confirmNewPwdTxt) {
         databaseReference.child("users").addListenerForSingleValueEvent(new ValueEventListener() {
+            final String passwordPattern = "((?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%]).{6,15})";
+
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if (snapshot.hasChild(uname)){
                     String dbPassword = snapshot.child(uname).child("password").getValue(String.class);
                     if (!dbPassword.equals(currentPwdTxt)){
                         TastyToast.makeText(TeacherPageActivity.this, "Current password is wrong", TastyToast.LENGTH_SHORT, TastyToast.ERROR);
-                    }else if (!newPwdTxt.equals(confirmNewPwdTxt)){
+                    }else if (!newPwdTxt.matches(passwordPattern)){
+
+                    }
+                    else if (!newPwdTxt.equals(confirmNewPwdTxt)){
                         TastyToast.makeText(TeacherPageActivity.this, "Confirm password should be new password", TastyToast.LENGTH_SHORT, TastyToast.ERROR);
                     }else if (newPwdTxt.equals(confirmNewPwdTxt)){
                         updatepassword(newPwdTxt);
