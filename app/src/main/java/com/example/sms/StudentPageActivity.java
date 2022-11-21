@@ -366,6 +366,7 @@ public class StudentPageActivity extends AppCompatActivity {
                 dialog.dismiss();
                 TastyToast.makeText(StudentPageActivity.this, "Nothing Changed", TastyToast.LENGTH_SHORT, TastyToast.CONFUSING);
             }
+
         });
         dialog.show();
     }
