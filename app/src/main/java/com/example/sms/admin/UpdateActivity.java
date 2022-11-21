@@ -1,4 +1,4 @@
-package com.example.sms;
+package com.example.sms.admin;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -7,20 +7,21 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 
-public class MySubjects extends AppCompatActivity {
+import com.example.sms.R;
+
+public class UpdateActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_my_subjects);
+        setContentView(R.layout.activity_update);
 
-        ImageView mysub_back = (ImageView) findViewById(R.id.mysub_back);
-        mysub_back.setOnClickListener(new View.OnClickListener() {
+        ImageView update_back = (ImageView) findViewById(R.id.update_back);
+        update_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 finish();
             }
         });
-
     }
 }

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".TextRecognitionStud">
+    tools:context=".students.TextRecognitionStud">
 
     <RelativeLayout
         android:background="@color/teal_700"

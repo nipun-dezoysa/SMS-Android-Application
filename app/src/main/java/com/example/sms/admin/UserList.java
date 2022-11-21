@@ -1,4 +1,4 @@
-package com.example.sms;
+package com.example.sms.admin;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
@@ -20,6 +20,7 @@ import android.widget.LinearLayout;
 import android.widget.PopupMenu;
 import android.widget.TextView;
 
+import com.example.sms.R;
 import com.example.sms.adapter.MyAdapterStd;
 import com.example.sms.interfaces.SelectListener;
 import com.example.sms.model.Student;

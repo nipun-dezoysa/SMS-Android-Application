@@ -1,4 +1,4 @@
-package com.example.sms;
+package com.example.sms.students;
 
 import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
@@ -22,7 +22,6 @@ import android.widget.LinearLayout;
 import android.widget.PopupMenu;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
@@ -33,10 +32,12 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.bumptech.glide.Glide;
-import com.example.sms.interfaces.TeacherCallback;
+import com.example.sms.CropperActivity;
+import com.example.sms.NotesActivity;
+import com.example.sms.PopUp;
+import com.example.sms.R;
+import com.example.sms.ScheduleStud;
 import com.example.sms.interfaces.UserStudentCallback;
-import com.example.sms.model.Student;
-import com.example.sms.model.Teacher;
 import com.example.sms.model.UserStudent;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -179,7 +180,7 @@ public class StudentPageActivity extends AppCompatActivity {
         mGetContent=registerForActivityResult(new ActivityResultContracts.GetContent(), new ActivityResultCallback<Uri>() {
             @Override
             public void onActivityResult(Uri result) {
-                Intent intent= new Intent(StudentPageActivity.this,CropperActivity.class);
+                Intent intent= new Intent(StudentPageActivity.this, CropperActivity.class);
                 intent.putExtra("DATA",result.toString());
                 startActivityForResult(intent,101);
             }
@@ -206,7 +207,7 @@ public class StudentPageActivity extends AppCompatActivity {
         schedule.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent manageActivityIntent = new Intent(StudentPageActivity.this,ScheduleStud.class);
+                Intent manageActivityIntent = new Intent(StudentPageActivity.this, ScheduleStud.class);
                 startActivity(manageActivityIntent);
             }
         });
@@ -230,7 +231,7 @@ public class StudentPageActivity extends AppCompatActivity {
         notes.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent manageActivityIntent = new Intent(StudentPageActivity.this,NotesActivity.class);
+                Intent manageActivityIntent = new Intent(StudentPageActivity.this, NotesActivity.class);
                 manageActivityIntent.putExtra("uname",uname);
                 startActivity(manageActivityIntent);
             }
@@ -278,7 +279,7 @@ public class StudentPageActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 openProfileEdit();
-                Intent activity_pop_upIntent = new Intent(StudentPageActivity.this,PopUp.class);
+                Intent activity_pop_upIntent = new Intent(StudentPageActivity.this, PopUp.class);
 //                startActivity(activity_pop_upIntent); // studentpage owns activity_pop_up, codes under popup should not work.
             }
         });

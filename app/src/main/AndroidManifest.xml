@@ -34,7 +34,7 @@
         android:theme="@style/Theme.SMS"
         tools:targetApi="31">
         <activity
-            android:name=".Home_Work"
+            android:name=".admin.Home_Work"
             android:exported="false">
 <!--            <intent-filter>-->
 <!--                <action android:name="android.intent.action.MAIN" />-->
@@ -43,10 +43,10 @@
 <!--            </intent-filter>-->
         </activity>
         <activity
-            android:name=".Add_Attendance"
+            android:name=".admin.Add_Attendance"
             android:exported="false" />
         <activity
-            android:name=".UserList"
+            android:name=".admin.UserList"
             android:exported="false" />
         <activity
             android:name=".NoteDetails"
@@ -72,41 +72,41 @@
             android:name=".Test"
             android:exported="false" />
         <activity
-            android:name=".UpdateStud"
+            android:name=".students.UpdateStud"
             android:exported="false" />
         <activity
-            android:name=".TextRecognitionStud"
+            android:name=".students.TextRecognitionStud"
             android:exported="false" />
         <activity
-            android:name=".ReportStud"
+            android:name=".students.ReportStud"
             android:exported="false" />
         <activity
-            android:name=".ExamsResultsStud"
+            android:name=".students.ExamsResultsStud"
             android:exported="false" />
         <activity
-            android:name=".ExamsResults"
+            android:name=".admin.ExamsResults"
             android:exported="false" />
         <activity
-            android:name=".NotesStud"
+            android:name=".students.NotesStud"
             android:exported="false" />
         <activity
-            android:name=".StudyMaterialStud"
+            android:name=".students.StudyMaterialStud"
             android:exported="false" />
         <activity
-            android:name=".HomeworkStud"
+            android:name=".students.HomeworkStud"
             android:exported="false" />
         <activity
             android:name=".ScheduleStud"
             android:exported="false" />
         <activity
-            android:name=".AttendanceStud"
+            android:name=".students.AttendanceStud"
             android:exported="false" />
         <activity
-            android:name=".MySubjects"
+            android:name=".students.MySubjects"
             android:exported="false" />
         <activity android:name=".ActivityQuestions"></activity>
         <activity
-            android:name=".TextRecognition"
+            android:name=".admin.TextRecognition"
             android:exported="false">
 
             <!-- <intent-filter> -->
@@ -118,13 +118,13 @@
 
         </activity>
         <activity
-            android:name=".UpdateActivity"
+            android:name=".admin.UpdateActivity"
             android:exported="false" />
         <activity
-            android:name=".ReportActivity"
+            android:name=".admin.ReportActivity"
             android:exported="false" />
         <activity
-            android:name=".ScheduleActivity"
+            android:name=".admin.ScheduleActivity"
             android:exported="false" />
         <activity
             android:name=".HomeworkActivity"
@@ -136,16 +136,16 @@
             android:name=".NotesActivity"
             android:exported="false" />
         <activity
-            android:name=".StudyMaterial"
+            android:name=".admin.StudyMaterial"
             android:exported="false" />
         <activity
-            android:name=".AttendanceActivity"
+            android:name=".admin.AttendanceActivity"
             android:exported="false" />
         <activity
             android:name=".CropperActivity"
             android:exported="false" />
         <activity
-            android:name=".Manage_User"
+            android:name=".admin.Manage_User"
             android:exported="false" />
         <activity
             android:name=".MainActivity"
@@ -161,10 +161,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".StudentLoginActivity" />
-        <activity android:name=".TeacherLoginActivity" />
+        <activity android:name=".students.StudentLoginActivity" />
+        <activity android:name=".admin.TeacherLoginActivity" />
         <activity
-            android:name=".TeacherPageActivity"
+            android:name=".admin.TeacherPageActivity"
             android:exported="false">
 
             <!-- <intent-filter> -->
@@ -174,7 +174,7 @@
             <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
             <!-- </intent-filter> -->
         </activity>
-        <activity android:name=".StudentPageActivity" />
+        <activity android:name=".students.StudentPageActivity" />
         <activity android:name=".PopUp" />
         <activity
             android:name="com.yalantis.ucrop.UCropActivity"

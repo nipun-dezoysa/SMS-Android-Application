@@ -1,4 +1,4 @@
-package com.example.sms;
+package com.example.sms.admin;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -7,20 +7,21 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 
-public class AttendanceStud extends AppCompatActivity {
+import com.example.sms.R;
+
+public class ReportActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_attendance_stud);
+        setContentView(R.layout.activity_report);
 
-        ImageView attendance_stud_back = (ImageView) findViewById(R.id.attendance_stud_back);
-        attendance_stud_back.setOnClickListener(new View.OnClickListener() {
+        ImageView report_back = (ImageView) findViewById(R.id.report_back);
+        report_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                onBackPressed();
+                finish();
             }
         });
-
     }
 }

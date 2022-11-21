@@ -1,4 +1,4 @@
-package com.example.sms;
+package com.example.sms.students;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -7,19 +7,23 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 
-public class NotesStud extends AppCompatActivity {
+import com.example.sms.R;
+
+public class StudyMaterialStud extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_notes_stud);
+        setContentView(R.layout.activity_study_material_stud);
 
-        ImageView notes_stud_back = (ImageView) findViewById(R.id.notes_stud_back);
-        notes_stud_back.setOnClickListener(new View.OnClickListener() {
+        ImageView studymat_stud_back = (ImageView) findViewById(R.id.studymaterial_stud_back);
+        studymat_stud_back.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View v) {
                 finish();
             }
         });
+
     }
 }

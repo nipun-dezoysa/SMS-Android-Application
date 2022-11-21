@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="#EBF4F3"
-    tools:context=".ReportActivity">
+    tools:context=".admin.ReportActivity">
 
 
     <RelativeLayout

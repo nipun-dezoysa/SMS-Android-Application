@@ -1,4 +1,4 @@
-package com.example.sms;
+package com.example.sms.students;
 
 
 import android.content.Intent;
@@ -9,11 +9,12 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.sms.MainActivity;
+import com.example.sms.R;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -51,7 +52,7 @@ public class StudentLoginActivity extends AppCompatActivity {
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent mainActivityIntent = new Intent(StudentLoginActivity.this,MainActivity.class);
+                Intent mainActivityIntent = new Intent(StudentLoginActivity.this, MainActivity.class);
                 startActivity(mainActivityIntent);
                 finish();
             }

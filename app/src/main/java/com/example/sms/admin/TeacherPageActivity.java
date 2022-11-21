@@ -1,4 +1,4 @@
-package com.example.sms;
+package com.example.sms.admin;
 
 import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
@@ -22,7 +22,6 @@ import android.widget.LinearLayout;
 import android.widget.PopupMenu;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 
 import androidx.activity.result.ActivityResultCallback;
@@ -34,6 +33,10 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.bumptech.glide.Glide;
+import com.example.sms.CropperActivity;
+import com.example.sms.NotesActivity;
+import com.example.sms.R;
+import com.example.sms.Test2;
 import com.example.sms.interfaces.TeacherCallback;
 import com.example.sms.model.Teacher;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -208,7 +211,7 @@ public class TeacherPageActivity extends AppCompatActivity {
         mGetContent=registerForActivityResult(new ActivityResultContracts.GetContent(), new ActivityResultCallback<Uri>() {
             @Override
             public void onActivityResult(Uri result) {
-                Intent intent= new Intent(TeacherPageActivity.this,CropperActivity.class);
+                Intent intent= new Intent(TeacherPageActivity.this, CropperActivity.class);
                 intent.putExtra("DATA",result.toString());
                 startActivityForResult(intent,101);
             }
@@ -219,7 +222,7 @@ public class TeacherPageActivity extends AppCompatActivity {
         reg_std.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent manageActivityIntent = new Intent(TeacherPageActivity.this,Manage_User.class);
+                Intent manageActivityIntent = new Intent(TeacherPageActivity.this, Manage_User.class);
                 startActivity(manageActivityIntent);
             }
         });
@@ -227,7 +230,7 @@ public class TeacherPageActivity extends AppCompatActivity {
         attendance.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent manageActivityIntent = new Intent(TeacherPageActivity.this,AttendanceActivity.class);
+                Intent manageActivityIntent = new Intent(TeacherPageActivity.this, AttendanceActivity.class);
                 startActivity(manageActivityIntent);
                 manageActivityIntent.putExtra("uname",uname);
             }
@@ -236,7 +239,7 @@ public class TeacherPageActivity extends AppCompatActivity {
         schedule.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent manageActivityIntent = new Intent(TeacherPageActivity.this,ScheduleActivity.class);
+                Intent manageActivityIntent = new Intent(TeacherPageActivity.this, ScheduleActivity.class);
                 startActivity(manageActivityIntent);
             }
         });
@@ -244,7 +247,7 @@ public class TeacherPageActivity extends AppCompatActivity {
         homework.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent manageActivityIntent = new Intent(TeacherPageActivity.this,Home_Work.class);
+                Intent manageActivityIntent = new Intent(TeacherPageActivity.this, Home_Work.class);
                 startActivity(manageActivityIntent);
             }
         });
@@ -252,7 +255,7 @@ public class TeacherPageActivity extends AppCompatActivity {
         studyMaterial.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent manageActivityIntent = new Intent(TeacherPageActivity.this,StudyMaterial.class);
+                Intent manageActivityIntent = new Intent(TeacherPageActivity.this, StudyMaterial.class);
                 startActivity(manageActivityIntent);
             }
         });
@@ -260,7 +263,7 @@ public class TeacherPageActivity extends AppCompatActivity {
         notes.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent manageActivityIntent = new Intent(TeacherPageActivity.this,NotesActivity.class);
+                Intent manageActivityIntent = new Intent(TeacherPageActivity.this, NotesActivity.class);
                 manageActivityIntent.putExtra("uname",uname);
                 startActivity(manageActivityIntent);
             }
@@ -269,7 +272,7 @@ public class TeacherPageActivity extends AppCompatActivity {
         exam_result.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent manageActivityIntent = new Intent(TeacherPageActivity.this,ExamsResults.class);
+                Intent manageActivityIntent = new Intent(TeacherPageActivity.this, ExamsResults.class);
                 startActivity(manageActivityIntent);
             }
         });
@@ -277,7 +280,7 @@ public class TeacherPageActivity extends AppCompatActivity {
         report.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent manageActivityIntent = new Intent(TeacherPageActivity.this,ReportActivity.class);
+                Intent manageActivityIntent = new Intent(TeacherPageActivity.this, ReportActivity.class);
                 startActivity(manageActivityIntent);
             }
         });
@@ -285,7 +288,7 @@ public class TeacherPageActivity extends AppCompatActivity {
         update.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent manageActivityIntent = new Intent(TeacherPageActivity.this,UpdateActivity.class);
+                Intent manageActivityIntent = new Intent(TeacherPageActivity.this, UpdateActivity.class);
                 startActivity(manageActivityIntent);
             }
         });
@@ -293,7 +296,7 @@ public class TeacherPageActivity extends AppCompatActivity {
         txt_rec.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent manageActivityIntent = new Intent(TeacherPageActivity.this,TextRecognition.class);
+                Intent manageActivityIntent = new Intent(TeacherPageActivity.this, TextRecognition.class);
                 startActivity(manageActivityIntent);
             }
         });

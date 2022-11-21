@@ -1,4 +1,4 @@
-package com.example.sms;
+package com.example.sms.admin;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -13,6 +13,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 
+import com.example.sms.R;
 import com.example.sms.adapter.QuestionAdapter;
 import com.example.sms.model.Question;
 import com.google.firebase.database.DataSnapshot;

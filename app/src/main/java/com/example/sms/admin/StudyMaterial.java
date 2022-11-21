@@ -1,4 +1,4 @@
-package com.example.sms;
+package com.example.sms.admin;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatSpinner;
@@ -12,6 +12,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+
+import com.example.sms.R;
 
 import java.util.ArrayList;
 import java.util.List;

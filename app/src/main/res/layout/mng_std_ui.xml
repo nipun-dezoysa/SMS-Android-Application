@@ -7,7 +7,7 @@
     android:layout_gravity="center"
     android:orientation="vertical"
     android:background="#EBF4F3"
-    tools:context=".Manage_User"
+    tools:context=".admin.Manage_User"
     >
 
 

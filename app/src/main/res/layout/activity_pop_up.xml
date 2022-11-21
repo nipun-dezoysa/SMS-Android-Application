@@ -6,7 +6,7 @@
     android:layout_height="600dp"
     android:layout_gravity="center"
     android:orientation="vertical"
-    tools:context=".Manage_User">
+    tools:context=".admin.Manage_User">
 
 
 

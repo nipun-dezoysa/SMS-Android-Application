@@ -1,4 +1,4 @@
-package com.example.sms;
+package com.example.sms.admin;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
@@ -21,6 +21,7 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.sms.R;
 import com.example.sms.interfaces.EditStudentDetailsCallback;
 import com.example.sms.model.EditStudentDetails;
 import com.google.android.gms.tasks.OnFailureListener;

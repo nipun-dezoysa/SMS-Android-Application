@@ -1,4 +1,4 @@
-package com.example.sms;
+package com.example.sms.admin;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.sms.R;
 import com.example.sms.adapter.Attendance_Adapter;
 import com.example.sms.model.Student;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;

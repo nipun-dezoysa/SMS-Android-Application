@@ -4,9 +4,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ProgressBar;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.sms.admin.TeacherLoginActivity;
+import com.example.sms.students.StudentLoginActivity;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -21,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
         btn_student.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent studentLoginIntent = new Intent(MainActivity.this,StudentLoginActivity.class);
+                Intent studentLoginIntent = new Intent(MainActivity.this, StudentLoginActivity.class);
                 startActivity(studentLoginIntent);
                 finish();
             }
@@ -30,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
         btn_teacher.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent teacherLoginIntent = new Intent(MainActivity.this,TeacherLoginActivity.class);
+                Intent teacherLoginIntent = new Intent(MainActivity.this, TeacherLoginActivity.class);
                 startActivity(teacherLoginIntent);
                 finish();
             }
