@@ -21,7 +21,7 @@ public class HomeworkStud extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-                finish();
+                onBackPressed();
             }
         });
 

@@ -3,6 +3,7 @@ package com.example.sms.model;
 public class EditStudentDetails {
 
 
+
     private String email;
     private String contact;
     private String subject;

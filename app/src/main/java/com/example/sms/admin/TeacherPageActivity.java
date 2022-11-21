@@ -64,7 +64,6 @@ import de.hdodenhof.circleimageview.CircleImageView;
 public class TeacherPageActivity extends AppCompatActivity {
 
     DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReferenceFromUrl("https://asms-365d0-default-rtdb.firebaseio.com/");
-    FirebaseAuth mAuth;
 
     ProgressBar progressBar;
     ProgressBar progressBarChangepwd;
@@ -77,7 +76,7 @@ public class TeacherPageActivity extends AppCompatActivity {
 
     Teacher teacher;
     String uname;
-//    StorageReference storageReference = FirebaseStorage.getInstance().getReference("images/"+uname);
+
     StorageReference storageReference;
     DatabaseReference imageDBReference = FirebaseDatabase.getInstance().getReference("Image");
 

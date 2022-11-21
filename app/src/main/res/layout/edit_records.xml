@@ -8,7 +8,6 @@
     android:orientation="vertical">
 
 
-
     <androidx.cardview.widget.CardView
         android:layout_width="360dp"
         android:layout_height="600dp"
@@ -32,31 +31,7 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginEnd="20dp"
-                android:gravity="center"
-                android:orientation="horizontal"
-                android:weightSum="2">
 
-
-                <de.hdodenhof.circleimageview.CircleImageView
-                    android:id="@+id/cropView"
-                    app:civ_border_color="@color/teal_700"
-                    app:civ_border_width="2dp"
-                    android:layout_width="110dp"
-                    android:layout_height="110dp"
-                    android:src="@drawable/profile"
-                    app:layout_constraintBottom_toTopOf="@+id/editName"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-
-            </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -64,128 +39,148 @@
                 android:layout_gravity="center"
                 android:gravity="center"
                 android:orientation="vertical"
-                android:padding="20dp">
-<!--                <TextView-->
-<!--                    android:id="@+id/cam_uri"-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="wrap_content">-->
-<!--                </TextView>-->
-
+                android:padding="25dp">
 
 
                 <EditText
-                    android:id="@+id/txtFullName"
+                    android:id="@+id/changeUname"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:padding="5dp"
                     android:background="@drawable/texteditbgn12"
-                    android:drawableLeft="@drawable/name"
-                    android:drawablePadding="8dp"
-                    android:hint="Full Name"
+                    android:hint="Username"
+                    android:drawablePadding="5dp"
+                    android:drawableStart="@drawable/person_24"
+                    android:paddingStart="8dp"
+                    android:padding="10dp"
+                    android:layout_marginTop="20dp"
                     android:inputType="textPersonName"
-                    android:paddingLeft="5dp"
+                    android:paddingLeft="20dp"
                     android:singleLine="true"
                     android:textColor="#0d6e6a"
-                    android:textSize="16sp"
                     android:textStyle="bold" />
 
                 <EditText
-                    android:id="@+id/txtNickName"
+                    android:id="@+id/changeEmail"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:padding="5dp"
-                    android:layout_marginTop="8dp"
+                    android:layout_marginTop="15dp"
                     android:background="@drawable/texteditbgn12"
-                    android:drawableLeft="@drawable/name"
+                    android:hint="Edit Email ID"
+                    android:padding="10dp"
                     android:drawablePadding="5dp"
-                    android:hint="Nick Name"
-                    android:inputType="textPersonName"
-                    android:paddingLeft="5dp"
+                    android:drawableStart="@drawable/mail"
+                    android:paddingStart="8dp"
+                    android:inputType="textEmailAddress"
+                    android:paddingLeft="20dp"
                     android:singleLine="true"
                     android:textColor="#0d6e6a"
-                    android:textSize="16sp"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"/>
 
-                <TextView
-                    android:id="@+id/dob1"
+                <EditText
+                    android:id="@+id/changeContact"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:padding="5dp"
-                    android:layout_marginTop="8dp"
+                    android:layout_marginTop="15dp"
                     android:background="@drawable/texteditbgn12"
-                    android:drawableLeft="@drawable/calendar"
+                    android:hint="Edit Contact Number"
+                    android:padding="10dp"
                     android:drawablePadding="5dp"
-                    android:hint="Date Of Birth"
+                    android:drawableStart="@drawable/mobile"
+                    android:paddingStart="8dp"
                     android:inputType="phone"
-                    android:paddingLeft="5dp"
-                    android:textSize="17dp"
+                    android:paddingLeft="20dp"
                     android:singleLine="true"
                     android:textColor="#0d6e6a"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"/>
+
 
                 <EditText
-                    android:id="@+id/txtContact"
+                    android:id="@+id/changePassword"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:padding="5dp"
-                    android:layout_marginTop="8dp"
+                    android:layout_marginTop="15dp"
                     android:background="@drawable/texteditbgn12"
-                    android:drawableLeft="@drawable/mobile"
+                    android:hint="Change Password"
+                    android:padding="10dp"
                     android:drawablePadding="5dp"
-                    android:hint="Contact Number"
-                    android:inputType="phone"
-                    android:paddingLeft="5dp"
+                    android:drawableStart="@drawable/key_24"
+                    android:paddingStart="8dp"
+                    android:inputType="textPassword"
+                    android:paddingLeft="20dp"
                     android:singleLine="true"
                     android:textColor="#0d6e6a"
-                    android:textSize="16sp"
-                    android:textStyle="bold" />
-
-
+                    android:textStyle="bold"/>
 
                 <EditText
-                    android:id="@+id/txtEmail"
+                    android:id="@+id/confirmPassword"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:padding="5dp"
+                    android:layout_marginTop="15dp"
                     android:background="@drawable/texteditbgn12"
-                    android:drawableLeft="@drawable/mail"
+                    android:padding="10dp"
                     android:drawablePadding="5dp"
-                    android:hint="Email ID"
-                    android:inputType="textMultiLine"
-                    android:paddingLeft="5dp"
+                    android:drawableStart="@drawable/key_24"
+                    android:paddingStart="8dp"
+                    android:hint="Confirm Password"
+                    android:inputType="textPassword"
+                    android:paddingLeft="20dp"
+                    android:singleLine="true"
                     android:textColor="#0d6e6a"
-                    android:textSize="16sp"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"/>
 
-                <EditText
-                    android:id="@+id/txtAddress"
-                    android:layout_width="match_parent"
-                    android:layout_height="60dp"
-                    android:padding="5dp"
-                    android:layout_marginTop="8dp"
-                    android:background="@drawable/texteditbgn12"
-                    android:drawableLeft="@drawable/calendar"
-                    android:drawablePadding="5dp"
-                    android:hint="Address"
-                    android:inputType="textMultiLine"
-                    android:paddingLeft="5dp"
-                    android:textColor="#0d6e6a"
-                    android:textSize="16sp"
-                    android:textStyle="bold" />
+                <LinearLayout
+                    android:id="@+id/checkboxview1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="10dp"
+                    android:layout_marginTop="20dp">
+
+                    <CheckBox
+                        android:id="@+id/changeCheckBoxMaths"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Maths"/>
+
+                    <CheckBox
+                        android:id="@+id/changeCheckBoxScience"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Science" />
 
 
+                </LinearLayout>
 
+                <RadioGroup
+                    android:id="@+id/radioview1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="10dp">
+
+                    <RadioButton
+                        android:id="@+id/changeRadioBtnGrade10"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Grade 10" />
+
+                    <RadioButton
+                        android:id="@+id/changeRadioBtnGrade11"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Grade 11" />
+
+                </RadioGroup>
 
             </LinearLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginTop="30dp">
+                android:layout_marginTop="-10dp">
 
                 <Button
-                    android:id="@+id/buttonSave"
+                    android:id="@+id/buttonSaveChange"
                     android:layout_width="115dp"
                     android:layout_height="42dp"
                     android:layout_marginStart="35dp"
@@ -197,7 +192,7 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <Button
-                    android:id="@+id/buttonCancel"
+                    android:id="@+id/buttonCancelChange"
                     android:layout_width="115dp"
                     android:layout_height="42dp"
                     android:layout_marginEnd="35dp"
@@ -217,7 +212,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical|center_horizontal">
             <ProgressBar
-                android:id="@+id/progressBarPop"
+                android:id="@+id/progressBarPop1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:visibility="gone"/>
