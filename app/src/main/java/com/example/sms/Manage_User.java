@@ -7,11 +7,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.text.TextUtils;
 import android.util.Base64;
-import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
@@ -19,13 +16,13 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.PopupMenu;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.sms.interfaces.EditStudentDetailsCallback;
+import com.example.sms.model.EditStudentDetails;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DataSnapshot;
@@ -35,7 +32,6 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.sdsmdg.tastytoast.TastyToast;
 
-import java.security.Key;
 import java.security.MessageDigest;
 
 import javax.crypto.Cipher;
@@ -67,7 +63,6 @@ public class Manage_User extends AppCompatActivity {
     EditText Username;
     EditText EmailID;
     EditText Contact;
-    //        EditText Subject = (EditText) findViewById(R.id.subject)
     EditText Password;
     EditText ConfirmPwd;
 
@@ -103,11 +98,12 @@ public class Manage_User extends AppCompatActivity {
         setContentView(R.layout.activity_manage_user);
 
 
-        ImageView manage_std = (ImageView) findViewById(R.id.mng_std_back);
-        manage_std.setOnClickListener(new View.OnClickListener() {
+        ImageView manage_std_back = (ImageView) findViewById(R.id.mng_std_back);
+        manage_std_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                finish();
+//                finish();
+                onBackPressed();
             }
         });
 
@@ -122,7 +118,6 @@ public class Manage_User extends AppCompatActivity {
         Button deletebtn = findViewById(R.id.delete_btn);
         EditText editEmail = findViewById(R.id.eeid);
         EditText editContact = findViewById(R.id.ecnid);
-//        EditText editSubject = (EditText) findViewById(R.id.subjectedit);
         EditText editpwd = findViewById(R.id.cpid);
         EditText editpwd1 = findViewById(R.id.ccpid);
         checkBoxMaths = findViewById(R.id.checkBoxMaths);
@@ -174,7 +169,9 @@ public class Manage_User extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(Manage_User.this, UserList.class);
+                TastyToast.makeText(Manage_User.this, "Tap hold to edit/delete", TastyToast.LENGTH_SHORT, TastyToast.INFO);
                 startActivity(intent);
+
 //                finish();
             }
         });

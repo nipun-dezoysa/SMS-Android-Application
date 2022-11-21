@@ -19,7 +19,7 @@ public class ExamsResultsStud extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-                finish();
+                onBackPressed();
             }
         });
 

@@ -57,7 +57,7 @@ public class EditNoteActivity extends AppCompatActivity {
         editNoteBackButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                finish();
+                onBackPressed();
             }
         });
 

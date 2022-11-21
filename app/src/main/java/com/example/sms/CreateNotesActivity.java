@@ -36,8 +36,6 @@ public class CreateNotesActivity extends AppCompatActivity {
 
     EditText mcreatetitleofnote,mcreatecontentofnote;
     FloatingActionButton msavenote;
-    FirebaseAuth firebaseAuth;
-    FirebaseUser firebaseUser;
     FirebaseFirestore firebaseFirestore;
     private String uname;
 
@@ -60,18 +58,15 @@ public class CreateNotesActivity extends AppCompatActivity {
 
         progressBar = (ProgressBar) findViewById(R.id.progressBarOfCreateNote);
 
-//        Toolbar toolbar = findViewById(R.id.toolbarofcreatenote);
-//        setSupportActionBar(toolbar);
-//        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        firebaseAuth=FirebaseAuth.getInstance();
+
         firebaseFirestore = FirebaseFirestore.getInstance();
-        firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+
 
         back_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                finish();
+                onBackPressed();
             }
         });
 
@@ -84,7 +79,6 @@ public class CreateNotesActivity extends AppCompatActivity {
                 {
                     TastyToast.makeText(CreateNotesActivity.this, "Both fields are required", TastyToast.LENGTH_SHORT, TastyToast.ERROR).show();
 
-//                    Toast.makeText(CreateNotesActivity.this, "Both fields are required", Toast.LENGTH_SHORT).show();
                 }
                 else
                 {

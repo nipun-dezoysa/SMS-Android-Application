@@ -1,4 +1,4 @@
-package com.example.sms;
+package com.example.sms.model;
 
 public class EditStudentDetails {
 

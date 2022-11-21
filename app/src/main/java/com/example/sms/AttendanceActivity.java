@@ -40,7 +40,8 @@ public class AttendanceActivity extends AppCompatActivity {
         attendance_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                finish();
+                onBackPressed();
+//                finish();
             }
         });
 
@@ -55,7 +56,7 @@ public class AttendanceActivity extends AppCompatActivity {
         view_attendance.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                TastyToast.makeText(AttendanceActivity.this, "under construction", TastyToast.LENGTH_SHORT, TastyToast.ERROR).show();
+                TastyToast.makeText(AttendanceActivity.this, "under construction", TastyToast.LENGTH_SHORT, TastyToast.DEFAULT);
 
 
             }

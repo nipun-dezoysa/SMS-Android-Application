@@ -16,10 +16,9 @@ public class AttendanceStud extends AppCompatActivity {
 
         ImageView attendance_stud_back = (ImageView) findViewById(R.id.attendance_stud_back);
         attendance_stud_back.setOnClickListener(new View.OnClickListener() {
-
             @Override
             public void onClick(View v) {
-                finish();
+                onBackPressed();
             }
         });
 

@@ -67,7 +67,7 @@ public class Home_Work extends AppCompatActivity{
         hw_back_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                finish();
+                onBackPressed();
             }
         });
         add_questions.setOnClickListener(new View.OnClickListener() {
