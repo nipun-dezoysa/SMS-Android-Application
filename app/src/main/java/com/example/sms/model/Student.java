@@ -9,27 +9,38 @@ public class Student {
     private String email;
     private String subject;
     private int grade;
-    private boolean checkBoxSelected;
+    private String password;
+//    private boolean checkBoxSelected;
 
     public Student() {
     }
 
-    public Student(String username, String contact, String email, String subject, int grade, boolean checkBoxSelected) {
+    public Student(String username, String contact, String email, String subject, int grade, String password) {
         this.username = username;
         this.contact = contact;
         this.email = email;
         this.subject = subject;
         this.grade = grade;
-        this.checkBoxSelected = checkBoxSelected;
+        this.password = password;
+//        this.checkBoxSelected = checkBoxSelected;
     }
 
 
-    public boolean getCheckBoxSelected() {
-        return checkBoxSelected;
+//    public boolean getCheckBoxSelected() {
+//        return checkBoxSelected;
+//    }
+//
+//    public void setCheckBoxSelected(boolean checkBoxSelected) {
+//        this.checkBoxSelected = checkBoxSelected;
+//    }
+
+
+    public String getPassword() {
+        return password;
     }
 
-    public void setCheckBoxSelected(boolean checkBoxSelected) {
-        this.checkBoxSelected = checkBoxSelected;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public String getUsername() {

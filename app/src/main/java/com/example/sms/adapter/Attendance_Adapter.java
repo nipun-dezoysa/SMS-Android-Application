@@ -48,17 +48,17 @@ public class Attendance_Adapter extends RecyclerView.Adapter<Attendance_Adapter.
 
         //checkbox ischecked
 
-        holder.checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (isChecked){
-                    user.setCheckBoxSelected(true);
-                }else {
-                    user.setCheckBoxSelected(false);
-                }
-            }
-        });
-        holder.checkBox.setSelected(user.getCheckBoxSelected());
+//        holder.checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+//            @Override
+//            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+//                if (isChecked){
+//                    user.setCheckBoxSelected(true);
+//                }else {
+//                    user.setCheckBoxSelected(false);
+//                }
+//            }
+//        });
+//        holder.checkBox.setSelected(user.getCheckBoxSelected());
 
 //        holder.save_student_attendance.setOnClickListener(new View.OnClickListener() {
 //            @Override

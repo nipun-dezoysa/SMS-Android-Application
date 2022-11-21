@@ -313,21 +313,21 @@ public class Manage_User extends AppCompatActivity {
                 final String mobileNumberPattern= "^\\d{10}$";
 
                 if (uNameTxt.isEmpty() || editEmailTxt.isEmpty() || editContactTxt.isEmpty() || editpwdTxt.isEmpty() || editpwd1Txt.isEmpty() || !(checkBoxMathsEdit.isChecked() || checkBoxScienceEdit.isChecked())) {
-                    Toast.makeText(Manage_User.this, "Please fill all fields", Toast.LENGTH_SHORT).show();
+                    TastyToast.makeText(Manage_User.this, "Please fill all fields", TastyToast.LENGTH_SHORT, TastyToast.INFO);
                 } else if (!editEmailTxt.matches(emailPattern)){
-                    Toast.makeText(Manage_User.this, "Please enter a valid email address", Toast.LENGTH_SHORT).show();
+                    TastyToast.makeText(Manage_User.this, "Please enter a valid email address", TastyToast.LENGTH_SHORT, TastyToast.INFO);
                 } else if (!editContactTxt.matches(mobileNumberPattern)){
-                    Toast.makeText(Manage_User.this, "Please enter 10 digit contact number", Toast.LENGTH_SHORT).show();
+                    TastyToast.makeText(Manage_User.this, "Please enter 10 digit contact number", TastyToast.LENGTH_SHORT, TastyToast.INFO);
                 } else if (editpwdTxt.length() < 6){
-                    Toast.makeText(Manage_User.this, "Password should be more than 6 characters", Toast.LENGTH_SHORT).show();
+                    TastyToast.makeText(Manage_User.this, "Password should be more than 6 characters", TastyToast.LENGTH_SHORT, TastyToast.INFO);
                 }
-//                else if (editpwdTxt.length() > 15){
-//                    Toast.makeText(Manage_User.this, "Password should not be exceed 15 characters ", Toast.LENGTH_SHORT).show();
-//                } else if (!editpwdTxt.matches(passwordPattern)){
-//                    Toast.makeText(Manage_User.this, "Please follow password pattern to make a strong password", Toast.LENGTH_SHORT).show();
-//                }
+                else if (editpwdTxt.length() > 15){
+                    TastyToast.makeText(Manage_User.this, "Password should not be exceed 15 characters ", TastyToast.LENGTH_SHORT, TastyToast.INFO);
+                } else if (!editpwdTxt.matches(passwordPattern)){
+                    TastyToast.makeText(Manage_User.this, "Please follow password pattern to make a strong password", TastyToast.LENGTH_SHORT, TastyToast.INFO);
+                }
                 else if (!editpwdTxt.equals(editpwd1Txt)) {
-                    Toast.makeText(Manage_User.this, "Passwords do not match", Toast.LENGTH_SHORT).show();
+                    TastyToast.makeText(Manage_User.this, "Passwords do not match", TastyToast.LENGTH_SHORT, TastyToast.INFO);
                 } else {
                     searchUname.setEnabled(true);
                     searchUname.getText().clear();

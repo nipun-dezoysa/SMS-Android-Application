@@ -26,6 +26,7 @@ import android.widget.PopupMenu;
 import android.widget.ProgressBar;
 import android.widget.RadioButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.sms.R;
 import com.example.sms.adapter.MyAdapterStd;
@@ -170,7 +171,9 @@ public class UserList extends AppCompatActivity implements SelectListener {
         studentTxt = student.getUsername();
         studentEmailTxt = student.getEmail();
         studentContactTxt = student.getContact();
-//        studentPwdTxt = student;
+        studentPwdTxt = student.getPassword();
+//        getSubject(student.getSubject());
+//        getGrade(student.getGrade());
 
         AlertDialog.Builder builder = new AlertDialog.Builder(UserList.this);
         builder.setTitle("Edit/Delete")
@@ -180,23 +183,6 @@ public class UserList extends AppCompatActivity implements SelectListener {
                     public void onClick(DialogInterface dialog, int which) {
 
                         deleteStudentRecord();
-
-
-//                        databaseReference.child("students").child(student.getUsername()).removeValue()
-//                                .addOnSuccessListener(new OnSuccessListener<Void>() {
-//                                    @Override
-//                                    public void onSuccess(Void aVoid) {
-//                                        TastyToast.makeText(UserList.this, "" + student.getUsername() + " Deleted!", TastyToast.LENGTH_SHORT, TastyToast.SUCCESS);
-//                                        finish();
-//                                        startActivity(getIntent());
-//                                    }
-//                                })
-//                                .addOnFailureListener(new OnFailureListener() {
-//                                    @Override
-//                                    public void onFailure(@NonNull Exception e) {
-//                                        TastyToast.makeText(UserList.this, "" + e.getMessage(), TastyToast.LENGTH_SHORT, TastyToast.ERROR);
-//                                    }
-//                                });
 
                     }
                 })
@@ -208,6 +194,7 @@ public class UserList extends AppCompatActivity implements SelectListener {
                 }).show();
 
     }
+
 
     private void deleteStudentRecord() {
         AlertDialog.Builder builder = new AlertDialog.Builder(UserList.this);
@@ -267,10 +254,111 @@ public class UserList extends AppCompatActivity implements SelectListener {
         findUname.setText(studuname);
         changeEmail.setText(studentEmailTxt);
         changeContact.setText(studentContactTxt);
+        changePassword.setText(studentPwdTxt);
+        confirmPassword.setText(studentPwdTxt);
+        findUname.setEnabled(false);
+
+        buttonSaveChange.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+                TastyToast.makeText(UserList.this, "Not updated to DB", TastyToast.LENGTH_SHORT, TastyToast.WARNING);
+            }
+        });
+
+        buttonCancelChange.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+                TastyToast.makeText(UserList.this, "Nothing changed", TastyToast.LENGTH_SHORT, TastyToast.INFO);
+            }
+        });
+
+
 
         dialog.show();
+
     }
 
+
+//    private boolean subjectValidation(){
+//        if (!changeCheckBoxMaths.isChecked() && !changeCheckBoxScience.isChecked()){
+//            return true;
+//        }
+//        return false;
+//    }
+
+//    private String getSubject(){
+//        if (changeCheckBoxMaths.isChecked()&&changeCheckBoxScience.isChecked()){
+//            return "Maths Science";
+//        }
+//        else if(changeCheckBoxMaths.isChecked()){
+//            return "Maths";
+//        }
+//        else return "Science";
+//    }
+
+//    private boolean gradeValidation(){
+//        if (!changeRadioBtnGrade10.isChecked() && !changeRadioBtnGrade11.isChecked()){
+//            return true;
+//        }
+//        return false;
+//    }
+
+//    private int getGrade(){
+//        if (changeRadioBtnGrade10.isChecked()){
+//            return 10;
+//        }
+//        else return 11;
+//    }
+
+
+    private void getSubject(String subject) {
+        if (subject.equals("Maths Science")){
+            changeCheckBoxMaths.setChecked(true);
+            changeCheckBoxScience.setChecked(true);
+        }
+        else if (subject.equals("Maths")){
+            changeCheckBoxMaths.setChecked(true);
+            changeCheckBoxScience.setChecked(false);
+        }
+
+        else {
+            changeCheckBoxScience.setChecked(true);
+            changeCheckBoxMaths.setChecked(false);
+        }
+    }
+
+    private String setSubject(){
+        if (changeCheckBoxMaths.isChecked() && changeCheckBoxScience.isChecked()){
+            return "Maths Science";
+        }
+        else if (changeCheckBoxMaths.isChecked()){
+            return "Maths";
+        }
+        else if (changeCheckBoxScience.isChecked()){
+            return "Science";
+        }
+        return "";
+    }
+
+    private void getGrade(int grade) {
+        if (grade==10){
+            changeRadioBtnGrade10.setChecked(true);
+            changeRadioBtnGrade11.setChecked(false);
+        }
+        else {
+            changeRadioBtnGrade11.setChecked(true);
+            changeRadioBtnGrade10.setChecked(false);
+        }
+    }
+
+    private int setGrade(){
+        if (changeRadioBtnGrade10.isChecked()){
+            return 10;
+        }
+        else return 11;
+    }
 
 //    {
 //        EditText searchUname = findViewById(R.id.searchUname);
