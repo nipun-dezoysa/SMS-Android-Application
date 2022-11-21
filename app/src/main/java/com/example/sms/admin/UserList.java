@@ -53,7 +53,7 @@ public class UserList extends AppCompatActivity implements SelectListener {
 
     ProgressBar progressBar;
 
-    EditText changeUname;
+    EditText findUname;
     EditText changeEmail;
     EditText changeContact;
     EditText changePassword;
@@ -65,6 +65,10 @@ public class UserList extends AppCompatActivity implements SelectListener {
     Button buttonSaveChange;
     Button buttonCancelChange;
     String studentTxt;
+    String studentEmailTxt;
+    String studentContactTxt;
+    String studentPwdTxt;
+
 
     Dialog dialog;
 
@@ -164,6 +168,9 @@ public class UserList extends AppCompatActivity implements SelectListener {
     public void onItemClicked(Student student)
     {
         studentTxt = student.getUsername();
+        studentEmailTxt = student.getEmail();
+        studentContactTxt = student.getContact();
+//        studentPwdTxt = student;
 
         AlertDialog.Builder builder = new AlertDialog.Builder(UserList.this);
         builder.setTitle("Edit/Delete")
@@ -196,7 +203,7 @@ public class UserList extends AppCompatActivity implements SelectListener {
                 .setNegativeButton("Edit", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        openEditRecordsPopUp();
+                        openEditRecordsPopUp(studentTxt);
                     }
                 }).show();
 
@@ -237,7 +244,7 @@ public class UserList extends AppCompatActivity implements SelectListener {
 
     }
 
-    private void openEditRecordsPopUp() {
+    private void openEditRecordsPopUp(String studuname) {
         dialog = new Dialog(this);
         dialog.setContentView(R.layout.edit_records);
         dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
@@ -245,7 +252,7 @@ public class UserList extends AppCompatActivity implements SelectListener {
 
 
         progressBar = dialog.findViewById(R.id.progressBarPop1);
-        changeUname = dialog.findViewById(R.id.changeUname);
+        findUname = dialog.findViewById(R.id.findUname);
         changeEmail = dialog.findViewById(R.id.changeEmail);
         changeContact = dialog.findViewById(R.id.changeContact);
         changePassword = dialog.findViewById(R.id.changePassword);
@@ -257,9 +264,9 @@ public class UserList extends AppCompatActivity implements SelectListener {
         buttonSaveChange = dialog.findViewById(R.id.buttonSaveChange);
         buttonCancelChange = dialog.findViewById(R.id.buttonCancelChange);
 
-
-
-
+        findUname.setText(studuname);
+        changeEmail.setText(studentEmailTxt);
+        changeContact.setText(studentContactTxt);
 
         dialog.show();
     }

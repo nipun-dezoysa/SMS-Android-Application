@@ -3,7 +3,7 @@ package com.example.sms.model;
 public class EditStudentDetails {
 
 
-
+    private String username;
     private String email;
     private String contact;
     private String subject;
@@ -13,6 +13,7 @@ public class EditStudentDetails {
 
 
     public EditStudentDetails(String uNameTxt, String editEmailTxt, String editContactTxt, String editSubjectTxt, int editGrade, String editpwdTxt){
+        this.username = uNameTxt;
         this.email = editEmailTxt;
         this.contact = editContactTxt;
         this.subject = editSubjectTxt;
@@ -22,6 +23,14 @@ public class EditStudentDetails {
     }
 
     public EditStudentDetails() {
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getEmail() {
