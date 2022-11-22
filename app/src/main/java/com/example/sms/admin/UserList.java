@@ -293,6 +293,8 @@ public class UserList extends AppCompatActivity implements SelectListener {
                     databaseReference.child("students").child(studuname).child("subject").setValue(setSubject());
                     databaseReference.child("students").child(studuname).child("grade").setValue(setGrade());
                     dialog.dismiss();
+                    TastyToast.makeText(UserList.this, "Saved your changes", TastyToast.LENGTH_SHORT, TastyToast.SUCCESS).show();
+
                     finish();
                     startActivity(getIntent());
 

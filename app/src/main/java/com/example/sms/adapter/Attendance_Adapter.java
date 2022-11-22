@@ -30,7 +30,6 @@ public class Attendance_Adapter extends RecyclerView.Adapter<Attendance_Adapter.
         this.context = context;
         this.list = list;
         databaseRef = FirebaseDatabase.getInstance().getReference("attendance");
-
     }
 
     @NonNull
@@ -48,13 +47,22 @@ public class Attendance_Adapter extends RecyclerView.Adapter<Attendance_Adapter.
 
         //checkbox ischecked
 
+//        holder.save_student_attendance.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                if (holder.checkBox.isChecked()){
+//                    databaseRef.child(String.valueOf(holder.attendance_date)).setValue("Present");
+//                } else {
+//                    databaseRef.child(String.valueOf(holder.attendance_date)).setValue("Absent");
+//                }
+//            }
+//        });
 //        holder.checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
 //            @Override
 //            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
 //                if (isChecked){
-//                    user.setCheckBoxSelected(true);
+//
 //                }else {
-//                    user.setCheckBoxSelected(false);
 //                }
 //            }
 //        });
@@ -75,7 +83,8 @@ public class Attendance_Adapter extends RecyclerView.Adapter<Attendance_Adapter.
 
     public static class MyViewHolderAttendance extends RecyclerView.ViewHolder{
 //        public String checkbox;
-        TextView username;
+        TextView username,grade10,grade11;
+        TextView attendance_date;
         CheckBox checkBox;
         FloatingActionButton save_student_attendance;
 
@@ -83,7 +92,6 @@ public class Attendance_Adapter extends RecyclerView.Adapter<Attendance_Adapter.
             super(itemView);
             username = itemView.findViewById(R.id.attendance_uname);
             checkBox = itemView.findViewById(R.id.checkBox_attendance);
-            save_student_attendance = itemView.findViewById(R.id.save_student_attendance);
 
         }
     }

@@ -68,7 +68,7 @@ public class Add_Attendance extends AppCompatActivity {
         save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                finish();
+                //                finish();
                 TastyToast.makeText(Add_Attendance.this, " Under Construction!", TastyToast.LENGTH_SHORT, TastyToast.ERROR).show();
             }
         });
