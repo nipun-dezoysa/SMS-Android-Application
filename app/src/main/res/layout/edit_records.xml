@@ -51,8 +51,8 @@
                     android:drawablePadding="5dp"
                     android:drawableStart="@drawable/person_24"
                     android:paddingStart="8dp"
-                    android:padding="10dp"
-                    android:layout_marginTop="20dp"
+                    android:padding="15dp"
+                    android:layout_marginTop="40dp"
                     android:inputType="textPersonName"
                     android:paddingLeft="20dp"
                     android:singleLine="true"
@@ -66,7 +66,7 @@
                     android:layout_marginTop="15dp"
                     android:background="@drawable/texteditbgn12"
                     android:hint="Edit Email ID"
-                    android:padding="10dp"
+                    android:padding="15dp"
                     android:drawablePadding="5dp"
                     android:drawableStart="@drawable/mail"
                     android:paddingStart="8dp"
@@ -83,7 +83,7 @@
                     android:layout_marginTop="15dp"
                     android:background="@drawable/texteditbgn12"
                     android:hint="Edit Contact Number"
-                    android:padding="10dp"
+                    android:padding="15dp"
                     android:drawablePadding="5dp"
                     android:drawableStart="@drawable/mobile"
                     android:paddingStart="8dp"
@@ -94,46 +94,12 @@
                     android:textStyle="bold"/>
 
 
-                <EditText
-                    android:id="@+id/changePassword"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="15dp"
-                    android:background="@drawable/texteditbgn12"
-                    android:hint="Change Password"
-                    android:padding="10dp"
-                    android:drawablePadding="5dp"
-                    android:drawableStart="@drawable/key_24"
-                    android:paddingStart="8dp"
-                    android:inputType="textPassword"
-                    android:paddingLeft="20dp"
-                    android:singleLine="true"
-                    android:textColor="#0d6e6a"
-                    android:textStyle="bold"/>
-
-                <EditText
-                    android:id="@+id/confirmPassword"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="15dp"
-                    android:background="@drawable/texteditbgn12"
-                    android:padding="10dp"
-                    android:drawablePadding="5dp"
-                    android:drawableStart="@drawable/key_24"
-                    android:paddingStart="8dp"
-                    android:hint="Confirm Password"
-                    android:inputType="textPassword"
-                    android:paddingLeft="20dp"
-                    android:singleLine="true"
-                    android:textColor="#0d6e6a"
-                    android:textStyle="bold"/>
-
                 <LinearLayout
                     android:id="@+id/checkboxview1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
-                    android:padding="10dp"
+                    android:padding="15dp"
                     android:layout_marginTop="20dp">
 
                     <CheckBox
@@ -156,7 +122,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
-                    android:padding="10dp">
+                    android:padding="15dp">
 
                     <RadioButton
                         android:id="@+id/changeRadioBtnGrade10"
@@ -177,7 +143,7 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginTop="-10dp">
+                android:layout_marginTop="5dp">
 
                 <Button
                     android:id="@+id/buttonSaveChange"

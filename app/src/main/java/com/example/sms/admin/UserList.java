@@ -14,6 +14,7 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Base64;
 import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
@@ -31,6 +32,7 @@ import android.widget.Toast;
 import com.example.sms.R;
 import com.example.sms.adapter.MyAdapterStd;
 import com.example.sms.interfaces.SelectListener;
+import com.example.sms.model.EditStudentDetails;
 import com.example.sms.model.Student;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -42,7 +44,11 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.sdsmdg.tastytoast.TastyToast;
 
+import java.security.MessageDigest;
 import java.util.ArrayList;
+
+import javax.crypto.Cipher;
+import javax.crypto.spec.SecretKeySpec;
 
 public class UserList extends AppCompatActivity implements SelectListener {
     RecyclerView recyclerView;
@@ -53,6 +59,7 @@ public class UserList extends AppCompatActivity implements SelectListener {
     LinearLayout linearLayout;
 
     ProgressBar progressBar;
+
 
     EditText findUname;
     EditText changeEmail;
@@ -69,6 +76,9 @@ public class UserList extends AppCompatActivity implements SelectListener {
     String studentEmailTxt;
     String studentContactTxt;
     String studentPwdTxt;
+    String subjectCheck;
+    int gradeCheck;
+
 
 
     Dialog dialog;
@@ -94,7 +104,6 @@ public class UserList extends AppCompatActivity implements SelectListener {
             public void onClick(View v) {
                 Intent intent = new Intent(UserList.this, Manage_User.class);
                 startActivity(intent);
-                finish();
             }
         });
 
@@ -172,8 +181,9 @@ public class UserList extends AppCompatActivity implements SelectListener {
         studentEmailTxt = student.getEmail();
         studentContactTxt = student.getContact();
         studentPwdTxt = student.getPassword();
-//        getSubject(student.getSubject());
-//        getGrade(student.getGrade());
+        subjectCheck = student.getSubject();
+        gradeCheck = student.getGrade();
+
 
         AlertDialog.Builder builder = new AlertDialog.Builder(UserList.this);
         builder.setTitle("Edit/Delete")
@@ -242,8 +252,6 @@ public class UserList extends AppCompatActivity implements SelectListener {
         findUname = dialog.findViewById(R.id.findUname);
         changeEmail = dialog.findViewById(R.id.changeEmail);
         changeContact = dialog.findViewById(R.id.changeContact);
-        changePassword = dialog.findViewById(R.id.changePassword);
-        confirmPassword = dialog.findViewById(R.id.confirmPassword);
         changeCheckBoxMaths = dialog.findViewById(R.id.changeCheckBoxMaths);
         changeCheckBoxScience = dialog.findViewById(R.id.changeCheckBoxScience);
         changeRadioBtnGrade10 = dialog.findViewById(R.id.changeRadioBtnGrade10);
@@ -254,15 +262,43 @@ public class UserList extends AppCompatActivity implements SelectListener {
         findUname.setText(studuname);
         changeEmail.setText(studentEmailTxt);
         changeContact.setText(studentContactTxt);
-        changePassword.setText(studentPwdTxt);
-        confirmPassword.setText(studentPwdTxt);
+        getSubject(subjectCheck);
+        getGrade(gradeCheck);
         findUname.setEnabled(false);
 
         buttonSaveChange.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                dialog.dismiss();
-                TastyToast.makeText(UserList.this, "Not updated to DB", TastyToast.LENGTH_SHORT, TastyToast.WARNING);
+
+                String usernameTxt = findUname.getText().toString();
+                String emailTxt = changeEmail.getText().toString();
+                String contactTxt = changeContact.getText().toString();
+                final String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
+                final String mobileNumberPattern= "^\\d{10}$";
+
+                if (usernameTxt.isEmpty() || emailTxt.isEmpty() || contactTxt.isEmpty() || !(changeCheckBoxMaths.isChecked() || changeCheckBoxScience.isChecked())) {
+                    TastyToast.makeText(UserList.this, "Please fill all fields", TastyToast.LENGTH_SHORT, TastyToast.INFO);
+                } else if (!emailTxt.matches(emailPattern)){
+                    TastyToast.makeText(UserList.this, "Please enter a valid email address", TastyToast.LENGTH_SHORT, TastyToast.INFO);
+                } else if (!contactTxt.matches(mobileNumberPattern)){
+                    TastyToast.makeText(UserList.this, "Please enter 10 digit contact number", TastyToast.LENGTH_SHORT, TastyToast.INFO);
+                } else {
+
+//                    mistakenly created 2 student models
+//                    Student s = new Student(usernameTxt, contactTxt, emailTxt, setSubject(), setGrade(), changeEncryptedPassword);
+//                    databaseReference.child("students").child(studuname).setValue(s);
+
+                    databaseReference.child("students").child(studuname).child("contact").setValue(contactTxt);
+                    databaseReference.child("students").child(studuname).child("email").setValue(emailTxt);
+                    databaseReference.child("students").child(studuname).child("subject").setValue(setSubject());
+                    databaseReference.child("students").child(studuname).child("grade").setValue(setGrade());
+                    dialog.dismiss();
+                    finish();
+                    startActivity(getIntent());
+
+                    TastyToast.makeText(UserList.this, "Saved your changes", TastyToast.LENGTH_SHORT, TastyToast.SUCCESS).show();
+                }
+
             }
         });
 
@@ -275,10 +311,10 @@ public class UserList extends AppCompatActivity implements SelectListener {
         });
 
 
-
         dialog.show();
 
     }
+
 
 
 //    private boolean subjectValidation(){

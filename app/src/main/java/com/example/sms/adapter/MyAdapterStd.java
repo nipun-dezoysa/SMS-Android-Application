@@ -45,12 +45,6 @@ public class MyAdapterStd extends RecyclerView.Adapter<MyAdapterStd.MyViewHolder
         holder.subject.setText(user.getSubject());
         holder.grade.setText(user.getGrade()+"");
 
-//        holder.cardViewUE.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                selectListener.onItemClicked(list.get(position));
-//            }
-//        });
 
         holder.cardViewUE.setOnLongClickListener(new View.OnLongClickListener() {
             @Override

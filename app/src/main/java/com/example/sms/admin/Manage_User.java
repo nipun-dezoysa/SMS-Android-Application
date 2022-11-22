@@ -305,7 +305,6 @@ public class Manage_User extends AppCompatActivity {
                 String uNameTxt = searchUname.getText().toString();
                 String editEmailTxt = editEmail.getText().toString();
                 String editContactTxt = editContact.getText().toString();
-//                String editSubjectTxt = editSubject.getText().toString();
                 String editpwdTxt = editpwd.getText().toString();
                 String editpwd1Txt = editpwd1.getText().toString();
                 final String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
@@ -353,7 +352,7 @@ public class Manage_User extends AppCompatActivity {
                     EditStudentDetails ESD = new EditStudentDetails(uNameTxt, editEmailTxt, editContactTxt, setSubject(), setGrade(), editencryptedPassword);
                     databaseReference.child("students").child(searchUnameTxt).setValue(ESD);
 
-                    Toast.makeText(Manage_User.this, "Saved your changes", Toast.LENGTH_SHORT).show();
+                    TastyToast.makeText(Manage_User.this, "Saved your changes", TastyToast.LENGTH_SHORT, TastyToast.SUCCESS).show();
                 }
             }
         });
