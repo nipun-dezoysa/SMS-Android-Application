@@ -45,6 +45,8 @@ public class Attendance_Adapter extends RecyclerView.Adapter<Attendance_Adapter.
         Student user = list.get(position);
         holder.username.setText(user.getUsername());
 
+//        idea is to create separate model for attendance with (username and checkbox), and use this model to pass the values to db and retrieve in students page
+
         //checkbox ischecked
 
 //        holder.save_student_attendance.setOnClickListener(new View.OnClickListener() {

@@ -4,9 +4,9 @@ import java.io.Serializable;
 
 public class Question {
 
-    public String question;
-    public String subjectName;
-    public String timestamp;
+    private String question;
+    private String subjectName;
+    private String timestamp;
 
     public Question() {
     }

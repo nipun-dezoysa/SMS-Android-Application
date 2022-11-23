@@ -64,8 +64,6 @@ public class UserList extends AppCompatActivity implements SelectListener {
     EditText findUname;
     EditText changeEmail;
     EditText changeContact;
-    EditText changePassword;
-    EditText confirmPassword;
     CheckBox changeCheckBoxMaths;
     CheckBox changeCheckBoxScience;
     RadioButton changeRadioBtnGrade10;
@@ -269,7 +267,7 @@ public class UserList extends AppCompatActivity implements SelectListener {
         buttonSaveChange.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                progressBar.setVisibility(View.VISIBLE);
                 String usernameTxt = findUname.getText().toString();
                 String emailTxt = changeEmail.getText().toString();
                 String contactTxt = changeContact.getText().toString();
@@ -292,13 +290,13 @@ public class UserList extends AppCompatActivity implements SelectListener {
                     databaseReference.child("students").child(studuname).child("email").setValue(emailTxt);
                     databaseReference.child("students").child(studuname).child("subject").setValue(setSubject());
                     databaseReference.child("students").child(studuname).child("grade").setValue(setGrade());
+                    progressBar.setVisibility(View.GONE);
                     dialog.dismiss();
                     TastyToast.makeText(UserList.this, "Saved your changes", TastyToast.LENGTH_SHORT, TastyToast.SUCCESS).show();
 
                     finish();
                     startActivity(getIntent());
 
-                    TastyToast.makeText(UserList.this, "Saved your changes", TastyToast.LENGTH_SHORT, TastyToast.SUCCESS).show();
                 }
 
             }

@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".admin.Grade11HW">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:background="@color/teal_700"
+            android:layout_width="match_parent"
+            android:layout_height="120dp">
+
+            <ImageView
+                android:id="@+id/grade11_back"
+                android:layout_width="40dp"
+                android:layout_height="35dp"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="10dp"
+                android:background="@drawable/back" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="Grade 11"
+                android:textSize="30dp"
+                android:textStyle="bold|normal" />
+
+
+
+        </RelativeLayout>
+
+        <ImageView
+            android:layout_width="400dp"
+            android:layout_height="400dp"
+            android:layout_gravity="center"
+            android:src="@drawable/logo_transparentnew" />
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:paddingStart="5dp"
+            android:id="@+id/homework_recyclerview11"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="350dp"
+            android:scrollbars="vertical">
+
+
+        </androidx.recyclerview.widget.RecyclerView>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="150dp"
+            android:paddingStart="5dp"
+            android:orientation="vertical">
+
+            <androidx.appcompat.widget.AppCompatSpinner
+                android:id="@+id/spinner_sub11"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:layout_gravity="start|top">
+            </androidx.appcompat.widget.AppCompatSpinner>
+
+
+            <EditText
+                android:id="@+id/type_qstns11"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Type a question here"
+                android:paddingLeft="10dp"/>
+
+            <Button
+                android:id="@+id/add_qstns11"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Add Questions"
+                android:background="@drawable/swtch_tymbs"/>
+        </LinearLayout>
+
+
+
+    </androidx.cardview.widget.CardView>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

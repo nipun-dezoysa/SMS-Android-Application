@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -12,6 +13,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.sms.R;
 import com.example.sms.model.Question;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
 
@@ -42,9 +45,17 @@ public class QuestionAdapter extends RecyclerView.Adapter<QuestionAdapter.Questi
     public void onBindViewHolder(@NonNull QuestionView holder, int position) {
 
         Question question = questionArrayList.get(position);
-        String timestamp = question.getTimestamp();
+//        String timestamp = question.getTimestamp();
         holder.textQuestion.setText(question.getQuestion());
         holder.textSubject.setText(question.getSubjectName());
+        holder.remove.setOnClickListener(new View.OnClickListener() {
+            Question question;
+            @Override
+            public void onClick(View v) {
+                DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference();
+                databaseReference.child("homework").child(question.getTimestamp()).removeValue();
+            }
+        });
 
 //        holder.cardView.setOnClickListener(new View.OnClickListener() {
 //            @Override
@@ -73,12 +84,16 @@ public class QuestionAdapter extends RecyclerView.Adapter<QuestionAdapter.Questi
 
         TextView textQuestion, textSubject;
         CardView cardView;
+        ImageView remove;
+        String id;
         public QuestionView(@NonNull View itemView) {
             super(itemView);
 
             textQuestion = itemView.findViewById(R.id.text_sub_question);
             textSubject =  itemView.findViewById(R.id.text_sub_name);
             cardView = itemView.findViewById(R.id.cardView);
+            remove = itemView.findViewById(R.id.remove_qstn);
+
         }
     }
 }

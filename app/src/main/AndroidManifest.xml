@@ -34,13 +34,21 @@
         android:theme="@style/Theme.SMS"
         tools:targetApi="31">
         <activity
+            android:name=".admin.Grade11HW"
+            android:exported="false" />
+        <activity
+            android:name=".admin.Grade10HW"
+            android:exported="false" />
+        <activity
             android:name=".admin.Home_Work"
             android:exported="false">
-<!--            <intent-filter>-->
-<!--                <action android:name="android.intent.action.MAIN" />-->
 
-<!--                <category android:name="android.intent.category.LAUNCHER" />-->
-<!--            </intent-filter>-->
+            <!-- <intent-filter> -->
+            <!-- <action android:name="android.intent.action.MAIN" /> -->
+
+
+            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+            <!-- </intent-filter> -->
         </activity>
         <activity
             android:name=".admin.Add_Attendance"
@@ -104,7 +112,7 @@
         <activity
             android:name=".students.MySubjects"
             android:exported="false" />
-        <activity android:name=".ActivityQuestions"></activity>
+        <activity android:name=".ActivityQuestions" />
         <activity
             android:name=".admin.TextRecognition"
             android:exported="false">

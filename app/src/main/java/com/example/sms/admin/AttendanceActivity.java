@@ -16,7 +16,7 @@ public class AttendanceActivity extends AppCompatActivity {
     ImageView attendance_back;
     Button add_attendance;
     Button view_attendance;
-    String uname;
+//    String uname;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,8 +27,8 @@ public class AttendanceActivity extends AppCompatActivity {
         add_attendance = findViewById(R.id.add_attendance);
         view_attendance = findViewById(R.id.view_attendance);
 
-        Intent intent= getIntent();
-        uname = intent.getStringExtra("uname");
+//        Intent intent= getIntent();
+//        uname = intent.getStringExtra("uname");
 
         attendance_back.setOnClickListener(new View.OnClickListener() {
             @Override

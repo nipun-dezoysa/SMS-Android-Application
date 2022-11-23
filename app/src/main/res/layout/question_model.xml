@@ -20,7 +20,8 @@
             android:layout_height="wrap_content"
             android:hint="Subject Name"
             android:textSize="20dp"
-            android:textColor="@color/black">
+            android:textColor="@color/black"
+            android:padding="5dp">
 
         </TextView>
 
@@ -31,10 +32,18 @@
             android:layout_height="wrap_content"
             android:hint="Subject Question"
             android:textSize="15dp"
-            android:textColor="@color/black">
+            android:textColor="@color/black"
+            android:padding="5dp">
 
         </TextView>
 
-    </LinearLayout>
 
+
+    </LinearLayout>
+    <ImageView
+        android:id="@+id/remove_qstn"
+        android:layout_width="30dp"
+        android:layout_height="40dp"
+        android:layout_gravity="end|center"
+        android:src="@drawable/delete"/>
 </androidx.cardview.widget.CardView>
