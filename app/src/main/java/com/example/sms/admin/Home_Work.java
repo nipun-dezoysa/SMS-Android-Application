@@ -14,6 +14,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.example.sms.R;
 import com.example.sms.adapter.QuestionAdapter;
@@ -34,6 +35,8 @@ public class Home_Work extends AppCompatActivity{
     LinearLayout grade10;
     LinearLayout grade11;
     ImageView back_btn;
+    TextView gradeVal;
+    public static String Grade;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,12 +46,21 @@ public class Home_Work extends AppCompatActivity{
         grade10 = findViewById(R.id.grade10_hw);
         grade11 = findViewById(R.id.grade11_hw);
         back_btn = findViewById(R.id.home_work_back);
+        gradeVal = findViewById(R.id.gradeValue);
+
+        back_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
 
         grade10.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(Home_Work.this, Grade10HW.class);
                 startActivity(intent);
+                Grade = "Grade 10";
             }
         });
 
@@ -57,6 +69,7 @@ public class Home_Work extends AppCompatActivity{
             public void onClick(View v) {
                 Intent intent = new Intent(Home_Work.this, Grade11HW.class);
                 startActivity(intent);
+                Grade = "Grade 11";
             }
         });
     }

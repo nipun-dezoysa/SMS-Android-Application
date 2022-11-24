@@ -14,6 +14,7 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.PopupMenu;
@@ -58,6 +59,8 @@ public class NotesActivity extends AppCompatActivity {
 
         Intent intent= getIntent();
         uname = intent.getStringExtra("uname");
+        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_NOTHING);
+
 
         ImageView notes_back = (ImageView) findViewById(R.id.notes_back);
         notes_back.setOnClickListener(new View.OnClickListener() {

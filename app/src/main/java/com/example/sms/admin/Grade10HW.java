@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -49,6 +50,8 @@ public class Grade10HW extends AppCompatActivity {
         homework_questions = findViewById(R.id.type_qstns);
         add_questions = findViewById(R.id.add_qstns);
 
+        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_NOTHING);
+
         homework_rv = findViewById(R.id.homework_recyclerview);
 
         subjectlist.add( 0,"Subject");
@@ -87,6 +90,7 @@ public class Grade10HW extends AppCompatActivity {
 
                             databaseReference.child("homework").child("Grade 10").child(timestamp).child("subjectName").setValue(subjectText);
                             databaseReference.child("homework").child("Grade 10").child(timestamp).child("question").setValue(homework_qstn_txt);
+                            databaseReference.child("homework").child("Grade 10").child(timestamp).child("timestamp").setValue(timestamp);
 
                             TastyToast.makeText(Grade10HW.this, "Question added successfully", TastyToast.LENGTH_SHORT, TastyToast.SUCCESS).show();
                         }
