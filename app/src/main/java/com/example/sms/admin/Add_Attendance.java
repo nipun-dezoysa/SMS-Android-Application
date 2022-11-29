@@ -33,10 +33,9 @@ public class Add_Attendance extends AppCompatActivity {
     DatabaseReference databaseReference;
     Attendance_Adapter attendanceAdapter;
 
-    TextView attendance_date;
-
+    public static TextView attendance_date;
     ImageView button_back;
-    FloatingActionButton save;
+    public static FloatingActionButton save;
 
     TextView grade10;
     TextView grade11;
@@ -47,6 +46,7 @@ public class Add_Attendance extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_attendance);
+
 
         button_back = findViewById(R.id.add_attendance_back);
         save = findViewById(R.id.save_student_attendance);
@@ -65,13 +65,13 @@ public class Add_Attendance extends AppCompatActivity {
             }
         });
 
-        save.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //                finish();
-                TastyToast.makeText(Add_Attendance.this, " Under Construction!", TastyToast.LENGTH_SHORT, TastyToast.ERROR).show();
-            }
-        });
+//        save.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                //                finish();
+//                TastyToast.makeText(Add_Attendance.this, " Under Construction!", TastyToast.LENGTH_SHORT, TastyToast.ERROR).show();
+//            }
+//        });
 
         recyclerView = findViewById(R.id.stud_attendance_recyclerview);
         databaseReference = FirebaseDatabase.getInstance().getReference("students");

@@ -5,17 +5,20 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
-import android.widget.CompoundButton;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.sms.R;
+import com.example.sms.admin.Add_Attendance;
 import com.example.sms.model.Student;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
@@ -44,6 +47,34 @@ public class Attendance_Adapter extends RecyclerView.Adapter<Attendance_Adapter.
     public void onBindViewHolder(@NonNull Attendance_Adapter.MyViewHolderAttendance holder, int position) {
         Student user = list.get(position);
         holder.username.setText(user.getUsername());
+//        String uname
+
+        TextView attendance = Add_Attendance.attendance_date;
+        String attendancetxt = attendance.getText().toString();
+
+        Add_Attendance.save.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (holder.checkBox.isChecked()){
+                    databaseRef.child("Attendance").addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+                            databaseRef.child("Attendance").child(attendancetxt).child(user.getUsername()).setValue("Present");
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+
+                        }
+                    });
+                }
+//                if (holder.checkBox.isChecked()){
+//                    databaseRef.child(Add_Attendance.attendance).child(user.getUsername()).setValue("Present");
+//                } else {
+//                    databaseRef.child(Add_Attendance.attendance).child(user.getUsername()).setValue("Absent");
+//                }
+            }
+        });
 
 //        idea is to create separate model for attendance with (username and checkbox), and use this model to pass the values to db and retrieve in students page
 
