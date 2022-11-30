@@ -1,8 +1,10 @@
 package com.example.sms.students;
 
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Base64;
 import android.view.View;
 import android.widget.Button;
@@ -27,6 +29,8 @@ import java.security.MessageDigest;
 import javax.crypto.Cipher;
 import javax.crypto.spec.SecretKeySpec;
 
+import io.paperdb.Paper;
+
 public class StudentLoginActivity extends AppCompatActivity {
 
     DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReferenceFromUrl("https://asms-365d0-default-rtdb.firebaseio.com/");
@@ -37,17 +41,32 @@ public class StudentLoginActivity extends AppCompatActivity {
 
     ProgressBar progressBar;
 
+    EditText username;
+    EditText password;
+    Button btnStdLogin;
+    TextView button1;
+    ProgressDialog progressDialog;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.studentlogin);
 
-        EditText username = (EditText) findViewById(R.id.txtStdUserName);
-        EditText password = (EditText) findViewById(R.id.txtStdPassword);
-        Button button = (Button) findViewById(R.id.btnStdLogin);
-        TextView button1 = (TextView) findViewById(R.id.btnTxtStdLogin);
-        progressBar = (ProgressBar) findViewById(R.id.progressBarStudLogin);
+        username = findViewById(R.id.txtStdUserName);
+        password = findViewById(R.id.txtStdPassword);
+        btnStdLogin = findViewById(R.id.btnStdLogin);
+        button1 = findViewById(R.id.btnTxtStdLogin);
+        progressBar = findViewById(R.id.progressBarStudLogin);
 
+        Paper.init(StudentLoginActivity.this);
+        String UserNameKey = Paper.book().read(OnlineStudents.UserNamekey);
+        String UserPasswordKey = Paper.book().read(OnlineStudents.UserPasswordKey);
+
+        if (UserNameKey != "" && UserPasswordKey != "") {
+            if (!TextUtils.isEmpty(UserNameKey) && !TextUtils.isEmpty(UserPasswordKey)) {
+                autoLogin(UserNameKey, UserPasswordKey);
+            }
+        }
 
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -58,7 +77,7 @@ public class StudentLoginActivity extends AppCompatActivity {
             }
         });
 
-        button.setOnClickListener(new View.OnClickListener() {
+        btnStdLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String uname = username.getText().toString();
@@ -80,6 +99,41 @@ public class StudentLoginActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    private void autoLogin(String userNameKey, String userPasswordKey) {
+
+        databaseReference.child("students").addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if(snapshot.hasChild(userNameKey)){
+                    String dbPassword = snapshot.child(userNameKey).child("password").getValue(String.class);
+
+                    if(dbPassword.equals(userPasswordKey)){
+                        TastyToast.makeText(StudentLoginActivity.this, "Login successful", TastyToast.LENGTH_SHORT, TastyToast.SUCCESS);
+                        Intent studentLoginIntent = new Intent(StudentLoginActivity.this, StudentPageActivity.class);
+                        studentLoginIntent.putExtra("uname", userNameKey);
+                        progressBar.setVisibility(View.INVISIBLE);
+                        startActivity(studentLoginIntent);
+
+
+                    } else{
+                        TastyToast.makeText(StudentLoginActivity.this, "Username or Password is wrong", TastyToast.LENGTH_SHORT, TastyToast.ERROR);
+                        progressBar.setVisibility(View.INVISIBLE);
+                    }
+                }else {
+                    TastyToast.makeText(StudentLoginActivity.this, "Username or Password is wrong", TastyToast.LENGTH_SHORT, TastyToast.ERROR);
+                    progressBar.setVisibility(View.INVISIBLE);
+                }
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                TastyToast.makeText(StudentLoginActivity.this, "Connection failed", TastyToast.LENGTH_SHORT, TastyToast.ERROR);
+                progressBar.setVisibility(View.INVISIBLE);
+            }
+        });
     }
 
     private String  encrypt(String data, String password) throws Exception {
@@ -110,15 +164,16 @@ public class StudentLoginActivity extends AppCompatActivity {
                     if(dbPassword.equals(pword)){
                         TastyToast.makeText(StudentLoginActivity.this, "Login successful", TastyToast.LENGTH_SHORT, TastyToast.SUCCESS);
                         Intent studentLoginIntent = new Intent(StudentLoginActivity.this, StudentPageActivity.class);
+                        Paper.book().write(OnlineStudents.UserNamekey, uname);
+                        Paper.book().write(OnlineStudents.UserPasswordKey, pword);
                         studentLoginIntent.putExtra("uname", uname);
                         startActivity(studentLoginIntent);
-                        progressBar.setVisibility(View.INVISIBLE);
-                        finish();
+
 
                     } else{
                         TastyToast.makeText(StudentLoginActivity.this, "Username or Password is wrong", TastyToast.LENGTH_SHORT, TastyToast.ERROR);
-                        progressBar.setVisibility(View.INVISIBLE);
                     }
+                    progressBar.setVisibility(View.INVISIBLE);
                 }else {
                     TastyToast.makeText(StudentLoginActivity.this, "Username or Password is wrong", TastyToast.LENGTH_SHORT, TastyToast.ERROR);
                     progressBar.setVisibility(View.INVISIBLE);

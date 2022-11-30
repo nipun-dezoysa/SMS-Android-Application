@@ -10,6 +10,7 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Base64;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
@@ -54,12 +55,17 @@ import com.google.firebase.storage.StorageTask;
 import com.google.firebase.storage.UploadTask;
 import com.sdsmdg.tastytoast.TastyToast;
 
+import java.security.MessageDigest;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 
+import javax.crypto.Cipher;
+import javax.crypto.spec.SecretKeySpec;
+
 import de.hdodenhof.circleimageview.CircleImageView;
+import io.paperdb.Paper;
 
 public class TeacherPageActivity extends AppCompatActivity {
 
@@ -67,6 +73,12 @@ public class TeacherPageActivity extends AppCompatActivity {
 
     ProgressBar progressBar;
     ProgressBar progressBarChangepwd;
+
+    String currentOutputPassword;
+    String currentEncryptedPassword;
+    String AES = "AES";
+    String newOutputPassword;
+    String newEncryptedPassword;
 
     EditText currentPwd;
     EditText newPwd;
@@ -150,6 +162,7 @@ public class TeacherPageActivity extends AppCompatActivity {
 //                                        Intent logoutIntent = new Intent(v.getContext(), TeacherLoginActivity.class);
 //                                        v.getContext().startActivity(logoutIntent);
                                         finish();
+                                        Paper.book().destroy();
                                         TastyToast.makeText(v.getContext(), " Logged out successfully", TastyToast.LENGTH_SHORT, TastyToast.SUCCESS);
 
                                     }
@@ -377,6 +390,19 @@ public class TeacherPageActivity extends AppCompatActivity {
                 if (currentPwdTxt.equals("") || newPwdTxt.equals("") || confirmNewPwdTxt.equals("")){
                     TastyToast.makeText(TeacherPageActivity.this, "Please fill all fields", TastyToast.LENGTH_SHORT, TastyToast.ERROR);
                 }else {
+                    try {
+                        currentOutputPassword = encrypt(currentPwdTxt, currentPwdTxt);
+                        currentEncryptedPassword = currentOutputPassword;
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+
+                    try {
+                        newOutputPassword = encrypt(newPwdTxt, newPwdTxt);
+                        newEncryptedPassword = newOutputPassword;
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
                     verifyCurrentPwd(currentPwdTxt, newPwdTxt, confirmNewPwdTxt);
                 }
             }
@@ -392,7 +418,25 @@ public class TeacherPageActivity extends AppCompatActivity {
         dialog.show();
     }
 
-    private void verifyCurrentPwd(String currentPwdTxt, String newPwdTxt, String confirmNewPwdTxt) {
+    private String encrypt(String data, String pword) throws Exception {
+        SecretKeySpec key = generateKey(pword);
+        Cipher c = Cipher.getInstance(AES);
+        c.init(Cipher.ENCRYPT_MODE, key);
+        byte[] encVal = c.doFinal(data.getBytes());
+        String encryptedValue = Base64.encodeToString(encVal, Base64.DEFAULT);
+        return encryptedValue;
+    }
+
+    private SecretKeySpec generateKey(String pword) throws Exception {
+        final MessageDigest digest = MessageDigest.getInstance("SHA-256");
+        byte[] bytes = pword.getBytes("UTF-8");
+        digest.update(bytes, 0, bytes.length);
+        byte[] key = digest.digest();
+        SecretKeySpec secretKeySpec = new SecretKeySpec(key, "AES");
+        return secretKeySpec;
+    }
+
+    private void verifyCurrentPwd(String currentEncryptedPassword, String newPwdTxt, String confirmNewPwdTxt) {
         databaseReference.child("users").addListenerForSingleValueEvent(new ValueEventListener() {
             final String passwordPattern = "((?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%]).{6,15})";
 
@@ -400,14 +444,14 @@ public class TeacherPageActivity extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if (snapshot.hasChild(uname)){
                     String dbPassword = snapshot.child(uname).child("password").getValue(String.class);
-                    if (!dbPassword.equals(currentPwdTxt)){
+                    if (!dbPassword.equals(currentEncryptedPassword)){
                         TastyToast.makeText(TeacherPageActivity.this, "Current password is wrong", TastyToast.LENGTH_SHORT, TastyToast.ERROR);
                     } else if (!newPwdTxt.matches(passwordPattern)){
                         TastyToast.makeText(TeacherPageActivity.this, "Please follow password pattern to make a strong password", TastyToast.LENGTH_SHORT, TastyToast.ERROR);
                     } else if (!newPwdTxt.equals(confirmNewPwdTxt)){
-                        TastyToast.makeText(TeacherPageActivity.this, "Confirm password should be new password", TastyToast.LENGTH_SHORT, TastyToast.ERROR);
+                        TastyToast.makeText(TeacherPageActivity.this, "Confirm password should match with new password", TastyToast.LENGTH_SHORT, TastyToast.ERROR);
                     } else if (newPwdTxt.equals(confirmNewPwdTxt)){
-                        updatepassword(newPwdTxt);
+                        updatePassword(newEncryptedPassword);
                     }
                 }
             }
@@ -419,8 +463,8 @@ public class TeacherPageActivity extends AppCompatActivity {
         });
     }
 
-    private void updatepassword(String newPwdTxt) {
-        databaseReference.child("users").child(uname).child("password").setValue(newPwdTxt);
+    private void updatePassword(String newEncryptedPassword) {
+        databaseReference.child("users").child(uname).child("password").setValue(newEncryptedPassword);
         TastyToast.makeText(this, "Password Changed", TastyToast.LENGTH_SHORT, TastyToast.SUCCESS);
         dialog.dismiss();
     }
@@ -747,7 +791,6 @@ public class TeacherPageActivity extends AppCompatActivity {
                     @Override
                     public void onSuccess(Uri uri) {
                         t.setProfileuri(uri.toString());
-//                        Toast.makeText(TeacherPageActivity.this, "Uploaded Successfully", Toast.LENGTH_SHORT).show();
                         TastyToast.makeText(TeacherPageActivity.this, "Uploaded Successfully", TastyToast.LENGTH_SHORT, TastyToast.SUCCESS);
 
 //                        cropView.setImageResource(R.drawable.img);
@@ -772,7 +815,6 @@ public class TeacherPageActivity extends AppCompatActivity {
             @Override
             public void onFailure(@NonNull Exception e) {
 //                progressBar.setVisibility(View.INVISIBLE);
-//                Toast.makeText(TeacherPageActivity.this, "Uploading Failed", Toast.LENGTH_SHORT).show();
                 TastyToast.makeText(TeacherPageActivity.this, "Uploading Failed", TastyToast.LENGTH_SHORT, TastyToast.ERROR);
 
             }
@@ -783,7 +825,6 @@ public class TeacherPageActivity extends AppCompatActivity {
     private void uploadTeacher(Teacher t){
         databaseReference.child("teachers").child(uname).setValue(t);
         progressBar.setVisibility(View.GONE);
-//        Toast.makeText(TeacherPageActivity.this, "Saved changes", Toast.LENGTH_SHORT).show();
         TastyToast.makeText(TeacherPageActivity.this, "Saved changes", TastyToast.LENGTH_SHORT, TastyToast.SUCCESS);
         dialog.dismiss();
     }

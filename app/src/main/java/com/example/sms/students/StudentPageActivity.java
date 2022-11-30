@@ -62,6 +62,7 @@ import javax.crypto.Cipher;
 import javax.crypto.spec.SecretKeySpec;
 
 import de.hdodenhof.circleimageview.CircleImageView;
+import io.paperdb.Paper;
 
 public class StudentPageActivity extends AppCompatActivity {
 
@@ -150,9 +151,10 @@ public class StudentPageActivity extends AppCompatActivity {
                     @Override
                     public boolean onMenuItemClick(MenuItem item) {
 
-                        Intent logoutIntent = new Intent(v.getContext(), StudentLoginActivity.class);
-                        v.getContext().startActivity(logoutIntent);
+//                        Intent logoutIntent = new Intent(v.getContext(), StudentLoginActivity.class);
+//                        v.getContext().startActivity(logoutIntent);
                         finish();
+                        Paper.book().destroy();
                         return false;
                     }
                 });
@@ -326,7 +328,6 @@ public class StudentPageActivity extends AppCompatActivity {
         });
 
 
-
         savePwd.setOnClickListener(new View.OnClickListener() {
             DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference();
             @Override
@@ -404,10 +405,10 @@ public class StudentPageActivity extends AppCompatActivity {
                     } else if (!newPwdTxt.matches(passwordPattern)){
                         TastyToast.makeText(StudentPageActivity.this, "Please follow password pattern to make a strong password", TastyToast.LENGTH_SHORT, TastyToast.ERROR);
                     } else if (!newPwdTxt.equals(confirmNewPwdTxt)){
-                        TastyToast.makeText(StudentPageActivity.this, "Confirm password should match new password", TastyToast.LENGTH_SHORT, TastyToast.ERROR);
+                        TastyToast.makeText(StudentPageActivity.this, "Confirm password should match with new password", TastyToast.LENGTH_SHORT, TastyToast.ERROR);
                     }
                     else if (newPwdTxt.equals(confirmNewPwdTxt)){
-                        updatepassword(newEncryptedPassword);
+                        updatePassword(newEncryptedPassword);
                     }
                 }
             }
@@ -419,7 +420,7 @@ public class StudentPageActivity extends AppCompatActivity {
         });
     }
 
-    private void updatepassword(String newEncryptedPassword) {
+    private void updatePassword(String newEncryptedPassword) {
         databaseReference.child("students").child(uname).child("password").setValue(newEncryptedPassword);
         TastyToast.makeText(this, "Password Changed", TastyToast.LENGTH_SHORT, TastyToast.SUCCESS);
         dialog.dismiss();
