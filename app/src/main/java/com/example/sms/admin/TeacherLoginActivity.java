@@ -116,6 +116,7 @@ public class TeacherLoginActivity extends AppCompatActivity {
                         startActivity(loginIntent);
 
 
+
                     } else{
                         TastyToast.makeText(TeacherLoginActivity.this, "It seems you have changed your password. Please login with your new password.", TastyToast.LENGTH_LONG, TastyToast.INFO);
                         progressBarOfTeacherLogin.setVisibility(View.INVISIBLE);
