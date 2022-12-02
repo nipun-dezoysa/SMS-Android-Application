@@ -94,6 +94,8 @@ dependencies {
     implementation 'com.sdsmdg.tastytoast:tastytoast:0.1.1'
     // paper db
     implementation 'io.paperdb:paperdb:2.7.1'
+    // Fingerprint Authentication
+    implementation 'androidx.biometric:biometric:1.0.1'
 
 
 }

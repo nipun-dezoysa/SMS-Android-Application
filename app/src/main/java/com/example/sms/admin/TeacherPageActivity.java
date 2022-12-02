@@ -403,7 +403,7 @@ public class TeacherPageActivity extends AppCompatActivity {
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
-                    verifyCurrentPwd(currentPwdTxt, newPwdTxt, confirmNewPwdTxt);
+                    verifyCurrentPwd(currentEncryptedPassword, newPwdTxt, confirmNewPwdTxt);
                 }
             }
         });

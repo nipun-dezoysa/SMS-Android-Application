@@ -1,6 +1,8 @@
-package com.example.sms.admin;
+package com.example.sms.students;
 
-public class OnlineAdmin {
+import com.example.sms.model.Student;
+
+public class OnlineUsers {
 
     public static final String UserNamekey = "UserName";
     public static final String UserPasswordKey = "UserPassword";

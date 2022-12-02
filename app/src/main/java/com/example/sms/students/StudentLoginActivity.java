@@ -17,6 +17,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.sms.MainActivity;
 import com.example.sms.R;
+import com.example.sms.admin.TeacherPageActivity;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -59,8 +60,8 @@ public class StudentLoginActivity extends AppCompatActivity {
         progressBar = findViewById(R.id.progressBarStudLogin);
 
         Paper.init(StudentLoginActivity.this);
-        String UserNameKey = Paper.book().read(OnlineStudents.UserNamekey);
-        String UserPasswordKey = Paper.book().read(OnlineStudents.UserPasswordKey);
+        String UserNameKey = Paper.book().read(OnlineUsers.UserNamekey);
+        String UserPasswordKey = Paper.book().read(OnlineUsers.UserPasswordKey);
 
         if (UserNameKey != "" && UserPasswordKey != "") {
             if (!TextUtils.isEmpty(UserNameKey) && !TextUtils.isEmpty(UserPasswordKey)) {
@@ -118,11 +119,11 @@ public class StudentLoginActivity extends AppCompatActivity {
 
 
                     } else{
-                        TastyToast.makeText(StudentLoginActivity.this, "Username or Password is wrong", TastyToast.LENGTH_SHORT, TastyToast.ERROR);
+                        TastyToast.makeText(StudentLoginActivity.this, "It seems you have changed your password. Please login with your new password.", TastyToast.LENGTH_LONG, TastyToast.INFO);
                         progressBar.setVisibility(View.INVISIBLE);
                     }
                 }else {
-                    TastyToast.makeText(StudentLoginActivity.this, "Username or Password is wrong", TastyToast.LENGTH_SHORT, TastyToast.ERROR);
+                    TastyToast.makeText(StudentLoginActivity.this, "Please visit your relevant login page.", TastyToast.LENGTH_SHORT, TastyToast.DEFAULT);
                     progressBar.setVisibility(View.INVISIBLE);
                 }
 
@@ -164,8 +165,8 @@ public class StudentLoginActivity extends AppCompatActivity {
                     if(dbPassword.equals(pword)){
                         TastyToast.makeText(StudentLoginActivity.this, "Login successful", TastyToast.LENGTH_SHORT, TastyToast.SUCCESS);
                         Intent studentLoginIntent = new Intent(StudentLoginActivity.this, StudentPageActivity.class);
-                        Paper.book().write(OnlineStudents.UserNamekey, uname);
-                        Paper.book().write(OnlineStudents.UserPasswordKey, pword);
+                        Paper.book().write(OnlineUsers.UserNamekey, uname);
+                        Paper.book().write(OnlineUsers.UserPasswordKey, pword);
                         studentLoginIntent.putExtra("uname", uname);
                         startActivity(studentLoginIntent);
 
@@ -173,11 +174,10 @@ public class StudentLoginActivity extends AppCompatActivity {
                     } else{
                         TastyToast.makeText(StudentLoginActivity.this, "Username or Password is wrong", TastyToast.LENGTH_SHORT, TastyToast.ERROR);
                     }
-                    progressBar.setVisibility(View.INVISIBLE);
-                }else {
+                } else{
                     TastyToast.makeText(StudentLoginActivity.this, "Username or Password is wrong", TastyToast.LENGTH_SHORT, TastyToast.ERROR);
-                    progressBar.setVisibility(View.INVISIBLE);
                 }
+                progressBar.setVisibility(View.INVISIBLE);
 
             }
 

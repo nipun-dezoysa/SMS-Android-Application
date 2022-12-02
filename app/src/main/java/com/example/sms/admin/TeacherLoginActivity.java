@@ -16,6 +16,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.sms.MainActivity;
 import com.example.sms.R;
+import com.example.sms.students.OnlineUsers;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -48,15 +49,15 @@ public class TeacherLoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.teacherlogin);
 
-        EditText username = (EditText) findViewById(R.id.txtTeaUserName);
-        TextView password = (TextView) findViewById(R.id.txtTeaPassWord);
-        Button login_btn = (Button) findViewById(R.id.btnTeaLogin);
-        TextView back_btn = (TextView) findViewById(R.id.btntxtTeaLogin);
-        progressBarOfTeacherLogin = (ProgressBar) findViewById(R.id.progressBarOfTeacherLogin);
+        EditText username = findViewById(R.id.txtTeaUserName);
+        TextView password = findViewById(R.id.txtTeaPassWord);
+        Button login_btn = findViewById(R.id.btnTeaLogin);
+        TextView back_btn = findViewById(R.id.btntxtTeaLogin);
+        progressBarOfTeacherLogin = findViewById(R.id.progressBarOfTeacherLogin);
 
         Paper.init(TeacherLoginActivity.this);
-        String UserNameKey = Paper.book().read(OnlineAdmin.UserNamekey);
-        String UserPasswordKey = Paper.book().read(OnlineAdmin.UserPasswordKey);
+        String UserNameKey = Paper.book().read(OnlineUsers.UserNamekey);
+        String UserPasswordKey = Paper.book().read(OnlineUsers.UserPasswordKey);
 
         if (UserNameKey != "" && UserPasswordKey != "") {
             if (!TextUtils.isEmpty(UserNameKey) && !TextUtils.isEmpty(UserPasswordKey)) {
@@ -90,7 +91,7 @@ public class TeacherLoginActivity extends AppCompatActivity {
                  } catch (Exception e) {
                      e.printStackTrace();
                  }
-                 loginUser(uname,pword);
+                 loginUser(uname,encryptedPassword);
                  progressBarOfTeacherLogin.setVisibility(View.VISIBLE);
 //                 finish();
              }
@@ -116,11 +117,11 @@ public class TeacherLoginActivity extends AppCompatActivity {
 
 
                     } else{
-                        TastyToast.makeText(TeacherLoginActivity.this, "Username or Password is wrong", TastyToast.LENGTH_SHORT, TastyToast.ERROR);
+                        TastyToast.makeText(TeacherLoginActivity.this, "It seems you have changed your password. Please login with your new password.", TastyToast.LENGTH_LONG, TastyToast.INFO);
                         progressBarOfTeacherLogin.setVisibility(View.INVISIBLE);
                     }
                 }else {
-                    TastyToast.makeText(TeacherLoginActivity.this, "Username or Password is wrong", TastyToast.LENGTH_SHORT, TastyToast.ERROR);
+                    TastyToast.makeText(TeacherLoginActivity.this, "Please visit your relevant login page.", TastyToast.LENGTH_SHORT, TastyToast.DEFAULT);
                     progressBarOfTeacherLogin.setVisibility(View.INVISIBLE);
                 }
 
@@ -162,8 +163,8 @@ public class TeacherLoginActivity extends AppCompatActivity {
                     if(dbPassword.equals(pword)){
                         TastyToast.makeText(TeacherLoginActivity.this, "Login successful", TastyToast.LENGTH_SHORT, TastyToast.SUCCESS);
                         Intent teacherLoginIntent = new Intent(TeacherLoginActivity.this, TeacherPageActivity.class);
-                        Paper.book().write(OnlineAdmin.UserNamekey, uname);
-                        Paper.book().write(OnlineAdmin.UserPasswordKey, pword);
+                        Paper.book().write(OnlineUsers.UserNamekey, uname);
+                        Paper.book().write(OnlineUsers.UserPasswordKey, pword);
                         teacherLoginIntent.putExtra("uname",uname);
                         progressBarOfTeacherLogin.setVisibility(View.INVISIBLE);
                         startActivity(teacherLoginIntent);
