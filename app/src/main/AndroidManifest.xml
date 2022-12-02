@@ -34,7 +34,7 @@
         android:theme="@style/Theme.SMS"
         tools:targetApi="31">
         <activity
-            android:name=".FingerPrintAuth"
+            android:name=".admin.AdminFingerPrintAuth"
             android:exported="false" />
         <activity
             android:name=".admin.Grade11HW"

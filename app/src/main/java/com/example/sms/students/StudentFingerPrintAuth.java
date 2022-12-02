@@ -1,24 +1,22 @@
-package com.example.sms;
+package com.example.sms.students;
+
+import android.content.Intent;
+import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.biometric.BiometricManager;
-import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.content.ContextCompat;
 
-import android.content.Intent;
-import android.hardware.biometrics.BiometricPrompt;
-import android.os.Bundle;
-import android.view.View;
-import android.widget.LinearLayout;
-import android.widget.Toast;
-
+import com.example.sms.admin.AdminFingerPrintAuth;
+import com.example.sms.admin.TeacherPageActivity;
 import com.sdsmdg.tastytoast.TastyToast;
 
-import java.lang.reflect.Executable;
 import java.util.concurrent.Executor;
 
-public class FingerPrintAuth extends AppCompatActivity {
+public class StudentFingerPrintAuth extends AppCompatActivity {
+
+    String uname;
 
     androidx.biometric.BiometricPrompt biometricPrompt;
     androidx.biometric.BiometricPrompt.PromptInfo promptInfo;
@@ -26,8 +24,10 @@ public class FingerPrintAuth extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_finger_print_auth);
 
+
+        Intent intent= getIntent();
+        uname = intent.getStringExtra("uname");
 
         BiometricManager biometricManager = BiometricManager.from(this);
         switch (biometricManager.canAuthenticate()){
@@ -46,7 +46,7 @@ public class FingerPrintAuth extends AppCompatActivity {
 
         Executor executor = ContextCompat.getMainExecutor(this);
 
-        biometricPrompt = new androidx.biometric.BiometricPrompt(FingerPrintAuth.this, executor, new androidx.biometric.BiometricPrompt.AuthenticationCallback() {
+        biometricPrompt = new androidx.biometric.BiometricPrompt(StudentFingerPrintAuth.this, executor, new androidx.biometric.BiometricPrompt.AuthenticationCallback() {
             @Override
             public void onAuthenticationError(int errorCode, @NonNull CharSequence errString) {
                 super.onAuthenticationError(errorCode, errString);
@@ -55,9 +55,11 @@ public class FingerPrintAuth extends AppCompatActivity {
             @Override
             public void onAuthenticationSucceeded(@NonNull androidx.biometric.BiometricPrompt.AuthenticationResult result) {
                 super.onAuthenticationSucceeded(result);
-//                TastyToast.makeText(getApplicationContext(), "Logging in", TastyToast.LENGTH_SHORT, TastyToast.INFO);
-                Intent intent = new Intent(FingerPrintAuth.this, MainActivity.class);
+                TastyToast.makeText(getApplicationContext(), "Login successful", TastyToast.LENGTH_SHORT, TastyToast.SUCCESS);
+                Intent intent = new Intent(StudentFingerPrintAuth.this, StudentPageActivity.class);
+                intent.putExtra("uname", uname);
                 startActivity(intent);
+                finish();
             }
 
             @Override

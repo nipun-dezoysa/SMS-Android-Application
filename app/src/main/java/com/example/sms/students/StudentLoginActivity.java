@@ -111,8 +111,8 @@ public class StudentLoginActivity extends AppCompatActivity {
                     String dbPassword = snapshot.child(userNameKey).child("password").getValue(String.class);
 
                     if(dbPassword.equals(userPasswordKey)){
-                        TastyToast.makeText(StudentLoginActivity.this, "Login successful", TastyToast.LENGTH_SHORT, TastyToast.SUCCESS);
-                        Intent studentLoginIntent = new Intent(StudentLoginActivity.this, StudentPageActivity.class);
+//                        TastyToast.makeText(StudentLoginActivity.this, "Login successful", TastyToast.LENGTH_SHORT, TastyToast.SUCCESS);
+                        Intent studentLoginIntent = new Intent(StudentLoginActivity.this, StudentFingerPrintAuth.class);
                         studentLoginIntent.putExtra("uname", userNameKey);
                         progressBar.setVisibility(View.INVISIBLE);
                         startActivity(studentLoginIntent);
