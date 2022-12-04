@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/mainActivity">
+    android:id="@+id/mainActivity"
+    android:background="@color/colorWhite">
 
 
     <LinearLayout
@@ -17,7 +18,7 @@
 
         <ImageView
             android:layout_width="500dp"
-            android:layout_height="350dp"
+            android:layout_height="382dp"
             android:layout_marginTop="20dp"
             android:src="@drawable/studentbg" />
 
@@ -30,32 +31,48 @@
             android:textColor="#0d6e6a"
             android:textSize="40dp"
             android:textStyle="bold" />
-
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Login as"
+            android:layout_marginTop="10dp"
+            android:text="TO"
             android:textColor="#0d6e6a"
-            android:textSize="20dp"
+            android:textSize="40dp"
+            android:textStyle="bold" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="ASMS"
+            android:textColor="#0d6e6a"
+            android:textSize="40dp"
             android:textStyle="bold" />
 
-        <Button
-            android:id="@+id/student"
-            android:layout_width="100dp"
-            android:layout_height="50dp"
-            android:layout_marginTop="20dp"
-            android:background="@drawable/btn"
-            android:text="Student"
-            android:textColor="@color/colorWhite" />
+<!--        <TextView-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="Login as"-->
+<!--            android:textColor="#0d6e6a"-->
+<!--            android:textSize="20dp"-->
+<!--            android:textStyle="bold" />-->
 
-        <Button
-            android:id="@+id/teacher"
-            android:layout_width="100dp"
-            android:layout_height="50dp"
-            android:layout_marginTop="20dp"
-            android:background="@drawable/btn"
-            android:text="Teacher"
-            android:textColor="@color/colorWhite" />
+<!--        <Button-->
+<!--            android:id="@+id/student"-->
+<!--            android:layout_width="100dp"-->
+<!--            android:layout_height="50dp"-->
+<!--            android:layout_marginTop="20dp"-->
+<!--            android:background="@drawable/btn"-->
+<!--            android:text="Student"-->
+<!--            android:textColor="@color/colorWhite" />-->
+
+<!--        <Button-->
+<!--            android:id="@+id/teacher"-->
+<!--            android:layout_width="100dp"-->
+<!--            android:layout_height="50dp"-->
+<!--            android:layout_marginTop="20dp"-->
+<!--            android:background="@drawable/btn"-->
+<!--            android:text="Teacher"-->
+<!--            android:textColor="@color/colorWhite" />-->
 
     </LinearLayout>
 

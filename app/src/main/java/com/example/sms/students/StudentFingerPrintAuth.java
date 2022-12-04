@@ -42,6 +42,10 @@ public class StudentFingerPrintAuth extends AppCompatActivity {
             case BiometricManager.BIOMETRIC_ERROR_NONE_ENROLLED:
                 TastyToast.makeText(this, "No fingerprint assigned", TastyToast.LENGTH_SHORT, TastyToast.INFO);
 
+                Intent intent1 = new Intent(StudentFingerPrintAuth.this, StudentPageActivity.class);
+                intent.putExtra("uname", uname);
+                startActivity(intent1);
+                finish();
         }
 
         Executor executor = ContextCompat.getMainExecutor(this);

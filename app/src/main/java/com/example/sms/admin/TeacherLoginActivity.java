@@ -17,6 +17,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.sms.MainActivity;
 import com.example.sms.R;
 import com.example.sms.students.OnlineUsers;
+import com.example.sms.students.StudentFingerPrintAuth;
+import com.example.sms.students.StudentLoginActivity;
+import com.example.sms.students.StudentPageActivity;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -52,7 +55,7 @@ public class TeacherLoginActivity extends AppCompatActivity {
         EditText username = findViewById(R.id.txtTeaUserName);
         TextView password = findViewById(R.id.txtTeaPassWord);
         Button login_btn = findViewById(R.id.btnTeaLogin);
-        TextView back_btn = findViewById(R.id.btntxtTeaLogin);
+//        TextView back_btn = findViewById(R.id.btntxtTeaLogin);
         progressBarOfTeacherLogin = findViewById(R.id.progressBarOfTeacherLogin);
 
         Paper.init(TeacherLoginActivity.this);
@@ -65,14 +68,14 @@ public class TeacherLoginActivity extends AppCompatActivity {
             }
         }
 
-        back_btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent mainActivityIntent = new Intent(TeacherLoginActivity.this, MainActivity.class);
-                startActivity(mainActivityIntent);
-                finish();
-            }
-        });
+//        back_btn.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent mainActivityIntent = new Intent(TeacherLoginActivity.this, MainActivity.class);
+//                startActivity(mainActivityIntent);
+//                finish();
+//            }
+//        });
         
         login_btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -114,16 +117,47 @@ public class TeacherLoginActivity extends AppCompatActivity {
                         loginIntent.putExtra("uname", userNameKey);
                         progressBarOfTeacherLogin.setVisibility(View.INVISIBLE);
                         startActivity(loginIntent);
-
-
+                        finish();
 
                     } else{
                         TastyToast.makeText(TeacherLoginActivity.this, "It seems you have changed your password. Please login with your new password.", TastyToast.LENGTH_LONG, TastyToast.INFO);
                         progressBarOfTeacherLogin.setVisibility(View.INVISIBLE);
                     }
                 }else {
-                    TastyToast.makeText(TeacherLoginActivity.this, "Please visit your relevant login page.", TastyToast.LENGTH_SHORT, TastyToast.DEFAULT);
-                    progressBarOfTeacherLogin.setVisibility(View.INVISIBLE);
+                    databaseReference.child("students").addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+                            if(snapshot.hasChild(userNameKey)){
+                                String dbPassword = snapshot.child(userNameKey).child("password").getValue(String.class);
+
+                                if(dbPassword.equals(userPasswordKey)){
+//                        TastyToast.makeText(StudentLoginActivity.this, "Login successful", TastyToast.LENGTH_SHORT, TastyToast.SUCCESS);
+                                    Intent studentLoginIntent = new Intent(TeacherLoginActivity.this, StudentFingerPrintAuth.class);
+                                    studentLoginIntent.putExtra("uname", userNameKey);
+                                    progressBarOfTeacherLogin.setVisibility(View.INVISIBLE);
+                                    startActivity(studentLoginIntent);
+
+
+
+                                } else{
+                                    TastyToast.makeText(TeacherLoginActivity.this, "It seems you have changed your password. Please login with your new password.", TastyToast.LENGTH_LONG, TastyToast.INFO);
+                                    progressBarOfTeacherLogin.setVisibility(View.INVISIBLE);
+                                }
+                            }else {
+//                    TastyToast.makeText(TeacherLoginActivity.this, "Please visit your relevant login page.", TastyToast.LENGTH_SHORT, TastyToast.DEFAULT);
+                                progressBarOfTeacherLogin.setVisibility(View.INVISIBLE);
+                            }
+
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+                            TastyToast.makeText(TeacherLoginActivity.this, "Connection failed", TastyToast.LENGTH_SHORT, TastyToast.ERROR);
+                            progressBarOfTeacherLogin.setVisibility(View.INVISIBLE);
+                        }
+                    });
+//                    TastyToast.makeText(TeacherLoginActivity.this, "Please visit your relevant login page.", TastyToast.LENGTH_SHORT, TastyToast.DEFAULT);
+//                    progressBarOfTeacherLogin.setVisibility(View.INVISIBLE);
                 }
 
             }
@@ -134,6 +168,7 @@ public class TeacherLoginActivity extends AppCompatActivity {
                 progressBarOfTeacherLogin.setVisibility(View.INVISIBLE);
             }
         });
+
     }
 
     private String  encrypt(String data, String password) throws Exception {
@@ -169,16 +204,46 @@ public class TeacherLoginActivity extends AppCompatActivity {
                         teacherLoginIntent.putExtra("uname",uname);
                         progressBarOfTeacherLogin.setVisibility(View.INVISIBLE);
                         startActivity(teacherLoginIntent);
+                        finish();
 
 
                     } else{
-                        TastyToast.makeText(TeacherLoginActivity.this, "Password is wrong", TastyToast.LENGTH_SHORT, TastyToast.ERROR);
+                        TastyToast.makeText(TeacherLoginActivity.this, "Username or Password is wrong", TastyToast.LENGTH_SHORT, TastyToast.ERROR);
 
                         progressBarOfTeacherLogin.setVisibility(View.INVISIBLE);
                     }
                 }else{
-                    TastyToast.makeText(TeacherLoginActivity.this, "Username or Password is wrong", TastyToast.LENGTH_SHORT, TastyToast.ERROR);
-                    progressBarOfTeacherLogin.setVisibility(View.INVISIBLE);
+                    databaseReference.child("students").addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+                            if(snapshot.hasChild(uname)){
+                                String dbPassword = snapshot.child(uname).child("password").getValue(String.class);
+
+                                if(dbPassword.equals(pword)){
+                                    TastyToast.makeText(TeacherLoginActivity.this, "Login successful", TastyToast.LENGTH_SHORT, TastyToast.SUCCESS);
+                                    Intent studentLoginIntent = new Intent(TeacherLoginActivity.this, StudentPageActivity.class);
+                                    Paper.book().write(OnlineUsers.UserNamekey, uname);
+                                    Paper.book().write(OnlineUsers.UserPasswordKey, pword);
+                                    studentLoginIntent.putExtra("uname", uname);
+                                    startActivity(studentLoginIntent);
+
+
+                                } else{
+                                    TastyToast.makeText(TeacherLoginActivity.this, "Username or Password is wrong", TastyToast.LENGTH_SHORT, TastyToast.ERROR);
+                                }
+                            } else{
+                                TastyToast.makeText(TeacherLoginActivity.this, "Username or Password is wrong", TastyToast.LENGTH_SHORT, TastyToast.ERROR);
+                            }
+                            progressBarOfTeacherLogin.setVisibility(View.INVISIBLE);
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+
+                        }
+                    });
+//                    TastyToast.makeText(TeacherLoginActivity.this, "Username or Password is wrong", TastyToast.LENGTH_SHORT, TastyToast.ERROR);
+//                    progressBarOfTeacherLogin.setVisibility(View.INVISIBLE);
                 }
             }
 
@@ -189,6 +254,8 @@ public class TeacherLoginActivity extends AppCompatActivity {
                 progressBarOfTeacherLogin.setVisibility(View.INVISIBLE);
             }
         });
+
+
     }
 
 }

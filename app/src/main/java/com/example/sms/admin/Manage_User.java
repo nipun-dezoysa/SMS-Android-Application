@@ -67,6 +67,21 @@ public class Manage_User extends AppCompatActivity {
     EditText Password;
     EditText ConfirmPwd;
 
+    TextView editRecords;
+    TextView register;
+    LinearLayout registerxml;
+    LinearLayout recordsxml;
+    Button searchbtn;
+    Button registerbtn;
+    Button savechange;
+    Button viewbtn;
+    Button deletebtn;
+    EditText editEmail;
+    EditText editContact;
+    EditText editpwd;
+    EditText editpwd1;
+    ImageView manage_std_back;
+
 
     String UsernameTxt;
     String EmailIDTxt;
@@ -99,28 +114,27 @@ public class Manage_User extends AppCompatActivity {
         setContentView(R.layout.activity_manage_user);
 
 
-        ImageView manage_std_back = (ImageView) findViewById(R.id.mng_std_back);
+        manage_std_back = findViewById(R.id.mng_std_back);
         manage_std_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                finish();
                 onBackPressed();
             }
         });
 
-        TextView editRecords = findViewById(R.id.edit_std);
-        TextView register = findViewById(R.id.register_std);
-        LinearLayout registerxml = findViewById(R.id.register_layout);
-        LinearLayout recordsxml = findViewById(R.id.register_layout1);
-        Button searchbtn = findViewById(R.id.search_btn);
-        Button registerbtn = findViewById(R.id.register_btn);
-        Button savechange = findViewById(R.id.save_btn);
-        Button viewbtn = findViewById(R.id.view_btn);
-        Button deletebtn = findViewById(R.id.delete_btn);
-        EditText editEmail = findViewById(R.id.eeid);
-        EditText editContact = findViewById(R.id.ecnid);
-        EditText editpwd = findViewById(R.id.cpid);
-        EditText editpwd1 = findViewById(R.id.ccpid);
+        editRecords = findViewById(R.id.edit_std);
+        register = findViewById(R.id.register_std);
+        registerxml = findViewById(R.id.register_layout);
+        recordsxml = findViewById(R.id.register_layout1);
+        searchbtn = findViewById(R.id.search_btn);
+        registerbtn = findViewById(R.id.register_btn);
+        savechange = findViewById(R.id.save_btn);
+        viewbtn = findViewById(R.id.view_btn);
+        deletebtn = findViewById(R.id.delete_btn);
+        editEmail = findViewById(R.id.eeid);
+        editContact = findViewById(R.id.ecnid);
+        editpwd = findViewById(R.id.cpid);
+        editpwd1 = findViewById(R.id.ccpid);
         checkBoxMaths = findViewById(R.id.checkBoxMaths);
         checkBoxScience = findViewById(R.id.checkBoxScience);
         radioBtnGrade10 = findViewById(R.id.radioBtnGrade10);
@@ -170,7 +184,7 @@ public class Manage_User extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(Manage_User.this, UserList.class);
-                TastyToast.makeText(Manage_User.this, "Tap hold to edit/delete", TastyToast.LENGTH_SHORT, TastyToast.INFO);
+                TastyToast.makeText(Manage_User.this, "Tap hold to edit/delete", TastyToast.LENGTH_SHORT, TastyToast.DEFAULT);
                 startActivity(intent);
 
 //                finish();
@@ -228,15 +242,6 @@ public class Manage_User extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-//                getpwdTxt = editStudentDetails.getPassword();
-//                getpwd1Txt = editStudentDetails.getPassword();
-
-//                try {
-//                    outputPassword1 = decrypt(editStudentDetails.getPassword(), editStudentDetails.getPassword());
-//                    decryptedPassword = outputPassword1;
-//                } catch (Exception e) {
-//                    e.printStackTrace();
-//                }
 
                 searchUnameTxt = searchUname.getText().toString();
 
@@ -257,8 +262,8 @@ public class Manage_User extends AppCompatActivity {
                                         editContact.setText(editStudentDetails.getContact());
                                         getSubject(editStudentDetails.getSubject());
                                         getGrade(editStudentDetails.getGrade());
-                                        editpwd.setText(editStudentDetails.getPassword());
-                                        editpwd1.setText(editStudentDetails.getPassword());
+//                                        editpwd.setText(editStudentDetails.getPassword());
+//                                        editpwd1.setText(editStudentDetails.getPassword());
                                     }
                                 });
 

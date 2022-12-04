@@ -159,11 +159,11 @@ public class TeacherPageActivity extends AppCompatActivity {
                                 .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialog, int which) {
-//                                        Intent logoutIntent = new Intent(v.getContext(), TeacherLoginActivity.class);
-//                                        v.getContext().startActivity(logoutIntent);
                                         finish();
                                         Paper.book().destroy();
                                         TastyToast.makeText(v.getContext(), " Logged out successfully", TastyToast.LENGTH_SHORT, TastyToast.SUCCESS);
+                                        Intent logoutIntent = new Intent(v.getContext(), TeacherLoginActivity.class);
+                                        v.getContext().startActivity(logoutIntent);
 
                                     }
                                 })
@@ -404,6 +404,7 @@ public class TeacherPageActivity extends AppCompatActivity {
                         e.printStackTrace();
                     }
                     verifyCurrentPwd(currentEncryptedPassword, newPwdTxt, confirmNewPwdTxt);
+//                    verifyCurrentPwd(currentPwdTxt, newPwdTxt, confirmNewPwdTxt);
                 }
             }
         });

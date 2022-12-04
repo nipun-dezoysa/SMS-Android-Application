@@ -187,6 +187,10 @@
         </activity>
         <activity android:name=".students.StudentPageActivity" />
         <activity android:name=".PopUp" />
+        <activity android:name=".students.StudentFingerPrintAuth"
+        android:exported="false"
+        />
+
         <activity
             android:name="com.yalantis.ucrop.UCropActivity"
             android:screenOrientation="portrait"
