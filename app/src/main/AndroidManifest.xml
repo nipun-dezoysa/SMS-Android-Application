@@ -173,7 +173,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".students.StudentLoginActivity" />
-        <activity android:name=".admin.TeacherLoginActivity" />
+        <activity android:name=".admin.LoginActivity" />
         <activity
             android:name=".admin.TeacherPageActivity"
             android:exported="false">

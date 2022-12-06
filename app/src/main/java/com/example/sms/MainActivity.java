@@ -3,13 +3,10 @@ package com.example.sms;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
-import android.view.View;
-import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.sms.admin.TeacherLoginActivity;
-import com.example.sms.students.StudentLoginActivity;
+import com.example.sms.admin.LoginActivity;
 
 public class MainActivity extends AppCompatActivity {
     Handler handler = new Handler();
@@ -21,7 +18,7 @@ public class MainActivity extends AppCompatActivity {
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent intent = new Intent(MainActivity.this, TeacherLoginActivity.class);
+                Intent intent = new Intent(MainActivity.this, LoginActivity.class);
                 startActivity(intent);
                 finish();
 
@@ -43,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
 //        btn_teacher.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View v) {
-//                Intent teacherLoginIntent = new Intent(MainActivity.this, TeacherLoginActivity.class);
+//                Intent teacherLoginIntent = new Intent(MainActivity.this, LoginActivity.class);
 //                startActivity(teacherLoginIntent);
 //                finish();
 //            }

@@ -42,7 +42,6 @@ import com.example.sms.interfaces.TeacherCallback;
 import com.example.sms.model.Teacher;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -162,7 +161,7 @@ public class TeacherPageActivity extends AppCompatActivity {
                                         finish();
                                         Paper.book().destroy();
                                         TastyToast.makeText(v.getContext(), " Logged out successfully", TastyToast.LENGTH_SHORT, TastyToast.SUCCESS);
-                                        Intent logoutIntent = new Intent(v.getContext(), TeacherLoginActivity.class);
+                                        Intent logoutIntent = new Intent(v.getContext(), LoginActivity.class);
                                         v.getContext().startActivity(logoutIntent);
 
                                     }
