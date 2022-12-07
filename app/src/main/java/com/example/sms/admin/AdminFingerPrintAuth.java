@@ -44,6 +44,7 @@ public class AdminFingerPrintAuth extends AppCompatActivity {
                 Intent intent1 = new Intent(AdminFingerPrintAuth.this, TeacherPageActivity.class);
                 intent.putExtra("uname", uname);
                 startActivity(intent1);
+
                 finish();
         }
 
