@@ -57,7 +57,7 @@
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="45dp"
                 android:layout_marginRight="30dp"
-                android:text="Hi"
+                android:text="Welcome back"
                 android:textSize="22sp"
                 android:textStyle="bold" />
 
@@ -69,7 +69,7 @@
                 android:layout_marginTop="45dp"
                 android:layout_toEndOf="@+id/hi"
                 android:layout_toRightOf="@+id/hi"
-                android:text="Hi (Nickname))!!! "
+                android:hint="Nickname"
                 android:textSize="22sp"
                 android:textStyle="bold" />
 

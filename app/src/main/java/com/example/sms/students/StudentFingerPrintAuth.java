@@ -14,6 +14,8 @@ import com.sdsmdg.tastytoast.TastyToast;
 
 import java.util.concurrent.Executor;
 
+import io.paperdb.Paper;
+
 public class StudentFingerPrintAuth extends AppCompatActivity {
 
     String uname;
@@ -25,9 +27,11 @@ public class StudentFingerPrintAuth extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        Paper.init(StudentFingerPrintAuth.this);
+        uname = Paper.book().read(OnlineUsers.UserNamekey);
 
-        Intent intent= getIntent();
-        uname = intent.getStringExtra("uname");
+//        Intent intent= getIntent();
+//        uname = intent.getStringExtra("uname");
 
         BiometricManager biometricManager = BiometricManager.from(this);
         switch (biometricManager.canAuthenticate()){
@@ -43,7 +47,7 @@ public class StudentFingerPrintAuth extends AppCompatActivity {
                 TastyToast.makeText(this, "No fingerprint assigned", TastyToast.LENGTH_SHORT, TastyToast.INFO);
 
                 Intent intent1 = new Intent(StudentFingerPrintAuth.this, StudentPageActivity.class);
-                intent.putExtra("uname", uname);
+//                intent.putExtra("uname", uname);
                 startActivity(intent1);
                 finish();
         }
@@ -61,7 +65,7 @@ public class StudentFingerPrintAuth extends AppCompatActivity {
                 super.onAuthenticationSucceeded(result);
                 TastyToast.makeText(getApplicationContext(), "Login successful", TastyToast.LENGTH_SHORT, TastyToast.SUCCESS);
                 Intent intent = new Intent(StudentFingerPrintAuth.this, StudentPageActivity.class);
-                intent.putExtra("uname", uname);
+//                intent.putExtra("uname", uname);
                 startActivity(intent);
                 finish();
             }

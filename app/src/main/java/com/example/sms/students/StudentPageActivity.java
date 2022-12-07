@@ -37,6 +37,7 @@ import com.example.sms.NotesActivity;
 import com.example.sms.PopUp;
 import com.example.sms.R;
 import com.example.sms.ScheduleStud;
+import com.example.sms.admin.TeacherPageActivity;
 import com.example.sms.interfaces.UserStudentCallback;
 import com.example.sms.model.UserStudent;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -172,8 +173,10 @@ public class StudentPageActivity extends AppCompatActivity {
             }
         });
 
-        Intent intent= getIntent();
-        uname = intent.getStringExtra("uname");
+        Paper.init(StudentPageActivity.this);
+        uname = Paper.book().read(OnlineUsers.UserNamekey);
+//        Intent intent= getIntent();
+//        uname = intent.getStringExtra("uname");
 
         storageReference = FirebaseStorage.getInstance().getReference("images/"+uname);
 

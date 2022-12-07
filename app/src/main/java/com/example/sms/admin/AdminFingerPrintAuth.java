@@ -9,9 +9,12 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import com.example.sms.R;
+import com.example.sms.students.OnlineUsers;
 import com.sdsmdg.tastytoast.TastyToast;
 
 import java.util.concurrent.Executor;
+
+import io.paperdb.Paper;
 
 public class AdminFingerPrintAuth extends AppCompatActivity {
 
@@ -20,13 +23,18 @@ public class AdminFingerPrintAuth extends AppCompatActivity {
     androidx.biometric.BiometricPrompt biometricPrompt;
     androidx.biometric.BiometricPrompt.PromptInfo promptInfo;
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
 
-        Intent intent= getIntent();
-        uname = intent.getStringExtra("uname");
+//        Intent intent= getIntent();
+//        uname = intent.getStringExtra("uname");
+
+        Paper.init(AdminFingerPrintAuth.this);
+        uname = Paper.book().read(OnlineUsers.UserNamekey);
 
         BiometricManager biometricManager = BiometricManager.from(this);
         switch (biometricManager.canAuthenticate()){
@@ -42,9 +50,8 @@ public class AdminFingerPrintAuth extends AppCompatActivity {
                 TastyToast.makeText(this, "No fingerprint assigned", TastyToast.LENGTH_SHORT, TastyToast.INFO);
 
                 Intent intent1 = new Intent(AdminFingerPrintAuth.this, TeacherPageActivity.class);
-                intent.putExtra("uname", uname);
+//                intent.putExtra("uname", uname);
                 startActivity(intent1);
-
                 finish();
         }
 
@@ -61,7 +68,7 @@ public class AdminFingerPrintAuth extends AppCompatActivity {
                 super.onAuthenticationSucceeded(result);
                 TastyToast.makeText(getApplicationContext(), "Login successful", TastyToast.LENGTH_SHORT, TastyToast.SUCCESS);
                 Intent intent = new Intent(AdminFingerPrintAuth.this, TeacherPageActivity.class);
-                intent.putExtra("uname", uname);
+//                intent.putExtra("uname", uname);
                 startActivity(intent);
                 finish();
             }

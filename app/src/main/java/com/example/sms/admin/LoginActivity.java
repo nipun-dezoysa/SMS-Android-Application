@@ -199,7 +199,7 @@ public class LoginActivity extends AppCompatActivity {
                         Intent teacherLoginIntent = new Intent(LoginActivity.this, TeacherPageActivity.class);
                         Paper.book().write(OnlineUsers.UserNamekey, uname);
                         Paper.book().write(OnlineUsers.UserPasswordKey, pword);
-                        teacherLoginIntent.putExtra("uname",uname);
+//                        teacherLoginIntent.putExtra("uname",uname);
                         progressBarOfTeacherLogin.setVisibility(View.INVISIBLE);
                         startActivity(teacherLoginIntent);
                         finish();
@@ -222,7 +222,7 @@ public class LoginActivity extends AppCompatActivity {
                                     Intent studentLoginIntent = new Intent(LoginActivity.this, StudentPageActivity.class);
                                     Paper.book().write(OnlineUsers.UserNamekey, uname);
                                     Paper.book().write(OnlineUsers.UserPasswordKey, pword);
-                                    studentLoginIntent.putExtra("uname", uname);
+//                                    studentLoginIntent.putExtra("uname", uname);
                                     startActivity(studentLoginIntent);
 
 

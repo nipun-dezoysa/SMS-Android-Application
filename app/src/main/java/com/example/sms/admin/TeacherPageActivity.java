@@ -40,6 +40,7 @@ import com.example.sms.R;
 import com.example.sms.Test2;
 import com.example.sms.interfaces.TeacherCallback;
 import com.example.sms.model.Teacher;
+import com.example.sms.students.OnlineUsers;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DataSnapshot;
@@ -197,10 +198,11 @@ public class TeacherPageActivity extends AppCompatActivity {
         });
 
         //    back error end
+        Paper.init(TeacherPageActivity.this);
+        uname = Paper.book().read(OnlineUsers.UserNamekey);
 
-
-        Intent intent= getIntent();
-        uname = intent.getStringExtra("uname");
+//        Intent intent= getIntent();
+//        uname = intent.getStringExtra("uname");
         //String username=getIntent().getStringExtra("username");
 
         storageReference = FirebaseStorage.getInstance().getReference("images/"+uname);
