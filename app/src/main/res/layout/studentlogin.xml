@@ -27,7 +27,7 @@
         android:layout_marginTop="1dp"
         android:letterSpacing="0.05"
         android:text="Login"
-        android:textColor="#0d6e6a"
+        android:textColor="@color/darkgreen"
         android:textSize="40sp"
         android:textStyle="bold" />
 
@@ -37,7 +37,7 @@
         android:text="Login as a student"
         android:textSize="20dp"
         android:textStyle="bold"
-        android:textColor="#0d6e6a"
+        android:textColor="@color/darkgreen"
         android:letterSpacing="0.03"/>
 
     <EditText
@@ -75,7 +75,7 @@
         android:layout_marginRight="35dp"
         android:minHeight="48dp"
         android:text="Forgot Password?"
-        android:textColor="#0d6e6a"
+        android:textColor="@color/darkgreen"
         android:textSize="18dp"
         android:textStyle="bold" />
 

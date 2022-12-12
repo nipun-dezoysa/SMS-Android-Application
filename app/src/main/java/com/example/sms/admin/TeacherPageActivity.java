@@ -35,9 +35,10 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.bumptech.glide.Glide;
 import com.example.sms.CropperActivity;
+import com.example.sms.LoginActivity;
 import com.example.sms.NotesActivity;
 import com.example.sms.R;
-import com.example.sms.Test2;
+import com.example.sms.AddPhotos;
 import com.example.sms.interfaces.TeacherCallback;
 import com.example.sms.model.Teacher;
 import com.example.sms.students.OnlineUsers;
@@ -317,7 +318,7 @@ public class TeacherPageActivity extends AppCompatActivity {
         galleryimg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(TeacherPageActivity.this, Test2.class));
+                startActivity(new Intent(TeacherPageActivity.this, AddPhotos.class));
             }
         });
 

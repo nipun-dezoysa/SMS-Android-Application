@@ -4,13 +4,13 @@
     <color name="purple_500">#FF6200EE</color>
     <color name="purple_700">#FF3700B3</color>
     <color name="teal_200">#FF03DAC5</color>
-    <color name="teal_700">#FF018786</color>
+    <color name="darkgreen">#01302F</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="colorWhite">#FFFFFF</color>
     <color name="colorGreen">#0d6e6a</color>
     <color name="transparentclr">#000D6E6A</color>
-    <color name="btnclr">#0d6e6a</color>
+    <color name="btnclr">#015249</color>
 
     <color name="grey">#929090</color>
     <color name="green">#952CA876</color>

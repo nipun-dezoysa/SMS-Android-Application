@@ -12,7 +12,7 @@
 
         <RelativeLayout
             android:id="@+id/menu"
-            android:background="@color/teal_700"
+            android:background="@color/darkgreen"
             android:layout_width="match_parent"
             android:layout_height="120dp">
 
@@ -30,6 +30,7 @@
                 android:layout_centerInParent="true"
                 android:text="Note Detail"
                 android:textSize="30dp"
+                android:textColor="@color/white"
                 android:textStyle="bold|normal" />
 
 

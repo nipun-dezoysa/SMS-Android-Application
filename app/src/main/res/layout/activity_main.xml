@@ -28,7 +28,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="80dp"
             android:text="WELCOME"
-            android:textColor="#0d6e6a"
+            android:textColor="@color/darkgreen"
             android:textSize="40dp"
             android:textStyle="bold" />
         <TextView
@@ -36,7 +36,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:text="TO"
-            android:textColor="#0d6e6a"
+            android:textColor="@color/darkgreen"
             android:textSize="40dp"
             android:textStyle="bold" />
         <TextView
@@ -44,7 +44,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:text="ASMS"
-            android:textColor="#0d6e6a"
+            android:textColor="@color/darkgreen"
             android:textSize="40dp"
             android:textStyle="bold" />
 

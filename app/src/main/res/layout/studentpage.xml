@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"
+    tools:context=".students.StudentPageActivity"
     >
 
     <androidx.cardview.widget.CardView
@@ -24,7 +24,7 @@
         android:layout_height="wrap_content">
 
         <RelativeLayout
-            android:background="@color/teal_700"
+            android:background="@color/darkgreen"
             android:layout_width="match_parent"
             android:layout_height="120dp">
 
@@ -35,7 +35,8 @@
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="45dp"
                 android:layout_marginRight="30dp"
-                android:text="Hi"
+                android:text="Welcome back"
+                android:textColor="@color/white"
                 android:textSize="22sp"
                 android:textStyle="bold" />
 
@@ -47,7 +48,9 @@
                 android:layout_marginTop="45dp"
                 android:layout_toEndOf="@+id/hii"
                 android:layout_toRightOf="@+id/hii"
-                android:text="Hi (Nickname))!!! "
+                android:hint="Nickname"
+                android:textColorHint="@color/white"
+                android:textColor="@color/white"
                 android:textSize="22sp"
                 android:textStyle="bold" />
 
@@ -77,6 +80,7 @@
                 android:layout_below="@+id/dashboardtxt1"
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="5dp"
+                android:textColor="@color/white"
                 android:layout_marginRight="30dp"
                 android:textSize="18dp"
                 android:textStyle="bold" />
@@ -88,6 +92,7 @@
                 android:layout_below="@+id/dashboardtxt1"
                 android:layout_marginLeft="-15dp"
                 android:layout_marginTop="5dp"
+                android:textColor="@color/white"
                 android:layout_toRightOf="@+id/current_date1"
                 android:textSize="18dp"
                 android:textStyle="bold" />

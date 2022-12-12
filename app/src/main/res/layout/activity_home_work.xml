@@ -12,7 +12,7 @@
 
 
     <RelativeLayout
-        android:background="@color/teal_700"
+        android:background="@color/darkgreen"
         android:layout_width="match_parent"
         android:layout_height="120dp">
 
@@ -29,6 +29,7 @@
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:text="Home Work"
+            android:textColor="@color/white"
             android:textSize="30dp"
             android:textStyle="bold|normal" />
 
@@ -55,7 +56,7 @@
 
 
                     <androidx.cardview.widget.CardView
-                        android:layout_height="wrap_content"
+                        android:layout_height="100dp"
                         android:layout_width="wrap_content"
                         android:layout_columnWeight="1"
                         android:layout_rowWeight="1"
@@ -69,13 +70,13 @@
                             android:orientation="vertical"
                             android:padding="16dp"
                             android:gravity="center"
+                            android:background="@color/darkgreen"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent">
 
 
                             <TextView
-                                android:textColor="@color/cardview_dark_background"
-                                android:layout_marginTop="12dp"
+                                android:textColor="@color/white"
                                 android:text="Grade 10"
                                 android:textSize="25dp"
                                 android:gravity="center_vertical"
@@ -92,7 +93,7 @@
 
 
                     <androidx.cardview.widget.CardView
-                        android:layout_height="wrap_content"
+                        android:layout_height="100dp"
                         android:layout_width="wrap_content"
                         android:layout_columnWeight="1"
                         android:layout_rowWeight="1"
@@ -106,13 +107,13 @@
                             android:orientation="vertical"
                             android:padding="16dp"
                             android:gravity="center"
+                            android:background="@color/darkgreen"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent">
 
 
                             <TextView
-                                android:textColor="@color/cardview_dark_background"
-                                android:layout_marginTop="12dp"
+                                android:textColor="@color/white"
                                 android:text="Grade 11"
                                 android:textSize="25dp"
                                 android:layout_gravity="center_vertical"

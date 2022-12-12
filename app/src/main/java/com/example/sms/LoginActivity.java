@@ -1,4 +1,4 @@
-package com.example.sms.admin;
+package com.example.sms;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -14,7 +14,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.sms.R;
+import com.example.sms.admin.AdminFingerPrintAuth;
+import com.example.sms.admin.TeacherPageActivity;
 import com.example.sms.students.OnlineUsers;
 import com.example.sms.students.StudentFingerPrintAuth;
 import com.example.sms.students.StudentPageActivity;
@@ -41,26 +42,27 @@ public class LoginActivity extends AppCompatActivity {
     String encryptedPassword;
     String AES = "AES";
 
-    ProgressBar progressBarOfTeacherLogin;
+    ProgressBar progressBarOfLogin;
 
     DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReferenceFromUrl("https://asms-365d0-default-rtdb.firebaseio.com/");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.teacherlogin);
+        setContentView(R.layout.login);
 
         EditText username = findViewById(R.id.txtTeaUserName);
         TextView password = findViewById(R.id.txtTeaPassWord);
-        Button login_btn = findViewById(R.id.btnTeaLogin);
+        Button login_btn = findViewById(R.id.btnLogin);
 //        TextView back_btn = findViewById(R.id.btntxtTeaLogin);
-        progressBarOfTeacherLogin = findViewById(R.id.progressBarOfTeacherLogin);
+        progressBarOfLogin = findViewById(R.id.progressBarOfTeacherLogin);
 
         Paper.init(LoginActivity.this);
         String UserNameKey = Paper.book().read(OnlineUsers.UserNamekey);
         String UserPasswordKey = Paper.book().read(OnlineUsers.UserPasswordKey);
 
         if (UserNameKey != "" && UserPasswordKey != "") {
+            progressBarOfLogin.setVisibility(View.VISIBLE);
             if (!TextUtils.isEmpty(UserNameKey) && !TextUtils.isEmpty(UserPasswordKey)) {
                 autoLogin(UserNameKey, UserPasswordKey);
             }
@@ -93,7 +95,7 @@ public class LoginActivity extends AppCompatActivity {
                      e.printStackTrace();
                  }
                  loginUser(uname,encryptedPassword);
-                 progressBarOfTeacherLogin.setVisibility(View.VISIBLE);
+                 progressBarOfLogin.setVisibility(View.VISIBLE);
 //                 finish();
              }
             }
@@ -113,13 +115,13 @@ public class LoginActivity extends AppCompatActivity {
 //                        TastyToast.makeText(LoginActivity.this, "Login successful", TastyToast.LENGTH_SHORT, TastyToast.SUCCESS);
                         Intent loginIntent = new Intent(LoginActivity.this, AdminFingerPrintAuth.class);
                         loginIntent.putExtra("uname", userNameKey);
-                        progressBarOfTeacherLogin.setVisibility(View.INVISIBLE);
+                        progressBarOfLogin.setVisibility(View.INVISIBLE);
                         startActivity(loginIntent);
                         finish();
 
                     } else{
                         TastyToast.makeText(LoginActivity.this, "It seems you have changed your password. Please login with your new password.", TastyToast.LENGTH_LONG, TastyToast.INFO);
-                        progressBarOfTeacherLogin.setVisibility(View.INVISIBLE);
+                        progressBarOfLogin.setVisibility(View.INVISIBLE);
                     }
                 }else {
                     databaseReference.child("students").addListenerForSingleValueEvent(new ValueEventListener() {
@@ -132,18 +134,18 @@ public class LoginActivity extends AppCompatActivity {
 //                        TastyToast.makeText(StudentLoginActivity.this, "Login successful", TastyToast.LENGTH_SHORT, TastyToast.SUCCESS);
                                     Intent studentLoginIntent = new Intent(LoginActivity.this, StudentFingerPrintAuth.class);
                                     studentLoginIntent.putExtra("uname", userNameKey);
-                                    progressBarOfTeacherLogin.setVisibility(View.INVISIBLE);
+                                    progressBarOfLogin.setVisibility(View.INVISIBLE);
                                     startActivity(studentLoginIntent);
 
 
 
                                 } else{
                                     TastyToast.makeText(LoginActivity.this, "It seems you have changed your password. Please login with your new password.", TastyToast.LENGTH_LONG, TastyToast.INFO);
-                                    progressBarOfTeacherLogin.setVisibility(View.INVISIBLE);
+                                    progressBarOfLogin.setVisibility(View.INVISIBLE);
                                 }
                             }else {
 //                    TastyToast.makeText(LoginActivity.this, "Please visit your relevant login page.", TastyToast.LENGTH_SHORT, TastyToast.DEFAULT);
-                                progressBarOfTeacherLogin.setVisibility(View.INVISIBLE);
+                                progressBarOfLogin.setVisibility(View.INVISIBLE);
                             }
 
                         }
@@ -151,7 +153,7 @@ public class LoginActivity extends AppCompatActivity {
                         @Override
                         public void onCancelled(@NonNull DatabaseError error) {
                             TastyToast.makeText(LoginActivity.this, "Connection failed", TastyToast.LENGTH_SHORT, TastyToast.ERROR);
-                            progressBarOfTeacherLogin.setVisibility(View.INVISIBLE);
+                            progressBarOfLogin.setVisibility(View.INVISIBLE);
                         }
                     });
 //                    TastyToast.makeText(LoginActivity.this, "Please visit your relevant login page.", TastyToast.LENGTH_SHORT, TastyToast.DEFAULT);
@@ -163,7 +165,7 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
                 TastyToast.makeText(LoginActivity.this, "Connection failed", TastyToast.LENGTH_SHORT, TastyToast.ERROR);
-                progressBarOfTeacherLogin.setVisibility(View.INVISIBLE);
+                progressBarOfLogin.setVisibility(View.INVISIBLE);
             }
         });
 
@@ -200,7 +202,7 @@ public class LoginActivity extends AppCompatActivity {
                         Paper.book().write(OnlineUsers.UserNamekey, uname);
                         Paper.book().write(OnlineUsers.UserPasswordKey, pword);
 //                        teacherLoginIntent.putExtra("uname",uname);
-                        progressBarOfTeacherLogin.setVisibility(View.INVISIBLE);
+                        progressBarOfLogin.setVisibility(View.INVISIBLE);
                         startActivity(teacherLoginIntent);
                         finish();
 
@@ -208,7 +210,7 @@ public class LoginActivity extends AppCompatActivity {
                     } else{
                         TastyToast.makeText(LoginActivity.this, "Username or Password is wrong", TastyToast.LENGTH_SHORT, TastyToast.ERROR);
 
-                        progressBarOfTeacherLogin.setVisibility(View.INVISIBLE);
+                        progressBarOfLogin.setVisibility(View.INVISIBLE);
                     }
                 }else{
                     databaseReference.child("students").addListenerForSingleValueEvent(new ValueEventListener() {
@@ -232,7 +234,7 @@ public class LoginActivity extends AppCompatActivity {
                             } else{
                                 TastyToast.makeText(LoginActivity.this, "Username or Password is wrong", TastyToast.LENGTH_SHORT, TastyToast.ERROR);
                             }
-                            progressBarOfTeacherLogin.setVisibility(View.INVISIBLE);
+                            progressBarOfLogin.setVisibility(View.INVISIBLE);
                         }
 
                         @Override
@@ -249,7 +251,7 @@ public class LoginActivity extends AppCompatActivity {
             public void onCancelled(@NonNull DatabaseError error) {
                 TastyToast.makeText(LoginActivity.this, "Connection failed", TastyToast.LENGTH_SHORT, TastyToast.ERROR);
 
-                progressBarOfTeacherLogin.setVisibility(View.INVISIBLE);
+                progressBarOfLogin.setVisibility(View.INVISIBLE);
             }
         });
 

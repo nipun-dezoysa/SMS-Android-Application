@@ -8,35 +8,36 @@
     android:id="@+id/cardView">
 
     <LinearLayout
-        android:padding="10dp"
-        android:layout_width="match_parent"
+        android:layout_width="367dp"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:padding="10dp">
 
         <TextView
             android:id="@+id/text_sub_name"
-            android:layout_marginLeft="5dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
             android:hint="Subject Name"
-            android:textSize="20dp"
+            android:padding="5dp"
             android:textColor="@color/black"
-            android:padding="5dp">
+            android:textColorHint="@color/black"
+            android:textSize="20dp">
 
         </TextView>
 
         <TextView
             android:id="@+id/text_sub_question"
-            android:layout_marginLeft="5dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
             android:hint="Subject Question"
-            android:textSize="15dp"
+            android:padding="5dp"
             android:textColor="@color/black"
-            android:padding="5dp">
+            android:textColorHint="@color/black"
+            android:textSize="15dp">
 
         </TextView>
-
 
 
     </LinearLayout>

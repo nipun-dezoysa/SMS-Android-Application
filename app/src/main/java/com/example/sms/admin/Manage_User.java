@@ -197,7 +197,7 @@ public class Manage_User extends AppCompatActivity {
                 editRecords.setTextColor(getResources().getColor(R.color.white));
                 editRecords.setBackground(getDrawable(R.drawable.switch_trcks));
                 register.setBackground(null);
-                register.setTextColor(getResources().getColor(R.color.teal_700));
+                register.setTextColor(getResources().getColor(R.color.darkgreen));
                 registerxml.setVisibility(View.GONE);
                 recordsxml.setVisibility(View.VISIBLE);
                 registerbtn.setVisibility(View.GONE);
@@ -222,7 +222,7 @@ public class Manage_User extends AppCompatActivity {
                 register.setTextColor(getResources().getColor(R.color.white));
                 register.setBackground(getDrawable(R.drawable.switch_trcks));
                 editRecords.setBackground(null);
-                editRecords.setTextColor(getResources().getColor(R.color.teal_700));
+                editRecords.setTextColor(getResources().getColor(R.color.darkgreen));
                 registerxml.setVisibility(View.VISIBLE);
                 recordsxml.setVisibility(View.GONE);
                 searchbtn.setVisibility(View.GONE);

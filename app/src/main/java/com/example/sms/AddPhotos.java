@@ -25,7 +25,7 @@ import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
-public class Test2 extends AppCompatActivity {
+public class AddPhotos extends AppCompatActivity {
 
 //    widgets
 
@@ -41,7 +41,7 @@ public class Test2 extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_test2);
+        setContentView(R.layout.add_photos);
 
         back_btn = findViewById(R.id.addPics_back);
         uploadBtn = findViewById(R.id.upload_btn);
@@ -61,7 +61,7 @@ public class Test2 extends AppCompatActivity {
         showAllBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(Test2.this, ShowActivity.class));
+                startActivity(new Intent(AddPhotos.this, ShowActivity.class));
             }
         });
 
@@ -82,7 +82,7 @@ public class Test2 extends AppCompatActivity {
                     uploadToFirebase(imageUri);
 
                 }else {
-                    Toast.makeText(Test2.this, "Please select image", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(AddPhotos.this, "Please select image", Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -116,7 +116,7 @@ public class Test2 extends AppCompatActivity {
                         String modelId = root.push().getKey();
                         root.child(modelId).setValue(model);
                         progressBar.setVisibility(View.INVISIBLE);
-                        Toast.makeText(Test2.this, "Uploaded Successfully", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(AddPhotos.this, "Uploaded Successfully", Toast.LENGTH_SHORT).show();
                         imageView.setImageResource(R.drawable.img);
                     }
                 });
@@ -130,7 +130,7 @@ public class Test2 extends AppCompatActivity {
             @Override
             public void onFailure(@NonNull Exception e) {
                 progressBar.setVisibility(View.INVISIBLE);
-                Toast.makeText(Test2.this, "Uploading Failed", Toast.LENGTH_SHORT).show();
+                Toast.makeText(AddPhotos.this, "Uploading Failed", Toast.LENGTH_SHORT).show();
             }
         });
 

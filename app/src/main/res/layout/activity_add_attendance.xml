@@ -12,7 +12,7 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="120dp"
-            android:background="@color/teal_700">
+            android:background="@color/darkgreen">
 
             <ImageView
                 android:id="@+id/add_attendance_back"
@@ -27,6 +27,7 @@
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
                 android:text="Add Attendance"
+                android:textColor="@color/white"
                 android:textSize="30dp"
                 android:textStyle="bold|normal" />
 

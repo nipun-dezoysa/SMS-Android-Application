@@ -11,7 +11,7 @@
         android:layout_height="match_parent">
 
         <RelativeLayout
-            android:background="@color/teal_700"
+            android:background="@color/darkgreen"
             android:layout_width="match_parent"
             android:layout_height="120dp">
 
@@ -29,6 +29,7 @@
                 android:layout_centerInParent="true"
                 android:text="Grade 11"
                 android:textSize="30dp"
+                android:textColor="@color/white"
                 android:textStyle="bold|normal" />
 
 
@@ -80,7 +81,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Add Questions"
-                android:background="@drawable/swtch_tymbs"/>
+                android:textColor="@color/white"
+                android:background="@color/darkgreen"/>
         </LinearLayout>
 
 

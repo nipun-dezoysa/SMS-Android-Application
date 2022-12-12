@@ -6,8 +6,6 @@ import android.os.Handler;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.sms.admin.LoginActivity;
-
 public class MainActivity extends AppCompatActivity {
     Handler handler = new Handler();
 

@@ -8,7 +8,7 @@
     tools:context=".students.TextRecognitionStud">
 
     <RelativeLayout
-        android:background="@color/teal_700"
+        android:background="@color/darkgreen"
         android:layout_width="match_parent"
         android:layout_height="120dp">
 
@@ -25,6 +25,7 @@
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:text="Text Recognition"
+            android:textColor="@color/white"
             android:textSize="30dp"
             android:textStyle="bold|normal" />
 
@@ -44,6 +45,8 @@
             android:layout_height="match_parent"
             android:layout_marginEnd="5dp"
             android:layout_weight="1"
+            android:background="@drawable/btn"
+            android:textColor="@color/white"
             android:text="Take Image"
             app:cornerRadius="5dp"
             app:icon="@drawable/cam_add"
@@ -58,6 +61,8 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:icon="@drawable/scan"
+            android:background="@drawable/btn"
+            android:textColor="@color/white"
             />
 
     </LinearLayout>
