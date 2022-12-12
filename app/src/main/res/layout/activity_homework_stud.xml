@@ -46,21 +46,18 @@
         android:layout_gravity="center"
         android:src="@drawable/logo_transparentnew" />
 
-        <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="240dp">
 
-        <LinearLayout
-            android:id="@+id/container"
+        <androidx.recyclerview.widget.RecyclerView
+            android:paddingStart="5dp"
+            android:id="@+id/homeworkstd_recyclerview"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_height="match_parent"
+            android:layout_marginTop="130dp"
+            android:scrollbars="vertical">
 
-        </LinearLayout>
 
+        </androidx.recyclerview.widget.RecyclerView>
 
-    </ScrollView>
 
     </androidx.cardview.widget.CardView>
 

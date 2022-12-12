@@ -65,7 +65,7 @@ public class LoginActivity extends AppCompatActivity {
             progressBarOfLogin.setVisibility(View.VISIBLE);
             if (!TextUtils.isEmpty(UserNameKey) && !TextUtils.isEmpty(UserPasswordKey)) {
                 autoLogin(UserNameKey, UserPasswordKey);
-            }
+            } progressBarOfLogin.setVisibility(View.INVISIBLE);
         }
 
 //        back_btn.setOnClickListener(new View.OnClickListener() {

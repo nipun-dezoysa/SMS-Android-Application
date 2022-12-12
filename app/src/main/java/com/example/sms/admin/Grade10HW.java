@@ -106,14 +106,6 @@ public class Grade10HW extends AppCompatActivity {
     }
 
     private void loadAllQuestions() {
-//        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getApplicationContext());
-//        questionArrayList = new ArrayList<>();
-//        linearLayoutManager.setReverseLayout(true);
-//        linearLayoutManager.setStackFromEnd(true);
-//        homework_rv.setLayoutManager(new LinearLayoutManager(this));
-//        questionAdapter = new QuestionAdapter(this, questionArrayList);
-//        homework_rv.setAdapter(questionAdapter);
-//        Question question = new Question();
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         questionArrayList = new ArrayList<>();
@@ -137,11 +129,6 @@ public class Grade10HW extends AppCompatActivity {
                             questionArrayList.add(question);
                         }
                         questionAdapter.notifyDataSetChanged();
-
-                        //setup adapter
-//                        questionAdapter = new QuestionAdapter(getApplicationContext(), questionArrayList);
-                        //set adapter
-//                        homework_rv.setAdapter(questionAdapter);
 
                     }
 

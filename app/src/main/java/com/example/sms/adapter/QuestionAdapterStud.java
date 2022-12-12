@@ -19,16 +19,14 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
 
-public class QuestionAdapter extends RecyclerView.Adapter<QuestionAdapter.QuestionView> {
+public class QuestionAdapterStud extends RecyclerView.Adapter<QuestionAdapterStud.QuestionView> {
 
     private Context context;
     private ArrayList<Question> questionArrayList;
-//    private SelectListener selectListener;
 
-    public QuestionAdapter(Context context, ArrayList<Question> questionArrayList) {
+    public QuestionAdapterStud(Context context, ArrayList<Question> questionArrayList) {
         this.context = context;
         this.questionArrayList = questionArrayList;
-//        this.selectListener = selectListener;
     }
 
 
@@ -46,34 +44,12 @@ public class QuestionAdapter extends RecyclerView.Adapter<QuestionAdapter.Questi
     public void onBindViewHolder(@NonNull QuestionView holder, int position) {
 
         Question question = questionArrayList.get(position);
-        String timestamp = question.getTimestamp();
         holder.textQuestion.setText(question.getQuestion());
         holder.textSubject.setText(question.getSubjectName());
 
-        holder.remove.setOnClickListener(new View.OnClickListener() {
-            Question question;
-            @Override
-            public void onClick(View v) {
-                DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference();
-                databaseReference.child("homework").child(Home_Work.Grade).child(timestamp).removeValue();
-            }
-        });
 
-//        holder.cardView.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                selectListener.onItemClicked(questionArrayList.get(position));
-//            }
-//        });
+        holder.remove.setVisibility(View.GONE);
 
-//        holder.itemView.setOnTouchListener(new View.OnTouchListener() {
-//            @Override
-//            public boolean onTouch(View v, MotionEvent event) {
-//                TastyToast.makeText(context, "Clicked successfully", TastyToast.LENGTH_SHORT, TastyToast.SUCCESS).show();
-//                return false;
-////
-//            }
-//        });
 
     }
 
@@ -87,7 +63,6 @@ public class QuestionAdapter extends RecyclerView.Adapter<QuestionAdapter.Questi
         TextView textQuestion, textSubject;
         CardView cardView;
         ImageView remove;
-        String id;
         public QuestionView(@NonNull View itemView) {
             super(itemView);
 
