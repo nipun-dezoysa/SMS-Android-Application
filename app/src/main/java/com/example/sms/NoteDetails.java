@@ -10,7 +10,10 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.sms.students.OnlineUsers;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
+import io.paperdb.Paper;
 
 public class NoteDetails extends AppCompatActivity {
 
@@ -26,8 +29,11 @@ public class NoteDetails extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_note_details);
 
-        Intent i = getIntent();
-        uname = i.getStringExtra("uname");
+//        Intent i = getIntent();
+//        uname = i.getStringExtra("uname");
+
+        Paper.init(NoteDetails.this);
+        uname = Paper.book().read(OnlineUsers.UserNamekey);
 
         titleOfNoteDetail = findViewById(R.id.titleOfNoteDetail);
         contentOfNoteDetail = findViewById(R.id.contentOfNoteDetail);

@@ -31,11 +31,12 @@ public class HomeworkStud extends AppCompatActivity {
     ImageView homework_stud_back;
     String uname;
     DatabaseReference databaseReference;
+    DatabaseReference databaseReference1;
 
     private QuestionAdapterStud questionAdapter;
     private ArrayList<Question> questionArrayList;
     private RecyclerView homework_rv;
-
+    String sub;
     ImageView removeqstn;
 
     @Override
@@ -62,18 +63,40 @@ public class HomeworkStud extends AppCompatActivity {
 
         databaseReference = FirebaseDatabase.getInstance().getReference("students");
 
-//        if (databaseReference.child(uname).child("grade") ==){
-//            loadAllGrade10Questions();
-//        }
+//        databaseReference.addValueEventListener(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(@NonNull DataSnapshot snapshot) {
+//                sub = snapshot.child(uname).child("subject").getValue(String.class);
+//
+//            }
+//
+//            @Override
+//            public void onCancelled(@NonNull DatabaseError error) {
+//
+//            }
+//        });
 
-        databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
+        databaseReference1 = FirebaseDatabase.getInstance().getReference("students");
+
+        databaseReference1.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 int grade = snapshot.child(uname).child("grade").getValue(int.class);
-                if (grade==10){
-                    loadAllGrade10Questions();
-                } else if (grade==11){
-                    loadAllGrade11Questions();
+                 sub = snapshot.child(uname).child("subject").getValue(String.class);
+
+
+                if (grade==10 || sub.equals("Maths")){
+                    loadAllGrade10MathsQuestions();
+                } else if (grade==10 || sub.equals("Science")){
+                    loadAllGrade10ScienceQuestions();
+                } else if (grade==10 || sub.equals("Maths Science")){
+                    loadAllGrade10MathsScienceQuestions();
+                } else if (grade==11 || sub.equals("Maths")){
+                    loadAllGrade11MathsQuestions();
+                } else if (grade==11 || sub.equals("Science")){
+                    loadAllGrade11ScienceQuestions();
+                } else if (grade==11 || sub.equals("Maths Science")){
+                    loadAllGrade11MathsScienceQuestions();
                 }
             }
 
@@ -87,7 +110,164 @@ public class HomeworkStud extends AppCompatActivity {
 
     }
 
-    private void loadAllGrade10Questions() {
+    private void loadAllGrade11MathsScienceQuestions() {
+
+            LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
+            questionArrayList = new ArrayList<>();
+            homework_rv.setLayoutManager(linearLayoutManager);
+            questionAdapter = new QuestionAdapterStud(this, questionArrayList);
+            homework_rv.setAdapter(questionAdapter);
+            linearLayoutManager.setReverseLayout(true);
+            linearLayoutManager.setStackFromEnd(true);
+
+
+            //get all questions
+            DatabaseReference databaseReference1 = FirebaseDatabase.getInstance().getReference();
+            databaseReference1.child("homework").child("Grade 11")
+                    .addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+                            questionArrayList.clear();
+                            for (DataSnapshot dataSnapshot: snapshot.getChildren())
+                            {
+                                Question question = dataSnapshot.getValue(Question.class);
+                                if (question.getSubjectName().equals("Maths Science")){
+                                    questionArrayList.add(question);
+                                }
+                            }
+                            questionAdapter.notifyDataSetChanged();
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+
+                        }
+                    });
+    }
+
+    private void loadAllGrade11ScienceQuestions() {
+
+            LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
+            questionArrayList = new ArrayList<>();
+            homework_rv.setLayoutManager(linearLayoutManager);
+            questionAdapter = new QuestionAdapterStud(this, questionArrayList);
+            homework_rv.setAdapter(questionAdapter);
+            linearLayoutManager.setReverseLayout(true);
+            linearLayoutManager.setStackFromEnd(true);
+            Question question = new Question();
+            Student student = new Student();
+
+
+            //get all questions
+            DatabaseReference databaseReference1 = FirebaseDatabase.getInstance().getReference();
+            databaseReference1.child("homework").child("Grade 11")
+                    .addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+                            questionArrayList.clear();
+                            for (DataSnapshot dataSnapshot: snapshot.getChildren())
+                            {
+                                Question question = dataSnapshot.getValue(Question.class);
+                                if (question.getSubjectName().equals("Science")){
+                                    questionArrayList.add(question);
+                                }
+
+                            }
+                            questionAdapter.notifyDataSetChanged();
+
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+
+                        }
+                    });
+
+    }
+
+    private void loadAllGrade10MathsScienceQuestions() {
+
+            LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
+            questionArrayList = new ArrayList<>();
+            homework_rv.setLayoutManager(linearLayoutManager);
+            questionAdapter = new QuestionAdapterStud(this, questionArrayList);
+            homework_rv.setAdapter(questionAdapter);
+            linearLayoutManager.setReverseLayout(true);
+            linearLayoutManager.setStackFromEnd(true);
+
+
+            //get all questions
+            DatabaseReference databaseReference1 = FirebaseDatabase.getInstance().getReference();
+            databaseReference1.child("homework").child("Grade 10")
+                    .addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+                            questionArrayList.clear();
+                            for (DataSnapshot dataSnapshot: snapshot.getChildren())
+                            {
+                                Question question = dataSnapshot.getValue(Question.class);
+                                if (question.getSubjectName().equals("Maths Science")){
+                                    questionArrayList.add(question);
+                                }
+
+                            }
+                            questionAdapter.notifyDataSetChanged();
+
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+
+                        }
+                    });
+
+
+
+
+    }
+
+    private void loadAllGrade10ScienceQuestions() {
+
+            LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
+            questionArrayList = new ArrayList<>();
+            homework_rv.setLayoutManager(linearLayoutManager);
+            questionAdapter = new QuestionAdapterStud(this, questionArrayList);
+            homework_rv.setAdapter(questionAdapter);
+            linearLayoutManager.setReverseLayout(true);
+            linearLayoutManager.setStackFromEnd(true);
+            Question question = new Question();
+            Student student = new Student();
+
+
+            //get all questions
+            DatabaseReference databaseReference1 = FirebaseDatabase.getInstance().getReference();
+            databaseReference1.child("homework").child("Grade 10")
+                    .addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+                            questionArrayList.clear();
+                            for (DataSnapshot dataSnapshot: snapshot.getChildren())
+                            {
+                                Question question = dataSnapshot.getValue(Question.class);
+                                if (question.getSubjectName().equals("Science")){
+                                    questionArrayList.add(question);
+                                }
+
+                            }
+                            questionAdapter.notifyDataSetChanged();
+
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+
+                        }
+                    });
+
+
+    }
+
+    private void loadAllGrade10MathsQuestions() {
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         questionArrayList = new ArrayList<>();
@@ -96,8 +276,6 @@ public class HomeworkStud extends AppCompatActivity {
         homework_rv.setAdapter(questionAdapter);
         linearLayoutManager.setReverseLayout(true);
         linearLayoutManager.setStackFromEnd(true);
-        Question question = new Question();
-
 
         //get all questions
         DatabaseReference databaseReference1 = FirebaseDatabase.getInstance().getReference();
@@ -109,7 +287,9 @@ public class HomeworkStud extends AppCompatActivity {
                         for (DataSnapshot dataSnapshot: snapshot.getChildren())
                         {
                             Question question = dataSnapshot.getValue(Question.class);
-                            questionArrayList.add(question);
+                            if (question.getSubjectName().equals("Maths")){
+                                questionArrayList.add(question);
+                            }
 
                         }
                         questionAdapter.notifyDataSetChanged();
@@ -123,7 +303,7 @@ public class HomeworkStud extends AppCompatActivity {
                 });
     }
 
-    private void loadAllGrade11Questions() {
+    private void loadAllGrade11MathsQuestions() {
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         questionArrayList = new ArrayList<>();
         homework_rv.setLayoutManager(linearLayoutManager);
@@ -131,7 +311,7 @@ public class HomeworkStud extends AppCompatActivity {
         homework_rv.setAdapter(questionAdapter);
         linearLayoutManager.setReverseLayout(true);
         linearLayoutManager.setStackFromEnd(true);
-        Question question = new Question();
+
 
         //get all questions
         DatabaseReference databaseReference1 = FirebaseDatabase.getInstance().getReference();
@@ -143,7 +323,9 @@ public class HomeworkStud extends AppCompatActivity {
                         for (DataSnapshot dataSnapshot: snapshot.getChildren())
                         {
                             Question question = dataSnapshot.getValue(Question.class);
-                            questionArrayList.add(question);
+                            if (question.getSubjectName().equals("Maths")){
+                                questionArrayList.add(question);
+                            }
                         }
                         questionAdapter.notifyDataSetChanged();
 

@@ -246,7 +246,7 @@ public class TeacherPageActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent manageActivityIntent = new Intent(TeacherPageActivity.this, AttendanceActivity.class);
                 startActivity(manageActivityIntent);
-                manageActivityIntent.putExtra("uname",uname);
+//                manageActivityIntent.putExtra("uname",uname);
             }
         });
 
@@ -278,7 +278,7 @@ public class TeacherPageActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent manageActivityIntent = new Intent(TeacherPageActivity.this, NotesActivity.class);
-                manageActivityIntent.putExtra("uname",uname);
+//                manageActivityIntent.putExtra("uname",uname);
                 startActivity(manageActivityIntent);
             }
         });

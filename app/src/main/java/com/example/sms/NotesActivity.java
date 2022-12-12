@@ -21,7 +21,9 @@ import android.widget.PopupMenu;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.sms.admin.TeacherPageActivity;
 import com.example.sms.model.FirebaseModel;
+import com.example.sms.students.OnlineUsers;
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -37,6 +39,8 @@ import com.sdsmdg.tastytoast.TastyToast;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+
+import io.paperdb.Paper;
 
 public class NotesActivity extends AppCompatActivity {
 
@@ -57,8 +61,10 @@ public class NotesActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_notes);
 
-        Intent intent= getIntent();
-        uname = intent.getStringExtra("uname");
+//        Intent intent= getIntent();
+//        uname = intent.getStringExtra("uname");
+        Paper.init(NotesActivity.this);
+        uname = Paper.book().read(OnlineUsers.UserNamekey);
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_NOTHING);
 
 
@@ -83,7 +89,7 @@ public class NotesActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 Intent createIntent = new Intent(NotesActivity.this,CreateNotesActivity.class);
-                        createIntent.putExtra("uname", uname);
+//                        createIntent.putExtra("uname", uname);
                 startActivity(createIntent);
 
             }
@@ -118,7 +124,7 @@ public class NotesActivity extends AppCompatActivity {
                         intent1.putExtra("title", model.getTitle());
                         intent1.putExtra("content", model.getContent());
                         intent1.putExtra("noteId", documentId);
-                        intent1.putExtra("uname", uname);
+//                        intent1.putExtra("uname", uname);
 
                         v.getContext().startActivity(intent1);
 
@@ -140,7 +146,7 @@ public class NotesActivity extends AppCompatActivity {
                                 intent1.putExtra("title", model.getTitle());
                                 intent1.putExtra("content", model.getContent());
                                 intent1.putExtra("noteId", documentId);
-                                intent1.putExtra("uname", uname);
+//                                intent1.putExtra("uname", uname);
 
                                 v.getContext().startActivity(intent1);
                                 return false;

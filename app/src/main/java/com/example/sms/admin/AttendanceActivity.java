@@ -9,7 +9,10 @@ import android.widget.Button;
 import android.widget.ImageView;
 
 import com.example.sms.R;
+import com.example.sms.students.OnlineUsers;
 import com.sdsmdg.tastytoast.TastyToast;
+
+import io.paperdb.Paper;
 
 public class AttendanceActivity extends AppCompatActivity {
 
@@ -29,6 +32,8 @@ public class AttendanceActivity extends AppCompatActivity {
 
 //        Intent intent= getIntent();
 //        uname = intent.getStringExtra("uname");
+//        Paper.init(AttendanceActivity.this);
+//        uname = Paper.book().read(OnlineUsers.UserNamekey);
 
         attendance_back.setOnClickListener(new View.OnClickListener() {
             @Override

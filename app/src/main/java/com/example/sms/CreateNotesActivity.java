@@ -17,6 +17,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.widget.Toolbar;
 
+import com.example.sms.students.OnlineUsers;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -31,6 +32,8 @@ import org.w3c.dom.Document;
 import java.time.LocalDate; // import the LocalDate class
 import java.util.HashMap;
 import java.util.Map;
+
+import io.paperdb.Paper;
 
 public class CreateNotesActivity extends AppCompatActivity {
 
@@ -48,8 +51,11 @@ public class CreateNotesActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_notes);
 
-        Intent i = getIntent();
-        uname = i.getStringExtra("uname");
+//        Intent i = getIntent();
+//        uname = i.getStringExtra("uname");
+
+        Paper.init(CreateNotesActivity.this);
+        uname = Paper.book().read(OnlineUsers.UserNamekey);
 
         msavenote = findViewById(R.id.savenote);
         mcreatecontentofnote = findViewById(R.id.createcontentofnote);

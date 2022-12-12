@@ -11,6 +11,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.sms.students.OnlineUsers;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -23,6 +24,8 @@ import com.sdsmdg.tastytoast.TastyToast;
 
 import java.util.HashMap;
 import java.util.Map;
+
+import io.paperdb.Paper;
 
 public class EditNoteActivity extends AppCompatActivity {
 
@@ -44,8 +47,11 @@ public class EditNoteActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_note);
 
-        Intent i = getIntent();
-        uname = i.getStringExtra("uname");
+//        Intent i = getIntent();
+//        uname = i.getStringExtra("uname");
+
+        Paper.init(EditNoteActivity.this);
+        uname = Paper.book().read(OnlineUsers.UserNamekey);
 
         editTitleOfNote = findViewById(R.id.editTitleofNote);
         editContentOfNote = findViewById(R.id.editContentOfNote);
