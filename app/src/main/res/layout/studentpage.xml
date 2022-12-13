@@ -61,15 +61,16 @@
                 android:layout_alignParentRight="true"
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="32dp"
-                android:layout_marginRight="20dp"
+                android:layout_marginRight="25dp"
                 android:layout_marginBottom="30dp"
                 android:src="@drawable/profile" />
 
             <ImageView
-                android:id="@+id/logoutpopupbtn"
+                android:id="@+id/studentmenupopupbtn"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_alignParentRight="true"
+                android:layout_marginRight="5dp"
                 android:layout_weight="0"
                 android:src="@drawable/more_vert" />
 

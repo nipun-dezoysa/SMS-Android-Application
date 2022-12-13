@@ -4,18 +4,20 @@ import android.net.Uri;
 
 public class UserStudent {
 
+    private String profileuri;
     private String fullName;
     private String nickName;
     private String dob;
     private String contactNo;
-    private String address;
     private String email;
-    private String profileuri;
+    private String address;
+
+
 
     public UserStudent() {
     }
 
-    public UserStudent(String fullName, String nickName, String dob, String contactNo, String address, String email, String profileuri) {
+    public UserStudent(String profileuri, String fullName, String nickName, String dob, String contactNo, String email, String address) {
         this.fullName = fullName;
         this.nickName = nickName;
         this.dob = dob;

@@ -42,7 +42,7 @@ public class LoginActivity extends AppCompatActivity {
     String encryptedPassword;
     String AES = "AES";
 
-    ProgressBar progressBarOfLogin;
+    public static ProgressBar progressBarOfLogin;
 
     DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReferenceFromUrl("https://asms-365d0-default-rtdb.firebaseio.com/");
 
@@ -62,10 +62,10 @@ public class LoginActivity extends AppCompatActivity {
         String UserPasswordKey = Paper.book().read(OnlineUsers.UserPasswordKey);
 
         if (UserNameKey != "" && UserPasswordKey != "") {
-            progressBarOfLogin.setVisibility(View.VISIBLE);
             if (!TextUtils.isEmpty(UserNameKey) && !TextUtils.isEmpty(UserPasswordKey)) {
                 autoLogin(UserNameKey, UserPasswordKey);
-            } progressBarOfLogin.setVisibility(View.INVISIBLE);
+                progressBarOfLogin.setVisibility(View.VISIBLE);
+            }
         }
 
 //        back_btn.setOnClickListener(new View.OnClickListener() {
@@ -112,9 +112,8 @@ public class LoginActivity extends AppCompatActivity {
                     String dbPassword = snapshot.child(userNameKey).child("password").getValue(String.class);
 
                     if(dbPassword.equals(userPasswordKey)){
-//                        TastyToast.makeText(LoginActivity.this, "Login successful", TastyToast.LENGTH_SHORT, TastyToast.SUCCESS);
                         Intent loginIntent = new Intent(LoginActivity.this, AdminFingerPrintAuth.class);
-                        loginIntent.putExtra("uname", userNameKey);
+//                        loginIntent.putExtra("uname", userNameKey);
                         progressBarOfLogin.setVisibility(View.INVISIBLE);
                         startActivity(loginIntent);
                         finish();
@@ -131,7 +130,6 @@ public class LoginActivity extends AppCompatActivity {
                                 String dbPassword = snapshot.child(userNameKey).child("password").getValue(String.class);
 
                                 if(dbPassword.equals(userPasswordKey)){
-//                        TastyToast.makeText(StudentLoginActivity.this, "Login successful", TastyToast.LENGTH_SHORT, TastyToast.SUCCESS);
                                     Intent studentLoginIntent = new Intent(LoginActivity.this, StudentFingerPrintAuth.class);
                                     studentLoginIntent.putExtra("uname", userNameKey);
                                     progressBarOfLogin.setVisibility(View.INVISIBLE);
@@ -144,7 +142,6 @@ public class LoginActivity extends AppCompatActivity {
                                     progressBarOfLogin.setVisibility(View.INVISIBLE);
                                 }
                             }else {
-//                    TastyToast.makeText(LoginActivity.this, "Please visit your relevant login page.", TastyToast.LENGTH_SHORT, TastyToast.DEFAULT);
                                 progressBarOfLogin.setVisibility(View.INVISIBLE);
                             }
 
@@ -156,8 +153,6 @@ public class LoginActivity extends AppCompatActivity {
                             progressBarOfLogin.setVisibility(View.INVISIBLE);
                         }
                     });
-//                    TastyToast.makeText(LoginActivity.this, "Please visit your relevant login page.", TastyToast.LENGTH_SHORT, TastyToast.DEFAULT);
-//                    progressBarOfTeacherLogin.setVisibility(View.INVISIBLE);
                 }
 
             }

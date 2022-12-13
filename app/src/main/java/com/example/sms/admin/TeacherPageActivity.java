@@ -116,7 +116,7 @@ public class TeacherPageActivity extends AppCompatActivity {
     TextView cam_uri;
     ActivityResultLauncher<Intent> activityResultLauncher;
 
-    ImageView logout;
+    ImageView adminmenupopupbutton;
 
     TextView welcometext;
     TextView date;
@@ -135,9 +135,9 @@ public class TeacherPageActivity extends AppCompatActivity {
         date.setText(getCurrentDate());
         time.setText(getCurrentTime());
 
-        logout = findViewById(R.id.logoutpopupbutton);
+        adminmenupopupbutton = findViewById(R.id.adminmenupopupbutton);
 
-        logout.setOnClickListener(new View.OnClickListener() {
+        adminmenupopupbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 PopupMenu popupMenu = new PopupMenu(v.getContext(),v);
@@ -165,6 +165,7 @@ public class TeacherPageActivity extends AppCompatActivity {
                                         TastyToast.makeText(v.getContext(), " Logged out successfully", TastyToast.LENGTH_SHORT, TastyToast.SUCCESS);
                                         Intent logoutIntent = new Intent(v.getContext(), LoginActivity.class);
                                         v.getContext().startActivity(logoutIntent);
+                                        LoginActivity.progressBarOfLogin.setVisibility(View.INVISIBLE);
 
                                     }
                                 })
@@ -202,9 +203,6 @@ public class TeacherPageActivity extends AppCompatActivity {
         Paper.init(TeacherPageActivity.this);
         uname = Paper.book().read(OnlineUsers.UserNamekey);
 
-//        Intent intent= getIntent();
-//        uname = intent.getStringExtra("uname");
-        //String username=getIntent().getStringExtra("username");
 
         storageReference = FirebaseStorage.getInstance().getReference("images/"+uname);
 
@@ -278,7 +276,6 @@ public class TeacherPageActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent manageActivityIntent = new Intent(TeacherPageActivity.this, NotesActivity.class);
-//                manageActivityIntent.putExtra("uname",uname);
                 startActivity(manageActivityIntent);
             }
         });
@@ -472,7 +469,6 @@ public class TeacherPageActivity extends AppCompatActivity {
         dialog.dismiss();
     }
 
-
     private String getCurrentDate() {
 
         return new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(new Date());
@@ -593,9 +589,6 @@ public class TeacherPageActivity extends AppCompatActivity {
                 String cNumber = contactNo.getText().toString();
                 String eID = emailID.getText().toString();
                 String adrs = address.getText().toString();
-//                String profilrUri = dwnUri.toString();
-//                String uri = imageUri.toString();
-//                String profilepic = teacher.getProfileuri();
 
 
 

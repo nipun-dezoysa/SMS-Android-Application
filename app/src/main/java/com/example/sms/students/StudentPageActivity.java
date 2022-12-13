@@ -33,11 +33,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.bumptech.glide.Glide;
 import com.example.sms.CropperActivity;
+import com.example.sms.LoginActivity;
 import com.example.sms.NotesActivity;
 import com.example.sms.PopUp;
 import com.example.sms.R;
 import com.example.sms.ScheduleStud;
-import com.example.sms.admin.TeacherPageActivity;
 import com.example.sms.interfaces.UserStudentCallback;
 import com.example.sms.model.UserStudent;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -111,32 +111,46 @@ public class StudentPageActivity extends AppCompatActivity {
     TextView date;
     TextView time;
 
+    LinearLayout mysub;
+    LinearLayout attendance;
+    LinearLayout schedule;
+    LinearLayout homework;
+    LinearLayout studyMaterial;
+    LinearLayout notes;
+    LinearLayout exam_result;
+    LinearLayout report;
+    LinearLayout update;
+    LinearLayout txt_rec;
+
+    ImageView studentmenupopupbtn;
+
+
     @SuppressLint("ResourceType")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.studentpage);
 
-        date = (TextView)findViewById(R.id.current_date1);
-        time = (TextView)findViewById(R.id.current_time1);
-        welcometext = (TextView)findViewById(R.id.dashboardtxt1);
+        date = findViewById(R.id.current_date1);
+        time = findViewById(R.id.current_time1);
+        welcometext = findViewById(R.id.dashboardtxt1);
         date.setText(getCurrentDate());
         time.setText(getCurrentTime());
 
-        LinearLayout mysub = (LinearLayout) findViewById(R.id.mysub);
-        LinearLayout attendance = (LinearLayout) findViewById(R.id.attendance);
-        LinearLayout schedule = (LinearLayout) findViewById(R.id.schedule);
-        LinearLayout homework = (LinearLayout) findViewById(R.id.homework);
-        LinearLayout studyMaterial = (LinearLayout) findViewById(R.id.studymaterial);
-        LinearLayout notes = (LinearLayout) findViewById(R.id.notes);
-        LinearLayout exam_result = (LinearLayout) findViewById(R.id.exams_results_view);
-        LinearLayout report = (LinearLayout) findViewById(R.id.reports);
-        LinearLayout update = (LinearLayout) findViewById(R.id.updates);
-        LinearLayout txt_rec = (LinearLayout) findViewById(R.id.txt_rec_std);
+        mysub = findViewById(R.id.mysub);
+        attendance = findViewById(R.id.attendance);
+        schedule = findViewById(R.id.schedule);
+        homework = findViewById(R.id.homework);
+        studyMaterial = findViewById(R.id.studymaterial);
+        notes = findViewById(R.id.notes);
+        exam_result = findViewById(R.id.exams_results_view);
+        report = findViewById(R.id.reports);
+        update = findViewById(R.id.updates);
+        txt_rec = findViewById(R.id.txt_rec_std);
 
-        ImageView logout = (ImageView) findViewById(R.id.logoutpopupbtn);
+        studentmenupopupbtn = findViewById(R.id.studentmenupopupbtn);
 
-        logout.setOnClickListener(new View.OnClickListener() {
+        studentmenupopupbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 PopupMenu popupMenu = new PopupMenu(v.getContext(),v);
@@ -151,11 +165,13 @@ public class StudentPageActivity extends AppCompatActivity {
                 popupMenu.getMenu().add("Logout").setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
                     @Override
                     public boolean onMenuItemClick(MenuItem item) {
-
-//                        Intent logoutIntent = new Intent(v.getContext(), StudentLoginActivity.class);
-//                        v.getContext().startActivity(logoutIntent);
                         finish();
                         Paper.book().destroy();
+                        TastyToast.makeText(v.getContext(), " Logged out successfully", TastyToast.LENGTH_SHORT, TastyToast.SUCCESS);
+                        Intent logoutIntent = new Intent(v.getContext(), LoginActivity.class);
+                        v.getContext().startActivity(logoutIntent);
+                        LoginActivity.progressBarOfLogin.setVisibility(View.INVISIBLE);
+
                         return false;
                     }
                 });
@@ -175,8 +191,6 @@ public class StudentPageActivity extends AppCompatActivity {
 
         Paper.init(StudentPageActivity.this);
         uname = Paper.book().read(OnlineUsers.UserNamekey);
-//        Intent intent= getIntent();
-//        uname = intent.getStringExtra("uname");
 
         storageReference = FirebaseStorage.getInstance().getReference("images/"+uname);
 
@@ -275,8 +289,7 @@ public class StudentPageActivity extends AppCompatActivity {
         });
 
 
-
-        profileEditStd = (ImageView) findViewById(R.id.profileEditStd);
+        profileEditStd = findViewById(R.id.profileEditStd);
         dialog = new Dialog(this);
 
         profileEditStd.setOnClickListener(new View.OnClickListener() {
@@ -460,12 +473,12 @@ public class StudentPageActivity extends AppCompatActivity {
 
         if(student!=null){
 
-            fullName.setText(student.getFullName());
-            nickName.setText(student.getNickName());
-            etDate.setText(student.getDob());
-            contactNo.setText(student.getContactNo());
-            emailID.setText(student.getEmail());
-            address.setText(student.getAddress());
+            fullName.setText(student.getFullName().trim());
+            nickName.setText(student.getNickName().trim());
+            etDate.setText(student.getDob().trim());
+            contactNo.setText(student.getContactNo().trim());
+            emailID.setText(student.getEmail().trim());
+            address.setText(student.getAddress().trim());
 
             if(!student.getProfileuri().equals(""))
                 Glide.with(this).load(student.getProfileuri()).into(cropView);
@@ -508,8 +521,8 @@ public class StudentPageActivity extends AppCompatActivity {
         buttonSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                dialog.dismiss();
-                TastyToast.makeText(v.getContext(), "Saved changes", TastyToast.LENGTH_SHORT, TastyToast.SUCCESS);
+
+                progressBar.setVisibility(View.VISIBLE);
 
                 String fName = fullName.getText().toString();
                 String nName = nickName.getText().toString();
@@ -517,12 +530,11 @@ public class StudentPageActivity extends AppCompatActivity {
                 String cNumber = contactNo.getText().toString();
                 String eID = emailID.getText().toString();
                 String adrs = address.getText().toString();
-//                Uri profilrUri = dwnUri;
 
 
                 welcometext.setText(nickName.getText().toString());
 
-                UserStudent s = new UserStudent(fName,nName,dob,cNumber,eID,adrs,"");
+                UserStudent s = new UserStudent("",fName,nName,dob,cNumber,eID,adrs);
 
 
                 if (imageUri != null) {
@@ -539,6 +551,7 @@ public class StudentPageActivity extends AppCompatActivity {
                         student = s;
                     }
                 });
+
 
 //                getUserStudent(new UserStudentCallback() {
 //                    @Override
@@ -580,6 +593,7 @@ public class StudentPageActivity extends AppCompatActivity {
             if (result!=null)
             {
                 resultUri=Uri.parse(result);
+                imageUri = resultUri;
             }
 
             cropView.setImageURI(resultUri);
@@ -599,7 +613,7 @@ public class StudentPageActivity extends AppCompatActivity {
                             TastyToast.makeText(StudentPageActivity.this, "Uploaded Successfully", TastyToast.LENGTH_SHORT, TastyToast.SUCCESS);
 
 //                        cropView.setImageResource(R.drawable.img);
-                            setProfileImage(imageUri.toString());
+                            setProfileImage(imageuri.toString());
                             uploadStudent(s);
                             getUserStudent(new UserStudentCallback() {
                                 @Override
