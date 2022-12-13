@@ -20,7 +20,6 @@ public class AttendanceActivity extends AppCompatActivity {
     ImageView attendance_back;
     LinearLayout add_attendance;
     LinearLayout view_attendance;
-//    String uname;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,16 +30,12 @@ public class AttendanceActivity extends AppCompatActivity {
         add_attendance = findViewById(R.id.add_attendance);
         view_attendance = findViewById(R.id.view_attendance);
 
-//        Intent intent= getIntent();
-//        uname = intent.getStringExtra("uname");
-//        Paper.init(AttendanceActivity.this);
-//        uname = Paper.book().read(OnlineUsers.UserNamekey);
+
 
         attendance_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 onBackPressed();
-//                finish();
             }
         });
 
