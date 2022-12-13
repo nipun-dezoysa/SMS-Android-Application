@@ -54,30 +54,88 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <Button
-                android:id="@+id/add_attendance"
-                android:layout_width="300dp"
-                android:layout_height="100dp"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="250dp"
-                android:background="@drawable/swtch_tymbs"
-                android:text="Add Attendance"
-                android:textAllCaps="false"
-                android:textSize="30dp"
-                android:textStyle="bold|normal" />
 
-            <Button
-                android:id="@+id/view_attendance"
-                android:layout_width="300dp"
-                android:layout_height="100dp"
-                android:layout_below="@+id/add_attendance"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="50dp"
-                android:text="View Attendance"
-                android:textAllCaps="false"
-                android:textSize="30dp"
-                android:background="@drawable/swtch_tymbs"
-                android:textStyle="bold|normal" />
+            <GridLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginStart="45dp"
+                android:layout_marginTop="300dp"
+                android:layout_marginEnd="44dp"
+                android:columnCount="1">
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="250dp"
+                    android:layout_height="100dp"
+                    android:layout_rowWeight="1"
+                    android:layout_columnWeight="1"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_margin="12dp"
+                    app:cardCornerRadius="25dp"
+                    app:cardElevation="6dp">
+
+                    <LinearLayout
+                        android:id="@+id/add_attendance"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@color/darkgreen"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:padding="16dp">
+
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_vertical|center_horizontal"
+                            android:text="Add Attendance"
+                            android:textColor="@color/white"
+                            android:textSize="25dp"
+                            android:textStyle="bold" />
+
+                    </LinearLayout>
+
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="250dp"
+                    android:layout_height="100dp"
+                    android:layout_rowWeight="1"
+                    android:layout_columnWeight="1"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_margin="12dp"
+                    app:cardCornerRadius="25dp"
+                    app:cardElevation="6dp">
+
+                    <LinearLayout
+                        android:id="@+id/view_attendance"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@color/darkgreen"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:padding="16dp">
+
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical|center_horizontal"
+                            android:text="View Attendance"
+                            android:textColor="@color/white"
+                            android:textSize="25dp"
+                            android:textStyle="bold" />
+
+
+                    </LinearLayout>
+
+
+                </androidx.cardview.widget.CardView>
+
+            </GridLayout>
+
 
 
 

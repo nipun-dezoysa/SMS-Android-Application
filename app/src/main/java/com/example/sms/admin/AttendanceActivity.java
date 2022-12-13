@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 
 import com.example.sms.R;
 import com.example.sms.students.OnlineUsers;
@@ -17,8 +18,8 @@ import io.paperdb.Paper;
 public class AttendanceActivity extends AppCompatActivity {
 
     ImageView attendance_back;
-    Button add_attendance;
-    Button view_attendance;
+    LinearLayout add_attendance;
+    LinearLayout view_attendance;
 //    String uname;
 
     @Override

@@ -31,12 +31,12 @@ public class HomeworkStud extends AppCompatActivity {
     ImageView homework_stud_back;
     String uname;
     DatabaseReference databaseReference;
-    DatabaseReference databaseReference1;
 
     private QuestionAdapterStud questionAdapter;
     private ArrayList<Question> questionArrayList;
     private RecyclerView homework_rv;
     String sub;
+    int grade;
     ImageView removeqstn;
 
     @Override
@@ -61,41 +61,28 @@ public class HomeworkStud extends AppCompatActivity {
         Paper.init(HomeworkStud.this);
         uname = Paper.book().read(OnlineUsers.UserNamekey);
 
+
+
         databaseReference = FirebaseDatabase.getInstance().getReference("students");
-
-//        databaseReference.addValueEventListener(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(@NonNull DataSnapshot snapshot) {
-//                sub = snapshot.child(uname).child("subject").getValue(String.class);
-//
-//            }
-//
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError error) {
-//
-//            }
-//        });
-
-        databaseReference1 = FirebaseDatabase.getInstance().getReference("students");
-
-        databaseReference1.addValueEventListener(new ValueEventListener() {
+        databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                int grade = snapshot.child(uname).child("grade").getValue(int.class);
-                 sub = snapshot.child(uname).child("subject").getValue(String.class);
+                sub = snapshot.child(uname).child("subject").getValue(String.class);
+                grade = snapshot.child(uname).child("grade").getValue(int.class);
 
 
-                if (grade==10 || sub.equals("Maths")){
+
+                if (grade==10 && sub.equals("Maths")){
                     loadAllGrade10MathsQuestions();
-                } else if (grade==10 || sub.equals("Science")){
+                } else if (grade==10 && sub.equals("Science")){
                     loadAllGrade10ScienceQuestions();
-                } else if (grade==10 || sub.equals("Maths Science")){
+                } else if (grade==10 && sub.equals("Maths Science")){
                     loadAllGrade10MathsScienceQuestions();
-                } else if (grade==11 || sub.equals("Maths")){
+                } else if (grade==11 && sub.equals("Maths")){
                     loadAllGrade11MathsQuestions();
-                } else if (grade==11 || sub.equals("Science")){
+                } else if (grade==11 && sub.equals("Science")){
                     loadAllGrade11ScienceQuestions();
-                } else if (grade==11 || sub.equals("Maths Science")){
+                } else if (grade==11 && sub.equals("Maths Science")){
                     loadAllGrade11MathsScienceQuestions();
                 }
             }
@@ -131,9 +118,9 @@ public class HomeworkStud extends AppCompatActivity {
                             for (DataSnapshot dataSnapshot: snapshot.getChildren())
                             {
                                 Question question = dataSnapshot.getValue(Question.class);
-                                if (question.getSubjectName().equals("Maths Science")){
+
                                     questionArrayList.add(question);
-                                }
+
                             }
                             questionAdapter.notifyDataSetChanged();
                         }
@@ -206,10 +193,7 @@ public class HomeworkStud extends AppCompatActivity {
                             for (DataSnapshot dataSnapshot: snapshot.getChildren())
                             {
                                 Question question = dataSnapshot.getValue(Question.class);
-                                if (question.getSubjectName().equals("Maths Science")){
                                     questionArrayList.add(question);
-                                }
-
                             }
                             questionAdapter.notifyDataSetChanged();
 
