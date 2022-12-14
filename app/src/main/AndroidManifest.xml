@@ -34,7 +34,13 @@
         android:theme="@style/Theme.SMS"
         tools:targetApi="31">
         <activity
+            android:name=".adapter.Pdf"
+            android:exported="false" />
+        <activity
             android:name=".admin.AdminFingerPrintAuth"
+            android:exported="false" />
+        <activity
+            android:name=".admin.EditHWActivity"
             android:exported="false" />
         <activity
             android:name=".admin.Grade11HW"
@@ -187,10 +193,9 @@
         </activity>
         <activity android:name=".students.StudentPageActivity" />
         <activity android:name=".PopUp" />
-        <activity android:name=".students.StudentFingerPrintAuth"
-        android:exported="false"
-        />
-
+        <activity
+            android:name=".students.StudentFingerPrintAuth"
+            android:exported="false" />
         <activity
             android:name="com.yalantis.ucrop.UCropActivity"
             android:screenOrientation="portrait"

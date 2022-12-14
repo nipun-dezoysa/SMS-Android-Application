@@ -39,6 +39,7 @@ import com.example.sms.LoginActivity;
 import com.example.sms.NotesActivity;
 import com.example.sms.R;
 import com.example.sms.AddPhotos;
+import com.example.sms.adapter.Pdf;
 import com.example.sms.interfaces.TeacherCallback;
 import com.example.sms.model.Teacher;
 import com.example.sms.students.OnlineUsers;
@@ -299,7 +300,8 @@ public class TeacherPageActivity extends AppCompatActivity {
         update.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent manageActivityIntent = new Intent(TeacherPageActivity.this, UpdateActivity.class);
+//                Intent manageActivityIntent = new Intent(TeacherPageActivity.this, UpdateActivity.class);
+                Intent manageActivityIntent = new Intent(TeacherPageActivity.this, Pdf.class);
                 startActivity(manageActivityIntent);
             }
         });

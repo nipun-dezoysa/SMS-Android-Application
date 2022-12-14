@@ -1,6 +1,7 @@
 package com.example.sms.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +13,8 @@ import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.sms.R;
+import com.example.sms.admin.EditHWActivity;
+import com.example.sms.admin.Grade10HW;
 import com.example.sms.admin.Home_Work;
 import com.example.sms.model.Question;
 import com.google.firebase.database.DatabaseReference;
@@ -59,21 +62,19 @@ public class QuestionAdapter extends RecyclerView.Adapter<QuestionAdapter.Questi
             }
         });
 
-//        holder.cardView.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                selectListener.onItemClicked(questionArrayList.get(position));
-//            }
-//        });
 
-//        holder.itemView.setOnTouchListener(new View.OnTouchListener() {
-//            @Override
-//            public boolean onTouch(View v, MotionEvent event) {
-//                TastyToast.makeText(context, "Clicked successfully", TastyToast.LENGTH_SHORT, TastyToast.SUCCESS).show();
-//                return false;
-////
-//            }
-//        });
+
+        holder.edit_qst.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent1 = new Intent(v.getContext(), EditHWActivity.class);
+                intent1.putExtra("timestamp", timestamp);
+                intent1.putExtra("subName", question.getSubjectName());
+                intent1.putExtra("question", question.getQuestion());
+                v.getContext().startActivity(intent1);
+
+            }
+        });
 
     }
 
@@ -84,10 +85,10 @@ public class QuestionAdapter extends RecyclerView.Adapter<QuestionAdapter.Questi
 
     class QuestionView extends RecyclerView.ViewHolder{
 
-        TextView textQuestion, textSubject;
+        public TextView textQuestion, textSubject;
         CardView cardView;
-        ImageView remove;
-        String id;
+        ImageView remove,edit_qst;
+
         public QuestionView(@NonNull View itemView) {
             super(itemView);
 
@@ -95,6 +96,7 @@ public class QuestionAdapter extends RecyclerView.Adapter<QuestionAdapter.Questi
             textSubject =  itemView.findViewById(R.id.text_sub_name);
             cardView = itemView.findViewById(R.id.cardView);
             remove = itemView.findViewById(R.id.remove_qstn);
+            edit_qst = itemView.findViewById(R.id.edit_qstn);
 
         }
     }
