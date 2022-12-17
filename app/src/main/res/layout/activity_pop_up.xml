@@ -116,7 +116,6 @@
                     android:drawableLeft="@drawable/calendar"
                     android:drawablePadding="5dp"
                     android:hint="Date Of Birth"
-                    android:inputType="phone"
                     android:paddingLeft="5dp"
                     android:textSize="17dp"
                     android:singleLine="true"

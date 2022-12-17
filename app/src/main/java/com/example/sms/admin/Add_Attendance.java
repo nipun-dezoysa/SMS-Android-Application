@@ -5,8 +5,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.DatePickerDialog;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.DatePicker;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -24,6 +28,7 @@ import com.sdsmdg.tastytoast.TastyToast;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
@@ -35,6 +40,8 @@ public class Add_Attendance extends AppCompatActivity {
     public static   List<Attendance> attendanceList = new ArrayList<>();
     DatabaseReference databaseReference;
     Attendance_Adapter attendanceAdapter;
+    DatePickerDialog.OnDateSetListener setListener;
+
 
     public static TextView attendance_date;
     ImageView button_back;
@@ -61,7 +68,30 @@ public class Add_Attendance extends AppCompatActivity {
 
         attendance_date = findViewById(R.id.attendance_date);
 
-        attendance_date.setText(getCurrentDate());
+        Calendar calendar = Calendar.getInstance();
+        final int year = calendar.get(Calendar.YEAR);
+        final int month = calendar.get(Calendar.MONTH);
+        final int day = calendar.get(Calendar.DAY_OF_MONTH);
+
+        attendance_date.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DatePickerDialog datePickerDialog = new DatePickerDialog(
+                        Add_Attendance.this, android.R.style.Theme_Holo_Light_Dialog_MinWidth,
+                        setListener,year,month,day);
+                datePickerDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                datePickerDialog.show();
+            }
+        });
+
+        setListener = new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker view, int year, int month, int day) {
+                month = month+1;
+                String date = day+"/"+month+"/"+year;
+                attendance_date.setText(date);
+            }
+        };
 
         button_back.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -144,9 +174,11 @@ public class Add_Attendance extends AppCompatActivity {
             }
         });
     }
-    private String getCurrentDate() {
 
-        return new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(new Date());
-    }
+
+//    private String getCurrentDate() {
+//
+//        return new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(new Date());
+//    }
 
 }

@@ -54,8 +54,7 @@ public class Attendance_Adapter extends RecyclerView.Adapter<Attendance_Adapter.
         Add_Attendance.attendanceList.add(new Attendance(user.getUsername(),"Absent"));
 //        String uname
 
-        TextView attendance = Add_Attendance.attendance_date;
-        String attendancetxt = attendance.getText().toString().replace('/','-');
+
 
         holder.checkBox.setChecked(false);
 
@@ -74,17 +73,24 @@ public class Attendance_Adapter extends RecyclerView.Adapter<Attendance_Adapter.
             @Override
             public void onClick(View v) {
 
-                databaseRef.child("Attendance").addListenerForSingleValueEvent(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        databaseRef.child("Attendance").child(attendancetxt).child(Add_Attendance.grade).setValue(Add_Attendance.attendanceList);
-                    }
+                TextView attendance = Add_Attendance.attendance_date;
+                String attendancetxt = attendance.getText().toString().replace('/','-');
 
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError error) {
+                if (attendancetxt.equals("Date")){
+                    TastyToast.makeText(context, "Please Select a Date", TastyToast.LENGTH_SHORT, TastyToast.INFO);
+                } else {
+                    databaseRef.child("Attendance").addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+                            databaseRef.child("Attendance").child(attendancetxt).child(Add_Attendance.grade).setValue(Add_Attendance.attendanceList);
+                        }
 
-                    }
-                });
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+
+                        }
+                    });
+                }
 
             }
         });
