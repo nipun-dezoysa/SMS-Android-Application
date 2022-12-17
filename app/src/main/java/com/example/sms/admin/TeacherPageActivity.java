@@ -519,14 +519,11 @@ public class TeacherPageActivity extends AppCompatActivity {
             contactNo.setText(teacher.getContactNo().trim());
             emailID.setText(teacher.getEmail().trim());
             address.setText(teacher.getAddress().trim());
-//            cropView.setImageURI(Uri.parse(teacher.getProfileuri()));
 
 
-            if(!teacher.getProfileuri().equals(""))
+            if(!teacher.getProfileuri().equals("") )
                 Glide.with(this).load(teacher.getProfileuri()).into(cropView);
-//            welcometext.setText(teacher.getWelcometext());
 
-//            cropView.setImageURI(Uri.parse(teacher.getProfileuri()));
         }
 
 
@@ -600,9 +597,6 @@ public class TeacherPageActivity extends AppCompatActivity {
 
                 Teacher t = new Teacher("" ,fName,nName,dob,cNumber,eID,adrs);
 
-//                if (imageUri != null) {
-//                    uploadToFirebase(imageUri,t);
-//                }
                 if (imageUri != null) {
                     uploadToFirebase(imageUri,t);
                 }

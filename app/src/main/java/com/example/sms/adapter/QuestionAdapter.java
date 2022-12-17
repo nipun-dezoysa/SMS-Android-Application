@@ -71,6 +71,7 @@ public class QuestionAdapter extends RecyclerView.Adapter<QuestionAdapter.Questi
                 intent1.putExtra("timestamp", timestamp);
                 intent1.putExtra("subName", question.getSubjectName());
                 intent1.putExtra("question", question.getQuestion());
+                intent1.putExtra("grade", Home_Work.Grade);
                 v.getContext().startActivity(intent1);
 
             }

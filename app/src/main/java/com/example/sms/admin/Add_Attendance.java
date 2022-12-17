@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import com.example.sms.R;
 import com.example.sms.adapter.Attendance_Adapter;
+import com.example.sms.model.Attendance;
 import com.example.sms.model.Student;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.database.DataSnapshot;
@@ -24,18 +25,22 @@ import com.sdsmdg.tastytoast.TastyToast;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 
 public class Add_Attendance extends AppCompatActivity {
 
     RecyclerView recyclerView;
     ArrayList<Student> list;
+    public static   List<Attendance> attendanceList = new ArrayList<>();
     DatabaseReference databaseReference;
     Attendance_Adapter attendanceAdapter;
 
     public static TextView attendance_date;
     ImageView button_back;
     public static FloatingActionButton save;
+
+    public static String grade;
 
     TextView grade10;
     TextView grade11;
@@ -95,6 +100,7 @@ public class Add_Attendance extends AppCompatActivity {
                                 String uname = dataSnapshot.getKey();
                                 student.setUsername(uname);
                                 list.add(student);
+                                attendanceList.clear();
                             }
                         }
                         attendanceAdapter.notifyDataSetChanged();
@@ -105,7 +111,9 @@ public class Add_Attendance extends AppCompatActivity {
                     }
                 });
 
+                grade = "Grade 10";
             }
+
         });
 
         grade11.setOnClickListener(new View.OnClickListener() {
@@ -122,6 +130,7 @@ public class Add_Attendance extends AppCompatActivity {
                                 String uname = dataSnapshot.getKey();
                                 student.setUsername(uname);
                                 list.add(student);
+                                attendanceList.clear();
                             }
                         }
                         attendanceAdapter.notifyDataSetChanged();
@@ -131,7 +140,7 @@ public class Add_Attendance extends AppCompatActivity {
 
                     }
                 });
-
+                grade = "Grade 11";
             }
         });
     }

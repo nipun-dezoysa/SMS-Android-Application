@@ -40,7 +40,7 @@ public class Pdf extends AppCompatActivity {
                 galleryIntent.setAction(Intent.ACTION_GET_CONTENT);
 
                 // We will be redirected to choose Pdf
-                galleryIntent.setType("application/pdf");
+                galleryIntent.setType("*/*");
                 startActivityForResult(galleryIntent, 1);
             }
         });
@@ -61,13 +61,14 @@ public class Pdf extends AppCompatActivity {
             // while Pdf is uploading
             dialog.show();
             imageuri = data.getData();
+            String fileName = imageuri.getLastPathSegment();
             final String timestamp = "" + System.currentTimeMillis();
             StorageReference storageReference = FirebaseStorage.getInstance().getReference();
             final String messagePushID = timestamp;
             Toast.makeText(Pdf.this, imageuri.toString(), Toast.LENGTH_SHORT).show();
 
             // Here we are uploading the Pdf in firebase storage with the name of current time
-            final StorageReference filepath = storageReference.child(messagePushID + "." + "Pdf");
+            final StorageReference filepath = storageReference.child(messagePushID + "." + "doc");
             Toast.makeText(Pdf.this, filepath.getName(), Toast.LENGTH_SHORT).show();
             filepath.putFile(imageuri).continueWithTask(new Continuation() {
                 @Override
