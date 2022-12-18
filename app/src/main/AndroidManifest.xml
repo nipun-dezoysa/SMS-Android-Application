@@ -34,6 +34,12 @@
         android:theme="@style/Theme.SMS"
         tools:targetApi="31">
         <activity
+            android:name=".LoadAttendanceList"
+            android:exported="false" />
+        <activity
+            android:name=".ViewAttendance"
+            android:exported="false" />
+        <activity
             android:name=".adapter.Pdf"
             android:exported="false" />
         <activity
