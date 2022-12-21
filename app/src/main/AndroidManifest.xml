@@ -34,10 +34,13 @@
         android:theme="@style/Theme.SMS"
         tools:targetApi="31">
         <activity
-            android:name=".LoadAttendanceList"
+            android:name=".admin.DayAttendance"
             android:exported="false" />
         <activity
-            android:name=".ViewAttendance"
+            android:name=".admin.MonthAttendanceList"
+            android:exported="false" />
+        <activity
+            android:name=".admin.ViewAttendance"
             android:exported="false" />
         <activity
             android:name=".adapter.Pdf"
@@ -148,10 +151,9 @@
             android:exported="false" />
         <activity
             android:name=".admin.ScheduleActivity"
-            android:exported="false" />
-        <activity
-            android:name=".HomeworkActivity"
-            android:exported="false" />
+            android:exported="false" /> <!-- <activity -->
+        <!-- android:name=".HomeworkActivity" -->
+        <!-- android:exported="false" /> -->
         <activity
             android:name=".CreateNotesActivity"
             android:exported="false" />

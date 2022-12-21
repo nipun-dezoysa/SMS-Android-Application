@@ -15,6 +15,8 @@ public class ViewAttendance extends AppCompatActivity {
 
     LinearLayout grade10, grade11;
 
+    public static String grade;
+
     DatabaseReference databaseReference;
 
     @Override
@@ -32,18 +34,20 @@ public class ViewAttendance extends AppCompatActivity {
         grade10.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(ViewAttendance.this,LoadAttendanceList.class);
-                intent.putExtra("grade", 10);
+                Intent intent = new Intent(ViewAttendance.this, MonthAttendanceList.class);
+//                intent.putExtra("grade", 10);
                 startActivity(intent);
+                grade = "Grade 10";
             }
         });
 
         grade11.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(ViewAttendance.this, LoadAttendanceList.class);
-                intent.putExtra("grade", 11);
+                Intent intent = new Intent(ViewAttendance.this, MonthAttendanceList.class);
+//                intent.putExtra("grade", 11);
                 startActivity(intent);
+                grade = "Grade 11";
             }
         });
     }

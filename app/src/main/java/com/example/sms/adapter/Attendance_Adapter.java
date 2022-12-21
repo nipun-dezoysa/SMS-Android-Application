@@ -75,6 +75,8 @@ public class Attendance_Adapter extends RecyclerView.Adapter<Attendance_Adapter.
 
                 TextView attendance = Add_Attendance.attendance_date;
                 String attendancetxt = attendance.getText().toString().replace('/','-');
+//                StringBuilder builder = new StringBuilder(attendance.getText().toString());
+//                builder.reverse();
 
                 if (attendancetxt.equals("Date")){
                     TastyToast.makeText(context, "Please Select a Date", TastyToast.LENGTH_SHORT, TastyToast.INFO);
@@ -82,7 +84,8 @@ public class Attendance_Adapter extends RecyclerView.Adapter<Attendance_Adapter.
                     databaseRef.child("Attendance").addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
-                            databaseRef.child("Attendance").child(attendancetxt).child(Add_Attendance.grade).setValue(Add_Attendance.attendanceList);
+                            databaseRef.child("Attendance").child(attendance.getText().toString()).child(Add_Attendance.grade).setValue(Add_Attendance.attendanceList);
+                            TastyToast.makeText(context, "Attendance Registered", TastyToast.LENGTH_SHORT, TastyToast.SUCCESS);
                         }
 
                         @Override
@@ -96,35 +99,7 @@ public class Attendance_Adapter extends RecyclerView.Adapter<Attendance_Adapter.
         });
 
 
-        //checkbox ischecked
 
-//        holder.save_student_attendance.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                if (holder.checkBox.isChecked()){
-//                    databaseRef.child(String.valueOf(holder.attendance_date)).setValue("Present");
-//                } else {
-//                    databaseRef.child(String.valueOf(holder.attendance_date)).setValue("Absent");
-//                }
-//            }
-//        });
-//        holder.checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-//            @Override
-//            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-//                if (isChecked){
-//
-//                }else {
-//                }
-//            }
-//        });
-//        holder.checkBox.setSelected(user.getCheckBoxSelected());
-
-//        holder.save_student_attendance.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                databaseRef.child(String.valueOf(holder.username)).setValue(holder.checkBox.isChecked());
-//            }
-//        });
     }
 
     @Override
@@ -134,8 +109,7 @@ public class Attendance_Adapter extends RecyclerView.Adapter<Attendance_Adapter.
 
     public static class MyViewHolderAttendance extends RecyclerView.ViewHolder{
 //        public String checkbox;
-        TextView username,grade10,grade11;
-        TextView attendance_date;
+        TextView username;
         CheckBox checkBox;
         FloatingActionButton save_student_attendance;
 

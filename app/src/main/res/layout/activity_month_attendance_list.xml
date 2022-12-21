@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".admin.LoadAttendanceList">
+    tools:context=".admin.MonthAttendanceList">
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
@@ -43,7 +43,7 @@
 
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/loadAttendance_recyclerview"
+            android:id="@+id/monthAttendance_recyclerview"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginTop="150dp"

@@ -46,6 +46,7 @@ public class Grade10HW extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_grade10_hw);
+
         grade10_back = findViewById(R.id.grade10_back);
         homework_questions = findViewById(R.id.type_qstns);
         add_questions = findViewById(R.id.add_qstns);

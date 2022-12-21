@@ -9,6 +9,7 @@ import android.app.DatePickerDialog;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.DatePicker;
 import android.widget.ImageView;
@@ -24,14 +25,11 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.sdsmdg.tastytoast.TastyToast;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
-import java.util.Locale;
 
 public class Add_Attendance extends AppCompatActivity {
 
@@ -51,7 +49,9 @@ public class Add_Attendance extends AppCompatActivity {
 
     TextView grade10;
     TextView grade11;
+    int dateOfMonth, monthOfYear, yearOfYear;
 
+    TextView monthName;
 
 
     @Override
@@ -67,6 +67,7 @@ public class Add_Attendance extends AppCompatActivity {
         grade11 = findViewById(R.id.grade11_list);
 
         attendance_date = findViewById(R.id.attendance_date);
+        monthName = findViewById(R.id.month);
 
         Calendar calendar = Calendar.getInstance();
         final int year = calendar.get(Calendar.YEAR);
@@ -88,8 +89,20 @@ public class Add_Attendance extends AppCompatActivity {
             @Override
             public void onDateSet(DatePicker view, int year, int month, int day) {
                 month = month+1;
-                String date = day+"/"+month+"/"+year;
+                String date = year+"/"+month+"/"+day;
+                dateOfMonth = day;
+                monthOfYear = month;
+                yearOfYear = year;
                 attendance_date.setText(date);
+
+                Calendar cal=Calendar.getInstance();
+                SimpleDateFormat month_date = new SimpleDateFormat("MMMM");
+                cal.set(Calendar.MONTH, monthOfYear-1);
+                String month_name = month_date.format(cal.getTime());
+
+                Log.e("",""+month_name);
+                monthName.setText(month_name);
+
             }
         };
 
@@ -100,13 +113,7 @@ public class Add_Attendance extends AppCompatActivity {
             }
         });
 
-//        save.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                //                finish();
-//                TastyToast.makeText(Add_Attendance.this, " Under Construction!", TastyToast.LENGTH_SHORT, TastyToast.ERROR).show();
-//            }
-//        });
+
 
         recyclerView = findViewById(R.id.stud_attendance_recyclerview);
         databaseReference = FirebaseDatabase.getInstance().getReference("students");

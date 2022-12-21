@@ -50,9 +50,8 @@ public class AttendanceActivity extends AppCompatActivity {
         view_attendance.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                TastyToast.makeText(AttendanceActivity.this, "under construction", TastyToast.LENGTH_SHORT, TastyToast.DEFAULT);
-
-
+                Intent intent = new Intent(AttendanceActivity.this, ViewAttendance.class);
+                startActivity(intent);
             }
         });
     }
