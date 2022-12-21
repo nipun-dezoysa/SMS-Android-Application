@@ -36,12 +36,15 @@ public class LoadAttendanceList extends AppCompatActivity {
     ImageView loadAttendance_back;
 
     Intent intent;
+    TextView setGrade;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_load_attendance_list);
 
+        setGrade = findViewById(R.id.setGrade2);
+        setGrade.setText(ViewAttendance.grade);
         loadAttendance_back = findViewById(R.id.loadAttendance_back);
         loadAttendance_back.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -59,10 +62,13 @@ public class LoadAttendanceList extends AppCompatActivity {
 
         String grade = ViewAttendance.grade;
         String day = intent.getStringExtra("day");
+        String dday = day;
+        if (Integer.parseInt(day)<10)
+            dday = "0"+dday;
 
         finalAttendanceDate = findViewById(R.id.finalAttendanceDate);
 
-        finalAttendanceDate.setText("2022-"+ dmonth + "-"+day);
+        finalAttendanceDate.setText("2022-"+ dmonth + "-"+dday);
 
         recyclerView = findViewById(R.id.load_attendance_rv);
         databaseReference = FirebaseDatabase.getInstance().getReference("Attendance").child(year).child(month).child(day).child(grade);
@@ -70,7 +76,7 @@ public class LoadAttendanceList extends AppCompatActivity {
         recyclerView.setHasFixedSize(true);
         staggeredGridLayoutManager=new StaggeredGridLayoutManager(2,StaggeredGridLayoutManager.VERTICAL);
         recyclerView.setLayoutManager(staggeredGridLayoutManager);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+//        recyclerView.setLayoutManager(new LinearLayoutManager(this));
         viewLoadAttendance_adapter = new ViewLoadAttendanceAdapter(this, list);
         recyclerView.setAdapter(viewLoadAttendance_adapter);
 

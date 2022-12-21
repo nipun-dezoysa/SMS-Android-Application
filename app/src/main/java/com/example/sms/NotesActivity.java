@@ -68,7 +68,7 @@ public class NotesActivity extends AppCompatActivity {
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_NOTHING);
 
 
-        ImageView notes_back = (ImageView) findViewById(R.id.notes_back);
+        ImageView notes_back = findViewById(R.id.notes_back);
         notes_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -77,7 +77,7 @@ public class NotesActivity extends AppCompatActivity {
         });
 
         mcreateNotes=findViewById(R.id.createNote);
-        firebaseAuth=FirebaseAuth.getInstance();
+//        firebaseAuth=FirebaseAuth.getInstance();
 
         firebaseFirestore=FirebaseFirestore.getInstance();
 

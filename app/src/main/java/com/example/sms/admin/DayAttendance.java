@@ -8,8 +8,10 @@ import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.example.sms.R;
 import com.example.sms.adapter.ViewDayAttendanceAdapter;
@@ -20,7 +22,9 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 
 public class DayAttendance extends AppCompatActivity {
 
@@ -32,6 +36,7 @@ public class DayAttendance extends AppCompatActivity {
 
     Intent intent;
     ImageView day_atn_back;
+    TextView setGrade,setMonth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +48,23 @@ public class DayAttendance extends AppCompatActivity {
         String year = ViewAttendance.year;
         String month = intent.getStringExtra("month");
         String grade = ViewAttendance.grade;
+
+        setGrade = findViewById(R.id.setGrade1);
+        setMonth = findViewById(R.id.month);
+
+        setGrade.setText(grade);
+
+        int m = Integer.parseInt(month);
+
+        Calendar cal=Calendar.getInstance();
+        SimpleDateFormat month_date = new SimpleDateFormat("MMMM");
+        cal.set(Calendar.MONTH, m-1);
+        String month_name = month_date.format(cal.getTime());
+
+        Log.e("",""+month_name);
+
+        setMonth.setText(month_name);
+
 
         day_atn_back = findViewById(R.id.day_atn_back);
 
@@ -57,9 +79,9 @@ public class DayAttendance extends AppCompatActivity {
         databaseReference = FirebaseDatabase.getInstance().getReference("Attendance").child(year).child(month);
         list = new ArrayList<>();
         recyclerView.setHasFixedSize(true);
-        staggeredGridLayoutManager=new StaggeredGridLayoutManager(2,StaggeredGridLayoutManager.VERTICAL);
+        staggeredGridLayoutManager=new StaggeredGridLayoutManager(4,StaggeredGridLayoutManager.VERTICAL);
         recyclerView.setLayoutManager(staggeredGridLayoutManager);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+//        recyclerView.setLayoutManager(new LinearLayoutManager(this));
         viewDayAttendance_adapter = new ViewDayAttendanceAdapter(this, list);
         recyclerView.setAdapter(viewDayAttendance_adapter);
 
