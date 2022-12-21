@@ -67,7 +67,6 @@ public class Add_Attendance extends AppCompatActivity {
         grade11 = findViewById(R.id.grade11_list);
 
         attendance_date = findViewById(R.id.attendance_date);
-        monthName = findViewById(R.id.month);
 
         Calendar calendar = Calendar.getInstance();
         final int year = calendar.get(Calendar.YEAR);
@@ -90,18 +89,18 @@ public class Add_Attendance extends AppCompatActivity {
             public void onDateSet(DatePicker view, int year, int month, int day) {
                 month = month+1;
                 String date = year+"/"+month+"/"+day;
-                dateOfMonth = day;
-                monthOfYear = month;
-                yearOfYear = year;
+//                dateOfMonth = day;
+//                monthOfYear = month;
+//                yearOfYear = year;
                 attendance_date.setText(date);
 
-                Calendar cal=Calendar.getInstance();
-                SimpleDateFormat month_date = new SimpleDateFormat("MMMM");
-                cal.set(Calendar.MONTH, monthOfYear-1);
-                String month_name = month_date.format(cal.getTime());
-
-                Log.e("",""+month_name);
-                monthName.setText(month_name);
+//                Calendar cal=Calendar.getInstance();
+//                SimpleDateFormat month_date = new SimpleDateFormat("MMMM");
+//                cal.set(Calendar.MONTH, monthOfYear-1);
+//                String month_name = month_date.format(cal.getTime());
+//
+//                Log.e("",""+month_name);
+//                monthName.setText(month_name);
 
             }
         };

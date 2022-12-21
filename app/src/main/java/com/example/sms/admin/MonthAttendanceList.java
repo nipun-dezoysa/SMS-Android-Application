@@ -8,6 +8,8 @@ import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageView;
 
 import com.example.sms.R;
 import com.example.sms.adapter.ViewMonthAttendance_Adapter;
@@ -27,16 +29,28 @@ public class MonthAttendanceList extends AppCompatActivity {
     DatabaseReference databaseReference;
     StaggeredGridLayoutManager staggeredGridLayoutManager;
 
+    ImageView monthAttendance_back;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_month_attendance_list);
 
+        String year = ViewAttendance.year;
+
+        monthAttendance_back = findViewById(R.id.monthAttendance_back);
+
+        monthAttendance_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
 
 
         recyclerView = findViewById(R.id.monthAttendance_recyclerview);
-        databaseReference = FirebaseDatabase.getInstance().getReference("Attendance").child("2022");
+        databaseReference = FirebaseDatabase.getInstance().getReference("Attendance").child(year);
         list = new ArrayList<>();
         recyclerView.setHasFixedSize(true);
         staggeredGridLayoutManager=new StaggeredGridLayoutManager(2,StaggeredGridLayoutManager.VERTICAL);

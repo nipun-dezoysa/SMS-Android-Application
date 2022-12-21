@@ -10,10 +10,12 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.example.sms.R;
-import com.example.sms.adapter.ViewDayAttendanceAdapter;
+import com.example.sms.adapter.ViewLoadAttendanceAdapter;
 import com.example.sms.adapter.ViewMonthAttendance_Adapter;
+import com.example.sms.model.Attendance;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -22,55 +24,66 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
-public class DayAttendance extends AppCompatActivity {
+public class LoadAttendanceList extends AppCompatActivity {
 
     RecyclerView recyclerView;
-    ArrayList<String> list;
-    ViewDayAttendanceAdapter viewDayAttendance_adapter;
+    ArrayList<Attendance> list;
+    ViewLoadAttendanceAdapter viewLoadAttendance_adapter;
     DatabaseReference databaseReference;
     StaggeredGridLayoutManager staggeredGridLayoutManager;
 
+    TextView finalAttendanceDate;
+    ImageView loadAttendance_back;
+
     Intent intent;
-    ImageView day_atn_back;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_day_attendance);
+        setContentView(R.layout.activity_load_attendance_list);
 
-        intent = getIntent();
-
-        String year = ViewAttendance.year;
-        String month = intent.getStringExtra("month");
-        String grade = ViewAttendance.grade;
-
-        day_atn_back = findViewById(R.id.day_atn_back);
-
-        day_atn_back.setOnClickListener(new View.OnClickListener() {
+        loadAttendance_back = findViewById(R.id.loadAttendance_back);
+        loadAttendance_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 onBackPressed();
             }
         });
 
-        recyclerView = findViewById(R.id.day_attendance_recyclerview);
-        databaseReference = FirebaseDatabase.getInstance().getReference("Attendance").child(year).child(month);
+        intent = getIntent();
+        String year = ViewAttendance.year;
+        String month = ViewAttendance.month;
+        String dmonth = ViewAttendance.month;
+        if(Integer.parseInt(month)<10)
+            dmonth="0"+dmonth;
+
+        String grade = ViewAttendance.grade;
+        String day = intent.getStringExtra("day");
+
+        finalAttendanceDate = findViewById(R.id.finalAttendanceDate);
+
+        finalAttendanceDate.setText("2022-"+ dmonth + "-"+day);
+
+        recyclerView = findViewById(R.id.load_attendance_rv);
+        databaseReference = FirebaseDatabase.getInstance().getReference("Attendance").child(year).child(month).child(day).child(grade);
         list = new ArrayList<>();
         recyclerView.setHasFixedSize(true);
         staggeredGridLayoutManager=new StaggeredGridLayoutManager(2,StaggeredGridLayoutManager.VERTICAL);
         recyclerView.setLayoutManager(staggeredGridLayoutManager);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        viewDayAttendance_adapter = new ViewDayAttendanceAdapter(this, list);
-        recyclerView.setAdapter(viewDayAttendance_adapter);
+        viewLoadAttendance_adapter = new ViewLoadAttendanceAdapter(this, list);
+        recyclerView.setAdapter(viewLoadAttendance_adapter);
+
+
 
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for (DataSnapshot dataSnapshot: snapshot.getChildren()){
-                    if(dataSnapshot.hasChild(grade))
-                        list.add(dataSnapshot.getKey());
+                    Attendance attendance = dataSnapshot.getValue(Attendance.class);
+                    list.add(attendance);
                 }
-                viewDayAttendance_adapter.notifyDataSetChanged();
+                viewLoadAttendance_adapter.notifyDataSetChanged();
             }
 
             @Override
@@ -78,5 +91,6 @@ public class DayAttendance extends AppCompatActivity {
 
             }
         });
+
     }
 }

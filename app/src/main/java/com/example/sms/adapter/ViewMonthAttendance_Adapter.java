@@ -2,6 +2,7 @@ package com.example.sms.adapter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,7 +18,9 @@ import com.example.sms.admin.ViewAttendance;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 
 public class ViewMonthAttendance_Adapter extends RecyclerView.Adapter<ViewMonthAttendance_Adapter.MyViewHolderViewAttendance>{
 
@@ -41,13 +44,24 @@ public class ViewMonthAttendance_Adapter extends RecyclerView.Adapter<ViewMonthA
     @Override
     public void onBindViewHolder(@NonNull ViewMonthAttendance_Adapter.MyViewHolderViewAttendance holder, int position) {
         String s = list.get(position);
-        holder.attendace_month.setText(s);
+
+        int m = Integer.parseInt(s);
+
+        Calendar cal=Calendar.getInstance();
+        SimpleDateFormat month_date = new SimpleDateFormat("MMMM");
+        cal.set(Calendar.MONTH, m-1);
+        String month_name = month_date.format(cal.getTime());
+
+        Log.e("",""+month_name);
+
+        holder.attendace_month.setText(month_name);
 
         holder.attendace_month.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(v.getContext(), DayAttendance.class);
                 intent.putExtra("month", s);
+                ViewAttendance.month = s;
                 v.getContext().startActivity(intent);
             }
         });

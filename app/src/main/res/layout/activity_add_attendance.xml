@@ -113,19 +113,6 @@
 
 
         </LinearLayout>
-        <TextView
-            android:id="@+id/month"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Month"
-            android:textColor="@color/black"
-            android:textSize="18dp"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="60dp"
-            android:gravity="center"
-            android:layout_gravity="center"
-            android:background="@drawable/texteditbgn12"
-            android:paddingHorizontal="30dp"/>
 
 
         <androidx.recyclerview.widget.RecyclerView

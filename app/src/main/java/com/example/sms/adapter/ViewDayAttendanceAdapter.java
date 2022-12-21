@@ -1,6 +1,7 @@
 package com.example.sms.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.sms.R;
+import com.example.sms.admin.LoadAttendanceList;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -19,12 +21,12 @@ public class ViewDayAttendanceAdapter extends RecyclerView.Adapter<ViewDayAttend
 
     Context context;
     ArrayList<String> list;
-    private DatabaseReference databaseRef;
+//    private DatabaseReference databaseRef;
 
     public ViewDayAttendanceAdapter(Context context, ArrayList<String> list) {
         this.context = context;
         this.list = list;
-        databaseRef = FirebaseDatabase.getInstance().getReference();
+//        databaseRef = FirebaseDatabase.getInstance().getReference();
 
     }
 
@@ -39,6 +41,15 @@ public class ViewDayAttendanceAdapter extends RecyclerView.Adapter<ViewDayAttend
     public void onBindViewHolder(@NonNull ViewDayAttendanceAdapter.MyViewHolderViewAttendance holder, int position) {
         String s = list.get(position);
         holder.dayOfMonth.setText(s);
+
+        holder.dayOfMonth.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(v.getContext(), LoadAttendanceList.class);
+                intent.putExtra("day", s);
+                v.getContext().startActivity(intent);
+            }
+        });
     }
 
     @Override

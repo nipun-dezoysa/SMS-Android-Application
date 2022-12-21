@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
 xmlns:app="http://schemas.android.com/apk/res-auto"
 xmlns:tools="http://schemas.android.com/tools"
 android:layout_width="match_parent"
 android:layout_height="match_parent"
-tools:context=".admin.DayAttendance">
+tools:context=".admin.LoadAttendanceList">
 
 <androidx.cardview.widget.CardView
     android:layout_width="match_parent"
@@ -15,11 +15,11 @@ tools:context=".admin.DayAttendance">
         android:background="@color/darkgreen">
 
         <ImageView
-            android:id="@+id/day_atn_back"
+            android:id="@+id/loadAttendance_back"
             android:layout_width="40dp"
             android:layout_height="35dp"
             android:layout_centerVertical="true"
-            android:layout_marginLeft="10dp"
+            android:layout_marginStart="10dp"
             android:background="@drawable/back" />
 
         <TextView
@@ -41,8 +41,17 @@ tools:context=".admin.DayAttendance">
         android:layout_gravity="center"
         android:src="@drawable/logo_transparentnew" />
 
+    <TextView
+        android:id="@+id/finalAttendanceDate"
+        android:hint="Date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="130dp"
+        android:textSize="25dp"
+        android:layout_gravity="center_horizontal"/>
+
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/day_attendance_recyclerview"
+        android:id="@+id/load_attendance_rv"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="150dp"
@@ -53,4 +62,4 @@ tools:context=".admin.DayAttendance">
 </androidx.cardview.widget.CardView>
 
 
-</RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

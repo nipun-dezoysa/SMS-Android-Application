@@ -9,7 +9,6 @@
     android:id="@+id/cardViewUE">
 
 
-
     <LinearLayout
         android:id="@+id/userEntryLL"
         android:layout_width="match_parent"
