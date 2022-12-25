@@ -49,7 +49,7 @@ public class QuestionAdapterStud extends RecyclerView.Adapter<QuestionAdapterStu
 
 
         holder.remove.setVisibility(View.GONE);
-
+        holder.edit.setVisibility(View.GONE);
 
     }
 
@@ -62,7 +62,7 @@ public class QuestionAdapterStud extends RecyclerView.Adapter<QuestionAdapterStu
 
         TextView textQuestion, textSubject;
         CardView cardView;
-        ImageView remove;
+        ImageView remove,edit;
         public QuestionView(@NonNull View itemView) {
             super(itemView);
 
@@ -70,6 +70,7 @@ public class QuestionAdapterStud extends RecyclerView.Adapter<QuestionAdapterStu
             textSubject =  itemView.findViewById(R.id.text_sub_name);
             cardView = itemView.findViewById(R.id.cardView);
             remove = itemView.findViewById(R.id.remove_qstn);
+            edit = itemView.findViewById(R.id.edit_qstn);
 
         }
     }

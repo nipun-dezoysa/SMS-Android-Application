@@ -26,12 +26,10 @@ public class QuestionAdapter extends RecyclerView.Adapter<QuestionAdapter.Questi
 
     private Context context;
     private ArrayList<Question> questionArrayList;
-//    private SelectListener selectListener;
 
     public QuestionAdapter(Context context, ArrayList<Question> questionArrayList) {
         this.context = context;
         this.questionArrayList = questionArrayList;
-//        this.selectListener = selectListener;
     }
 
 

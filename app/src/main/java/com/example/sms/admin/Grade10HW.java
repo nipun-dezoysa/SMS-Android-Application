@@ -3,9 +3,12 @@ package com.example.sms.admin;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatSpinner;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.Manifest;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
@@ -13,6 +16,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.example.sms.R;
 import com.example.sms.adapter.QuestionAdapter;
@@ -22,6 +26,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
 import com.sdsmdg.tastytoast.TastyToast;
 
 import java.util.ArrayList;
@@ -31,7 +36,8 @@ public class Grade10HW extends AppCompatActivity {
 
     private AppCompatSpinner spinner_sub;
     private EditText homework_questions;
-    private Button add_questions;
+    private Button add_questions,chooseFile,uploadFile;
+    private TextView fileName;
     private ImageView grade10_back;
 
     private QuestionAdapter questionAdapter;
@@ -39,6 +45,7 @@ public class Grade10HW extends AppCompatActivity {
     private RecyclerView homework_rv;
 
     DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference();
+    FirebaseStorage storageReference;
 
     List<String> subjectlist = new ArrayList<>();
 
@@ -50,6 +57,18 @@ public class Grade10HW extends AppCompatActivity {
         grade10_back = findViewById(R.id.grade10_back);
         homework_questions = findViewById(R.id.type_qstns);
         add_questions = findViewById(R.id.add_qstns);
+        chooseFile = findViewById(R.id.chooseFile);
+        uploadFile = findViewById(R.id.uploadFile);
+        fileName = findViewById(R.id.fileName);
+
+        storageReference = FirebaseStorage.getInstance();
+
+//        chooseFile.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                if (ContextCompat.checkSelfPermission(Grade10HW.this, Manifest.permission.READ_EXTERNAL_STORAGE)== PackageManager.PERMISSION_GRANTED)
+//            }
+//        });
 
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_NOTHING);
 
@@ -94,13 +113,14 @@ public class Grade10HW extends AppCompatActivity {
                             databaseReference.child("homework").child("Grade 10").child(timestamp).child("timestamp").setValue(timestamp);
 
                             TastyToast.makeText(Grade10HW.this, "Question added successfully", TastyToast.LENGTH_SHORT, TastyToast.SUCCESS).show();
+                            homework_questions.getText().clear();
                         }
 
                         @Override
                         public void onCancelled(@NonNull DatabaseError error) {
                             TastyToast.makeText(Grade10HW.this, "Connection failed", TastyToast.LENGTH_SHORT, TastyToast.ERROR).show();
                         }
-                    });homework_questions.getText().clear();
+                    });
             }
         });
 

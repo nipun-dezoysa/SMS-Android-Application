@@ -74,7 +74,7 @@ public class TextRecognition extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_text_recognition);
 
-        ImageView text_rec_back = (ImageView) findViewById(R.id.txt_rec_back);
+        ImageView text_rec_back = findViewById(R.id.txt_rec_back);
         text_rec_back.setOnClickListener(new View.OnClickListener() {
 
             @Override
