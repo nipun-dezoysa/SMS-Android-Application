@@ -61,6 +61,9 @@ public class Grade10HW extends AppCompatActivity {
         uploadFile = findViewById(R.id.uploadFile);
         fileName = findViewById(R.id.fileName);
 
+        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_NOTHING);
+
+
         storageReference = FirebaseStorage.getInstance();
 
 //        chooseFile.setOnClickListener(new View.OnClickListener() {

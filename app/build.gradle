@@ -103,4 +103,8 @@ dependencies {
 
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
+    //for pdf
+    implementation 'com.itextpdf:itextg:5.5.10'
+    implementation 'com.github.barteksc:android-pdf-viewer:2.8.2'
+
 }

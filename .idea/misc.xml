@@ -28,11 +28,15 @@
         <entry key="..\:/Users/Dell/AndroidStudioProjects/SMS/app/src/main/res/drawable/name.xml" value="0.1705" />
         <entry key="..\:/Users/Dell/AndroidStudioProjects/SMS/app/src/main/res/drawable/person_24.xml" value="0.16" />
         <entry key="..\:/Users/Dell/AndroidStudioProjects/SMS/app/src/main/res/drawable/save.xml" value="0.1675" />
+        <entry key="..\:/Users/Dell/AndroidStudioProjects/SMS/app/src/main/res/drawable/scan.xml" value="0.1515" />
         <entry key="..\:/Users/Dell/AndroidStudioProjects/SMS/app/src/main/res/drawable/switch_trcks.xml" value="0.1555" />
         <entry key="..\:/Users/Dell/AndroidStudioProjects/SMS/app/src/main/res/drawable/swtch_tymbs.xml" value="0.1555" />
+        <entry key="..\:/Users/Dell/AndroidStudioProjects/SMS/app/src/main/res/drawable/tablelayout.xml" value="0.1515" />
         <entry key="..\:/Users/Dell/AndroidStudioProjects/SMS/app/src/main/res/drawable/texteditbg.xml" value="0.181" />
         <entry key="..\:/Users/Dell/AndroidStudioProjects/SMS/app/src/main/res/drawable/texteditbgn12.xml" value="0.1555" />
         <entry key="..\:/Users/Dell/AndroidStudioProjects/SMS/app/src/main/res/drawable/txtbg.xml" value="0.1705" />
+        <entry key="..\:/Users/Dell/AndroidStudioProjects/SMS/app/src/main/res/drawable/weeklayout.xml" value="0.1515" />
+        <entry key="..\:/Users/Dell/AndroidStudioProjects/SMS/app/src/main/res/layout-v31/activity_schedule.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/Dell/AndroidStudioProjects/SMS/app/src/main/res/layout/ac.xml" value="0.2" />
         <entry key="..\:/Users/Dell/AndroidStudioProjects/SMS/app/src/main/res/layout/activity_add_attendance.xml" value="0.22" />
         <entry key="..\:/Users/Dell/AndroidStudioProjects/SMS/app/src/main/res/layout/activity_all_attendance.xml" value="0.17192982456140352" />
@@ -66,10 +70,11 @@
         <entry key="..\:/Users/Dell/AndroidStudioProjects/SMS/app/src/main/res/layout/activity_questions.xml" value="0.17105263157894737" />
         <entry key="..\:/Users/Dell/AndroidStudioProjects/SMS/app/src/main/res/layout/activity_report.xml" value="0.17192982456140352" />
         <entry key="..\:/Users/Dell/AndroidStudioProjects/SMS/app/src/main/res/layout/activity_report_stud.xml" value="0.17192982456140352" />
-        <entry key="..\:/Users/Dell/AndroidStudioProjects/SMS/app/src/main/res/layout/activity_schedule.xml" value="0.17192982456140352" />
+        <entry key="..\:/Users/Dell/AndroidStudioProjects/SMS/app/src/main/res/layout/activity_schedule.xml" value="0.2" />
         <entry key="..\:/Users/Dell/AndroidStudioProjects/SMS/app/src/main/res/layout/activity_schedule_stud.xml" value="0.17192982456140352" />
         <entry key="..\:/Users/Dell/AndroidStudioProjects/SMS/app/src/main/res/layout/activity_show.xml" value="0.15" />
         <entry key="..\:/Users/Dell/AndroidStudioProjects/SMS/app/src/main/res/layout/activity_splash_screen.xml" value="0.22" />
+        <entry key="..\:/Users/Dell/AndroidStudioProjects/SMS/app/src/main/res/layout/activity_student_list_report.xml" value="0.17192982456140352" />
         <entry key="..\:/Users/Dell/AndroidStudioProjects/SMS/app/src/main/res/layout/activity_study_material.xml" value="0.2" />
         <entry key="..\:/Users/Dell/AndroidStudioProjects/SMS/app/src/main/res/layout/activity_study_material_stud.xml" value="0.17192982456140352" />
         <entry key="..\:/Users/Dell/AndroidStudioProjects/SMS/app/src/main/res/layout/activity_test.xml" value="0.18" />

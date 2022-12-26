@@ -14,6 +14,7 @@ import android.util.Base64;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.WindowManager;
 import android.webkit.MimeTypeMap;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -136,6 +137,8 @@ public class TeacherPageActivity extends AppCompatActivity {
         date.setText(getCurrentDate());
         time.setText(getCurrentTime());
 
+        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_NOTHING);
+
         adminmenupopupbutton = findViewById(R.id.adminmenupopupbutton);
 
         adminmenupopupbutton.setOnClickListener(new View.OnClickListener() {
@@ -229,7 +232,6 @@ public class TeacherPageActivity extends AppCompatActivity {
                 startActivityForResult(intent,101);
             }
         });
-
 
 
         reg_std.setOnClickListener(new View.OnClickListener() {

@@ -18,6 +18,7 @@ import android.util.Base64;
 import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
@@ -90,6 +91,9 @@ public class UserList extends AppCompatActivity implements SelectListener {
         FloatingActionButton add_stud_btn = findViewById(R.id.addstudent);
         FloatingActionButton delete_all = findViewById(R.id.delete_all_entry);
         linearLayout = findViewById(R.id.userEntryLL);
+
+        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_NOTHING);
+
         button_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

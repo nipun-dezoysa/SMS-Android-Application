@@ -49,7 +49,7 @@
         android:id="@+id/homework_recyclerview"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="350dp"
+        android:layout_marginTop="355dp"
         android:scrollbars="vertical">
 
 
@@ -89,6 +89,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Choose file"
+            android:paddingRight="15dp"
+            android:background="@color/green"
             android:paddingLeft="15dp"/>
 
         <TextView
@@ -105,6 +107,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Upload"
+            android:layout_marginLeft="60dp"
+            android:background="@color/green"
+            android:paddingRight="15dp"
             android:paddingLeft="15dp"/>
 
       </LinearLayout>
@@ -114,6 +119,7 @@
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
           android:text="Add Questions"
+          android:layout_marginTop="5dp"
           android:textColor="@color/white"
           android:background="@drawable/btn"/>
     </LinearLayout>

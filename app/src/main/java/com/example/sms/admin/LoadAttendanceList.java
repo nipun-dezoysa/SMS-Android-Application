@@ -76,7 +76,6 @@ public class LoadAttendanceList extends AppCompatActivity {
         recyclerView.setHasFixedSize(true);
         staggeredGridLayoutManager=new StaggeredGridLayoutManager(2,StaggeredGridLayoutManager.VERTICAL);
         recyclerView.setLayoutManager(staggeredGridLayoutManager);
-//        recyclerView.setLayoutManager(new LinearLayoutManager(this));
         viewLoadAttendance_adapter = new ViewLoadAttendanceAdapter(this, list);
         recyclerView.setAdapter(viewLoadAttendance_adapter);
 

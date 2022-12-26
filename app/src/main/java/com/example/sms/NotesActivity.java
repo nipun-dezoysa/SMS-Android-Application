@@ -124,11 +124,9 @@ public class NotesActivity extends AppCompatActivity {
                         intent1.putExtra("title", model.getTitle());
                         intent1.putExtra("content", model.getContent());
                         intent1.putExtra("noteId", documentId);
-//                        intent1.putExtra("uname", uname);
 
                         v.getContext().startActivity(intent1);
 
-//                        Toast.makeText(NotesActivity.this, "working", Toast.LENGTH_SHORT).show();
                     }
                 });
 
@@ -146,7 +144,6 @@ public class NotesActivity extends AppCompatActivity {
                                 intent1.putExtra("title", model.getTitle());
                                 intent1.putExtra("content", model.getContent());
                                 intent1.putExtra("noteId", documentId);
-//                                intent1.putExtra("uname", uname);
 
                                 v.getContext().startActivity(intent1);
                                 return false;

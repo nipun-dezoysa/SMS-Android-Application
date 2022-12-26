@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.util.Base64;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
@@ -112,6 +113,8 @@ public class Manage_User extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_manage_user);
+
+        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_NOTHING);
 
 
         manage_std_back = findViewById(R.id.mng_std_back);
@@ -425,7 +428,6 @@ public class Manage_User extends AppCompatActivity {
                 final String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
                 final String passwordPattern = "((?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%]).{6,15})";
                 final String mobileNumberPattern= "^\\d{10}$";
-//                String emailPattern = "^(.+)@(.+)$";
 
                 if (UsernameTxt.isEmpty() || EmailIDTxt.isEmpty() || ContactTxt.isEmpty() || PasswordTxt.isEmpty() || ConfirmPwdTxt.isEmpty() || subjectValidation() || gradeValidation()) {
                     TastyToast.makeText(v.getContext(), "Please fill all fields", TastyToast.LENGTH_SHORT, TastyToast.ERROR);
@@ -505,7 +507,7 @@ public class Manage_User extends AppCompatActivity {
 
 
                     TastyToast.makeText(Manage_User.this, "User registered successfully.", TastyToast.LENGTH_SHORT, TastyToast.SUCCESS);
-//                                finish();
+
                     Username.getText().clear();
                     EmailID.getText().clear();
                     Contact.getText().clear();

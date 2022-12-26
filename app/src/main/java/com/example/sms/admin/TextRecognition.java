@@ -324,7 +324,6 @@ public class TextRecognition extends AppCompatActivity {
                     }
                     else {
                         Toast.makeText(this, "Camera & Storage permissions are required", Toast.LENGTH_SHORT).show();
-
                     }
                 }
                 else{

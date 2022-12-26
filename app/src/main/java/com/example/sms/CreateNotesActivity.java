@@ -60,9 +60,9 @@ public class CreateNotesActivity extends AppCompatActivity {
         msavenote = findViewById(R.id.savenote);
         mcreatecontentofnote = findViewById(R.id.createcontentofnote);
         mcreatetitleofnote = findViewById(R.id.createtitleofnote);
-        back_btn = (ImageView) findViewById(R.id.addNote_back);
+        back_btn = findViewById(R.id.addNote_back);
 
-        progressBar = (ProgressBar) findViewById(R.id.progressBarOfCreateNote);
+        progressBar = findViewById(R.id.progressBarOfCreateNote);
 
 
 
@@ -84,10 +84,7 @@ public class CreateNotesActivity extends AppCompatActivity {
                 if (title.isEmpty() || content.isEmpty())
                 {
                     TastyToast.makeText(CreateNotesActivity.this, "Both fields are required", TastyToast.LENGTH_SHORT, TastyToast.ERROR).show();
-
-                }
-                else
-                {
+                } else {
                     progressBar.setVisibility(View.VISIBLE);
                     DocumentReference documentReference = firebaseFirestore.collection("notes").document(uname).collection("myNotes").document();
                     Map<String, Object> note = new HashMap<>();

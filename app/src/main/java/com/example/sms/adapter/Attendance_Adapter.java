@@ -52,9 +52,6 @@ public class Attendance_Adapter extends RecyclerView.Adapter<Attendance_Adapter.
         Student user = list.get(position);
         holder.username.setText(user.getUsername());
         Add_Attendance.attendanceList.add(new Attendance(user.getUsername(),"Absent"));
-//        String uname
-
-
 
         holder.checkBox.setChecked(false);
 
@@ -75,8 +72,6 @@ public class Attendance_Adapter extends RecyclerView.Adapter<Attendance_Adapter.
 
                 TextView attendance = Add_Attendance.attendance_date;
                 String attendancetxt = attendance.getText().toString().replace('/','-');
-//                StringBuilder builder = new StringBuilder(attendance.getText().toString());
-//                builder.reverse();
 
                 if (attendancetxt.equals("Date")){
                     TastyToast.makeText(context, "Please Select a Date", TastyToast.LENGTH_SHORT, TastyToast.INFO);
