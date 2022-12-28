@@ -32,8 +32,7 @@ import java.util.List;
 public class Home_Work extends AppCompatActivity{
 
 
-    LinearLayout grade10;
-    LinearLayout grade11;
+    LinearLayout grade10,grade11,viewAnswers;
     ImageView back_btn;
     TextView gradeVal;
     public static String Grade;
@@ -47,6 +46,7 @@ public class Home_Work extends AppCompatActivity{
         grade11 = findViewById(R.id.grade11_hw);
         back_btn = findViewById(R.id.home_work_back);
         gradeVal = findViewById(R.id.gradeValue);
+        viewAnswers = findViewById(R.id.view_answers);
 
         back_btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -72,6 +72,15 @@ public class Home_Work extends AppCompatActivity{
                 Grade = "Grade 11";
             }
         });
+
+        viewAnswers.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Home_Work.this, ViewAnswers.class);
+                startActivity(intent);
+            }
+        });
+
     }
 
 }

@@ -90,7 +90,7 @@
                 android:layout_height="wrap_content"
                 android:text="Update"
                 android:textColor="@color/black"
-                android:background="@drawable/weeklayout"/>
+                android:background="@color/tableColor"/>
         </LinearLayout>
 
 

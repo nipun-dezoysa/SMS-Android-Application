@@ -101,13 +101,15 @@ public class Grade11HW extends AppCompatActivity {
                             databaseReference.child("homework").child("Grade 11").child(timestamp).child("unitName").setValue(unitName11Txt);
 
                             TastyToast.makeText(Grade11HW.this, "Question added successfully", TastyToast.LENGTH_SHORT, TastyToast.SUCCESS).show();
+                            homework_questions11.getText().clear();
+                            unitName.getText().clear();
                         }
 
                         @Override
                         public void onCancelled(@NonNull DatabaseError error) {
                             TastyToast.makeText(Grade11HW.this, "Connection failed", TastyToast.LENGTH_SHORT, TastyToast.ERROR).show();
                         }
-                    });homework_questions11.getText().clear();
+                    });
             }
         });
 

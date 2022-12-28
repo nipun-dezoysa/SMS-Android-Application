@@ -152,6 +152,7 @@ public class Grade10HW extends AppCompatActivity {
 
                             TastyToast.makeText(Grade10HW.this, "Question added successfully", TastyToast.LENGTH_SHORT, TastyToast.SUCCESS).show();
                             homework_questions.getText().clear();
+                            unitName.getText().clear();
                         }
 
                         @Override
