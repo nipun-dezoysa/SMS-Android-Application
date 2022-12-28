@@ -1,6 +1,7 @@
 package com.example.sms.adapter;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -19,6 +21,7 @@ import com.example.sms.admin.Home_Work;
 import com.example.sms.model.Question;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.sdsmdg.tastytoast.TastyToast;
 
 import java.util.ArrayList;
 
@@ -56,8 +59,26 @@ public class QuestionAdapter extends RecyclerView.Adapter<QuestionAdapter.Questi
             Question question;
             @Override
             public void onClick(View v) {
-                DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference();
-                databaseReference.child("homework").child(Home_Work.Grade).child(timestamp).removeValue();
+                AlertDialog.Builder builder = new AlertDialog.Builder(v.getContext());
+                builder.setTitle("Delete")
+                        .setMessage("Are you sure you want to delete?")
+                        .setPositiveButton("Delete", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+
+                                DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference();
+                                databaseReference.child("homework").child(Home_Work.Grade).child(timestamp).removeValue();
+
+                                TastyToast.makeText(context, "Deleted Successfully", TastyToast.LENGTH_SHORT, TastyToast.SUCCESS).show();
+                            }
+                        })
+                        .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                dialog.dismiss();
+                            }
+                        }).show();
+
             }
         });
 

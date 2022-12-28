@@ -2,6 +2,7 @@ package com.example.sms.admin;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
@@ -14,12 +15,18 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.sms.R;
+import com.example.sms.adapter.QuestionAdapter;
+import com.example.sms.adapter.UpdatesAdapter;
+import com.example.sms.model.Question;
+import com.example.sms.model.Updates;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.sdsmdg.tastytoast.TastyToast;
+
+import java.util.ArrayList;
 
 public class UpdateActivity extends AppCompatActivity {
 
@@ -28,6 +35,9 @@ public class UpdateActivity extends AppCompatActivity {
     Button add_update;
     RecyclerView update_rv;
     DatabaseReference databaseReference;
+
+    private UpdatesAdapter updatesAdapter;
+    private ArrayList<Updates> updatesArrayList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,10 +77,11 @@ public class UpdateActivity extends AppCompatActivity {
                     databaseReference.child("updates").addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
-                            databaseReference.child(updateID).child("Title").setValue(titleOfUpdateTxt);
-                            databaseReference.child(updateID).child("Content").setValue(contentOfUpdateTxt);
+                            databaseReference.child("updates").child(updateID).child("updateID").setValue(updateID);
+                            databaseReference.child("updates").child(updateID).child("title").setValue(titleOfUpdateTxt);
+                            databaseReference.child("updates").child(updateID).child("content").setValue(contentOfUpdateTxt);
 
-                            TastyToast.makeText(UpdateActivity.this, "Updates Added Successfully", TastyToast.LENGTH_SHORT, TastyToast.INFO).show();
+                            TastyToast.makeText(UpdateActivity.this, "Updates Added Successfully", TastyToast.LENGTH_SHORT, TastyToast.SUCCESS).show();
                         }
                         @Override
                         public void onCancelled(@NonNull DatabaseError error) {
@@ -86,6 +97,32 @@ public class UpdateActivity extends AppCompatActivity {
     }
 
     private void loadAllUpdates() {
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
+        updatesArrayList = new ArrayList<>();
+        update_rv.setLayoutManager(linearLayoutManager);
+        updatesAdapter = new UpdatesAdapter(this, updatesArrayList);
+        update_rv.setAdapter(updatesAdapter);
+        linearLayoutManager.setReverseLayout(true);
+        linearLayoutManager.setStackFromEnd(true);
 
+        //get all updates
+        DatabaseReference databaseReference00 = FirebaseDatabase.getInstance().getReference();
+        databaseReference00.child("updates").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                updatesArrayList.clear();
+                for (DataSnapshot dataSnapshot : snapshot.getChildren())
+                {
+                    Updates updates = dataSnapshot.getValue(Updates.class);
+                    updatesArrayList.add(updates);
+                }
+                updatesAdapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
     }
 }
