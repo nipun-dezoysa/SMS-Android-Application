@@ -63,7 +63,7 @@ public class AnswersAdapter extends RecyclerView.Adapter<AnswersAdapter.ViewHold
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    int position = recyclerView.getChildAdapterPosition(v);
+                    int position = recyclerView.getChildLayoutPosition(v);
                     Intent intent = new Intent();
                     intent.setType(Intent.ACTION_VIEW);
                     intent.setData(Uri.parse(urls.get(position)));

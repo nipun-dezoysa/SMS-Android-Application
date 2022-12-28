@@ -192,7 +192,8 @@ public class HomeworkStud extends AppCompatActivity {
                             @Override
                             public void onSuccess(Uri uri) {
 
-                                databaseReference10  = FirebaseDatabase.getInstance().getReference().child("Answers").child(uname).child(fileName);
+//                                databaseReference10  = FirebaseDatabase.getInstance().getReference().child("Answers").child(uname).child(fileName);
+                                databaseReference10  = FirebaseDatabase.getInstance().getReference().child("Answers").child(uname);
 
                                 databaseReference10.setValue(uri.toString())
                                         .addOnCompleteListener(new OnCompleteListener<Void>() {
