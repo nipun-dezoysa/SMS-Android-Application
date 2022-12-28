@@ -58,9 +58,16 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="150dp"
+        android:layout_marginTop="120dp"
         android:paddingStart="5dp"
         android:orientation="vertical">
+
+      <EditText
+          android:id="@+id/unitName"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:hint="Unit Name: "
+          android:layout_gravity="center_horizontal"/>
 
       <androidx.appcompat.widget.AppCompatSpinner
           android:id="@+id/spinner_sub"
@@ -79,40 +86,40 @@
           android:background="@color/white"
           android:paddingLeft="10dp"/>
 
-      <LinearLayout
-          android:layout_width="match_parent"
-          android:layout_height="match_parent"
-          android:orientation="horizontal">
+<!--      <LinearLayout-->
+<!--          android:layout_width="match_parent"-->
+<!--          android:layout_height="match_parent"-->
+<!--          android:orientation="horizontal">-->
 
-        <Button
-            android:id="@+id/chooseFile"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Choose file"
-            android:paddingRight="15dp"
-            android:background="@color/green"
-            android:paddingLeft="15dp"/>
+<!--        <Button-->
+<!--            android:id="@+id/chooseFile"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="Choose file"-->
+<!--            android:paddingRight="15dp"-->
+<!--            android:background="@color/green"-->
+<!--            android:paddingLeft="15dp"/>-->
 
-        <TextView
-            android:id="@+id/fileName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:hint="file name"
-            android:paddingLeft="15dp"
-            android:maxLines="3"
-            android:textSize="20dp"/>
+<!--        <TextView-->
+<!--            android:id="@+id/fileName"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:hint="file name"-->
+<!--            android:paddingLeft="15dp"-->
+<!--            android:maxLines="3"-->
+<!--            android:textSize="20dp"/>-->
 
-        <Button
-            android:id="@+id/uploadFile"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Upload"
-            android:layout_marginLeft="60dp"
-            android:background="@color/green"
-            android:paddingRight="15dp"
-            android:paddingLeft="15dp"/>
+<!--        <Button-->
+<!--            android:id="@+id/uploadFile"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="Upload"-->
+<!--            android:layout_marginLeft="60dp"-->
+<!--            android:background="@color/green"-->
+<!--            android:paddingRight="15dp"-->
+<!--            android:paddingLeft="15dp"/>-->
 
-      </LinearLayout>
+<!--      </LinearLayout>-->
 
       <Button
           android:id="@+id/add_qstns"

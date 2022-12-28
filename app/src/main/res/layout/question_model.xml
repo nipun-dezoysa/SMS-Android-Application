@@ -7,6 +7,13 @@
     android:layout_margin="5dp"
     android:id="@+id/cardView">
 
+    <TextView
+        android:id="@+id/setUnitName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="Unit Name:"
+        android:layout_gravity="center_horizontal"/>
+
     <LinearLayout
         android:layout_width="340dp"
         android:layout_height="wrap_content"

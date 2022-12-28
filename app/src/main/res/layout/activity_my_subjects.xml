@@ -57,7 +57,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@color/darkgreen"
+                android:background="@drawable/weeklayout"
                 android:gravity="center"
                 android:orientation="vertical"
                 android:padding="16dp">
@@ -68,7 +68,7 @@
                     android:layout_height="wrap_content"
                     android:gravity="center_vertical"
                     android:text="Maths"
-                    android:textColor="@color/white"
+                    android:textColor="@color/black"
                     android:textSize="25dp"
                     android:textStyle="bold" />
 
@@ -87,12 +87,12 @@
             android:layout_margin="12dp"
             app:cardCornerRadius="25dp"
             app:cardElevation="6dp"
-            android:visibility="invisible">
+            android:visibility="visible">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@color/darkgreen"
+                android:background="@drawable/weeklayout"
                 android:gravity="center"
                 android:orientation="vertical"
                 android:padding="16dp">
@@ -103,7 +103,7 @@
                     android:layout_height="wrap_content"
                     android:gravity="center_vertical"
                     android:text="Science"
-                    android:textColor="@color/white"
+                    android:textColor="@color/black"
                     android:textSize="25dp"
                     android:textStyle="bold" />
 

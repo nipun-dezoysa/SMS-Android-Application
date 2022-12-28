@@ -112,7 +112,6 @@ public class StudentPageActivity extends AppCompatActivity {
     TextView time;
 
     LinearLayout mysub;
-    LinearLayout attendance;
     LinearLayout schedule;
     LinearLayout homework;
     LinearLayout studyMaterial;
@@ -138,7 +137,7 @@ public class StudentPageActivity extends AppCompatActivity {
         time.setText(getCurrentTime());
 
         mysub = findViewById(R.id.mysub);
-        attendance = findViewById(R.id.attendance);
+//        attendance = findViewById(R.id.attendance);
         schedule = findViewById(R.id.schedule);
         homework = findViewById(R.id.homework);
         studyMaterial = findViewById(R.id.studymaterial);
@@ -215,13 +214,6 @@ public class StudentPageActivity extends AppCompatActivity {
             }
         });
 
-        attendance.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent manageActivityIntent = new Intent(StudentPageActivity.this,AttendanceStud.class);
-                startActivity(manageActivityIntent);
-            }
-        });
 
         schedule.setOnClickListener(new View.OnClickListener() {
             @Override

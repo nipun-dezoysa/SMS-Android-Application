@@ -50,6 +50,7 @@ public class QuestionAdapter extends RecyclerView.Adapter<QuestionAdapter.Questi
         String timestamp = question.getTimestamp();
         holder.textQuestion.setText(question.getQuestion());
         holder.textSubject.setText(question.getSubjectName());
+        holder.setUnitName.setText(question.getUnitName());
 
         holder.remove.setOnClickListener(new View.OnClickListener() {
             Question question;
@@ -70,6 +71,7 @@ public class QuestionAdapter extends RecyclerView.Adapter<QuestionAdapter.Questi
                 intent1.putExtra("subName", question.getSubjectName());
                 intent1.putExtra("question", question.getQuestion());
                 intent1.putExtra("grade", Home_Work.Grade);
+                intent1.putExtra("setUnitName", question.getUnitName());
                 v.getContext().startActivity(intent1);
 
             }
@@ -84,7 +86,7 @@ public class QuestionAdapter extends RecyclerView.Adapter<QuestionAdapter.Questi
 
     class QuestionView extends RecyclerView.ViewHolder{
 
-        public TextView textQuestion, textSubject;
+        public TextView textQuestion, textSubject, setUnitName;
         CardView cardView;
         ImageView remove,edit_qst;
 
@@ -96,6 +98,7 @@ public class QuestionAdapter extends RecyclerView.Adapter<QuestionAdapter.Questi
             cardView = itemView.findViewById(R.id.cardView);
             remove = itemView.findViewById(R.id.remove_qstn);
             edit_qst = itemView.findViewById(R.id.edit_qstn);
+            setUnitName = itemView.findViewById(R.id.setUnitName);
 
         }
     }

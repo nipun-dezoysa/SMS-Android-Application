@@ -4,6 +4,7 @@ import java.io.Serializable;
 
 public class Question {
 
+    private String unitName;
     private String question;
     private String subjectName;
     private String timestamp;
@@ -11,10 +12,19 @@ public class Question {
     public Question() {
     }
 
-    public Question(String question, String subjectName, String timestamp) {
+    public Question(String unitName, String question, String subjectName, String timestamp) {
+        this.unitName = unitName;
         this.question = question;
         this.subjectName = subjectName;
         this.timestamp = timestamp;
+    }
+
+    public String getUnitName() {
+        return unitName;
+    }
+
+    public void setUnitName(String unitName) {
+        this.unitName = unitName;
     }
 
     public String getQuestion() {

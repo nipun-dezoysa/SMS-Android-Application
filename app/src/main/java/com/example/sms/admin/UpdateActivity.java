@@ -16,11 +16,11 @@ public class UpdateActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_update);
 
-        ImageView update_back = (ImageView) findViewById(R.id.update_back);
+        ImageView update_back = findViewById(R.id.update_back);
         update_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                finish();
+                onBackPressed();
             }
         });
     }

@@ -31,7 +31,7 @@ import java.util.List;
 public class Grade11HW extends AppCompatActivity {
 
     private AppCompatSpinner spinner_sub11;
-    private EditText homework_questions11;
+    private EditText homework_questions11, unitName;
     private Button add_questions11;
     private ImageView grade11_back;
 
@@ -54,6 +54,7 @@ public class Grade11HW extends AppCompatActivity {
         grade11_back = findViewById(R.id.grade11_back);
         homework_questions11 = findViewById(R.id.type_qstns11);
         add_questions11 = findViewById(R.id.add_qstns11);
+        unitName = findViewById(R.id.unitName11);
 
         homework_rv = findViewById(R.id.homework_recyclerview11);
 
@@ -80,6 +81,7 @@ public class Grade11HW extends AppCompatActivity {
             public void onClick(View v) {
                 String subjectText = spinner_sub11.getSelectedItem().toString();
                 String homework_qstn_txt = homework_questions11.getText().toString();
+                String unitName11Txt = unitName.getText().toString();
                 final String timestamp = "" + System.currentTimeMillis();
 
 
@@ -96,6 +98,7 @@ public class Grade11HW extends AppCompatActivity {
                             databaseReference.child("homework").child("Grade 11").child(timestamp).child("subjectName").setValue(subjectText);
                             databaseReference.child("homework").child("Grade 11").child(timestamp).child("question").setValue(homework_qstn_txt);
                             databaseReference.child("homework").child("Grade 11").child(timestamp).child("timestamp").setValue(timestamp);
+                            databaseReference.child("homework").child("Grade 11").child(timestamp).child("unitName").setValue(unitName11Txt);
 
                             TastyToast.makeText(Grade11HW.this, "Question added successfully", TastyToast.LENGTH_SHORT, TastyToast.SUCCESS).show();
                         }

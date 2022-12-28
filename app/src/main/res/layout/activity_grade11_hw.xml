@@ -57,9 +57,16 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="150dp"
+            android:layout_marginTop="120dp"
             android:paddingStart="5dp"
             android:orientation="vertical">
+
+            <EditText
+                android:id="@+id/unitName11"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="Unit Name: "
+                android:layout_gravity="center_horizontal"/>
 
             <androidx.appcompat.widget.AppCompatSpinner
                 android:id="@+id/spinner_sub11"

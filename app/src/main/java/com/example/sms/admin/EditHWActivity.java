@@ -28,7 +28,7 @@ import java.util.List;
 public class EditHWActivity extends AppCompatActivity {
 
     ImageView backButton;
-    EditText editQuestion;
+    EditText editQuestion, editUnitName;
     Spinner editSubject;
     FloatingActionButton saveEditedQuestion;
     String grade;
@@ -36,7 +36,7 @@ public class EditHWActivity extends AppCompatActivity {
     DatabaseReference databaseReference;
 
     Intent intent;
-    String subject,question,questionId;
+    String subject,question,questionId, editUnitNameTxt;
 
     List<String> subjectlist = new ArrayList<>();
 
@@ -50,6 +50,7 @@ public class EditHWActivity extends AppCompatActivity {
         editSubject = findViewById(R.id.editSubject);
         editQuestion = findViewById(R.id.editQuestion);
         saveEditedQuestion = findViewById(R.id.saveEditedQuestion);
+        editUnitName = findViewById(R.id.editUnitName);
 
 
         intent = getIntent();
@@ -58,6 +59,7 @@ public class EditHWActivity extends AppCompatActivity {
         subject = intent.getStringExtra("subName");
         question = intent.getStringExtra("question");
         grade = intent.getStringExtra("grade");
+        editUnitNameTxt = intent.getStringExtra("setUnitName");
 
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -78,16 +80,19 @@ public class EditHWActivity extends AppCompatActivity {
         editSubject.setAdapter(arrayAdapter);
 
         editQuestion.setText(question);
+        editUnitName.setText(editUnitNameTxt);
+
 
         saveEditedQuestion.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String subjectText = editSubject.getSelectedItem().toString();
                 String homework_qstn_txt = editQuestion.getText().toString();
+                String editedUnitName = editUnitName.getText().toString();
 
                 databaseReference = FirebaseDatabase.getInstance().getReference();
 
-                if (subjectText.isEmpty() || homework_qstn_txt.isEmpty()){
+                if (subjectText.isEmpty() || homework_qstn_txt.isEmpty() || editedUnitName.isEmpty()){
                     TastyToast.makeText(EditHWActivity.this, "Please fill all fields", TastyToast.LENGTH_SHORT, TastyToast.ERROR).show();
                 } else databaseReference.child("homework").addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
@@ -96,6 +101,7 @@ public class EditHWActivity extends AppCompatActivity {
                         databaseReference.child("homework").child(grade).child(questionId).child("subjectName").setValue(subjectText);
                         databaseReference.child("homework").child(grade).child(questionId).child("question").setValue(homework_qstn_txt);
                         databaseReference.child("homework").child(grade).child(questionId).child("timestamp").setValue(questionId);
+                        databaseReference.child("homework").child(grade).child(questionId).child("unitName").setValue(editedUnitName);
 
                         TastyToast.makeText(EditHWActivity.this, "Question updated successfully", TastyToast.LENGTH_SHORT, TastyToast.SUCCESS).show();
 
