@@ -83,8 +83,11 @@ public class ViewAnswers extends AppCompatActivity {
 
             }
         });
-        recyclerView.setLayoutManager(new LinearLayoutManager(ViewAnswers.this));
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
+        recyclerView.setLayoutManager(linearLayoutManager);
         answersAdapter = new AnswersAdapter(recyclerView,ViewAnswers.this,new ArrayList<>(), new ArrayList<>());
         recyclerView.setAdapter(answersAdapter);
+        linearLayoutManager.setReverseLayout(true);
+        linearLayoutManager.setStackFromEnd(true);
     }
 }

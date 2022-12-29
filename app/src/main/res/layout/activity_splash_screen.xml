@@ -6,6 +6,6 @@
     android:layout_height="400dp"
     android:layout_gravity="center"
     android:background="@drawable/logo_transparent"
-    tools:context=".SplashScreen">
+    tools:context=".others.SplashScreen">
 
 </androidx.constraintlayout.widget.ConstraintLayout>

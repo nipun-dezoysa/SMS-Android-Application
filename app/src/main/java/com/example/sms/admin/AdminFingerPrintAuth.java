@@ -8,8 +8,7 @@ import androidx.core.content.ContextCompat;
 import android.content.Intent;
 import android.os.Bundle;
 
-import com.example.sms.R;
-import com.example.sms.students.OnlineUsers;
+import com.example.sms.others.OnlineUsers;
 import com.sdsmdg.tastytoast.TastyToast;
 
 import java.util.concurrent.Executor;

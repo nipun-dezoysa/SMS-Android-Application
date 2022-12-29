@@ -5,15 +5,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import com.example.sms.R;
-import com.example.sms.students.OnlineUsers;
-import com.sdsmdg.tastytoast.TastyToast;
-
-import io.paperdb.Paper;
 
 public class AttendanceActivity extends AppCompatActivity {
 

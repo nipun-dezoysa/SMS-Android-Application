@@ -1,4 +1,4 @@
-package com.example.sms;
+package com.example.sms.others;
 
 public class Subject {
     private boolean maths;

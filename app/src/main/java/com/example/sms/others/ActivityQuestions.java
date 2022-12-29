@@ -1,4 +1,4 @@
-package com.example.sms;
+package com.example.sms.others;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;

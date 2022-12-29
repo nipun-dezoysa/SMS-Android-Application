@@ -1,4 +1,4 @@
-package com.example.sms;
+package com.example.sms.others;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 
+import com.example.sms.R;
 import com.yalantis.ucrop.UCrop;
 
 import java.io.File;

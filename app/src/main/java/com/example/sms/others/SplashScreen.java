@@ -1,10 +1,12 @@
-package com.example.sms;
+package com.example.sms.others;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+
+import com.example.sms.R;
 
 public class SplashScreen extends AppCompatActivity {
         Handler handler = new Handler();

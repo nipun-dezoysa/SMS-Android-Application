@@ -55,9 +55,6 @@
             android:name=".admin.ViewAttendance"
             android:exported="false" />
         <activity
-            android:name=".adapter.Pdf"
-            android:exported="false" />
-        <activity
             android:name=".admin.AdminFingerPrintAuth"
             android:exported="false" />
         <activity
@@ -87,16 +84,16 @@
             android:name=".admin.UserList"
             android:exported="false" />
         <activity
-            android:name=".NoteDetails"
+            android:name=".others.NoteDetails"
             android:exported="false" />
         <activity
-            android:name=".EditNoteActivity"
+            android:name=".others.EditNoteActivity"
             android:exported="false" />
         <activity
-            android:name=".ShowActivity"
+            android:name=".others.ShowActivity"
             android:exported="false" />
         <activity
-            android:name=".AddPhotos"
+            android:name=".others.AddPhotos"
             android:exported="false">
 
             <!-- <intent-filter> -->
@@ -107,7 +104,7 @@
             <!-- </intent-filter> -->
         </activity>
         <activity
-            android:name=".Test"
+            android:name=".others.Test"
             android:exported="false" />
         <activity
             android:name=".students.UpdateStud"
@@ -134,7 +131,7 @@
             android:name=".students.HomeworkStud"
             android:exported="false" />
         <activity
-            android:name=".ScheduleStud"
+            android:name=".others.ScheduleStud"
             android:exported="false" />
         <activity
             android:name=".students.AttendanceStud"
@@ -142,7 +139,7 @@
         <activity
             android:name=".students.MySubjects"
             android:exported="false" />
-        <activity android:name=".ActivityQuestions" />
+        <activity android:name=".others.ActivityQuestions" />
         <activity
             android:name=".admin.TextRecognition"
             android:exported="false">
@@ -167,10 +164,10 @@
         <!-- android:name=".HomeworkActivity" -->
         <!-- android:exported="false" /> -->
         <activity
-            android:name=".CreateNotesActivity"
+            android:name=".others.CreateNotesActivity"
             android:exported="false" />
         <activity
-            android:name=".NotesActivity"
+            android:name=".others.NotesActivity"
             android:exported="false" />
         <activity
             android:name=".admin.StudyMaterial"
@@ -179,18 +176,18 @@
             android:name=".admin.AttendanceActivity"
             android:exported="false" />
         <activity
-            android:name=".CropperActivity"
+            android:name=".others.CropperActivity"
             android:exported="false" />
         <activity
             android:name=".admin.Manage_User"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".others.MainActivity"
             android:exported="false" /> <!-- <activity -->
         <!-- android:name=".PopUp" -->
         <!-- android:exported="false" /> -->
         <activity
-            android:name=".SplashScreen"
+            android:name=".others.SplashScreen"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -199,7 +196,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".students.StudentLoginActivity" />
-        <activity android:name=".LoginActivity" />
+        <activity android:name=".others.LoginActivity" />
         <activity
             android:name=".admin.TeacherPageActivity"
             android:exported="false">
@@ -212,7 +209,7 @@
             <!-- </intent-filter> -->
         </activity>
         <activity android:name=".students.StudentPageActivity" />
-        <activity android:name=".PopUp" />
+        <activity android:name=".others.PopUp" />
         <activity
             android:name=".students.StudentFingerPrintAuth"
             android:exported="false" />

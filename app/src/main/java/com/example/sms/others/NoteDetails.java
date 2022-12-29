@@ -1,16 +1,14 @@
-package com.example.sms;
+package com.example.sms.others;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.sms.students.OnlineUsers;
+import com.example.sms.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import io.paperdb.Paper;

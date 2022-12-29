@@ -32,12 +32,13 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.bumptech.glide.Glide;
-import com.example.sms.CropperActivity;
-import com.example.sms.LoginActivity;
-import com.example.sms.NotesActivity;
-import com.example.sms.PopUp;
+import com.example.sms.others.CropperActivity;
+import com.example.sms.others.LoginActivity;
+import com.example.sms.others.NotesActivity;
+import com.example.sms.others.OnlineUsers;
+import com.example.sms.others.PopUp;
 import com.example.sms.R;
-import com.example.sms.ScheduleStud;
+import com.example.sms.others.ScheduleStud;
 import com.example.sms.interfaces.UserStudentCallback;
 import com.example.sms.model.UserStudent;
 import com.google.android.gms.tasks.OnFailureListener;

@@ -6,7 +6,7 @@
     android:layout_height="830dp"
     android:orientation="vertical"
     android:background="#EBF4F3"
-    tools:context=".NotesActivity">
+    tools:context=".others.NotesActivity">
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"

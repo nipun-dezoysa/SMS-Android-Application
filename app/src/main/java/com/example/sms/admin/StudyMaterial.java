@@ -1,5 +1,6 @@
 package com.example.sms.admin;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatSpinner;
 
@@ -14,14 +15,22 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import com.example.sms.R;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+import com.sdsmdg.tastytoast.TastyToast;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class StudyMaterial extends AppCompatActivity {
 
-    LinearLayout linearLayout;
-    Button add;
+    ImageView back_btn;
+    EditText study_material_unitName,study_material_reference;
+    AppCompatSpinner study_material_spinner_sub;
+    Button study_material_add;
 
     List<String> sublist = new ArrayList<>();
 
@@ -30,69 +39,69 @@ public class StudyMaterial extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_study_material);
 
-        ImageView back_btn = (ImageView) findViewById(R.id.study_mat_back);
+        back_btn = findViewById(R.id.study_mat_back);
+        study_material_spinner_sub = findViewById(R.id.study_material_spinner_sub);
+        study_material_unitName = findViewById(R.id.study_material_unitName);
+        study_material_reference = findViewById(R.id.study_material_reference);
+        study_material_add = findViewById(R.id.study_material_add);
+
         back_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                finish();
+                onBackPressed();
             }
         });
 
-        linearLayout = findViewById(R.id.container);
-        add = findViewById(R.id.add);
-//        remove = findViewById(R.id.remove);
 
-        add.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                addNew();
-            }
-        });
-
-        sublist.add("Subject");
+        sublist.add(0, "Subject");
         sublist.add("Maths");
         sublist.add("Science");
 
-
-
-
-//        remove.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-////                linearLayout.removeView();
-//            }
-//        });
-    }
-
-
-
-
-    public void addNew(){
-        View view = getLayoutInflater().inflate(R.layout.material, null, false);
-
-        EditText editText = (EditText)view.findViewById(R.id.EditMaterial);
-        AppCompatSpinner spinner = (AppCompatSpinner)view.findViewById(R.id.spinner);
-        Button closeButton = (Button)view.findViewById(R.id.CloseBtn);
-
-
         ArrayAdapter arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item,sublist);
-        spinner.setAdapter(arrayAdapter);
+        study_material_spinner_sub.setAdapter(arrayAdapter);
 
-        closeButton.setOnClickListener(new View.OnClickListener() {
+        loadAllReferences();
+
+        study_material_add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                removeView(view);
+                DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference();
+
+                String subjectText = study_material_spinner_sub.getSelectedItem().toString();
+                String unitNameTxt = study_material_unitName.getText().toString();
+                String reference = study_material_reference.getText().toString();
+                final String referenceID = "" + System.currentTimeMillis();
+
+                if (subjectText.isEmpty() || unitNameTxt.isEmpty() || reference.isEmpty()){
+                    TastyToast.makeText(StudyMaterial.this, "Please fill all fields", TastyToast.LENGTH_SHORT, TastyToast.INFO).show();
+                } else if (subjectText.equals("Subject")) {
+                    TastyToast.makeText(StudyMaterial.this, "Please choose a subject", TastyToast.LENGTH_SHORT, TastyToast.INFO).show();
+                } else {
+
+                    databaseReference.child("studyMaterials").addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+                            databaseReference.child("studyMaterials").child(subjectText).child(referenceID).setValue(reference);
+
+                            TastyToast.makeText(StudyMaterial.this, "Reference Added", TastyToast.LENGTH_SHORT, TastyToast.SUCCESS).show();
+                            study_material_spinner_sub.setSelection(0);
+                            study_material_unitName.getText().clear();
+                            study_material_reference.getText().clear();
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+
+                        }
+                    });
+                }
             }
         });
 
-
-        linearLayout.addView(view);
-
     }
 
-    private void removeView(View view) {
+    private void loadAllReferences() {
 
-        linearLayout.removeView(view);
     }
 
 

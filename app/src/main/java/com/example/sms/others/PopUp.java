@@ -1,4 +1,4 @@
-package com.example.sms;
+package com.example.sms.others;
 
 import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
@@ -12,6 +12,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.example.sms.R;
 
 public class PopUp extends AppCompatActivity {
 

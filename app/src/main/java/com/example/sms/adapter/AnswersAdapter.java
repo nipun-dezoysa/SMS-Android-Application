@@ -1,5 +1,6 @@
 package com.example.sms.adapter;
 
+import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
@@ -69,7 +70,16 @@ public class AnswersAdapter extends RecyclerView.Adapter<AnswersAdapter.ViewHold
                     intent.setData(Uri.parse(urls.get(position)));
                     intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     intent.setPackage("com.android.chrome");
-                    context.startActivity(intent);
+//                    context.startActivity(intent);
+
+                    try {
+                        context.startActivity(intent);
+                    } catch (ActivityNotFoundException ex) {
+                        // Chrome browser presumably not installed so allow user to choose instead
+                        intent.setPackage(null);
+                        context.startActivity(intent);
+                    }
+
                 }
             });
         }

@@ -1,4 +1,4 @@
-package com.example.sms;
+package com.example.sms.others;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -14,9 +14,9 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.sms.R;
 import com.example.sms.admin.AdminFingerPrintAuth;
 import com.example.sms.admin.TeacherPageActivity;
-import com.example.sms.students.OnlineUsers;
 import com.example.sms.students.StudentFingerPrintAuth;
 import com.example.sms.students.StudentPageActivity;
 import com.google.firebase.database.DataSnapshot;

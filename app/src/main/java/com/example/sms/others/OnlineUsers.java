@@ -1,4 +1,4 @@
-package com.example.sms.students;
+package com.example.sms.others;
 
 import com.example.sms.model.Student;
 

@@ -61,12 +61,8 @@ public class Grade10HW extends AppCompatActivity {
     private ArrayList<Question> questionArrayList;
     private RecyclerView homework_rv;
 
-    ProgressDialog progressDialog;
-
     DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference();
 
-    DatabaseReference databaseReference10;
-    FirebaseStorage storage;
 
     List<String> subjectlist = new ArrayList<>();
 
@@ -84,28 +80,6 @@ public class Grade10HW extends AppCompatActivity {
         setFileName = findViewById(R.id.fileName);
 
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_NOTHING);
-
-//
-//        storage = FirebaseStorage.getInstance();
-//
-//        chooseFile.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                if (ContextCompat.checkSelfPermission(Grade10HW.this, Manifest.permission.READ_EXTERNAL_STORAGE)== PackageManager.PERMISSION_GRANTED){
-//                    selectFile();
-//                }
-//                else ActivityCompat.requestPermissions(Grade10HW.this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},9);
-//            }
-//        });
-//
-//        uploadFile.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                if (fileUri!=null)
-//                uploadFiles(fileUri);
-//                else TastyToast.makeText(Grade10HW.this, "", TastyToast.LENGTH_SHORT, TastyToast.INFO);
-//            }
-//        });
 
 
         homework_rv = findViewById(R.id.homework_recyclerview);
@@ -153,6 +127,7 @@ public class Grade10HW extends AppCompatActivity {
                             TastyToast.makeText(Grade10HW.this, "Question added successfully", TastyToast.LENGTH_SHORT, TastyToast.SUCCESS).show();
                             homework_questions.getText().clear();
                             unitName.getText().clear();
+                            spinner_sub.setSelection(0);
                         }
 
                         @Override
@@ -164,106 +139,6 @@ public class Grade10HW extends AppCompatActivity {
         });
 
     }
-
-//    private void uploadFiles(Uri fileUri) {
-//
-//        progressDialog = new ProgressDialog(this);
-//        progressDialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
-//        progressDialog.setTitle("Uploading file...");
-//        progressDialog.setProgress(0);
-//        progressDialog.show();
-//
-//        String fileName = System.currentTimeMillis()+"";
-////        String fileName = "Test";
-//        StorageReference storageReference = storage.getReference().child("Uploaded Files").child(fileName+"."+getFileExtension(fileUri));
-//
-//        storageReference.putFile(fileUri)
-//                .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-//                    @Override
-//                    public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-//                        storageReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-//                            @Override
-//                            public void onSuccess(Uri uri) {
-//
-//                                databaseReference10  = FirebaseDatabase.getInstance().getReference().child(fileName);
-//
-//                                databaseReference10.setValue(uri.toString())
-//                                        .addOnCompleteListener(new OnCompleteListener<Void>() {
-//                                            @Override
-//                                            public void onComplete(@NonNull Task<Void> task) {
-//                                                if (task.isSuccessful()) {
-//                                                    TastyToast.makeText(Grade10HW.this, "Uploaded Successfully", TastyToast.LENGTH_SHORT, TastyToast.SUCCESS);
-//                                                    progressDialog.dismiss();
-//                                                } else
-//                                                    TastyToast.makeText(Grade10HW.this, "Uploaded Failed", TastyToast.LENGTH_SHORT, TastyToast.SUCCESS);
-//                                            }
-//                                        });
-//                            }
-//                        });
-////                        String url = storageReference.getDownloadUrl().toString(); //url of the uploaded file
-//                        //store the url in real-time
-////                        databaseReference10  = FirebaseDatabase.getInstance().getReference().child(fileName);
-////
-////                        databaseReference10.setValue(url)
-////                                .addOnCompleteListener(new OnCompleteListener<Void>() {
-////                                    @Override
-////                                    public void onComplete(@NonNull Task<Void> task) {
-////                                        if (task.isSuccessful())
-////                                            TastyToast.makeText(Grade10HW.this, "Uploaded Successfully", TastyToast.LENGTH_SHORT, TastyToast.SUCCESS);
-////                                        else
-////                                            TastyToast.makeText(Grade10HW.this, "Uploaded Failed", TastyToast.LENGTH_SHORT, TastyToast.SUCCESS);
-////                                    }
-////                                });
-//
-//                    }
-//                }).addOnFailureListener(new OnFailureListener() {
-//                    @Override
-//                    public void onFailure(@NonNull Exception e) {
-//                        TastyToast.makeText(Grade10HW.this, "Uploaded Failed", TastyToast.LENGTH_SHORT, TastyToast.SUCCESS);
-//                    }
-//                }).addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
-//                    @Override
-//                    public void onProgress(@NonNull UploadTask.TaskSnapshot snapshot) {
-//                        // track upload progress
-//                        int currentProgress = (int) (100*snapshot.getBytesTransferred()/snapshot.getTotalByteCount());
-//                        progressDialog.setProgress(currentProgress);
-//                    }
-//                });
-//    }
-
-//    private String getFileExtension(Uri fileUri) {
-//        ContentResolver cr = getContentResolver();
-//        MimeTypeMap mime = MimeTypeMap.getSingleton();
-//        return mime.getExtensionFromMimeType(cr.getType(fileUri));
-//    }
-//
-//    @Override
-//    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-//        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-//
-//        if (requestCode==9 && grantResults[0]==PackageManager.PERMISSION_GRANTED){
-//            selectFile();
-//        } else TastyToast.makeText(this, "Please grand permission", TastyToast.LENGTH_SHORT, TastyToast.INFO);
-//    }
-//
-//    private void selectFile() {
-//
-//        Intent intent = new Intent();
-//        intent.setType("application/*");
-//        intent.setAction(Intent.ACTION_GET_CONTENT);
-//        startActivityForResult(intent, 86);
-//    }
-//
-//    @Override
-//    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-//        super.onActivityResult(requestCode, resultCode, data);
-//
-////        check whether a file is selected or not
-//        if (requestCode == 86 && resultCode == RESULT_OK && data!=null){
-//            fileUri = data.getData(); //returns uri of the selected file
-//            setFileName.setText(data.getData().getLastPathSegment());
-//        } else TastyToast.makeText(this, "Please Select a File", TastyToast.LENGTH_SHORT, TastyToast.INFO).show();
-//    }
 
     private void loadAllQuestions() {
 

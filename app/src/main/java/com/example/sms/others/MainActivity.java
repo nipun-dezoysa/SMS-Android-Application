@@ -1,10 +1,12 @@
-package com.example.sms;
+package com.example.sms.others;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.sms.R;
 
 public class MainActivity extends AppCompatActivity {
     Handler handler = new Handler();

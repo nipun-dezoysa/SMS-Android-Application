@@ -8,8 +8,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.biometric.BiometricManager;
 import androidx.core.content.ContextCompat;
 
-import com.example.sms.admin.AdminFingerPrintAuth;
-import com.example.sms.admin.TeacherPageActivity;
+import com.example.sms.others.OnlineUsers;
 import com.sdsmdg.tastytoast.TastyToast;
 
 import java.util.concurrent.Executor;

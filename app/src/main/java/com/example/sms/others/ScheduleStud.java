@@ -1,9 +1,8 @@
-package com.example.sms;
+package com.example.sms.others;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
@@ -11,9 +10,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.sms.admin.TeacherPageActivity;
-import com.example.sms.model.Student;
-import com.example.sms.students.OnlineUsers;
+import com.example.sms.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;

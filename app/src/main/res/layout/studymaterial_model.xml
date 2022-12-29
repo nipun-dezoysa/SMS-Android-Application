@@ -4,11 +4,10 @@
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     app:cardBackgroundColor="@color/white"
-    android:layout_margin="5dp"
-    android:id="@+id/cardView">
+    android:layout_margin="5dp">
 
     <TextView
-        android:id="@+id/text_sub_name"
+        android:id="@+id/sub_name_sm"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:hint="Subject Name"
@@ -22,7 +21,7 @@
         android:padding="10dp">
 
         <TextView
-            android:id="@+id/setUnitName"
+            android:id="@+id/unitName_sm"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="5dp"
@@ -35,11 +34,11 @@
         </TextView>
 
         <TextView
-            android:id="@+id/text_sub_question"
+            android:id="@+id/reference_sm"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="5dp"
-            android:hint="Subject Question"
+            android:hint="Reference"
             android:padding="5dp"
             android:textColor="@color/black"
             android:textColorHint="@color/black"
@@ -50,14 +49,14 @@
 
     </LinearLayout>
     <ImageView
-        android:id="@+id/remove_qstn"
+        android:id="@+id/remove_reference"
         android:layout_width="25dp"
         android:layout_height="35dp"
         android:layout_gravity="end|center"
         android:src="@drawable/delete"/>
 
     <ImageView
-        android:id="@+id/edit_qstn"
+        android:id="@+id/edit_reference"
         android:layout_width="25dp"
         android:layout_height="35dp"
         android:layout_gravity="end|center"

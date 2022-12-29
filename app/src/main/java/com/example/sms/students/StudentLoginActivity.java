@@ -15,9 +15,9 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.sms.MainActivity;
+import com.example.sms.others.MainActivity;
 import com.example.sms.R;
-import com.example.sms.admin.TeacherPageActivity;
+import com.example.sms.others.OnlineUsers;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;

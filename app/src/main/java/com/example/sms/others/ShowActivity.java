@@ -1,4 +1,4 @@
-package com.example.sms;
+package com.example.sms.others;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 
+import com.example.sms.R;
 import com.example.sms.adapter.MyAdapter;
 import com.example.sms.model.Model;
 import com.google.firebase.database.DataSnapshot;
