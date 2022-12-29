@@ -24,7 +24,7 @@ public class AnswersAdapter extends RecyclerView.Adapter<AnswersAdapter.ViewHold
 
     public void update(String name, String url){
         items.add(name);
-        items.add(url);
+        urls.add(url);
         notifyDataSetChanged();
     }
 
@@ -67,6 +67,8 @@ public class AnswersAdapter extends RecyclerView.Adapter<AnswersAdapter.ViewHold
                     Intent intent = new Intent();
                     intent.setType(Intent.ACTION_VIEW);
                     intent.setData(Uri.parse(urls.get(position)));
+                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    intent.setPackage("com.android.chrome");
                     context.startActivity(intent);
                 }
             });

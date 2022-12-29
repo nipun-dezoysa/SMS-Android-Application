@@ -180,7 +180,7 @@ public class HomeworkStud extends AppCompatActivity {
         progressDialog.setProgress(0);
         progressDialog.show();
 
-        String fileName = System.currentTimeMillis()+"";
+        String fileName = uname+":"+System.currentTimeMillis();
 //        String fileName = "Test";
         StorageReference storageReference = storage.getReference().child("Homework Answers").child(uname).child(fileName+"."+getFileExtension(fileUri));
 
@@ -192,8 +192,8 @@ public class HomeworkStud extends AppCompatActivity {
                             @Override
                             public void onSuccess(Uri uri) {
 
-//                                databaseReference10  = FirebaseDatabase.getInstance().getReference().child("Answers").child(uname).child(fileName);
-                                databaseReference10  = FirebaseDatabase.getInstance().getReference().child("Answers").child(uname);
+                                databaseReference10  = FirebaseDatabase.getInstance().getReference().child("Answers").child(uname).child(fileName);
+//                                databaseReference10  = FirebaseDatabase.getInstance().getReference().child("Answers").child(uname);
 
                                 databaseReference10.setValue(uri.toString())
                                         .addOnCompleteListener(new OnCompleteListener<Void>() {
