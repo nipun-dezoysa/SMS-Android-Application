@@ -14,6 +14,7 @@ import android.util.Base64;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.WindowManager;
 import android.webkit.MimeTypeMap;
 import android.widget.Button;
 import android.widget.EditText;
@@ -149,6 +150,8 @@ public class StudentPageActivity extends AppCompatActivity {
         txt_rec = findViewById(R.id.txt_rec_std);
 
         studentmenupopupbtn = findViewById(R.id.studentmenupopupbtn);
+
+        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_NOTHING);
 
         studentmenupopupbtn.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -106,7 +106,6 @@ public class Manage_User extends AppCompatActivity {
 
     String searchUnameTxt;
 
-
     EditStudentDetails editStudentDetails;
 
     @Override
@@ -249,13 +248,13 @@ public class Manage_User extends AppCompatActivity {
                 searchUnameTxt = searchUname.getText().toString();
 
                 if (searchUnameTxt.isEmpty()) {
-                    Toast.makeText(Manage_User.this, "Please give a Username", Toast.LENGTH_SHORT).show();
+                    TastyToast.makeText(Manage_User.this, "Please give a Username", TastyToast.LENGTH_SHORT, TastyToast.INFO).show();
                 } else {
                     databaseReference.child("students").addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
                             if (!snapshot.hasChild(searchUnameTxt)) {
-                                Toast.makeText(Manage_User.this, "User does not exist", Toast.LENGTH_SHORT).show();
+                                TastyToast.makeText(Manage_User.this, "User does not exist", TastyToast.LENGTH_SHORT, TastyToast.CONFUSING).show();
                             } else {
                                 getEditStudentDetails(new EditStudentDetailsCallback() {
                                     @Override

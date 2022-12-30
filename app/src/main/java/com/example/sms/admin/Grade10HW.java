@@ -149,7 +149,7 @@ public class Grade10HW extends AppCompatActivity {
         homework_rv.setAdapter(questionAdapter);
         linearLayoutManager.setReverseLayout(true);
         linearLayoutManager.setStackFromEnd(true);
-        Question question = new Question();
+//        Question question = new Question();
 
         //get all questions
         DatabaseReference databaseReference1 = FirebaseDatabase.getInstance().getReference();
