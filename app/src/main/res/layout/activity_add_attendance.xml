@@ -57,38 +57,85 @@
         </com.google.android.material.floatingactionbutton.FloatingActionButton>
 
 
+<!--        <LinearLayout-->
+<!--            android:layout_marginTop="120dp"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="50dp"-->
+<!--            android:paddingTop="10dp">-->
+
+<!--            <TextView-->
+<!--                android:id="@+id/grade10_list"-->
+<!--                android:layout_width="130dp"-->
+<!--                android:layout_height="40dp"-->
+<!--                android:layout_centerVertical="true"-->
+<!--                android:layout_marginLeft="40dp"-->
+<!--                android:background="@drawable/btn"-->
+<!--                android:text="Grade 10"-->
+<!--                android:textColor="@color/white"-->
+<!--                android:paddingTop="10dp"-->
+<!--                android:paddingHorizontal="30dp"/>-->
+
+<!--            <TextView-->
+<!--                android:id="@+id/grade11_list"-->
+<!--                android:layout_width="130dp"-->
+<!--                android:layout_height="40dp"-->
+<!--                android:text="Grade 11"-->
+<!--                android:textColor="@color/white"-->
+<!--                android:layout_centerVertical="true"-->
+<!--                android:layout_marginLeft="60dp"-->
+<!--                android:background="@drawable/btn"-->
+<!--                android:paddingTop="10dp"-->
+<!--                android:paddingHorizontal="30dp"/>-->
+
+
+<!--        </LinearLayout>-->
         <LinearLayout
-            android:layout_marginTop="120dp"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:paddingTop="10dp">
+            android:layout_height="wrap_content"
+            android:background="@drawable/swtch_tymbs"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="130dp"
+            android:layout_marginEnd="20dp"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:weightSum="2">
 
             <TextView
                 android:id="@+id/grade10_list"
-                android:layout_width="130dp"
-                android:layout_height="40dp"
-                android:layout_centerVertical="true"
-                android:layout_marginLeft="40dp"
-                android:background="@drawable/btn"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:padding="8dp"
+                android:paddingLeft="15dp"
+                android:paddingTop="5dp"
+                android:paddingRight="15dp"
+                android:paddingBottom="2dp"
                 android:text="Grade 10"
-                android:textColor="@color/white"
-                android:paddingTop="10dp"
-                android:paddingHorizontal="30dp"/>
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="16dp"
+                android:textStyle="normal|bold" />
+
 
             <TextView
                 android:id="@+id/grade11_list"
-                android:layout_width="130dp"
-                android:layout_height="40dp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:padding="8dp"
+                android:paddingLeft="10dp"
+                android:paddingTop="5dp"
+                android:paddingRight="15dp"
+                android:paddingBottom="2dp"
                 android:text="Grade 11"
-                android:textColor="@color/white"
-                android:layout_centerVertical="true"
-                android:layout_marginLeft="60dp"
-                android:background="@drawable/btn"
-                android:paddingTop="10dp"
-                android:paddingHorizontal="30dp"/>
+                android:textAlignment="center"
+                android:textColor="@color/darkgreen"
+                android:textSize="16dp"
+                android:textStyle="normal|bold" />
 
 
         </LinearLayout>
+
 
         <LinearLayout
             android:layout_marginTop="180dp"

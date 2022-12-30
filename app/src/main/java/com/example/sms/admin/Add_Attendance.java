@@ -35,7 +35,7 @@ public class Add_Attendance extends AppCompatActivity {
 
     RecyclerView recyclerView;
     ArrayList<Student> list;
-    public static   List<Attendance> attendanceList = new ArrayList<>();
+    public static List<Attendance> attendanceList = new ArrayList<>();
     DatabaseReference databaseReference;
     Attendance_Adapter attendanceAdapter;
     DatePickerDialog.OnDateSetListener setListener;
@@ -125,6 +125,11 @@ public class Add_Attendance extends AppCompatActivity {
         grade10.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                grade10.setTextColor(getResources().getColor(R.color.white));
+                grade10.setBackground(getDrawable(R.drawable.switch_trcks));
+                grade11.setBackground(null);
+                grade11.setTextColor(getResources().getColor(R.color.darkgreen));
+
                 databaseReference.addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -155,6 +160,11 @@ public class Add_Attendance extends AppCompatActivity {
         grade11.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                grade11.setTextColor(getResources().getColor(R.color.white));
+                grade11.setBackground(getDrawable(R.drawable.switch_trcks));
+                grade10.setBackground(null);
+                grade10.setTextColor(getResources().getColor(R.color.darkgreen));
+
                 databaseReference.addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {

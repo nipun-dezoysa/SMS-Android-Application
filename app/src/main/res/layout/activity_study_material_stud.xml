@@ -5,14 +5,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#EBF4F3"
+    android:background="@color/white"
     tools:context=".students.StudyMaterialStud">
 
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-
 
         <RelativeLayout
         android:background="@color/darkgreen"
@@ -36,8 +35,6 @@
                 android:textSize="30dp"
                 android:textStyle="bold|normal" />
 
-
-
     </RelativeLayout>
 
         <ImageView
@@ -45,6 +42,16 @@
             android:layout_height="400dp"
             android:layout_gravity="center"
             android:src="@drawable/logo_transparentnew" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/study_material_recyclerview_stud"
+            android:paddingStart="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="130dp"
+            android:scrollbars="vertical">
+
+        </androidx.recyclerview.widget.RecyclerView>
 
 
     </androidx.cardview.widget.CardView>

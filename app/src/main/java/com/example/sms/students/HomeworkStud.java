@@ -112,7 +112,6 @@ public class HomeworkStud extends AppCompatActivity {
                 grade = snapshot.child(uname).child("grade").getValue(int.class);
 
 
-
                 if (grade==10 && sub.equals("Maths")){
                     loadAllGrade10MathsQuestions();
                 } else if (grade==10 && sub.equals("Science")){
@@ -301,8 +300,8 @@ public class HomeworkStud extends AppCompatActivity {
             homework_rv.setAdapter(questionAdapter);
             linearLayoutManager.setReverseLayout(true);
             linearLayoutManager.setStackFromEnd(true);
-            Question question = new Question();
-            Student student = new Student();
+//            Question question = new Question();
+//            Student student = new Student();
 
 
             //get all questions

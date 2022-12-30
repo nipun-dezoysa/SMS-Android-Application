@@ -79,7 +79,7 @@
                         android:id="@+id/add_attendance"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:background="@color/darkgreen"
+                        android:background="@color/tableColor"
                         android:gravity="center"
                         android:orientation="vertical"
                         android:padding="16dp">
@@ -90,7 +90,7 @@
                             android:layout_height="wrap_content"
                             android:gravity="center_vertical|center_horizontal"
                             android:text="Add Attendance"
-                            android:textColor="@color/white"
+                            android:textColor="@color/black"
                             android:textSize="25dp"
                             android:textStyle="bold" />
 
@@ -113,7 +113,7 @@
                         android:id="@+id/view_attendance"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:background="@color/darkgreen"
+                        android:background="@color/tableColor"
                         android:gravity="center"
                         android:orientation="vertical"
                         android:padding="16dp">
@@ -124,7 +124,7 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_vertical|center_horizontal"
                             android:text="View Attendance"
-                            android:textColor="@color/white"
+                            android:textColor="@color/black"
                             android:textSize="25dp"
                             android:textStyle="bold" />
 
