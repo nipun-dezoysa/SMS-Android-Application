@@ -138,7 +138,7 @@
             android:name=".students.HomeworkStud"
             android:exported="false" />
         <activity
-            android:name=".others.ScheduleStud"
+            android:name=".students.ScheduleStud"
             android:exported="false" />
         <activity
             android:name=".students.AttendanceStud"

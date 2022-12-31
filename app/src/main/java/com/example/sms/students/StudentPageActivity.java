@@ -39,7 +39,6 @@ import com.example.sms.others.NotesActivity;
 import com.example.sms.others.OnlineUsers;
 import com.example.sms.others.PopUp;
 import com.example.sms.R;
-import com.example.sms.others.ScheduleStud;
 import com.example.sms.interfaces.UserStudentCallback;
 import com.example.sms.model.UserStudent;
 import com.google.android.gms.tasks.OnFailureListener;

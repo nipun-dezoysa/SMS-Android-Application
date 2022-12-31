@@ -1,8 +1,10 @@
-package com.example.sms.others;
+package com.example.sms.students;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
@@ -11,6 +13,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.sms.R;
+import com.example.sms.others.OnlineUsers;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -25,7 +28,6 @@ import io.paperdb.Paper;
 
 public class ScheduleStud extends AppCompatActivity {
 
-    ImageView schedule_stud_back;
     ImageView schedule_back;
     EditText mondayMaths,mondayScience,tuesdayMaths,tuesdayScience,wednesdayMaths,wednesdayScience,thursdayMaths,thursdayScience,fridayMaths,fridayScience,saturdayMaths,saturdayScience,sundayMaths,sundayScience;
     TextView grade10_schedule,grade11_schedule;
@@ -43,6 +45,7 @@ public class ScheduleStud extends AppCompatActivity {
 
     String uname;
 
+    @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -85,20 +88,34 @@ public class ScheduleStud extends AppCompatActivity {
 
         saveSchedule.setVisibility(View.GONE);
         mondayMaths.setEnabled(false);
+        mondayMaths.setTextColor(getColor(R.color.black));
         tuesdayMaths.setEnabled(false);
+        tuesdayMaths.setTextColor(getColor(R.color.black));
         wednesdayMaths.setEnabled(false);
+        wednesdayMaths.setTextColor(getColor(R.color.black));
         thursdayMaths.setEnabled(false);
+        thursdayMaths.setTextColor(getColor(R.color.black));
         fridayMaths.setEnabled(false);
+        fridayMaths.setTextColor(getColor(R.color.black));
         saturdayMaths.setEnabled(false);
+        saturdayMaths.setTextColor(getColor(R.color.black));
         sundayMaths.setEnabled(false);
+        sundayMaths.setTextColor(getColor(R.color.black));
 
         mondayScience.setEnabled(false);
+        mondayScience.setTextColor(getColor(R.color.black));
         tuesdayScience.setEnabled(false);
+        tuesdayScience.setTextColor(getColor(R.color.black));
         wednesdayScience.setEnabled(false);
+        wednesdayScience.setTextColor(getColor(R.color.black));
         thursdayScience.setEnabled(false);
+        thursdayScience.setTextColor(getColor(R.color.black));
         fridayScience.setEnabled(false);
+        fridayScience.setTextColor(getColor(R.color.black));
         saturdayScience.setEnabled(false);
+        saturdayScience.setTextColor(getColor(R.color.black));
         sundayScience.setEnabled(false);
+        sundayScience.setTextColor(getColor(R.color.black));
 
         databaseReference = FirebaseDatabase.getInstance().getReference().child("students");
 
