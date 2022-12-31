@@ -34,6 +34,9 @@
         android:theme="@style/Theme.SMS"
         tools:targetApi="31">
         <activity
+            android:name=".admin.ResultsHome"
+            android:exported="false" />
+        <activity
             android:name=".admin.EditReference"
             android:exported="false" />
         <activity

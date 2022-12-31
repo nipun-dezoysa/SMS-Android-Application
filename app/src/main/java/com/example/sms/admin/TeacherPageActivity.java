@@ -285,7 +285,7 @@ public class TeacherPageActivity extends AppCompatActivity {
         exam_result.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent manageActivityIntent = new Intent(TeacherPageActivity.this, ExamsResults.class);
+                Intent manageActivityIntent = new Intent(TeacherPageActivity.this, ResultsHome.class);
                 startActivity(manageActivityIntent);
             }
         });

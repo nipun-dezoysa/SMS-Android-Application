@@ -498,6 +498,7 @@ public class Manage_User extends AppCompatActivity {
                 if (snapshot.hasChild(UsernameTxt)) {
                     TastyToast.makeText(Manage_User.this, "User is already registered", TastyToast.LENGTH_SHORT, TastyToast.ERROR);
                 } else {
+                    databaseReference.child("students").child(UsernameTxt).child("username").setValue(UsernameTxt);
                     databaseReference.child("students").child(UsernameTxt).child("email").setValue(EmailIDTxt);
                     databaseReference.child("students").child(UsernameTxt).child("contact").setValue(ContactTxt);
                     databaseReference.child("students").child(UsernameTxt).child("subject").setValue(SubjectTxt);

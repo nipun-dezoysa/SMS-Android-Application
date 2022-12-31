@@ -286,9 +286,7 @@ public class UserList extends AppCompatActivity implements SelectListener {
                     TastyToast.makeText(UserList.this, "Please enter 10 digit contact number", TastyToast.LENGTH_SHORT, TastyToast.INFO);
                 } else {
 
-//                    mistakenly created 2 student models
-//                    Student s = new Student(usernameTxt, contactTxt, emailTxt, setSubject(), setGrade(), changeEncryptedPassword);
-//                    databaseReference.child("students").child(studuname).setValue(s);
+//
 
                     databaseReference.child("students").child(studuname).child("contact").setValue(contactTxt);
                     databaseReference.child("students").child(studuname).child("email").setValue(emailTxt);

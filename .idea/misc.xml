@@ -72,6 +72,7 @@
         <entry key="..\:/Users/Dell/AndroidStudioProjects/SMS/app/src/main/res/layout/activity_questions.xml" value="0.17105263157894737" />
         <entry key="..\:/Users/Dell/AndroidStudioProjects/SMS/app/src/main/res/layout/activity_report.xml" value="0.17192982456140352" />
         <entry key="..\:/Users/Dell/AndroidStudioProjects/SMS/app/src/main/res/layout/activity_report_stud.xml" value="0.17192982456140352" />
+        <entry key="..\:/Users/Dell/AndroidStudioProjects/SMS/app/src/main/res/layout/activity_results_home.xml" value="0.17192982456140352" />
         <entry key="..\:/Users/Dell/AndroidStudioProjects/SMS/app/src/main/res/layout/activity_schedule.xml" value="0.2" />
         <entry key="..\:/Users/Dell/AndroidStudioProjects/SMS/app/src/main/res/layout/activity_schedule_stud.xml" value="0.17192982456140352" />
         <entry key="..\:/Users/Dell/AndroidStudioProjects/SMS/app/src/main/res/layout/activity_show.xml" value="0.15" />
@@ -104,9 +105,10 @@
         <entry key="..\:/Users/Dell/AndroidStudioProjects/SMS/app/src/main/res/layout/mng_std_ui.xml" value="0.25" />
         <entry key="..\:/Users/Dell/AndroidStudioProjects/SMS/app/src/main/res/layout/notes_layout.xml" value="0.17192982456140352" />
         <entry key="..\:/Users/Dell/AndroidStudioProjects/SMS/app/src/main/res/layout/question_model.xml" value="0.22" />
+        <entry key="..\:/Users/Dell/AndroidStudioProjects/SMS/app/src/main/res/layout/results_model.xml" value="0.17105263157894737" />
         <entry key="..\:/Users/Dell/AndroidStudioProjects/SMS/app/src/main/res/layout/studentlogin.xml" value="0.25" />
         <entry key="..\:/Users/Dell/AndroidStudioProjects/SMS/app/src/main/res/layout/studentpage.xml" value="0.22" />
-        <entry key="..\:/Users/Dell/AndroidStudioProjects/SMS/app/src/main/res/layout/studymaterial_model.xml" value="0.17192982456140352" />
+        <entry key="..\:/Users/Dell/AndroidStudioProjects/SMS/app/src/main/res/layout/studymaterial_model.xml" value="0.22" />
         <entry key="..\:/Users/Dell/AndroidStudioProjects/SMS/app/src/main/res/layout/switch_tumbs.xml" value="0.17192982456140352" />
         <entry key="..\:/Users/Dell/AndroidStudioProjects/SMS/app/src/main/res/layout/teacherlogin.xml" value="0.22" />
         <entry key="..\:/Users/Dell/AndroidStudioProjects/SMS/app/src/main/res/layout/teacherpage.xml" value="0.2" />

@@ -66,6 +66,7 @@ public class Attendance_Adapter extends RecyclerView.Adapter<Attendance_Adapter.
             }
         });
 
+
         Add_Attendance.save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
