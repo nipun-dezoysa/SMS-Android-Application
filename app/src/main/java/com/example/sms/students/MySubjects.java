@@ -61,7 +61,7 @@ public class MySubjects extends AppCompatActivity {
                     maths.setVisibility(View.GONE);
                 } else {
                     science.setVisibility(View.VISIBLE);
-                    maths.setVisibility(View.GONE);
+                    maths.setVisibility(View.VISIBLE);
                 }
             }
 

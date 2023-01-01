@@ -43,13 +43,11 @@ import io.paperdb.Paper;
 public class NotesActivity extends AppCompatActivity {
 
     FloatingActionButton mcreateNotes;
-    private FirebaseAuth firebaseAuth;
     private String uname;
 
     RecyclerView mrecyclerView;
     StaggeredGridLayoutManager staggeredGridLayoutManager;
 
-    FirebaseUser firebaseUser;
     FirebaseFirestore firebaseFirestore;
 
     FirestoreRecyclerAdapter<FirebaseModel,NoteViewHolder> noteAdapter;
@@ -59,8 +57,7 @@ public class NotesActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_notes);
 
-//        Intent intent= getIntent();
-//        uname = intent.getStringExtra("uname");
+
         Paper.init(NotesActivity.this);
         uname = Paper.book().read(OnlineUsers.UserNamekey);
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_NOTHING);
@@ -75,7 +72,6 @@ public class NotesActivity extends AppCompatActivity {
         });
 
         mcreateNotes=findViewById(R.id.createNote);
-//        firebaseAuth=FirebaseAuth.getInstance();
 
         firebaseFirestore=FirebaseFirestore.getInstance();
 
@@ -87,7 +83,6 @@ public class NotesActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 Intent createIntent = new Intent(NotesActivity.this,CreateNotesActivity.class);
-//                        createIntent.putExtra("uname", uname);
                 startActivity(createIntent);
 
             }

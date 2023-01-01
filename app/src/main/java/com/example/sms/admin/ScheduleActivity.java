@@ -271,7 +271,13 @@ public class ScheduleActivity extends AppCompatActivity {
     }
 
     private boolean validateTimeSlot(){
-        if(mondayMaths.getText().toString().equals("") && mondayScience.getText().toString().equals("") && tuesdayMaths.getText().toString().equals("") && tuesdayScience.getText().toString().equals("") && wednesdayMaths.getText().toString().equals("") && wednesdayScience.getText().toString().equals("") && thursdayMaths.getText().toString().equals("") && thursdayScience.getText().toString().equals("") && fridayMaths.getText().toString().equals("") && fridayScience.getText().toString().equals("") && saturdayMaths.getText().toString().equals("") && saturdayScience.getText().toString().equals("") && sundayMaths.getText().toString().equals("") && sundayScience.getText().toString().equals("")){
+        if(mondayMaths.getText().toString().equals("") && mondayScience.getText().toString().equals("")
+                && tuesdayMaths.getText().toString().equals("") && tuesdayScience.getText().toString().equals("")
+                && wednesdayMaths.getText().toString().equals("") && wednesdayScience.getText().toString().equals("")
+                && thursdayMaths.getText().toString().equals("") && thursdayScience.getText().toString().equals("")
+                && fridayMaths.getText().toString().equals("") && fridayScience.getText().toString().equals("")
+                && saturdayMaths.getText().toString().equals("") && saturdayScience.getText().toString().equals("")
+                && sundayMaths.getText().toString().equals("") && sundayScience.getText().toString().equals("")){
             TastyToast.makeText(this, "Please fill Time Slot", TastyToast.LENGTH_SHORT,TastyToast.ERROR);
             return false;
         }else

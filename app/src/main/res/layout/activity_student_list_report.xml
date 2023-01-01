@@ -41,7 +41,7 @@
         android:background="@drawable/btn"
         android:onClick="previewDisabledUsersReport"
         android:padding="8dp"
-        android:text="disabled_users_report"
+        android:text="Exam Results Report"
         android:textAllCaps="false"
         style="?android:buttonBarButtonStyle"
         android:textColor="@android:color/white"

@@ -334,6 +334,7 @@ public class ScheduleStud extends AppCompatActivity {
                         String s = dataSnapshot.getValue(String.class);
                         scienceList.add(s);
                     }
+
                     mondayScience.setText(scienceList.get(0));
                     tuesdayScience.setText(scienceList.get(1));
                     wednesdayScience.setText(scienceList.get(2));

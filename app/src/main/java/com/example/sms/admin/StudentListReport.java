@@ -150,7 +150,7 @@ public class StudentListReport extends AppCompatActivity {
         amountCell.setVerticalAlignment(Element.ALIGN_CENTER);
 
 
-        Chunk footerText = new Chunk("Moses Njoroge - Copyright @ 2020");
+        Chunk footerText = new Chunk("");
         PdfPCell footCell = new PdfPCell(new Phrase(footerText));
         footCell.setFixedHeight(70);
         footCell.setHorizontalAlignment(Element.ALIGN_CENTER);
@@ -196,7 +196,7 @@ public class StudentListReport extends AppCompatActivity {
         PdfWriter.getInstance(document, output);
         document.open();
         Font g = new Font(Font.FontFamily.HELVETICA, 25.0f, Font.NORMAL, grayColor);
-        document.add(new Paragraph(" How to generate real-time reports using Firebase\n\n", g));
+        document.add(new Paragraph(" Term 1\n\n", g));
         document.add(table);
         document.add(footTable);
 
