@@ -209,26 +209,13 @@ public class ExamsResultsReport extends AppCompatActivity {
                 rFile = new File(reportfile, term+studGrade+subject+"Students_Exam_Results"+".pdf");
 
                 //fetch details;
-                fetchPaymentUsers(term,subject,studGrade);
+                fetchStudentResults(term,subject,studGrade);
                 previewExamResultsReport(view);
 
             }
         });
 
-//        //
-//        results = new ArrayList<>();
 //
-//        //create files in Report folder
-//        reportfile = new File("/storage/emulated/0/Report/");
-//
-//        //check if they exist, if not create them(directory)
-//        if ( !reportfile.exists()) {
-//            reportfile.mkdirs();
-//        }
-//        rFile = new File(reportfile, "Students_Exam_Results.pdf");
-//
-//        //fetch details;
-//        fetchPaymentUsers(subject,studGrade);
 
     }
 
@@ -247,7 +234,7 @@ public class ExamsResultsReport extends AppCompatActivity {
         }
         return true;
     }
-    private void createPaymentReport(  List<Results> results) throws DocumentException, FileNotFoundException {
+    private void createResultsReport(List<Results> results) throws DocumentException, FileNotFoundException {
         BaseColor colorWhite = WebColors.getRGBColor("#ffffff");
         BaseColor colorBlue = WebColors.getRGBColor("#056FAA");
         BaseColor grayColor = WebColors.getRGBColor("#425066");
@@ -264,32 +251,32 @@ public class ExamsResultsReport extends AppCompatActivity {
         table.setWidthPercentage(100);
         table.getDefaultCell().setVerticalAlignment(Element.ALIGN_MIDDLE);
 
-        Chunk noText = new Chunk("No.", white);
+        Chunk noText = new Chunk("\n"+"No.", white);
         PdfPCell noCell = new PdfPCell(new Phrase(noText));
         noCell.setFixedHeight(50);
         noCell.setHorizontalAlignment(Element.ALIGN_CENTER);
         noCell.setVerticalAlignment(Element.ALIGN_CENTER);
 
-        Chunk nameText = new Chunk("Student Name", white);
+        Chunk nameText = new Chunk("\n"+"Student Name", white);
         PdfPCell nameCell = new PdfPCell(new Phrase(nameText));
         nameCell.setFixedHeight(50);
         nameCell.setHorizontalAlignment(Element.ALIGN_CENTER);
         nameCell.setVerticalAlignment(Element.ALIGN_CENTER);
 
-        Chunk totalMarks = new Chunk("Total Marks", white);
+        Chunk totalMarks = new Chunk("\n"+"Total Marks", white);
         PdfPCell totalMarksCell = new PdfPCell(new Phrase(totalMarks));
         totalMarksCell.setFixedHeight(50);
         totalMarksCell.setHorizontalAlignment(Element.ALIGN_CENTER);
         totalMarksCell.setVerticalAlignment(Element.ALIGN_CENTER);
 
-        Chunk grades = new Chunk("Grades", white);
+        Chunk grades = new Chunk("\n"+"Grades", white);
         PdfPCell gradesCell = new PdfPCell(new Phrase(grades));
         gradesCell.setFixedHeight(50);
         gradesCell.setHorizontalAlignment(Element.ALIGN_CENTER);
         gradesCell.setVerticalAlignment(Element.ALIGN_CENTER);
 
-
-        Chunk footerText = new Chunk("");
+        int count = results.size();
+        Chunk footerText = new Chunk("\n\n"+"Total number of students is: "+count);
         PdfPCell footCell = new PdfPCell(new Phrase(footerText));
         footCell.setFixedHeight(70);
         footCell.setHorizontalAlignment(Element.ALIGN_CENTER);
@@ -342,8 +329,8 @@ public class ExamsResultsReport extends AppCompatActivity {
         document.close();
     }
 
-    //function to fetch payment data from the database
-    private void fetchPaymentUsers(String term, String subject, String studGrade)
+    //function to fetch data from the database
+    private void fetchStudentResults(String term, String subject, String studGrade)
     {
 
         DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child("Results")
@@ -357,7 +344,7 @@ public class ExamsResultsReport extends AppCompatActivity {
                 }
                 //create a pdf file and catch exception beacause file may not be created
                 try {
-                    createPaymentReport(results);
+                    createResultsReport(results);
                 } catch (DocumentException | FileNotFoundException e) {
                     e.printStackTrace();
                 }
@@ -377,7 +364,8 @@ public class ExamsResultsReport extends AppCompatActivity {
     private void DisplayReport()
     {
         pdfView.fromFile(rFile)
-                .pages(0,2,1,3,3,3)
+//                .pages(0,2,1,3,3,3)
+                .pages(0,1,2,3,4)
                 .enableSwipe(true)
                 .swipeHorizontal(false)
                 .enableDoubletap(true)

@@ -40,34 +40,35 @@ import java.io.FileOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
-public class StudentListReport extends AppCompatActivity {
+public class ContactsReport extends AppCompatActivity {
 
-    Button generate_studList;
-    ImageView studentListReport_back;
+
+    ImageView contactsReport_back;
+    Button generate_contactsList;
 
     public static File rFile;
     private File reportfile;
     private PDFView pdfView;
     List<Student> studentList;
-    int count;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_student_list_report);
+        setContentView(R.layout.activity_cotacts_report);
 
-        generate_studList = findViewById(R.id.generate_studList);
-        studentListReport_back = findViewById(R.id.studentListReport_back);
-        pdfView = findViewById(R.id.studList_pdf_viewer);
+        generate_contactsList = findViewById(R.id.generate_contactsList);
+        contactsReport_back = findViewById(R.id.contactsReport_back);
+        pdfView = findViewById(R.id.contactsList_pdf_viewer);
 
-        studentListReport_back.setOnClickListener(new View.OnClickListener() {
+        contactsReport_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 onBackPressed();
             }
         });
 
-        generate_studList.setOnClickListener(new View.OnClickListener() {
+        generate_contactsList.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 //
@@ -80,14 +81,16 @@ public class StudentListReport extends AppCompatActivity {
                 if ( !reportfile.exists()) {
                     reportfile.mkdirs();
                 }
-                rFile = new File(reportfile, "Students_List"+".pdf");
+                rFile = new File(reportfile, "Contacts_List"+".pdf");
 
                 //fetch details;
-                fetchStudentList();
-                previewStudentsListReport(view);
+                fetchStudentContacts();
+                previewContactsReport(view);
 
             }
         });
+
+
 
     }
 
@@ -107,7 +110,7 @@ public class StudentListReport extends AppCompatActivity {
         return true;
     }
 
-    private void createStudentListReport(List<Student> list) throws DocumentException, FileNotFoundException {
+    private void createContactsListReport(List<Student> list) throws DocumentException, FileNotFoundException {
         BaseColor colorWhite = WebColors.getRGBColor("#ffffff");
         BaseColor colorBlue = WebColors.getRGBColor("#056FAA");
         BaseColor grayColor = WebColors.getRGBColor("#425066");
@@ -136,19 +139,19 @@ public class StudentListReport extends AppCompatActivity {
         nameCell.setHorizontalAlignment(Element.ALIGN_CENTER);
         nameCell.setVerticalAlignment(Element.ALIGN_CENTER);
 
-        Chunk subject = new Chunk("\n"+"Subject", white);
-        PdfPCell selectedSubject = new PdfPCell(new Phrase(subject));
-        selectedSubject.setFixedHeight(50);
-        selectedSubject.setHorizontalAlignment(Element.ALIGN_CENTER);
-        selectedSubject.setVerticalAlignment(Element.ALIGN_CENTER);
+        Chunk phoneNo = new Chunk("\n"+"Phone Number", white);
+        PdfPCell contactCell = new PdfPCell(new Phrase(phoneNo));
+        contactCell.setFixedHeight(50);
+        contactCell.setHorizontalAlignment(Element.ALIGN_CENTER);
+        contactCell.setVerticalAlignment(Element.ALIGN_CENTER);
 
-        Chunk grade = new Chunk("\n"+"Grade", white);
-        PdfPCell gradesCell = new PdfPCell(new Phrase(grade));
-        gradesCell.setFixedHeight(50);
-        gradesCell.setHorizontalAlignment(Element.ALIGN_CENTER);
-        gradesCell.setVerticalAlignment(Element.ALIGN_CENTER);
+        Chunk email = new Chunk("\n"+"Email ID", white);
+        PdfPCell emailCell = new PdfPCell(new Phrase(email));
+        emailCell.setFixedHeight(50);
+        emailCell.setHorizontalAlignment(Element.ALIGN_CENTER);
+        emailCell.setVerticalAlignment(Element.ALIGN_CENTER);
 
-        count = studentList.size();
+        int count = studentList.size();
         Chunk footerText = new Chunk("\n\n"+"Total number of students is: "+count);
         PdfPCell footCell = new PdfPCell(new Phrase(footerText));
         footCell.setFixedHeight(70);
@@ -159,8 +162,8 @@ public class StudentListReport extends AppCompatActivity {
 
         table.addCell(noCell);
         table.addCell(nameCell);
-        table.addCell(selectedSubject);
-        table.addCell(gradesCell);
+        table.addCell(contactCell);
+        table.addCell(emailCell);
         table.setHeaderRows(1);
 
         PdfPCell[] cells = table.getRow(0).getCells();
@@ -175,15 +178,15 @@ public class StudentListReport extends AppCompatActivity {
             String id = String.valueOf(i + 1);
 //          set the data from the list here
             String name = student.getUsername();
-            String sub = student.getSubject();
-            int studentGrade = student.getGrade();
+            String contactNumber = student.getContact();
+            String emailID = student.getEmail();
 
             //IF
 
             table.addCell(id + ". ");
             table.addCell(name);
-            table.addCell(sub+"");
-            table.addCell(String.valueOf(studentGrade));
+            table.addCell(contactNumber+"");
+            table.addCell(emailID);
 
         }
 
@@ -203,19 +206,18 @@ public class StudentListReport extends AppCompatActivity {
     }
 
     //function to fetch data from the database
-    private void fetchStudentList() {
+    private void fetchStudentContacts() {
         DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child("students");
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                     Student student = snapshot.getValue(Student.class);
-//                    username.add(snapshot.getKey());
                     studentList.add(student);
                 }
                 //create a pdf file and catch exception beacause file may not be created
                 try {
-                    createStudentListReport(studentList);
+                    createContactsListReport(studentList);
                 } catch (DocumentException | FileNotFoundException e) {
                     e.printStackTrace();
                 }
@@ -243,7 +245,7 @@ public class StudentListReport extends AppCompatActivity {
                 .load();
     }
 
-    public void previewStudentsListReport(View view) {
+    public void previewContactsReport(View view) {
         if (hasPermissions(this, PERMISSIONS)) {
             DisplayReport();
         } else {

@@ -35,6 +35,12 @@
         android:theme="@style/Theme.SMS"
         tools:targetApi="31">
         <activity
+            android:name=".admin.AttendanceReport"
+            android:exported="false" />
+        <activity
+            android:name=".admin.ContactsReport"
+            android:exported="false" />
+        <activity
             android:name=".admin.StudentListReport"
             android:exported="false" />
         <activity

@@ -68,7 +68,7 @@ public class LoadAttendanceList extends AppCompatActivity {
 
         finalAttendanceDate = findViewById(R.id.finalAttendanceDate);
 
-        finalAttendanceDate.setText("2022-"+ dmonth + "-"+dday);
+        finalAttendanceDate.setText(year+"-"+ dmonth + "-"+dday);
 
         recyclerView = findViewById(R.id.load_attendance_rv);
         databaseReference = FirebaseDatabase.getInstance().getReference("Attendance").child(year).child(month).child(day).child(grade);

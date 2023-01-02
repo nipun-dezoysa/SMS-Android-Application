@@ -29,8 +29,6 @@ public class ReportActivity extends AppCompatActivity {
         studentContacts = findViewById(R.id.studentContacts);
         attendanceReport = findViewById(R.id.attendanceReport);
 
-
-
         report_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -46,6 +44,31 @@ public class ReportActivity extends AppCompatActivity {
             }
         });
 
+        studListReport.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ReportActivity.this, StudentListReport.class);
+                startActivity(intent);
+            }
+        });
+
+        studentContacts.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ReportActivity.this, ContactsReport.class);
+                startActivity(intent);
+            }
+        });
+
+        attendanceReport.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ReportActivity.this, AttendanceReport.class);
+                startActivity(intent);
+            }
+        });
 
     }
+
+
 }

@@ -10,9 +10,13 @@ import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.sms.R;
+import com.example.sms.model.Attendance;
 import com.example.sms.model.Student;
 import com.github.barteksc.pdfviewer.PDFView;
 import com.google.firebase.database.DataSnapshot;
@@ -33,6 +37,7 @@ import com.itextpdf.text.html.WebColors;
 import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
+import com.sdsmdg.tastytoast.TastyToast;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -40,55 +45,101 @@ import java.io.FileOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
-public class StudentListReport extends AppCompatActivity {
+public class AttendanceReport extends AppCompatActivity {
 
-    Button generate_studList;
-    ImageView studentListReport_back;
+    Button generate_attendanceList;
+    EditText date,month,year;
+    ImageView attendanceListReport_back;
+    TextView grade10_list_attendance,grade11_list_attendance;
+
+    String grade;
 
     public static File rFile;
     private File reportfile;
     private PDFView pdfView;
-    List<Student> studentList;
-    int count;
+    List<Attendance> attendanceList;
+    List<Attendance> presentList = new ArrayList<>();
+    List<Attendance> absentList = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_student_list_report);
+        setContentView(R.layout.activity_attendance_report);
 
-        generate_studList = findViewById(R.id.generate_studList);
-        studentListReport_back = findViewById(R.id.studentListReport_back);
-        pdfView = findViewById(R.id.studList_pdf_viewer);
+        attendanceListReport_back = findViewById(R.id.attendanceListReport_back);
+        generate_attendanceList = findViewById(R.id.generate_attendanceList);
+        grade10_list_attendance = findViewById(R.id.grade10_list_attendance);
+        grade11_list_attendance = findViewById(R.id.grade11_list_attendance);
+        pdfView = findViewById(R.id.attendanceList_pdf_viewer);
 
-        studentListReport_back.setOnClickListener(new View.OnClickListener() {
+        date = findViewById(R.id.date);
+        month = findViewById(R.id.month);
+        year = findViewById(R.id.year);
+
+        grade10_list_attendance.setTextColor(getResources().getColor(R.color.white));
+        grade10_list_attendance.setBackground(getDrawable(R.drawable.switch_trcks));
+        grade11_list_attendance.setBackground(null);
+        grade11_list_attendance.setTextColor(getResources().getColor(R.color.darkgreen));
+        grade = "Grade 10";
+
+        grade10_list_attendance.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                grade10_list_attendance.setTextColor(getResources().getColor(R.color.white));
+                grade10_list_attendance.setBackground(getDrawable(R.drawable.switch_trcks));
+                grade11_list_attendance.setBackground(null);
+                grade11_list_attendance.setTextColor(getResources().getColor(R.color.darkgreen));
+                grade = "Grade 10";
+            }
+        });
+
+        grade11_list_attendance.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                grade11_list_attendance.setTextColor(getResources().getColor(R.color.white));
+                grade11_list_attendance.setBackground(getDrawable(R.drawable.switch_trcks));
+                grade10_list_attendance.setBackground(null);
+                grade10_list_attendance.setTextColor(getResources().getColor(R.color.darkgreen));
+                grade = "Grade 11";
+            }
+        });
+
+        attendanceListReport_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 onBackPressed();
             }
         });
 
-        generate_studList.setOnClickListener(new View.OnClickListener() {
+        generate_attendanceList.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 //
-                studentList = new ArrayList<>();
+                attendanceList = new ArrayList<>();
 
                 //create files in Report folder
                 reportfile = new File("/storage/emulated/0/Report/");
-
+                String dateTxt = date.getText().toString();
+                String monthTxt = month.getText().toString();
+                String yearTxt = year.getText().toString();
                 //check if they exist, if not create them(directory)
                 if ( !reportfile.exists()) {
                     reportfile.mkdirs();
                 }
-                rFile = new File(reportfile, "Students_List"+".pdf");
+//                rFile = new File(reportfile, grade+yearTxt+"/"+monthTxt+"/"+dateTxt+"Attendance_List"+".pdf");
+                rFile = new File(reportfile, grade+yearTxt+monthTxt+dateTxt+"Attendance_List"+".pdf");
 
-                //fetch details;
-                fetchStudentList();
-                previewStudentsListReport(view);
 
+
+                if (dateTxt.isEmpty()||monthTxt.isEmpty()||yearTxt.isEmpty()){
+                    TastyToast.makeText(AttendanceReport.this, "Please Enter a Date", TastyToast.LENGTH_SHORT, TastyToast.ERROR).show();
+                } else {
+                    //fetch details;
+                    fetchAttendanceList(dateTxt, monthTxt, yearTxt);
+                    previewAttendanceListReport(view);
+                }
             }
         });
-
     }
 
     public static String[] PERMISSIONS = {
@@ -107,7 +158,7 @@ public class StudentListReport extends AppCompatActivity {
         return true;
     }
 
-    private void createStudentListReport(List<Student> list) throws DocumentException, FileNotFoundException {
+    private void createStudentListReport(List<Attendance> list) throws DocumentException, FileNotFoundException {
         BaseColor colorWhite = WebColors.getRGBColor("#ffffff");
         BaseColor colorBlue = WebColors.getRGBColor("#056FAA");
         BaseColor grayColor = WebColors.getRGBColor("#425066");
@@ -117,7 +168,7 @@ public class StudentListReport extends AppCompatActivity {
         Font white = new Font(Font.FontFamily.HELVETICA, 15.0f, Font.BOLD, colorWhite);
         FileOutputStream output = new FileOutputStream(rFile);
         Document document = new Document(PageSize.A4);
-        PdfPTable table = new PdfPTable(new float[]{6, 25, 20, 20});
+        PdfPTable table = new PdfPTable(new float[]{6, 25, 20});
         table.getDefaultCell().setHorizontalAlignment(Element.ALIGN_CENTER);
         table.getDefaultCell().setFixedHeight(50);
         table.setTotalWidth(PageSize.A4.getWidth());
@@ -136,20 +187,16 @@ public class StudentListReport extends AppCompatActivity {
         nameCell.setHorizontalAlignment(Element.ALIGN_CENTER);
         nameCell.setVerticalAlignment(Element.ALIGN_CENTER);
 
-        Chunk subject = new Chunk("\n"+"Subject", white);
-        PdfPCell selectedSubject = new PdfPCell(new Phrase(subject));
-        selectedSubject.setFixedHeight(50);
-        selectedSubject.setHorizontalAlignment(Element.ALIGN_CENTER);
-        selectedSubject.setVerticalAlignment(Element.ALIGN_CENTER);
+        Chunk status = new Chunk("\n"+"Status", white);
+        PdfPCell statusCell = new PdfPCell(new Phrase(status));
+        statusCell.setFixedHeight(50);
+        statusCell.setHorizontalAlignment(Element.ALIGN_CENTER);
+        statusCell.setVerticalAlignment(Element.ALIGN_CENTER);
 
-        Chunk grade = new Chunk("\n"+"Grade", white);
-        PdfPCell gradesCell = new PdfPCell(new Phrase(grade));
-        gradesCell.setFixedHeight(50);
-        gradesCell.setHorizontalAlignment(Element.ALIGN_CENTER);
-        gradesCell.setVerticalAlignment(Element.ALIGN_CENTER);
 
-        count = studentList.size();
-        Chunk footerText = new Chunk("\n\n"+"Total number of students is: "+count);
+        int presentCount = presentList.size();
+        int absentCount = absentList.size();
+        Chunk footerText = new Chunk("\n\n"+"Total number of Present is: "+ presentCount +"\n\n"+"Total number of Absent is: "+absentCount);
         PdfPCell footCell = new PdfPCell(new Phrase(footerText));
         footCell.setFixedHeight(70);
         footCell.setHorizontalAlignment(Element.ALIGN_CENTER);
@@ -159,8 +206,7 @@ public class StudentListReport extends AppCompatActivity {
 
         table.addCell(noCell);
         table.addCell(nameCell);
-        table.addCell(selectedSubject);
-        table.addCell(gradesCell);
+        table.addCell(statusCell);
         table.setHeaderRows(1);
 
         PdfPCell[] cells = table.getRow(0).getCells();
@@ -170,20 +216,18 @@ public class StudentListReport extends AppCompatActivity {
             cell.setBackgroundColor(grayColor);
         }
         for (int i = 0; i < list.size(); i++) {
-            Student student = list.get(i);
+            Attendance attendance = list.get(i);
 
             String id = String.valueOf(i + 1);
 //          set the data from the list here
-            String name = student.getUsername();
-            String sub = student.getSubject();
-            int studentGrade = student.getGrade();
+            String name = attendance.getUname();
+            String status1 = attendance.getStatus();
 
             //IF
 
             table.addCell(id + ". ");
             table.addCell(name);
-            table.addCell(sub+"");
-            table.addCell(String.valueOf(studentGrade));
+            table.addCell(status1);
 
         }
 
@@ -203,19 +247,25 @@ public class StudentListReport extends AppCompatActivity {
     }
 
     //function to fetch data from the database
-    private void fetchStudentList() {
-        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child("students");
+    private void fetchAttendanceList(String date, String month, String year) {
+        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child("Attendance").child(year).child(month).child(date).child(grade);
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
+                presentList.clear();
+                absentList.clear();
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                    Student student = snapshot.getValue(Student.class);
-//                    username.add(snapshot.getKey());
-                    studentList.add(student);
+                    Attendance attendance = snapshot.getValue(Attendance.class);
+                    attendanceList.add(attendance);
+                    if (attendance.getStatus().equals("Present")){
+                        presentList.add(attendance);
+                    } else if (attendance.getStatus().equals("Absent")){
+                        absentList.add(attendance);
+                    }
                 }
                 //create a pdf file and catch exception beacause file may not be created
                 try {
-                    createStudentListReport(studentList);
+                    createStudentListReport(attendanceList);
                 } catch (DocumentException | FileNotFoundException e) {
                     e.printStackTrace();
                 }
@@ -243,7 +293,7 @@ public class StudentListReport extends AppCompatActivity {
                 .load();
     }
 
-    public void previewStudentsListReport(View view) {
+    public void previewAttendanceListReport(View view) {
         if (hasPermissions(this, PERMISSIONS)) {
             DisplayReport();
         } else {
