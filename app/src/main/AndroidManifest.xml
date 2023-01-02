@@ -8,7 +8,7 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.MANAGE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.MANAGE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.CAMERA" />
 
     <uses-feature
@@ -35,6 +35,9 @@
         android:theme="@style/Theme.SMS"
         tools:targetApi="31">
         <activity
+            android:name=".admin.StudentListReport"
+            android:exported="false" />
+        <activity
             android:name=".admin.ResultsHome"
             android:exported="false" />
         <activity
@@ -47,7 +50,7 @@
             android:name=".admin.EditUpdatesActivity"
             android:exported="false" />
         <activity
-            android:name=".admin.StudentListReport"
+            android:name=".admin.ExamsResultsReport"
             android:exported="false" />
         <activity
             android:name=".admin.LoadAttendanceList"

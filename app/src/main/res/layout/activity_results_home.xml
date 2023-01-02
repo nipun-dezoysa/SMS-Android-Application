@@ -87,7 +87,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:gravity="center_vertical|center_horizontal"
-                            android:text="Term 1"
+                            android:text="1st Term"
                             android:textColor="@color/black"
                             android:textSize="25dp"
                             android:textStyle="bold" />
@@ -121,7 +121,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_vertical|center_horizontal"
-                            android:text="Term 2"
+                            android:text="2nd Term"
                             android:textColor="@color/black"
                             android:textSize="25dp"
                             android:textStyle="bold" />
@@ -156,7 +156,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:gravity="center_vertical|center_horizontal"
-                            android:text="Term 3"
+                            android:text="3rd Term"
                             android:textColor="@color/black"
                             android:textSize="25dp"
                             android:textStyle="bold" />
