@@ -71,4 +71,7 @@ public class ReportActivity extends AppCompatActivity {
     }
 
 
+    public void onBackPressed(View view) {
+        onBackPressed();
+    }
 }

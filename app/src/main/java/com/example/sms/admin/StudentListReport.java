@@ -58,7 +58,7 @@ public class StudentListReport extends AppCompatActivity {
 
         generate_studList = findViewById(R.id.generate_studList);
         studentListReport_back = findViewById(R.id.studentListReport_back);
-        pdfView = findViewById(R.id.studList_pdf_viewer);
+        pdfView = findViewById(R.id.examResults_pdf_viewer);
 
         studentListReport_back.setOnClickListener(new View.OnClickListener() {
             @Override
