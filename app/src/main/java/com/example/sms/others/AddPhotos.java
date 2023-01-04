@@ -16,7 +16,7 @@ import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.example.sms.R;
-import com.example.sms.model.Model;
+import com.example.sms.model.PhotoModel;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DatabaseReference;
@@ -113,7 +113,7 @@ public class AddPhotos extends AppCompatActivity {
                     @Override
                     public void onSuccess(Uri uri) {
 
-                        Model model = new Model(uri.toString());
+                        PhotoModel model = new PhotoModel(uri.toString());
                         String modelId = root.push().getKey();
                         root.child(modelId).setValue(model);
                         progressBar.setVisibility(View.INVISIBLE);

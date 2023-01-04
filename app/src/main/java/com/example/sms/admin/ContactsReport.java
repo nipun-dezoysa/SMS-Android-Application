@@ -120,7 +120,7 @@ public class ContactsReport extends AppCompatActivity {
         Font white = new Font(Font.FontFamily.HELVETICA, 15.0f, Font.BOLD, colorWhite);
         FileOutputStream output = new FileOutputStream(rFile);
         Document document = new Document(PageSize.A4);
-        PdfPTable table = new PdfPTable(new float[]{6, 25, 20, 20});
+        PdfPTable table = new PdfPTable(new float[]{6, 20, 20, 25});
         table.getDefaultCell().setHorizontalAlignment(Element.ALIGN_CENTER);
         table.getDefaultCell().setFixedHeight(50);
         table.setTotalWidth(PageSize.A4.getWidth());
@@ -198,7 +198,7 @@ public class ContactsReport extends AppCompatActivity {
         PdfWriter.getInstance(document, output);
         document.open();
         Font g = new Font(Font.FontFamily.HELVETICA, 25.0f, Font.NORMAL, grayColor);
-        document.add(new Paragraph(" Students List\n\n", g));
+        document.add(new Paragraph(" Contact List\n\n", g));
         document.add(table);
         document.add(footTable);
 

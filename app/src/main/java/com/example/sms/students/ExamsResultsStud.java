@@ -13,6 +13,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 
 import com.example.sms.R;
+import com.example.sms.admin.ExamsResultsReport;
 import com.example.sms.model.Results;
 import com.example.sms.model.Results1;
 import com.example.sms.others.OnlineUsers;
@@ -168,7 +169,7 @@ public class ExamsResultsStud extends AppCompatActivity {
         Font white = new Font(Font.FontFamily.HELVETICA, 15.0f, Font.BOLD, colorWhite);
         FileOutputStream output = new FileOutputStream(rFile);
         Document document = new Document(PageSize.A4);
-        PdfPTable table = new PdfPTable(new float[]{6, 25, 20, 20});
+        PdfPTable table = new PdfPTable(new float[]{8, 18, 18, 14, 14, 14, 14});
         table.getDefaultCell().setHorizontalAlignment(Element.ALIGN_CENTER);
         table.getDefaultCell().setFixedHeight(50);
         table.setTotalWidth(PageSize.A4.getWidth());
@@ -190,7 +191,7 @@ public class ExamsResultsStud extends AppCompatActivity {
         noCell.setHorizontalAlignment(Element.ALIGN_CENTER);
         noCell.setVerticalAlignment(Element.ALIGN_CENTER);
 
-        Chunk nameText = new Chunk("\n"+"Student Name", white);
+        Chunk nameText = new Chunk("\n"+"Student", white);
         PdfPCell nameCell = new PdfPCell(new Phrase(nameText));
         nameCell.setFixedHeight(50);
         nameCell.setHorizontalAlignment(Element.ALIGN_CENTER);
@@ -202,19 +203,37 @@ public class ExamsResultsStud extends AppCompatActivity {
         selectedSubject.setHorizontalAlignment(Element.ALIGN_CENTER);
         selectedSubject.setVerticalAlignment(Element.ALIGN_CENTER);
 
+        Chunk part1 = new Chunk("\n"+"Part 1", white);
+        PdfPCell part1Cell = new PdfPCell(new Phrase(part1));
+        part1Cell.setFixedHeight(50);
+        part1Cell.setHorizontalAlignment(Element.ALIGN_CENTER);
+        part1Cell.setVerticalAlignment(Element.ALIGN_CENTER);
+
+        Chunk part2 = new Chunk("\n"+"Part 2", white);
+        PdfPCell part2Cell = new PdfPCell(new Phrase(part2));
+        part2Cell.setFixedHeight(50);
+        part2Cell.setHorizontalAlignment(Element.ALIGN_CENTER);
+        part2Cell.setVerticalAlignment(Element.ALIGN_CENTER);
+
+        Chunk total = new Chunk("\n"+"Total", white);
+        PdfPCell totalCell = new PdfPCell(new Phrase(total));
+        totalCell.setFixedHeight(50);
+        totalCell.setHorizontalAlignment(Element.ALIGN_CENTER);
+        totalCell.setVerticalAlignment(Element.ALIGN_CENTER);
+
         Chunk grade = new Chunk("\n"+"Grade", white);
         PdfPCell gradesCell = new PdfPCell(new Phrase(grade));
         gradesCell.setFixedHeight(50);
         gradesCell.setHorizontalAlignment(Element.ALIGN_CENTER);
         gradesCell.setVerticalAlignment(Element.ALIGN_CENTER);
 
-//        count = mathsResultsList.size();
-        Chunk footerText = new Chunk("\n\n"+"Total number of students is: ");
+//        Chunk footerText = new Chunk("\n\n"+"" );
+        Chunk footerText = new Chunk("");
         PdfPCell footCell = new PdfPCell(new Phrase(footerText));
         footCell.setFixedHeight(70);
         footCell.setHorizontalAlignment(Element.ALIGN_CENTER);
         footCell.setVerticalAlignment(Element.ALIGN_CENTER);
-        footCell.setColspan(4);
+        footCell.setColspan(7);
 //
 //        Chunk footerText1 = new Chunk("\n\n"+"Total number: ");
 //        PdfPCell footCell1 = new PdfPCell(new Phrase(footerText1));
@@ -228,6 +247,9 @@ public class ExamsResultsStud extends AppCompatActivity {
         table.addCell(noCell);
         table.addCell(nameCell);
         table.addCell(selectedSubject);
+        table.addCell(part1Cell);
+        table.addCell(part2Cell);
+        table.addCell(totalCell);
         table.addCell(gradesCell);
         table.setHeaderRows(1);
 
@@ -245,17 +267,24 @@ public class ExamsResultsStud extends AppCompatActivity {
 ////            Results1 results1 = list1.get(i);
 //            String id = String.valueOf(i + 1);
 
-
+        int i =0 ;
 
             for (Map.Entry<String,Results> resultsEntry:resultsHashMap.entrySet()){
                 String newSubject = resultsEntry.getKey();
                 String username = resultsEntry.getValue().getUsername();
+                float part1Mark = resultsEntry.getValue().getPart1();
+                float part2Mark = resultsEntry.getValue().getPart2();
+                float totalMark = resultsEntry.getValue().getTotal();
                 String newGrade = resultsEntry.getValue().getGrades();
 
+                i = i+1;
 
-                table.addCell(1 + ". ");
+                table.addCell(i + ". ");
                 table.addCell(username);
                 table.addCell(newSubject);
+                table.addCell(String.valueOf(part1Mark));
+                table.addCell(String.valueOf(part2Mark));
+                table.addCell(String.valueOf(totalMark));
                 table.addCell(newGrade);
 
             }
@@ -275,7 +304,8 @@ public class ExamsResultsStud extends AppCompatActivity {
 
 //        }
 
-        PdfPTable footTable = new PdfPTable(new float[]{6, 25, 20, 20});
+//        PdfPTable footTable = new PdfPTable(new float[]{6, 25, 20, 20});
+        PdfPTable footTable = new PdfPTable(new float[]{8, 18, 18, 14, 14, 14, 14});
         footTable.setTotalWidth(PageSize.A4.getWidth());
         footTable.setWidthPercentage(100);
         footTable.addCell(footCell);

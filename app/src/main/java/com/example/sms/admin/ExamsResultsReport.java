@@ -55,6 +55,7 @@ public class ExamsResultsReport extends AppCompatActivity {
     List<Results> results;
 
     String subject,studGrade,term;
+    Float highestMarks,lowestMarks;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -144,11 +145,6 @@ public class ExamsResultsReport extends AppCompatActivity {
                 grade11_list_report.setBackground(null);
                 grade11_list_report.setTextColor(getResources().getColor(R.color.darkgreen));
                 studGrade = "10";
-//                maths_list_report.setTextColor(getResources().getColor(R.color.white));
-//                maths_list_report.setBackground(getDrawable(R.drawable.switch_trcks));
-//                science_list_report.setBackground(null);
-//                science_list_report.setTextColor(getResources().getColor(R.color.darkgreen));
-//                subject = "Maths";
 
             }
         });
@@ -161,11 +157,6 @@ public class ExamsResultsReport extends AppCompatActivity {
                 grade10_list_report.setBackground(null);
                 grade10_list_report.setTextColor(getResources().getColor(R.color.darkgreen));
                 studGrade = "11";
-//                maths_list_report.setTextColor(getResources().getColor(R.color.white));
-//                maths_list_report.setBackground(getDrawable(R.drawable.switch_trcks));
-//                science_list_report.setBackground(null);
-//                science_list_report.setTextColor(getResources().getColor(R.color.darkgreen));
-//                subject = "Maths";
             }
         });
 
@@ -244,7 +235,7 @@ public class ExamsResultsReport extends AppCompatActivity {
         Font white = new Font(Font.FontFamily.HELVETICA, 15.0f, Font.BOLD, colorWhite);
         FileOutputStream output = new FileOutputStream(rFile);
         Document document = new Document(PageSize.A4);
-        PdfPTable table = new PdfPTable(new float[]{6, 25, 20, 20});
+        PdfPTable table = new PdfPTable(new float[]{8, 24, 18, 18, 18, 18});
         table.getDefaultCell().setHorizontalAlignment(Element.ALIGN_CENTER);
         table.getDefaultCell().setFixedHeight(50);
         table.setTotalWidth(PageSize.A4.getWidth());
@@ -257,13 +248,25 @@ public class ExamsResultsReport extends AppCompatActivity {
         noCell.setHorizontalAlignment(Element.ALIGN_CENTER);
         noCell.setVerticalAlignment(Element.ALIGN_CENTER);
 
-        Chunk nameText = new Chunk("\n"+"Student Name", white);
+        Chunk nameText = new Chunk("\n"+"Student", white);
         PdfPCell nameCell = new PdfPCell(new Phrase(nameText));
         nameCell.setFixedHeight(50);
         nameCell.setHorizontalAlignment(Element.ALIGN_CENTER);
         nameCell.setVerticalAlignment(Element.ALIGN_CENTER);
 
-        Chunk totalMarks = new Chunk("\n"+"Total Marks", white);
+        Chunk part1 = new Chunk("\n"+"Part 1", white);
+        PdfPCell part1Cell = new PdfPCell(new Phrase(part1));
+        part1Cell.setFixedHeight(50);
+        part1Cell.setHorizontalAlignment(Element.ALIGN_CENTER);
+        part1Cell.setVerticalAlignment(Element.ALIGN_CENTER);
+
+        Chunk part2 = new Chunk("\n"+"Part 2", white);
+        PdfPCell part2Cell = new PdfPCell(new Phrase(part2));
+        part2Cell.setFixedHeight(50);
+        part2Cell.setHorizontalAlignment(Element.ALIGN_CENTER);
+        part2Cell.setVerticalAlignment(Element.ALIGN_CENTER);
+
+        Chunk totalMarks = new Chunk("\n"+"Total", white);
         PdfPCell totalMarksCell = new PdfPCell(new Phrase(totalMarks));
         totalMarksCell.setFixedHeight(50);
         totalMarksCell.setHorizontalAlignment(Element.ALIGN_CENTER);
@@ -275,17 +278,19 @@ public class ExamsResultsReport extends AppCompatActivity {
         gradesCell.setHorizontalAlignment(Element.ALIGN_CENTER);
         gradesCell.setVerticalAlignment(Element.ALIGN_CENTER);
 
-        int count = results.size();
-        Chunk footerText = new Chunk("\n\n"+"Total number of students is: "+count);
-        PdfPCell footCell = new PdfPCell(new Phrase(footerText));
-        footCell.setFixedHeight(70);
-        footCell.setHorizontalAlignment(Element.ALIGN_CENTER);
-        footCell.setVerticalAlignment(Element.ALIGN_CENTER);
-        footCell.setColspan(4);
+//        int count = results.size();
+//        Chunk footerText = new Chunk("\n\n"+"Total number of students is: "+count + "\n\n" + "Highest marks: "+highestMarks+"\n\n"+"Lowest marks: "+ lowestMarks);
+//        PdfPCell footCell = new PdfPCell(new Phrase(footerText));
+//        footCell.setFixedHeight(100);
+//        footCell.setHorizontalAlignment(Element.ALIGN_CENTER);
+//        footCell.setVerticalAlignment(Element.ALIGN_CENTER);
+//        footCell.setColspan(4);
 
 
         table.addCell(noCell);
         table.addCell(nameCell);
+        table.addCell(part1Cell);
+        table.addCell(part2Cell);
         table.addCell(totalMarksCell);
         table.addCell(gradesCell);
         table.setHeaderRows(1);
@@ -296,25 +301,51 @@ public class ExamsResultsReport extends AppCompatActivity {
         for (PdfPCell cell : cells) {
             cell.setBackgroundColor(grayColor);
         }
+
+        highestMarks = 0.f;
+        lowestMarks = 100.f;
+
         for (int i = 0; i < results.size(); i++) {
             Results res = results.get(i);
 
+
             String id = String.valueOf(i + 1);
-//            Todo : set the data from the results here
+//          set the data from the results here
             String name = res.getUsername();
+            float part1Marks = res.getPart1();
+            float part2Marks = res.getPart2();
             Float marks = res.getTotal();
             String grade = res.getGrades();
+
+//            int newMarks = Math.round(marks);
+
+            if (marks >= highestMarks){
+                highestMarks = marks;
+            }
+            if (marks <= lowestMarks){
+                lowestMarks = marks;
+            }
 
             //IF
 
             table.addCell(id + ". ");
             table.addCell(name);
+            table.addCell(String.valueOf(part1Marks));
+            table.addCell(String.valueOf(part2Marks));
             table.addCell(marks+"");
             table.addCell(grade);
 
         }
 
-        PdfPTable footTable = new PdfPTable(new float[]{6, 25, 20, 20});
+        int count = results.size();
+        Chunk footerText = new Chunk("\n\n"+"Total number of students is: "+count + "\n\n" + "Highest marks: "+highestMarks+"\n\n"+"Lowest marks: "+ lowestMarks);
+        PdfPCell footCell = new PdfPCell(new Phrase(footerText));
+        footCell.setFixedHeight(100);
+        footCell.setHorizontalAlignment(Element.ALIGN_CENTER);
+        footCell.setVerticalAlignment(Element.ALIGN_CENTER);
+        footCell.setColspan(6);
+
+        PdfPTable footTable = new PdfPTable(new float[]{8, 24, 18, 18, 18, 18});
         footTable.setTotalWidth(PageSize.A4.getWidth());
         footTable.setWidthPercentage(100);
         footTable.addCell(footCell);
@@ -322,7 +353,7 @@ public class ExamsResultsReport extends AppCompatActivity {
         PdfWriter.getInstance(document, output);
         document.open();
         Font g = new Font(Font.FontFamily.HELVETICA, 25.0f, Font.NORMAL, grayColor);
-        document.add(new Paragraph(" Term 1\n\n", g));
+        document.add(new Paragraph(term+"\n\n", g));
         document.add(table);
         document.add(footTable);
 

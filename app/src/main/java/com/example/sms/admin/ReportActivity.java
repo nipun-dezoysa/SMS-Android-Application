@@ -25,7 +25,7 @@ public class ReportActivity extends AppCompatActivity {
 
         studListReport = findViewById(R.id.studListReport);
         examResults = findViewById(R.id.examResults);
-        report_back = findViewById(R.id.report_back);
+        report_back = findViewById(R.id.report_back_1);
         studentContacts = findViewById(R.id.studentContacts);
         attendanceReport = findViewById(R.id.attendanceReport);
 
@@ -35,7 +35,6 @@ public class ReportActivity extends AppCompatActivity {
                 onBackPressed();
             }
         });
-
         examResults.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -70,8 +69,4 @@ public class ReportActivity extends AppCompatActivity {
 
     }
 
-
-    public void onBackPressed(View view) {
-        onBackPressed();
-    }
 }

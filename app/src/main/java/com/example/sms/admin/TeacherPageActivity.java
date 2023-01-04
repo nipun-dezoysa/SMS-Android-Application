@@ -220,7 +220,7 @@ public class TeacherPageActivity extends AppCompatActivity {
         LinearLayout report = findViewById(R.id.report_id);
         LinearLayout update = findViewById(R.id.update_id);
         LinearLayout txt_rec = findViewById(R.id.txt_rec);
-        LinearLayout galleryimg = findViewById(R.id.gallery_id);
+//        LinearLayout galleryimg = findViewById(R.id.gallery_id);
 
 
         mGetContent=registerForActivityResult(new ActivityResultContracts.GetContent(), new ActivityResultCallback<Uri>() {
@@ -315,14 +315,12 @@ public class TeacherPageActivity extends AppCompatActivity {
             }
         });
 
-        galleryimg.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(TeacherPageActivity.this, AddPhotos.class));
-            }
-        });
-
-
+//        galleryimg.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                startActivity(new Intent(TeacherPageActivity.this, AddPhotos.class));
+//            }
+//        });
 
 
         dialog = new Dialog(this);

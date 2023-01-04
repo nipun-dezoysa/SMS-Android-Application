@@ -239,7 +239,7 @@ public class AttendanceReport extends AppCompatActivity {
         PdfWriter.getInstance(document, output);
         document.open();
         Font g = new Font(Font.FontFamily.HELVETICA, 25.0f, Font.NORMAL, grayColor);
-        document.add(new Paragraph(" Students List\n\n", g));
+        document.add(new Paragraph(" Attendance List\n\n", g));
         document.add(table);
         document.add(footTable);
 

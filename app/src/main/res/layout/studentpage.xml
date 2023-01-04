@@ -374,7 +374,7 @@
                     <TextView
                         android:textColor="@color/cardview_dark_background"
                         android:layout_marginTop="12dp"
-                        android:text="Exams &amp; Results"
+                        android:text="Exam Report"
                         android:textSize="18sp"
                         android:textStyle="bold"
                         android:layout_width="wrap_content"
@@ -385,43 +385,6 @@
 
             </androidx.cardview.widget.CardView>
 
-
-            <androidx.cardview.widget.CardView
-                android:layout_height="wrap_content"
-                android:layout_width="wrap_content"
-                android:layout_columnWeight="1"
-                android:layout_rowWeight="1"
-                app:cardElevation="6dp"
-                app:cardCornerRadius="25dp"
-                android:layout_margin="12dp">
-
-                <LinearLayout
-                    android:id="@+id/reports"
-                    android:orientation="vertical"
-                    android:padding="16dp"
-                    android:gravity="center"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-
-                    <ImageView
-                        android:src="@drawable/graph"
-                        android:layout_width="80dp"
-                        android:layout_height="80dp"
-                        android:layout_marginTop="10dp"
-                        />
-
-                    <TextView
-                        android:textColor="@color/cardview_dark_background"
-                        android:layout_marginTop="12dp"
-                        android:text="Reports"
-                        android:textSize="18sp"
-                        android:textStyle="bold"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
-
-                </LinearLayout>
-
-            </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
                 android:layout_height="wrap_content"

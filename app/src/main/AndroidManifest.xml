@@ -129,9 +129,6 @@
             android:name=".students.TextRecognitionStud"
             android:exported="false" />
         <activity
-            android:name=".students.ReportStud"
-            android:exported="false" />
-        <activity
             android:name=".students.ExamsResultsStud"
             android:exported="false" />
         <activity

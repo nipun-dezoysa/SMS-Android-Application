@@ -11,7 +11,7 @@ import android.widget.ImageView;
 
 import com.example.sms.R;
 import com.example.sms.adapter.MyAdapter;
-import com.example.sms.model.Model;
+import com.example.sms.model.PhotoModel;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -24,7 +24,7 @@ public class ShowActivity extends AppCompatActivity {
 
     private ImageView back_btn;
     private RecyclerView recyclerView;
-    private ArrayList<Model> list;
+    private ArrayList<PhotoModel> list;
 
     private MyAdapter adapter;
 
@@ -54,7 +54,7 @@ public class ShowActivity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()){
-                    Model model = dataSnapshot.getValue(Model.class);
+                    PhotoModel model = dataSnapshot.getValue(PhotoModel.class);
                     list.add(model);
                 }
                 adapter.notifyDataSetChanged();

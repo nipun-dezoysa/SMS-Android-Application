@@ -1,12 +1,12 @@
 package com.example.sms.model;
 
-public class Model {
+public class PhotoModel {
 
     private String imageUrl;
-    public Model(){
+    public PhotoModel(){
 
     }
-    public Model(String imageUrl){
+    public PhotoModel(String imageUrl){
         this.imageUrl = imageUrl;
 
     }

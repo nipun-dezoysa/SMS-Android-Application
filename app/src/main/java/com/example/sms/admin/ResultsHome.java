@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import com.example.sms.R;
@@ -15,6 +16,8 @@ public class ResultsHome extends AppCompatActivity {
 
     public static String term;
 
+    ImageView term_back;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,6 +26,14 @@ public class ResultsHome extends AppCompatActivity {
         term1 = findViewById(R.id.term1);
         term2 = findViewById(R.id.term2);
         term3 = findViewById(R.id.term3);
+        term_back = findViewById(R.id.term_back);
+
+        term_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
 
         term1.setOnClickListener(new View.OnClickListener() {
             @Override

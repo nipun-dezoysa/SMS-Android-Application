@@ -88,11 +88,6 @@ public class ExamsResults extends AppCompatActivity {
                 grade11_list_results.setBackground(null);
                 grade11_list_results.setTextColor(getResources().getColor(R.color.darkgreen));
                 grade = 10;
-                maths_list_results.setTextColor(getResources().getColor(R.color.white));
-                maths_list_results.setBackground(getDrawable(R.drawable.switch_trcks));
-                science_list_results.setBackground(null);
-                science_list_results.setTextColor(getResources().getColor(R.color.darkgreen));
-                subject = "Maths";
                 loadData(grade, subject);
 
             }
@@ -106,11 +101,6 @@ public class ExamsResults extends AppCompatActivity {
                 grade10_list_results.setBackground(null);
                 grade10_list_results.setTextColor(getResources().getColor(R.color.darkgreen));
                 grade = 11;
-                maths_list_results.setTextColor(getResources().getColor(R.color.white));
-                maths_list_results.setBackground(getDrawable(R.drawable.switch_trcks));
-                science_list_results.setBackground(null);
-                science_list_results.setTextColor(getResources().getColor(R.color.darkgreen));
-                subject = "Maths";
 
                 loadData(grade, subject);
             }

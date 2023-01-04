@@ -118,7 +118,6 @@ public class StudentPageActivity extends AppCompatActivity {
     LinearLayout studyMaterial;
     LinearLayout notes;
     LinearLayout exam_result;
-    LinearLayout report;
     LinearLayout update;
     LinearLayout txt_rec;
 
@@ -144,7 +143,6 @@ public class StudentPageActivity extends AppCompatActivity {
         studyMaterial = findViewById(R.id.studymaterial);
         notes = findViewById(R.id.notes);
         exam_result = findViewById(R.id.exams_results_view);
-        report = findViewById(R.id.reports);
         update = findViewById(R.id.updates);
         txt_rec = findViewById(R.id.txt_rec_std);
 
@@ -258,14 +256,7 @@ public class StudentPageActivity extends AppCompatActivity {
                 startActivity(manageActivityIntent);
             }
         });
-
-        report.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent manageActivityIntent = new Intent(StudentPageActivity.this,ReportStud.class);
-                startActivity(manageActivityIntent);
-            }
-        });
+        
 
         update.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -18,10 +18,9 @@
         android:layout_height="120dp">
 
         <ImageView
-            android:id="@+id/report_back"
+            android:id="@+id/report_back_1"
             android:layout_width="40dp"
             android:layout_height="35dp"
-            android:onClick="onBackPressed"
             android:layout_centerVertical="true"
             android:layout_marginLeft="10dp"
             android:background="@drawable/back" />
