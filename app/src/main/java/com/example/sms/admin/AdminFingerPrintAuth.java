@@ -29,8 +29,6 @@ public class AdminFingerPrintAuth extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
 
-//        Intent intent= getIntent();
-//        uname = intent.getStringExtra("uname");
 
         Paper.init(AdminFingerPrintAuth.this);
         uname = Paper.book().read(OnlineUsers.UserNamekey);
@@ -67,7 +65,6 @@ public class AdminFingerPrintAuth extends AppCompatActivity {
                 super.onAuthenticationSucceeded(result);
                 TastyToast.makeText(getApplicationContext(), "Login successful", TastyToast.LENGTH_SHORT, TastyToast.SUCCESS);
                 Intent intent = new Intent(AdminFingerPrintAuth.this, TeacherPageActivity.class);
-//                intent.putExtra("uname", uname);
                 startActivity(intent);
                 finish();
             }

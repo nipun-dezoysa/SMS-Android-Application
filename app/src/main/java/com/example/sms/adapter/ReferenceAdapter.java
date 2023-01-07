@@ -65,7 +65,7 @@ public class ReferenceAdapter extends RecyclerView.Adapter<ReferenceAdapter.View
                 try {
                     context.startActivity(intent);
                 } catch (ActivityNotFoundException ex) {
-                    // Chrome browser presumably not installed so allow user to choose instead
+                    // if Chrome browser not installed, allow user to choose instead
                     intent.setPackage(null);
                     context.startActivity(intent);
                 }
