@@ -3,6 +3,7 @@ package com.example.sms.admin;
 import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
+import android.content.ActivityNotFoundException;
 import android.content.ContentResolver;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -189,20 +190,16 @@ public class TeacherPageActivity extends AppCompatActivity {
 
         });
 
-        //    back error start
         getTeacher(new TeacherCallback() {
             @Override
             public void onCallback(Teacher t) {
-//                if (!teacher.getProfileuri().equals("")) {
-//                    setProfileImage(teacher.getProfileuri());
-//                }
+
                 teacher = t;
                 welcometext.setText(teacher.getNickName());
                 setProfileImage(teacher.getProfileuri());
             }
         });
 
-        //    back error end
         Paper.init(TeacherPageActivity.this);
         uname = Paper.book().read(OnlineUsers.UserNamekey);
 
@@ -220,7 +217,7 @@ public class TeacherPageActivity extends AppCompatActivity {
         LinearLayout report = findViewById(R.id.report_id);
         LinearLayout update = findViewById(R.id.update_id);
         LinearLayout txt_rec = findViewById(R.id.txt_rec);
-//        LinearLayout galleryimg = findViewById(R.id.gallery_id);
+        LinearLayout dashboard = findViewById(R.id.dashboard);
 
 
         mGetContent=registerForActivityResult(new ActivityResultContracts.GetContent(), new ActivityResultCallback<Uri>() {
@@ -246,7 +243,6 @@ public class TeacherPageActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent manageActivityIntent = new Intent(TeacherPageActivity.this, AttendanceActivity.class);
                 startActivity(manageActivityIntent);
-//                manageActivityIntent.putExtra("uname",uname);
             }
         });
 
@@ -315,12 +311,25 @@ public class TeacherPageActivity extends AppCompatActivity {
             }
         });
 
-//        galleryimg.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                startActivity(new Intent(TeacherPageActivity.this, AddPhotos.class));
-//            }
-//        });
+        dashboard.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+//                startActivity(new Intent(TeacherPageActivity.this, Dashboard.class));
+                Intent intent = new Intent();
+                intent.setType(Intent.ACTION_VIEW);
+                intent.setData(Uri.parse("https://console.firebase.google.com/project/asms-365d0/analytics/app/android:com.example.sms/overview/~2F%3Ft%3D1673185323615&fpn%3D566350586702&swu%3D1&sgu%3D1&sus%3Dupgraded&cs%3Dapp.m.dashboard.overview&g%3D1"));
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                intent.setPackage("com.android.chrome");
+
+                try {
+                    startActivity(intent);
+                } catch (ActivityNotFoundException ex) {
+                    // if Chrome browser not installed, allow user to choose instead
+                    intent.setPackage(null);
+                    startActivity(intent);
+                }
+            }
+        });
 
 
         dialog = new Dialog(this);
@@ -494,16 +503,6 @@ public class TeacherPageActivity extends AppCompatActivity {
         address = dialog.findViewById(R.id.txtAddress);
         cropView= dialog.findViewById(R.id.cropView);
         profilepic = dialog.findViewById(R.id.profileEdit);
-//        welcometext = dialog.findViewById(R.id.dashboardtxt);
-
-//        getTeacher(new TeacherCallback() {
-//            @Override
-//            public void onCallback(Teacher t) {
-////
-//                setProfileImage(teacher.getProfileuri());
-//                teacher = t;
-//            }
-//        });
 
 
         Calendar calendar = Calendar.getInstance();
@@ -557,18 +556,7 @@ public class TeacherPageActivity extends AppCompatActivity {
             public void onClick(View v) {
                 dialog.dismiss();
                 TastyToast.makeText(TeacherPageActivity.this, "Nothing changed", TastyToast.LENGTH_SHORT, TastyToast.ERROR);
-//                uploadProfileImage();
-//                storageReference.putFile(imageUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-//                    @Override
-//                    public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-//                        storageReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-//                            @Override
-//                            public void onSuccess(Uri uri) {
-//                                uploadUri = uri;
-//                            }
-//                        });
-//                    }
-//                });
+
 
             }
         });
@@ -616,9 +604,6 @@ public class TeacherPageActivity extends AppCompatActivity {
                     }
                 });
 
-//                databaseReference.child("teachers").child(uname).setValue(t);
-
-                //    back error end
             }
         });
 

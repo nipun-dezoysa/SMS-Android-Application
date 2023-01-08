@@ -46,6 +46,7 @@
         <entry key="..\:/Users/Dell/AndroidStudioProjects/SMS/app/src/main/res/layout/activity_cotacts_report.xml" value="0.17192982456140352" />
         <entry key="..\:/Users/Dell/AndroidStudioProjects/SMS/app/src/main/res/layout/activity_create_notes.xml" value="0.14814814814814814" />
         <entry key="..\:/Users/Dell/AndroidStudioProjects/SMS/app/src/main/res/layout/activity_cropper.xml" value="0.1600877192982456" />
+        <entry key="..\:/Users/Dell/AndroidStudioProjects/SMS/app/src/main/res/layout/activity_dashboard.xml" value="0.17192982456140352" />
         <entry key="..\:/Users/Dell/AndroidStudioProjects/SMS/app/src/main/res/layout/activity_day_attendance.xml" value="0.17192982456140352" />
         <entry key="..\:/Users/Dell/AndroidStudioProjects/SMS/app/src/main/res/layout/activity_edit_hwactivity.xml" value="0.18" />
         <entry key="..\:/Users/Dell/AndroidStudioProjects/SMS/app/src/main/res/layout/activity_edit_note.xml" value="0.17192982456140352" />
@@ -120,6 +121,7 @@
         <entry key="..\:/Users/Dell/AndroidStudioProjects/SMS/app/src/main/res/layout/update_model.xml" value="0.17192982456140352" />
         <entry key="..\:/Users/Dell/AndroidStudioProjects/SMS/app/src/main/res/layout/userentry.xml" value="0.17192982456140352" />
         <entry key="..\:/Users/Dell/AndroidStudioProjects/SMS/app/src/main/res/menu/menu.xml" value="0.25" />
+        <entry key="..\:/Users/Dell/AndroidStudioProjects/SMS/app/src/main/res/xml/network_security_config.xml" value="0.17192982456140352" />
         <entry key="..\:/Users/Dell/AppData/Local/Android/Sdk/platforms/android-32/data/res/layout/simple_spinner_item.xml" value="0.17192982456140352" />
       </map>
     </option>

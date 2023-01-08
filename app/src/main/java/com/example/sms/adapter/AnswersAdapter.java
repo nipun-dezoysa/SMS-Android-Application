@@ -75,7 +75,7 @@ public class AnswersAdapter extends RecyclerView.Adapter<AnswersAdapter.ViewHold
                     try {
                         context.startActivity(intent);
                     } catch (ActivityNotFoundException ex) {
-                        // Chrome browser presumably not installed so allow user to choose instead
+                        // if Chrome browser not installed, allow user to choose instead
                         intent.setPackage(null);
                         context.startActivity(intent);
                     }

@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.example.sms.R;
 
@@ -25,16 +26,18 @@ public class ReportActivity extends AppCompatActivity {
 
         studListReport = findViewById(R.id.studListReport);
         examResults = findViewById(R.id.examResults);
-        report_back = findViewById(R.id.report_back_1);
+        report_back = findViewById(R.id.report_back);
         studentContacts = findViewById(R.id.studentContacts);
         attendanceReport = findViewById(R.id.attendanceReport);
 
         report_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                int x =1;
                 onBackPressed();
             }
         });
+
         examResults.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

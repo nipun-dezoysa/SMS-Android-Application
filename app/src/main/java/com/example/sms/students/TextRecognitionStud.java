@@ -37,6 +37,7 @@ import com.google.mlkit.vision.common.InputImage;
 import com.google.mlkit.vision.text.Text;
 import com.google.mlkit.vision.text.TextRecognizer;
 import com.google.mlkit.vision.text.latin.TextRecognizerOptions;
+import com.sdsmdg.tastytoast.TastyToast;
 
 public class TextRecognitionStud extends AppCompatActivity {
 
@@ -116,7 +117,7 @@ public class TextRecognitionStud extends AppCompatActivity {
 
                 if (imageUri == null){
 
-                    Toast.makeText(TextRecognitionStud.this, "Pick image first...", Toast.LENGTH_SHORT).show();
+                    TastyToast.makeText(TextRecognitionStud.this, "Pick image first...", TastyToast.LENGTH_SHORT, TastyToast.INFO).show();
                 }
                 else {
 
@@ -156,7 +157,7 @@ public class TextRecognitionStud extends AppCompatActivity {
                         public void onFailure(@NonNull Exception e) {
                             progressDialog.dismiss();
                             Log.e(TAG, "onFailure: ", e);
-                            Toast.makeText(TextRecognitionStud.this, "Failed recognizing text due to "+e.getMessage(), Toast.LENGTH_SHORT).show();
+                            TastyToast.makeText(TextRecognitionStud.this, "Failed recognizing text due to "+e.getMessage(), TastyToast.LENGTH_SHORT, TastyToast.ERROR).show();
                         }
                     });
 
@@ -164,7 +165,7 @@ public class TextRecognitionStud extends AppCompatActivity {
 //            Exception occurred while preparing InputImage, dismiss dialog, show reason in Toast
             progressDialog.dismiss();
             Log.e(TAG, "recognizeTextFromImage: ", e);
-            Toast.makeText(this,"Failed preparing image due to "+e.getMessage(), Toast.LENGTH_SHORT).show();
+            TastyToast.makeText(this,"Failed preparing image due to "+e.getMessage(), TastyToast.LENGTH_SHORT, TastyToast.ERROR).show();
         }
 
     }
@@ -238,7 +239,7 @@ public class TextRecognitionStud extends AppCompatActivity {
                     } else {
                         Log.d(TAG, "onActivityResult: cancelled");
 //                        cancelled
-                        Toast.makeText(TextRecognitionStud.this, "Cancelled...", Toast.LENGTH_SHORT).show();
+                        TastyToast.makeText(TextRecognitionStud.this, "Cancelled...", TastyToast.LENGTH_SHORT, TastyToast.ERROR).show();
                     }
                 }
             }
@@ -269,7 +270,7 @@ public class TextRecognitionStud extends AppCompatActivity {
                     else {
 //                        Cancelled
                         Log.d(TAG, "onActivityResult: cancelled");
-                        Toast.makeText(TextRecognitionStud.this,"Cancelled...", Toast.LENGTH_SHORT).show();
+                        TastyToast.makeText(TextRecognitionStud.this,"Cancelled...", TastyToast.LENGTH_SHORT, TastyToast.ERROR).show();
                     }
 
                 }
@@ -322,12 +323,12 @@ public class TextRecognitionStud extends AppCompatActivity {
                         pickImageCamera();
                     }
                     else {
-                        Toast.makeText(this, "Camera & Storage permissions are required", Toast.LENGTH_SHORT).show();
+                        TastyToast.makeText(this, "Camera & Storage permissions are required", TastyToast.LENGTH_SHORT, TastyToast.INFO).show();
 
                     }
                 }
                 else{
-                    Toast.makeText(this, "Cancelled", Toast.LENGTH_SHORT).show();
+                    TastyToast.makeText(this, "Cancelled", TastyToast.LENGTH_SHORT, TastyToast.ERROR).show();
                 }
             }
             break;
@@ -343,7 +344,7 @@ public class TextRecognitionStud extends AppCompatActivity {
                     }
                     else {
 //                  storage permission denied, can't launch gallery intent
-                        Toast.makeText(this, "Storage permission is required", Toast.LENGTH_SHORT).show();
+                        TastyToast.makeText(this, "Storage permission is required", TastyToast.LENGTH_SHORT, TastyToast.INFO).show();
                     }
                 }
             }
