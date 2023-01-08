@@ -1,19 +1,23 @@
 package com.example.sms.students;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
 import android.Manifest;
 import android.content.Context;
 import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.example.sms.R;
 import com.example.sms.admin.ExamsResultsReport;
+import com.example.sms.admin.ViewAttendance;
 import com.example.sms.model.Results;
 import com.example.sms.model.Results1;
 import com.example.sms.others.OnlineUsers;
@@ -40,6 +44,7 @@ import com.itextpdf.text.pdf.PdfWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.time.Year;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -51,16 +56,20 @@ public class ExamsResultsStud extends AppCompatActivity {
 
     ImageView examresult_stud_back;
     Button generate_exam_report;
+    TextView term1_report_stud,term2_report_stud,term3_report_stud;
+    String currentYear;
 
     public static File rFile;
     private File reportfile;
     private PDFView pdfView;
     List<Results> mathsResultsList = new ArrayList<>();
     List<Results1> scienceResultsList;
-    String uname;
+    String uname,term;
     HashMap<String,Results> resultsHashMap;
 
+    String username;
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -69,6 +78,12 @@ public class ExamsResultsStud extends AppCompatActivity {
         generate_exam_report = findViewById(R.id.generate_exam_report);
         pdfView = findViewById(R.id.examResults_pdf_viewer);
         examresult_stud_back = findViewById(R.id.examresult_stud_back);
+        term1_report_stud = findViewById(R.id.term1_report_stud);
+        term2_report_stud = findViewById(R.id.term2_report_stud);
+        term3_report_stud = findViewById(R.id.term3_report_stud);
+
+        int intYear = Year.now().getValue();
+        currentYear = intYear+"";
 
         examresult_stud_back.setOnClickListener(new View.OnClickListener() {
 
@@ -88,7 +103,52 @@ public class ExamsResultsStud extends AppCompatActivity {
             }
         });
 
+        term1_report_stud.setTextColor(getResources().getColor(R.color.white));
+        term1_report_stud.setBackground(getDrawable(R.drawable.switch_trcks));
+        term2_report_stud.setBackground(null);
+        term2_report_stud.setTextColor(getResources().getColor(R.color.darkgreen));
+        term3_report_stud.setBackground(null);
+        term3_report_stud.setTextColor(getResources().getColor(R.color.darkgreen));
+        term = "Term 1";
 
+        term1_report_stud.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                term1_report_stud.setTextColor(getResources().getColor(R.color.white));
+                term1_report_stud.setBackground(getDrawable(R.drawable.switch_trcks));
+                term2_report_stud.setBackground(null);
+                term2_report_stud.setTextColor(getResources().getColor(R.color.darkgreen));
+                term3_report_stud.setBackground(null);
+                term3_report_stud.setTextColor(getResources().getColor(R.color.darkgreen));
+                term = "Term 1";
+            }
+        });
+
+        term2_report_stud.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                term2_report_stud.setTextColor(getResources().getColor(R.color.white));
+                term2_report_stud.setBackground(getDrawable(R.drawable.switch_trcks));
+                term1_report_stud.setBackground(null);
+                term1_report_stud.setTextColor(getResources().getColor(R.color.darkgreen));
+                term3_report_stud.setBackground(null);
+                term3_report_stud.setTextColor(getResources().getColor(R.color.darkgreen));
+                term = "Term 2";
+            }
+        });
+
+        term3_report_stud.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                term3_report_stud.setTextColor(getResources().getColor(R.color.white));
+                term3_report_stud.setBackground(getDrawable(R.drawable.switch_trcks));
+                term2_report_stud.setBackground(null);
+                term2_report_stud.setTextColor(getResources().getColor(R.color.darkgreen));
+                term1_report_stud.setBackground(null);
+                term1_report_stud.setTextColor(getResources().getColor(R.color.darkgreen));
+                term = "Term 3";
+            }
+        });
 
         generate_exam_report.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -176,14 +236,6 @@ public class ExamsResultsStud extends AppCompatActivity {
         table.setWidthPercentage(100);
         table.getDefaultCell().setVerticalAlignment(Element.ALIGN_MIDDLE);
 
-//        PdfPTable table1 = new PdfPTable(new float[]{6, 25, 20, 20});
-//        table1.getDefaultCell().setHorizontalAlignment(Element.ALIGN_CENTER);
-//        table1.getDefaultCell().setFixedHeight(50);
-//        table1.setWidthPercentage(100);
-//        table1.setTotalWidth(PageSize.A4.getWidth());
-//        table1.setWidthPercentage(100);
-//        table1.getDefaultCell().setVerticalAlignment(Element.ALIGN_MIDDLE);
-
 
         Chunk noText = new Chunk("\n"+"No.", white);
         PdfPCell noCell = new PdfPCell(new Phrase(noText));
@@ -227,23 +279,13 @@ public class ExamsResultsStud extends AppCompatActivity {
         gradesCell.setHorizontalAlignment(Element.ALIGN_CENTER);
         gradesCell.setVerticalAlignment(Element.ALIGN_CENTER);
 
-//        Chunk footerText = new Chunk("\n\n"+"" );
         Chunk footerText = new Chunk("");
         PdfPCell footCell = new PdfPCell(new Phrase(footerText));
         footCell.setFixedHeight(70);
         footCell.setHorizontalAlignment(Element.ALIGN_CENTER);
         footCell.setVerticalAlignment(Element.ALIGN_CENTER);
         footCell.setColspan(7);
-//
-//        Chunk footerText1 = new Chunk("\n\n"+"Total number: ");
-//        PdfPCell footCell1 = new PdfPCell(new Phrase(footerText1));
-//        footCell1.setFixedHeight(70);
-//        footCell1.setHorizontalAlignment(Element.ALIGN_CENTER);
-//        footCell1.setVerticalAlignment(Element.ALIGN_CENTER);
-//        footCell1.setColspan(4);
 
-
-//        table1.addCell(String.valueOf(footerText1));
         table.addCell(noCell);
         table.addCell(nameCell);
         table.addCell(selectedSubject);
@@ -256,22 +298,17 @@ public class ExamsResultsStud extends AppCompatActivity {
         PdfPCell[] cells = table.getRow(0).getCells();
 
 
-        //IF
-
 
         for (PdfPCell cell : cells) {
             cell.setBackgroundColor(grayColor);
         }
-//        for (int i = 0; i < list.size(); i++) {
-//            Results results = list.get(i);
-////            Results1 results1 = list1.get(i);
-//            String id = String.valueOf(i + 1);
+
 
         int i =0 ;
 
             for (Map.Entry<String,Results> resultsEntry:resultsHashMap.entrySet()){
                 String newSubject = resultsEntry.getKey();
-                String username = resultsEntry.getValue().getUsername();
+                username = resultsEntry.getValue().getUsername();
                 float part1Mark = resultsEntry.getValue().getPart1();
                 float part2Mark = resultsEntry.getValue().getPart2();
                 float totalMark = resultsEntry.getValue().getTotal();
@@ -288,23 +325,6 @@ public class ExamsResultsStud extends AppCompatActivity {
                 table.addCell(newGrade);
 
             }
-
-//            String id = String.valueOf(i + 1);
-//          set the data from the list here
-//            Float name = results.getTotal();
-//            Float sub = results.getTotal();
-//            String studentGrade = results.getGrades();
-
-            //IF
-
-//            table.addCell(id + ". ");
-//            table.addCell(name+"");
-//            table.addCell(sub+"");
-//            table.addCell(String.valueOf(studentGrade));
-
-//        }
-
-//        PdfPTable footTable = new PdfPTable(new float[]{6, 25, 20, 20});
         PdfPTable footTable = new PdfPTable(new float[]{8, 18, 18, 14, 14, 14, 14});
         footTable.setTotalWidth(PageSize.A4.getWidth());
         footTable.setWidthPercentage(100);
@@ -313,9 +333,8 @@ public class ExamsResultsStud extends AppCompatActivity {
         PdfWriter.getInstance(document, output);
         document.open();
         Font g = new Font(Font.FontFamily.HELVETICA, 25.0f, Font.NORMAL, grayColor);
-        document.add(new Paragraph(" Students List\n\n", g));
+        document.add(new Paragraph(term+" marks for "+username+"\n\n", g));
         document.add(table);
-//        document.add(table1);
         document.add(footTable);
 
 
@@ -325,7 +344,7 @@ public class ExamsResultsStud extends AppCompatActivity {
     //function to fetch data from the database
     private void fetchResultsList(String subject, String grade) {
         DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child("Results")
-                .child("2023").child("Term 1").child(grade).child(subject);
+                .child(currentYear).child(term).child(grade).child(subject);
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -344,7 +363,7 @@ public class ExamsResultsStud extends AppCompatActivity {
                     }
 
                 }
-                //create a pdf file and catch exception beacause file may not be created
+                //create a pdf file and catch exception because file may not be created
                 try {
                     createStudentListReport(resultsHashMap);
                 } catch (DocumentException | FileNotFoundException e) {

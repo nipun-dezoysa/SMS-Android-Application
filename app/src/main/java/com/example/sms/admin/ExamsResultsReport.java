@@ -353,7 +353,7 @@ public class ExamsResultsReport extends AppCompatActivity {
         PdfWriter.getInstance(document, output);
         document.open();
         Font g = new Font(Font.FontFamily.HELVETICA, 25.0f, Font.NORMAL, grayColor);
-        document.add(new Paragraph(term+"\n\n", g));
+        document.add(new Paragraph(term+" Grade "+studGrade+" "+subject+" Results"+"\n\n", g));
         document.add(table);
         document.add(footTable);
 

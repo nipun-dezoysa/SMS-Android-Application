@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#EBF4F3"
+    android:background="@color/white"
     tools:context=".students.ExamsResultsStud">
 
 
@@ -51,6 +51,66 @@
             android:layout_marginTop="130dp"
             android:orientation="vertical">
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:background="@drawable/swtch_tymbs"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:weightSum="3">
+
+                <TextView
+                    android:id="@+id/term1_report_stud"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:padding="8dp"
+                    android:paddingLeft="15dp"
+                    android:paddingTop="5dp"
+                    android:paddingRight="15dp"
+                    android:paddingBottom="2dp"
+                    android:text="1st Term"
+                    android:textAlignment="center"
+                    android:textColor="@color/black"
+                    android:textSize="16dp"
+                    android:textStyle="normal|bold" />
+
+
+                <TextView
+                    android:id="@+id/term2_report_stud"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:padding="8dp"
+                    android:paddingLeft="10dp"
+                    android:paddingTop="5dp"
+                    android:paddingRight="15dp"
+                    android:paddingBottom="2dp"
+                    android:text="2nd Term"
+                    android:textAlignment="center"
+                    android:textColor="@color/darkgreen"
+                    android:textSize="16dp"
+                    android:textStyle="normal|bold" />
+                <TextView
+                    android:id="@+id/term3_report_stud"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:padding="8dp"
+                    android:paddingLeft="10dp"
+                    android:paddingTop="5dp"
+                    android:paddingRight="15dp"
+                    android:paddingBottom="2dp"
+                    android:text="3rd Term"
+                    android:textAlignment="center"
+                    android:textColor="@color/darkgreen"
+                    android:textSize="16dp"
+                    android:textStyle="normal|bold" />
+
+
+            </LinearLayout>
 
             <Button
                 android:id="@+id/generate_exam_report"

@@ -69,7 +69,7 @@
                     android:paddingTop="5dp"
                     android:paddingRight="15dp"
                     android:paddingBottom="2dp"
-                    android:text="1rd Term"
+                    android:text="1st Term"
                     android:textAlignment="center"
                     android:textColor="@color/black"
                     android:textSize="16dp"
