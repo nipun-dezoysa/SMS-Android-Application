@@ -153,7 +153,7 @@ public class StudentPageActivity extends AppCompatActivity {
         studentmenupopupbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                PopupMenu popupMenu = new PopupMenu(v.getContext(),v);
+                PopupMenu popupMenu = new PopupMenu(v.getContext(), v);
 
                 popupMenu.getMenu().add("Change Password").setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
                     @Override
@@ -192,25 +192,23 @@ public class StudentPageActivity extends AppCompatActivity {
         Paper.init(StudentPageActivity.this);
         uname = Paper.book().read(OnlineUsers.UserNamekey);
 
-        storageReference = FirebaseStorage.getInstance().getReference("images/"+uname);
+        storageReference = FirebaseStorage.getInstance().getReference("images/" + uname);
 
 
-
-        mGetContent=registerForActivityResult(new ActivityResultContracts.GetContent(), new ActivityResultCallback<Uri>() {
+        mGetContent = registerForActivityResult(new ActivityResultContracts.GetContent(), new ActivityResultCallback<Uri>() {
             @Override
             public void onActivityResult(Uri result) {
-                Intent intent= new Intent(StudentPageActivity.this, CropperActivity.class);
-                intent.putExtra("DATA",result.toString());
-                startActivityForResult(intent,101);
+                Intent intent = new Intent(StudentPageActivity.this, CropperActivity.class);
+                intent.putExtra("DATA", result.toString());
+                startActivityForResult(intent, 101);
             }
         });
-
 
 
         mysub.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent manageActivityIntent = new Intent(StudentPageActivity.this,MySubjects.class);
+                Intent manageActivityIntent = new Intent(StudentPageActivity.this, MySubjects.class);
                 startActivity(manageActivityIntent);
             }
         });
@@ -227,7 +225,7 @@ public class StudentPageActivity extends AppCompatActivity {
         homework.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent manageActivityIntent = new Intent(StudentPageActivity.this,HomeworkStud.class);
+                Intent manageActivityIntent = new Intent(StudentPageActivity.this, HomeworkStud.class);
                 startActivity(manageActivityIntent);
             }
         });
@@ -235,7 +233,7 @@ public class StudentPageActivity extends AppCompatActivity {
         studyMaterial.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent manageActivityIntent = new Intent(StudentPageActivity.this,StudyMaterialStud.class);
+                Intent manageActivityIntent = new Intent(StudentPageActivity.this, StudyMaterialStud.class);
                 startActivity(manageActivityIntent);
             }
         });
@@ -244,7 +242,7 @@ public class StudentPageActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent manageActivityIntent = new Intent(StudentPageActivity.this, NotesActivity.class);
-                manageActivityIntent.putExtra("uname",uname);
+                manageActivityIntent.putExtra("uname", uname);
                 startActivity(manageActivityIntent);
             }
         });
@@ -252,16 +250,16 @@ public class StudentPageActivity extends AppCompatActivity {
         exam_result.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent manageActivityIntent = new Intent(StudentPageActivity.this,ExamsResultsStud.class);
+                Intent manageActivityIntent = new Intent(StudentPageActivity.this, ExamsResultsStud.class);
                 startActivity(manageActivityIntent);
             }
         });
-        
+
 
         update.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent manageActivityIntent = new Intent(StudentPageActivity.this,UpdateStud.class);
+                Intent manageActivityIntent = new Intent(StudentPageActivity.this, UpdateStud.class);
                 startActivity(manageActivityIntent);
             }
         });
@@ -269,7 +267,7 @@ public class StudentPageActivity extends AppCompatActivity {
         txt_rec.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent manageActivityIntent = new Intent(StudentPageActivity.this,TextRecognitionStud.class);
+                Intent manageActivityIntent = new Intent(StudentPageActivity.this, TextRecognitionStud.class);
                 startActivity(manageActivityIntent);
             }
         });
@@ -308,8 +306,8 @@ public class StudentPageActivity extends AppCompatActivity {
                 final int DRAWABLE_RIGHT = 2;
                 final int DRAWABLE_BOTTOM = 3;
 
-                if (event.getAction() == MotionEvent.ACTION_UP){
-                    if (event.getRawX() >= (newPwd.getRight()-
+                if (event.getAction() == MotionEvent.ACTION_UP) {
+                    if (event.getRawX() >= (newPwd.getRight() -
                             newPwd.getCompoundDrawables()[DRAWABLE_RIGHT].getBounds().width())) {
                         AlertDialog.Builder builder = new AlertDialog.Builder(v.getContext());
                         builder.setTitle("Password Patterns")
@@ -332,15 +330,16 @@ public class StudentPageActivity extends AppCompatActivity {
 
         savePwd.setOnClickListener(new View.OnClickListener() {
             DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference();
+
             @Override
             public void onClick(View v) {
                 String currentPwdTxt = currentPwd.getText().toString();
                 String newPwdTxt = newPwd.getText().toString();
                 String confirmNewPwdTxt = confirmNewPwd.getText().toString();
 
-                if (currentPwdTxt.equals("") || newPwdTxt.equals("") || confirmNewPwdTxt.equals("")){
+                if (currentPwdTxt.equals("") || newPwdTxt.equals("") || confirmNewPwdTxt.equals("")) {
                     TastyToast.makeText(StudentPageActivity.this, "Please fill all fields", TastyToast.LENGTH_SHORT, TastyToast.ERROR);
-                }else {
+                } else {
                     try {
                         currentOutputPassword = encrypt(currentPwdTxt, currentPwdTxt);
                         currentEncryptedPassword = currentOutputPassword;
@@ -400,16 +399,15 @@ public class StudentPageActivity extends AppCompatActivity {
 
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if (snapshot.hasChild(uname)){
+                if (snapshot.hasChild(uname)) {
                     String dbPassword = snapshot.child(uname).child("password").getValue(String.class);
-                    if (!dbPassword.equals(currentEncryptedPassword)){
+                    if (!dbPassword.equals(currentEncryptedPassword)) {
                         TastyToast.makeText(StudentPageActivity.this, "Current password is wrong", TastyToast.LENGTH_SHORT, TastyToast.ERROR);
-                    } else if (!newPwdTxt.matches(passwordPattern)){
+                    } else if (!newPwdTxt.matches(passwordPattern)) {
                         TastyToast.makeText(StudentPageActivity.this, "Please follow password pattern to make a strong password", TastyToast.LENGTH_SHORT, TastyToast.ERROR);
-                    } else if (!newPwdTxt.equals(confirmNewPwdTxt)){
+                    } else if (!newPwdTxt.equals(confirmNewPwdTxt)) {
                         TastyToast.makeText(StudentPageActivity.this, "Confirm password should match with new password", TastyToast.LENGTH_SHORT, TastyToast.ERROR);
-                    }
-                    else if (newPwdTxt.equals(confirmNewPwdTxt)){
+                    } else if (newPwdTxt.equals(confirmNewPwdTxt)) {
                         updatePassword(newEncryptedPassword);
                     }
                 }
@@ -448,7 +446,7 @@ public class StudentPageActivity extends AppCompatActivity {
         contactNo = dialog.findViewById(R.id.txtContact);
         emailID = dialog.findViewById(R.id.txtEmail);
         address = dialog.findViewById(R.id.txtAddress);
-        cropView= dialog.findViewById(R.id.cropView);
+        cropView = dialog.findViewById(R.id.cropView);
         profilepic = dialog.findViewById(R.id.profileEditStd);
 
         etDate = dialog.findViewById(R.id.dob1);
@@ -457,7 +455,7 @@ public class StudentPageActivity extends AppCompatActivity {
         final int month = calendar.get(Calendar.MONTH);
         final int day = calendar.get(Calendar.DAY_OF_MONTH);
 
-        if(student!=null){
+        if (student != null) {
 
             fullName.setText(student.getFullName().trim());
             nickName.setText(student.getNickName().trim());
@@ -466,7 +464,7 @@ public class StudentPageActivity extends AppCompatActivity {
             emailID.setText(student.getEmail().trim());
             address.setText(student.getAddress().trim());
 
-            if(!student.getProfileuri().equals(""))
+            if (!student.getProfileuri().equals(""))
                 Glide.with(this).load(student.getProfileuri()).into(cropView);
         }
 
@@ -475,7 +473,7 @@ public class StudentPageActivity extends AppCompatActivity {
             public void onClick(View v) {
                 DatePickerDialog datePickerDialog = new DatePickerDialog(
                         StudentPageActivity.this, android.R.style.Theme_Holo_Light_Dialog_MinWidth,
-                        setListener,year,month,day);
+                        setListener, year, month, day);
                 datePickerDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
                 datePickerDialog.show();
             }
@@ -484,8 +482,8 @@ public class StudentPageActivity extends AppCompatActivity {
         setListener = new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(android.widget.DatePicker view, int year, int month, int day) {
-                month = month+1;
-                String date = day+"/"+month+"/"+year;
+                month = month + 1;
+                String date = day + "/" + month + "/" + year;
                 etDate.setText(date);
             }
         };
@@ -520,13 +518,12 @@ public class StudentPageActivity extends AppCompatActivity {
 
                 welcometext.setText(nickName.getText().toString());
 
-                UserStudent s = new UserStudent("",fName,nName,dob,cNumber,eID,adrs);
+                UserStudent s = new UserStudent("", fName, nName, dob, cNumber, eID, adrs);
 
 
                 if (imageUri != null) {
-                    uploadToFirebase(imageUri,s);
-                }
-                else {
+                    uploadToFirebase(imageUri, s);
+                } else {
                     uploadStudent(s);
                 }
 
@@ -554,7 +551,7 @@ public class StudentPageActivity extends AppCompatActivity {
             }
         });
 
-        cropView= dialog.findViewById(R.id.cropView);
+        cropView = dialog.findViewById(R.id.cropView);
 
         cropView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -572,13 +569,11 @@ public class StudentPageActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (resultCode==-1 && requestCode==101)
-        {
-            String result=data.getStringExtra("RESULT");
-            Uri resultUri=null;
-            if (result!=null)
-            {
-                resultUri=Uri.parse(result);
+        if (resultCode == -1 && requestCode == 101) {
+            String result = data.getStringExtra("RESULT");
+            Uri resultUri = null;
+            if (result != null) {
+                resultUri = Uri.parse(result);
                 imageUri = resultUri;
             }
 
@@ -588,53 +583,53 @@ public class StudentPageActivity extends AppCompatActivity {
 
 
     private void uploadToFirebase(Uri imageUri, UserStudent s) {
-            final StorageReference fileRef = storageReference.child(uname + "." + getFileExtension(imageUri));
-            fileRef.putFile(imageUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                @Override
-                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                    fileRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-                        @Override
-                        public void onSuccess(Uri imageuri) {
-                            s.setProfileuri(imageuri.toString());
-                            TastyToast.makeText(StudentPageActivity.this, "Uploaded Successfully", TastyToast.LENGTH_SHORT, TastyToast.SUCCESS);
+        final StorageReference fileRef = storageReference.child(uname + "." + getFileExtension(imageUri));
+        fileRef.putFile(imageUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+            @Override
+            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                fileRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                    @Override
+                    public void onSuccess(Uri imageuri) {
+                        s.setProfileuri(imageuri.toString());
+                        TastyToast.makeText(StudentPageActivity.this, "Uploaded Successfully", TastyToast.LENGTH_SHORT, TastyToast.SUCCESS);
 
 //                        cropView.setImageResource(R.drawable.img);
-                            setProfileImage(imageuri.toString());
-                            uploadStudent(s);
-                            getUserStudent(new UserStudentCallback() {
-                                @Override
-                                public void onCallback(UserStudent s) {
-                                    student = s;
-                                }
-                            });
+                        setProfileImage(imageuri.toString());
+                        uploadStudent(s);
+                        getUserStudent(new UserStudentCallback() {
+                            @Override
+                            public void onCallback(UserStudent s) {
+                                student = s;
+                            }
+                        });
 
-                        }
-                    });
-                }
-            }) .addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
-                @Override
-                public void onProgress(@NonNull UploadTask.TaskSnapshot snapshot) {
+                    }
+                });
+            }
+        }).addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
+            @Override
+            public void onProgress(@NonNull UploadTask.TaskSnapshot snapshot) {
 //                progressBar.setVisibility(View.VISIBLE);
-                }
-            }).addOnFailureListener(new OnFailureListener() {
-                @Override
-                public void onFailure(@NonNull Exception e) {
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
 //                progressBar.setVisibility(View.INVISIBLE);
-                    TastyToast.makeText(StudentPageActivity.this, "Uploading Failed", TastyToast.LENGTH_SHORT, TastyToast.ERROR);
+                TastyToast.makeText(StudentPageActivity.this, "Uploading Failed", TastyToast.LENGTH_SHORT, TastyToast.ERROR);
 
-                }
-            });
+            }
+        });
 
 
     }
 
 
-    private void getUserStudent(UserStudentCallback callback){
+    private void getUserStudent(UserStudentCallback callback) {
 
         databaseReference.child("studentsAccount").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if(snapshot.hasChild(uname)){
+                if (snapshot.hasChild(uname)) {
                     UserStudent value = snapshot.child(uname).getValue(UserStudent.class);
                     callback.onCallback(value);
                 }
@@ -647,7 +642,6 @@ public class StudentPageActivity extends AppCompatActivity {
         });
 
 
-
     }
 
 
@@ -658,11 +652,11 @@ public class StudentPageActivity extends AppCompatActivity {
         return mime.getExtensionFromMimeType(cr.getType(muri));
     }
 
-    private void setProfileImage(String uri){
+    private void setProfileImage(String uri) {
         Glide.with(this).load(uri).into(profileEditStd);
     }
 
-    private void uploadStudent(UserStudent s){
+    private void uploadStudent(UserStudent s) {
         databaseReference.child("studentsAccount").child(uname).setValue(s);
         progressBar.setVisibility(View.GONE);
         TastyToast.makeText(StudentPageActivity.this, "Saved changes", TastyToast.LENGTH_SHORT, TastyToast.SUCCESS);

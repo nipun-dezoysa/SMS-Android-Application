@@ -84,17 +84,16 @@ public class StudentLoginActivity extends AppCompatActivity {
                 String uname = username.getText().toString();
                 String pword = password.getText().toString();
 
-                if(uname.equals("") || pword.equals(""))
-                {
+                if (uname.equals("") || pword.equals("")) {
                     TastyToast.makeText(StudentLoginActivity.this, "Username or Password is empty", TastyToast.LENGTH_SHORT, TastyToast.ERROR);
-                }else{
+                } else {
                     try {
                         outputPassword = encrypt(pword, pword);
                         encryptedPassword = outputPassword;
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
-                    loginUser(uname,encryptedPassword);
+                    loginUser(uname, encryptedPassword);
                     progressBar.setVisibility(View.VISIBLE);
                 }
             }
@@ -107,10 +106,10 @@ public class StudentLoginActivity extends AppCompatActivity {
         databaseReference.child("students").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if(snapshot.hasChild(userNameKey)){
+                if (snapshot.hasChild(userNameKey)) {
                     String dbPassword = snapshot.child(userNameKey).child("password").getValue(String.class);
 
-                    if(dbPassword.equals(userPasswordKey)){
+                    if (dbPassword.equals(userPasswordKey)) {
 //                        TastyToast.makeText(StudentLoginActivity.this, "Login successful", TastyToast.LENGTH_SHORT, TastyToast.SUCCESS);
                         Intent studentLoginIntent = new Intent(StudentLoginActivity.this, StudentFingerPrintAuth.class);
                         studentLoginIntent.putExtra("uname", userNameKey);
@@ -118,12 +117,11 @@ public class StudentLoginActivity extends AppCompatActivity {
                         startActivity(studentLoginIntent);
 
 
-
-                    } else{
+                    } else {
                         TastyToast.makeText(StudentLoginActivity.this, "It seems you have changed your password. Please login with your new password.", TastyToast.LENGTH_LONG, TastyToast.INFO);
                         progressBar.setVisibility(View.INVISIBLE);
                     }
-                }else {
+                } else {
                     TastyToast.makeText(StudentLoginActivity.this, "Please visit your relevant login page.", TastyToast.LENGTH_SHORT, TastyToast.DEFAULT);
                     progressBar.setVisibility(View.INVISIBLE);
                 }
@@ -138,7 +136,7 @@ public class StudentLoginActivity extends AppCompatActivity {
         });
     }
 
-    private String  encrypt(String data, String password) throws Exception {
+    private String encrypt(String data, String password) throws Exception {
         SecretKeySpec key = generateKey(password);
         Cipher c = Cipher.getInstance(AES);
         c.init(Cipher.ENCRYPT_MODE, key);
@@ -156,14 +154,14 @@ public class StudentLoginActivity extends AppCompatActivity {
         return secretKeySpec;
     }
 
-    private void loginUser(String uname, String pword){
+    private void loginUser(String uname, String pword) {
         databaseReference.child("students").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if(snapshot.hasChild(uname)){
+                if (snapshot.hasChild(uname)) {
                     String dbPassword = snapshot.child(uname).child("password").getValue(String.class);
 
-                    if(dbPassword.equals(pword)){
+                    if (dbPassword.equals(pword)) {
                         TastyToast.makeText(StudentLoginActivity.this, "Login successful", TastyToast.LENGTH_SHORT, TastyToast.SUCCESS);
                         Intent studentLoginIntent = new Intent(StudentLoginActivity.this, StudentPageActivity.class);
                         Paper.book().write(OnlineUsers.UserNamekey, uname);
@@ -172,10 +170,10 @@ public class StudentLoginActivity extends AppCompatActivity {
                         startActivity(studentLoginIntent);
 
 
-                    } else{
+                    } else {
                         TastyToast.makeText(StudentLoginActivity.this, "Username or Password is wrong", TastyToast.LENGTH_SHORT, TastyToast.ERROR);
                     }
-                } else{
+                } else {
                     TastyToast.makeText(StudentLoginActivity.this, "Username or Password is wrong", TastyToast.LENGTH_SHORT, TastyToast.ERROR);
                 }
                 progressBar.setVisibility(View.INVISIBLE);

@@ -33,7 +33,6 @@ public class ReportActivity extends AppCompatActivity {
         report_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int x =1;
                 onBackPressed();
             }
         });

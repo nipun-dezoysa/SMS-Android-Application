@@ -28,13 +28,12 @@ import com.google.firebase.storage.UploadTask;
 
 public class AddPhotos extends AppCompatActivity {
 
-//    widgets
 
     private Button uploadBtn, showAllBtn;
     private ImageView imageView, back_btn;
     private ProgressBar progressBar;
 
-//    private DatabaseReference root = FirebaseDatabase.getInstance().getReference().child("Image"); below also same as this line
+    //    private DatabaseReference root = FirebaseDatabase.getInstance().getReference().child("Image"); below also same as this line
     private DatabaseReference root = FirebaseDatabase.getInstance().getReference("Image");
     private StorageReference reference = FirebaseStorage.getInstance().getReference();
     private Uri imageUri;
@@ -72,17 +71,17 @@ public class AddPhotos extends AppCompatActivity {
                 Intent galleryIntent = new Intent();
                 galleryIntent.setAction(Intent.ACTION_GET_CONTENT);
                 galleryIntent.setType("image/*");
-                startActivityForResult(galleryIntent , 2);
+                startActivityForResult(galleryIntent, 2);
             }
         });
 
         uploadBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (imageUri != null){
+                if (imageUri != null) {
                     uploadToFirebase(imageUri);
 
-                }else {
+                } else {
                     Toast.makeText(AddPhotos.this, "Please select image", Toast.LENGTH_SHORT).show();
                 }
             }
@@ -94,7 +93,7 @@ public class AddPhotos extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        if (requestCode ==2 && resultCode == RESULT_OK && data != null){
+        if (requestCode == 2 && resultCode == RESULT_OK && data != null) {
 
             imageUri = data.getData();
             imageView.setImageURI(imageUri);
@@ -103,7 +102,7 @@ public class AddPhotos extends AppCompatActivity {
 
     }
 
-    private void uploadToFirebase(Uri uri){
+    private void uploadToFirebase(Uri uri) {
 
         final StorageReference fileRef = reference.child(System.currentTimeMillis() + "." + getFileExtension(uri));
         fileRef.putFile(uri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
@@ -122,7 +121,7 @@ public class AddPhotos extends AppCompatActivity {
                     }
                 });
             }
-        }) .addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
+        }).addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
             @Override
             public void onProgress(@NonNull UploadTask.TaskSnapshot snapshot) {
                 progressBar.setVisibility(View.VISIBLE);

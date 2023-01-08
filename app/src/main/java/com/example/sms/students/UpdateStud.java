@@ -46,34 +46,32 @@ public class UpdateStud extends AppCompatActivity {
         });
 
 
-            LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
-            updatesArrayList = new ArrayList<>();
-            updateStud_rv.setLayoutManager(linearLayoutManager);
-            updatesStudAdapter = new UpdatesStudAdapter(this, updatesArrayList);
-            updateStud_rv.setAdapter(updatesStudAdapter);
-            linearLayoutManager.setReverseLayout(true);
-            linearLayoutManager.setStackFromEnd(true);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
+        updatesArrayList = new ArrayList<>();
+        updateStud_rv.setLayoutManager(linearLayoutManager);
+        updatesStudAdapter = new UpdatesStudAdapter(this, updatesArrayList);
+        updateStud_rv.setAdapter(updatesStudAdapter);
+        linearLayoutManager.setReverseLayout(true);
+        linearLayoutManager.setStackFromEnd(true);
 
-            //get all updates
-            DatabaseReference databaseReference00 = FirebaseDatabase.getInstance().getReference();
-            databaseReference00.child("updates").addValueEventListener(new ValueEventListener() {
-                @Override
-                public void onDataChange(@NonNull DataSnapshot snapshot) {
-                    updatesArrayList.clear();
-                    for (DataSnapshot dataSnapshot : snapshot.getChildren())
-                    {
-                        Updates updates = dataSnapshot.getValue(Updates.class);
-                        updatesArrayList.add(updates);
-                    }
-                    updatesStudAdapter.notifyDataSetChanged();
+        //get all updates
+        DatabaseReference databaseReference00 = FirebaseDatabase.getInstance().getReference();
+        databaseReference00.child("updates").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                updatesArrayList.clear();
+                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                    Updates updates = dataSnapshot.getValue(Updates.class);
+                    updatesArrayList.add(updates);
                 }
+                updatesStudAdapter.notifyDataSetChanged();
+            }
 
-                @Override
-                public void onCancelled(@NonNull DatabaseError error) {
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
 
-                }
-            });
-
+            }
+        });
 
 
     }

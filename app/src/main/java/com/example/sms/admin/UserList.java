@@ -79,7 +79,6 @@ public class UserList extends AppCompatActivity implements SelectListener {
     int gradeCheck;
 
 
-
     Dialog dialog;
 
     @Override
@@ -144,7 +143,6 @@ public class UserList extends AppCompatActivity implements SelectListener {
                         }).show();
 
 
-
             }
         });
 
@@ -158,8 +156,7 @@ public class UserList extends AppCompatActivity implements SelectListener {
         databaseReference1.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                for (DataSnapshot dataSnapshot: snapshot.getChildren())
-                {
+                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
                     Student student = dataSnapshot.getValue(Student.class);
                     String uname = dataSnapshot.getKey();
                     student.setUsername(uname);
@@ -177,8 +174,7 @@ public class UserList extends AppCompatActivity implements SelectListener {
 
     @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
-    public void onItemClicked(Student student)
-    {
+    public void onItemClicked(Student student) {
         studentTxt = student.getUsername();
         studentEmailTxt = student.getEmail();
         studentContactTxt = student.getContact();
@@ -249,7 +245,6 @@ public class UserList extends AppCompatActivity implements SelectListener {
         dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
 
 
-
         progressBar = dialog.findViewById(R.id.progressBarPop1);
         findUname = dialog.findViewById(R.id.findUname);
         changeEmail = dialog.findViewById(R.id.changeEmail);
@@ -257,7 +252,8 @@ public class UserList extends AppCompatActivity implements SelectListener {
         changeCheckBoxMaths = dialog.findViewById(R.id.changeCheckBoxMaths);
         changeCheckBoxScience = dialog.findViewById(R.id.changeCheckBoxScience);
         changeRadioBtnGrade10 = dialog.findViewById(R.id.changeRadioBtnGrade10);
-        changeRadioBtnGrade11 = dialog.findViewById(R.id.changeRadioBtnGrade11);;
+        changeRadioBtnGrade11 = dialog.findViewById(R.id.changeRadioBtnGrade11);
+        ;
         buttonSaveChange = dialog.findViewById(R.id.buttonSaveChange);
         buttonCancelChange = dialog.findViewById(R.id.buttonCancelChange);
 
@@ -276,13 +272,13 @@ public class UserList extends AppCompatActivity implements SelectListener {
                 String emailTxt = changeEmail.getText().toString();
                 String contactTxt = changeContact.getText().toString();
                 final String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
-                final String mobileNumberPattern= "^\\d{10}$";
+                final String mobileNumberPattern = "^\\d{10}$";
 
                 if (usernameTxt.isEmpty() || emailTxt.isEmpty() || contactTxt.isEmpty() || !(changeCheckBoxMaths.isChecked() || changeCheckBoxScience.isChecked())) {
                     TastyToast.makeText(UserList.this, "Please fill all fields", TastyToast.LENGTH_SHORT, TastyToast.INFO);
-                } else if (!emailTxt.matches(emailPattern)){
+                } else if (!emailTxt.matches(emailPattern)) {
                     TastyToast.makeText(UserList.this, "Please enter a valid email address", TastyToast.LENGTH_SHORT, TastyToast.INFO);
-                } else if (!contactTxt.matches(mobileNumberPattern)){
+                } else if (!contactTxt.matches(mobileNumberPattern)) {
                     TastyToast.makeText(UserList.this, "Please enter 10 digit contact number", TastyToast.LENGTH_SHORT, TastyToast.INFO);
                 } else {
 
@@ -318,7 +314,6 @@ public class UserList extends AppCompatActivity implements SelectListener {
     }
 
 
-
 //    private boolean subjectValidation(){
 //        if (!changeCheckBoxMaths.isChecked() && !changeCheckBoxScience.isChecked()){
 //            return true;
@@ -352,50 +347,43 @@ public class UserList extends AppCompatActivity implements SelectListener {
 
 
     private void getSubject(String subject) {
-        if (subject.equals("Maths Science")){
+        if (subject.equals("Maths Science")) {
             changeCheckBoxMaths.setChecked(true);
             changeCheckBoxScience.setChecked(true);
-        }
-        else if (subject.equals("Maths")){
+        } else if (subject.equals("Maths")) {
             changeCheckBoxMaths.setChecked(true);
             changeCheckBoxScience.setChecked(false);
-        }
-
-        else {
+        } else {
             changeCheckBoxScience.setChecked(true);
             changeCheckBoxMaths.setChecked(false);
         }
     }
 
-    private String setSubject(){
-        if (changeCheckBoxMaths.isChecked() && changeCheckBoxScience.isChecked()){
+    private String setSubject() {
+        if (changeCheckBoxMaths.isChecked() && changeCheckBoxScience.isChecked()) {
             return "Maths Science";
-        }
-        else if (changeCheckBoxMaths.isChecked()){
+        } else if (changeCheckBoxMaths.isChecked()) {
             return "Maths";
-        }
-        else if (changeCheckBoxScience.isChecked()){
+        } else if (changeCheckBoxScience.isChecked()) {
             return "Science";
         }
         return "";
     }
 
     private void getGrade(int grade) {
-        if (grade==10){
+        if (grade == 10) {
             changeRadioBtnGrade10.setChecked(true);
             changeRadioBtnGrade11.setChecked(false);
-        }
-        else {
+        } else {
             changeRadioBtnGrade11.setChecked(true);
             changeRadioBtnGrade10.setChecked(false);
         }
     }
 
-    private int setGrade(){
-        if (changeRadioBtnGrade10.isChecked()){
+    private int setGrade() {
+        if (changeRadioBtnGrade10.isChecked()) {
             return 10;
-        }
-        else return 11;
+        } else return 11;
     }
 
 //    {

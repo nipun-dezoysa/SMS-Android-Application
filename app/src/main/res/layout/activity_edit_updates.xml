@@ -12,9 +12,9 @@
         android:layout_height="match_parent">
 
         <RelativeLayout
-            android:background="@color/darkgreen"
             android:layout_width="match_parent"
-            android:layout_height="120dp">
+            android:layout_height="120dp"
+            android:background="@color/darkgreen">
 
             <ImageView
                 android:id="@+id/editUpdates_back"
@@ -32,7 +32,6 @@
                 android:textColor="@color/white"
                 android:textSize="30dp"
                 android:textStyle="bold|normal" />
-
 
 
         </RelativeLayout>
@@ -53,11 +52,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="140dp"
-                android:padding="15dp"
                 android:hint="Edit Update Ttile"
+                android:padding="15dp"
                 android:textColor="@color/black"
                 android:textSize="20dp"
-                android:textStyle="bold"/>
+                android:textStyle="bold" />
 
 
             <EditText
@@ -66,8 +65,8 @@
                 android:layout_height="wrap_content"
                 android:background="@color/white"
                 android:hint="Edit Update Content"
-                android:paddingLeft="20dp"
                 android:padding="15dp"
+                android:paddingLeft="20dp"
                 android:textColor="@color/black"
                 android:textSize="15dp">
 
@@ -88,8 +87,6 @@
             app:maxImageSize="40dp">
 
         </com.google.android.material.floatingactionbutton.FloatingActionButton>
-
-
 
 
     </androidx.cardview.widget.CardView>

@@ -42,32 +42,31 @@ import com.sdsmdg.tastytoast.TastyToast;
 public class TextRecognition extends AppCompatActivity {
 
 
-
-//    UI views
+    //    UI views
     private Button input_img;
     private Button input_scan;
     private ShapeableImageView img_iv;
     private EditText recog_txt_et;
 
-//    TAG
+    //    TAG
     private static final String TAG = "MAIN_TAG";
 
-//    Uri of the image that we will take from Camera/Gallery
+    //    Uri of the image that we will take from Camera/Gallery
     private Uri imageUri = null;
 
-//    Handle the result of Camera/Gallery PERMISSION
+    //    Handle the result of Camera/Gallery PERMISSION
     private static final int CAMERA_REQUEST_CODE = 100;
     private static final int STORAGE_REQUEST_CODE = 101;
 
-//    arrays of permission to pick img from cam/galery
+    //    arrays of permission to pick img from cam/galery
     private String[] cameraPermissions;
     private String[] storagePermissions;
 
-//    progress dialog
+    //    progress dialog
     private ProgressDialog progressDialog;
 
 
-//    TextRecognizer
+    //    TextRecognizer
     private TextRecognizer textRecognizer;
 
     @Override
@@ -99,7 +98,6 @@ public class TextRecognition extends AppCompatActivity {
         progressDialog.setCanceledOnTouchOutside(false);
 
 
-
 //        init TextRecognizer
         textRecognizer = com.google.mlkit.vision.text.TextRecognition.getClient(TextRecognizerOptions.DEFAULT_OPTIONS);
 
@@ -115,14 +113,13 @@ public class TextRecognition extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                if (imageUri == null){
+                if (imageUri == null) {
 
                     TastyToast.makeText(TextRecognition.this, "Pick image first...", TastyToast.LENGTH_SHORT, TastyToast.INFO).show();
-                }
-                else {
+                } else {
 
                     recognizeTextFromImage();
-                    
+
                 }
             }
         });
@@ -149,7 +146,7 @@ public class TextRecognition extends AppCompatActivity {
                             progressDialog.dismiss();
 //                          get the recognized text
                             String recognizedText = text.getText();
-                            Log.d(TAG, "onSuccess: recognizedText: "+recognizedText);
+                            Log.d(TAG, "onSuccess: recognizedText: " + recognizedText);
                             recog_txt_et.setText(recognizedText);
                         }
                     })
@@ -158,7 +155,7 @@ public class TextRecognition extends AppCompatActivity {
                         public void onFailure(@NonNull Exception e) {
                             progressDialog.dismiss();
                             Log.e(TAG, "onFailure: ", e);
-                            TastyToast.makeText(TextRecognition.this, "Failed recognizing text due to "+e.getMessage(), TastyToast.LENGTH_SHORT,TastyToast.ERROR).show();
+                            TastyToast.makeText(TextRecognition.this, "Failed recognizing text due to " + e.getMessage(), TastyToast.LENGTH_SHORT, TastyToast.ERROR).show();
                         }
                     });
 
@@ -166,7 +163,7 @@ public class TextRecognition extends AppCompatActivity {
 //            Exception occurred while preparing InputImage, dismiss dialog, show reason in Toast
             progressDialog.dismiss();
             Log.e(TAG, "recognizeTextFromImage: ", e);
-            TastyToast.makeText(this,"Failed preparing image due to "+e.getMessage(), TastyToast.LENGTH_SHORT, TastyToast.ERROR).show();
+            TastyToast.makeText(this, "Failed preparing image due to " + e.getMessage(), TastyToast.LENGTH_SHORT, TastyToast.ERROR).show();
         }
 
     }
@@ -186,27 +183,24 @@ public class TextRecognition extends AppCompatActivity {
             public boolean onMenuItemClick(MenuItem item) {
 //              get item id that is clicked from PopupMenu
                 int id = item.getItemId();
-                if (id == 1){
+                if (id == 1) {
 //                  Camera is clicked, check if camera permissions are granted or not
                     Log.d(TAG, "onMenuItemClick: Camera clicked...");
-                    if (checkCameraPermissions()){
+                    if (checkCameraPermissions()) {
 //                        camera permissions granted, we can launch camera intent
                         pickImageCamera();
-                    }
-                    else {
+                    } else {
 //                        camera permissions not granted, request cam permissions
                         requestCameraPermissions();
                     }
 
-                }
-                else if (id == 2){
+                } else if (id == 2) {
 //                    gallery is clicked, check if storage permission is granted or not
                     Log.d(TAG, "onMenuItemClick: Gallery clicked");
-                    if (checkStoragePermission()){
+                    if (checkStoragePermission()) {
 //                      storage permission is granted can launch the gallery intent
                         pickImageGallery();
-                    }
-                    else {
+                    } else {
 //                        storage permission is not granted, request permission
                         requestStoragePermission();
                     }
@@ -216,7 +210,7 @@ public class TextRecognition extends AppCompatActivity {
         });
     }
 
-    private void pickImageGallery(){
+    private void pickImageGallery() {
         Log.d(TAG, "pickImageGallery: ");
         Intent intent = new Intent(Intent.ACTION_PICK);
 
@@ -234,7 +228,7 @@ public class TextRecognition extends AppCompatActivity {
 //                        image picked
                         Intent data = result.getData();
                         imageUri = data.getData();
-                        Log.d(TAG, "onActivityResult: imageUri "+imageUri);
+                        Log.d(TAG, "onActivityResult: imageUri " + imageUri);
 //                        set to imageview
                         img_iv.setImageURI(imageUri);
                     } else {
@@ -245,7 +239,8 @@ public class TextRecognition extends AppCompatActivity {
                 }
             }
     );
-    private void pickImageCamera(){
+
+    private void pickImageCamera() {
         Log.d(TAG, "pickImageCamera: ");
         ContentValues values = new ContentValues();
         values.put(MediaStore.Images.Media.TITLE, "Sample Title");
@@ -264,42 +259,42 @@ public class TextRecognition extends AppCompatActivity {
                 @Override
                 public void onActivityResult(ActivityResult result) {
 //                    we weil receive the image, if taken from camera
-                    if (result.getResultCode() == Activity.RESULT_OK){
-                        Log.d(TAG, "onActivityResult: imageUri "+imageUri);
+                    if (result.getResultCode() == Activity.RESULT_OK) {
+                        Log.d(TAG, "onActivityResult: imageUri " + imageUri);
                         img_iv.setImageURI(imageUri);
-                    }
-                    else {
+                    } else {
 //                        Cancelled
                         Log.d(TAG, "onActivityResult: cancelled");
-                        TastyToast.makeText(TextRecognition.this,"Cancelled...", TastyToast.LENGTH_SHORT, TastyToast.ERROR).show();
+                        TastyToast.makeText(TextRecognition.this, "Cancelled...", TastyToast.LENGTH_SHORT, TastyToast.ERROR).show();
                     }
 
                 }
             }
     );
-    private boolean checkStoragePermission(){
+
+    private boolean checkStoragePermission() {
 
         boolean result = ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) == (PackageManager.PERMISSION_GRANTED);
 
         return result;
     }
 
-    private void requestStoragePermission(){
+    private void requestStoragePermission() {
 
         ActivityCompat.requestPermissions(this, storagePermissions, STORAGE_REQUEST_CODE);
     }
 
-    private boolean checkCameraPermissions(){
+    private boolean checkCameraPermissions() {
 //      check if camera & storage permissions are allowed or not
 //      return true if allowed, false if not allowed
 
-        boolean cameraResult = ContextCompat.checkSelfPermission(this,Manifest.permission.CAMERA) == (PackageManager.PERMISSION_GRANTED);
-        boolean storageResult = ContextCompat.checkSelfPermission(this,Manifest.permission.WRITE_EXTERNAL_STORAGE) == (PackageManager.PERMISSION_GRANTED);
+        boolean cameraResult = ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA) == (PackageManager.PERMISSION_GRANTED);
+        boolean storageResult = ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) == (PackageManager.PERMISSION_GRANTED);
 
         return cameraResult && storageResult;
     }
 
-    private void requestCameraPermissions(){
+    private void requestCameraPermissions() {
 
         ActivityCompat.requestPermissions(this, cameraPermissions, CAMERA_REQUEST_CODE);
     }
@@ -311,38 +306,35 @@ public class TextRecognition extends AppCompatActivity {
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
 
-        switch (requestCode){
-            case CAMERA_REQUEST_CODE:{
+        switch (requestCode) {
+            case CAMERA_REQUEST_CODE: {
 
-                if (grantResults.length>0){
+                if (grantResults.length > 0) {
 
                     boolean cameraAccepted = grantResults[0] == PackageManager.PERMISSION_GRANTED;
                     boolean storageAccepted = grantResults[1] == PackageManager.PERMISSION_GRANTED;
 
-                    if (cameraAccepted && storageAccepted){
+                    if (cameraAccepted && storageAccepted) {
 
                         pickImageCamera();
-                    }
-                    else {
+                    } else {
                         TastyToast.makeText(this, "Camera & Storage permissions are required", TastyToast.LENGTH_SHORT, TastyToast.INFO).show();
                     }
-                }
-                else{
+                } else {
                     TastyToast.makeText(this, "Cancelled", TastyToast.LENGTH_SHORT, TastyToast.ERROR).show();
                 }
             }
             break;
-            case STORAGE_REQUEST_CODE:{
+            case STORAGE_REQUEST_CODE: {
 //                check if some action from permission dialog performed or not Allow/Deny
-                if (grantResults.length>0){
+                if (grantResults.length > 0) {
 //                  Check if storage permission granted, contains boolean results either true or false
                     boolean storageAccepted = grantResults[0] == PackageManager.PERMISSION_GRANTED;
 //                  Check if storage permission is granted or not
-                    if (storageAccepted){
+                    if (storageAccepted) {
 //                  storage permission granted, we can launch gallery intent
                         pickImageGallery();
-                    }
-                    else {
+                    } else {
 //                  storage permission denied, can't launch gallery intent
                         TastyToast.makeText(this, "Storage permission is required", TastyToast.LENGTH_SHORT, TastyToast.INFO).show();
                     }

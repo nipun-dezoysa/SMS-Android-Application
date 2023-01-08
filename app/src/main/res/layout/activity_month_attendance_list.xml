@@ -9,6 +9,7 @@
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="120dp"
@@ -27,8 +28,8 @@
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
                 android:text="Attendance List"
-                android:textSize="30dp"
                 android:textColor="@color/white"
+                android:textSize="30dp"
                 android:textStyle="bold|normal" />
 
             <TextView
@@ -39,8 +40,8 @@
                 android:layout_centerHorizontal="true"
                 android:layout_marginBottom="5dp"
                 android:hint="grade"
-                android:textColorHint="@color/white"
                 android:textColor="@color/white"
+                android:textColorHint="@color/white"
                 android:textSize="20dp"
                 android:textStyle="bold|normal" />
 

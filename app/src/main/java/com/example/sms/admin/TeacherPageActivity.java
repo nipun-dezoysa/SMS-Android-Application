@@ -144,7 +144,7 @@ public class TeacherPageActivity extends AppCompatActivity {
         adminmenupopupbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                PopupMenu popupMenu = new PopupMenu(v.getContext(),v);
+                PopupMenu popupMenu = new PopupMenu(v.getContext(), v);
 
                 popupMenu.getMenu().add("Change Password").setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
                     @Override
@@ -160,7 +160,7 @@ public class TeacherPageActivity extends AppCompatActivity {
 
                         AlertDialog.Builder builder = new AlertDialog.Builder(v.getContext());
                         builder.setTitle("Logout")
-                                .setMessage("Are you sure you want to Logout ?" )
+                                .setMessage("Are you sure you want to Logout ?")
                                 .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialog, int which) {
@@ -204,7 +204,7 @@ public class TeacherPageActivity extends AppCompatActivity {
         uname = Paper.book().read(OnlineUsers.UserNamekey);
 
 
-        storageReference = FirebaseStorage.getInstance().getReference("images/"+uname);
+        storageReference = FirebaseStorage.getInstance().getReference("images/" + uname);
 
 
         LinearLayout reg_std = findViewById(R.id.mng_std);
@@ -220,12 +220,12 @@ public class TeacherPageActivity extends AppCompatActivity {
         LinearLayout dashboard = findViewById(R.id.dashboard);
 
 
-        mGetContent=registerForActivityResult(new ActivityResultContracts.GetContent(), new ActivityResultCallback<Uri>() {
+        mGetContent = registerForActivityResult(new ActivityResultContracts.GetContent(), new ActivityResultCallback<Uri>() {
             @Override
             public void onActivityResult(Uri result) {
-                Intent intent= new Intent(TeacherPageActivity.this, CropperActivity.class);
-                intent.putExtra("DATA",result.toString());
-                startActivityForResult(intent,101);
+                Intent intent = new Intent(TeacherPageActivity.this, CropperActivity.class);
+                intent.putExtra("DATA", result.toString());
+                startActivityForResult(intent, 101);
             }
         });
 
@@ -365,8 +365,8 @@ public class TeacherPageActivity extends AppCompatActivity {
                 final int DRAWABLE_RIGHT = 2;
                 final int DRAWABLE_BOTTOM = 3;
 
-                if (event.getAction() == MotionEvent.ACTION_UP){
-                    if (event.getRawX() >= (newPwd.getRight()-
+                if (event.getAction() == MotionEvent.ACTION_UP) {
+                    if (event.getRawX() >= (newPwd.getRight() -
                             newPwd.getCompoundDrawables()[DRAWABLE_RIGHT].getBounds().width())) {
                         AlertDialog.Builder builder = new AlertDialog.Builder(v.getContext());
                         builder.setTitle("Password Patterns")
@@ -387,18 +387,18 @@ public class TeacherPageActivity extends AppCompatActivity {
         });
 
 
-
         savePwd.setOnClickListener(new View.OnClickListener() {
             DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference();
+
             @Override
             public void onClick(View v) {
                 String currentPwdTxt = currentPwd.getText().toString();
                 String newPwdTxt = newPwd.getText().toString();
                 String confirmNewPwdTxt = confirmNewPwd.getText().toString();
 
-                if (currentPwdTxt.equals("") || newPwdTxt.equals("") || confirmNewPwdTxt.equals("")){
+                if (currentPwdTxt.equals("") || newPwdTxt.equals("") || confirmNewPwdTxt.equals("")) {
                     TastyToast.makeText(TeacherPageActivity.this, "Please fill all fields", TastyToast.LENGTH_SHORT, TastyToast.ERROR);
-                }else {
+                } else {
                     try {
                         currentOutputPassword = encrypt(currentPwdTxt, currentPwdTxt);
                         currentEncryptedPassword = currentOutputPassword;
@@ -452,15 +452,15 @@ public class TeacherPageActivity extends AppCompatActivity {
 
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if (snapshot.hasChild(uname)){
+                if (snapshot.hasChild(uname)) {
                     String dbPassword = snapshot.child(uname).child("password").getValue(String.class);
-                    if (!dbPassword.equals(currentEncryptedPassword)){
+                    if (!dbPassword.equals(currentEncryptedPassword)) {
                         TastyToast.makeText(TeacherPageActivity.this, "Current password is wrong", TastyToast.LENGTH_SHORT, TastyToast.ERROR);
-                    } else if (!newPwdTxt.matches(passwordPattern)){
+                    } else if (!newPwdTxt.matches(passwordPattern)) {
                         TastyToast.makeText(TeacherPageActivity.this, "Please follow password pattern to make a strong password", TastyToast.LENGTH_SHORT, TastyToast.ERROR);
-                    } else if (!newPwdTxt.equals(confirmNewPwdTxt)){
+                    } else if (!newPwdTxt.equals(confirmNewPwdTxt)) {
                         TastyToast.makeText(TeacherPageActivity.this, "Confirm password should match with new password", TastyToast.LENGTH_SHORT, TastyToast.ERROR);
-                    } else if (newPwdTxt.equals(confirmNewPwdTxt)){
+                    } else if (newPwdTxt.equals(confirmNewPwdTxt)) {
                         updatePassword(newEncryptedPassword);
                     }
                 }
@@ -501,7 +501,7 @@ public class TeacherPageActivity extends AppCompatActivity {
         contactNo = dialog.findViewById(R.id.txtContact);
         emailID = dialog.findViewById(R.id.txtEmail);
         address = dialog.findViewById(R.id.txtAddress);
-        cropView= dialog.findViewById(R.id.cropView);
+        cropView = dialog.findViewById(R.id.cropView);
         profilepic = dialog.findViewById(R.id.profileEdit);
 
 
@@ -510,7 +510,7 @@ public class TeacherPageActivity extends AppCompatActivity {
         final int month = calendar.get(Calendar.MONTH);
         final int day = calendar.get(Calendar.DAY_OF_MONTH);
 
-        if(teacher!=null){
+        if (teacher != null) {
             fullName.setText(teacher.getFullName().trim());
             nickName.setText(teacher.getNickName().trim());
             etDate.setText(teacher.getDob());
@@ -519,12 +519,10 @@ public class TeacherPageActivity extends AppCompatActivity {
             address.setText(teacher.getAddress().trim());
 
 
-            if(!teacher.getProfileuri().equals("") )
+            if (!teacher.getProfileuri().equals(""))
                 Glide.with(this).load(teacher.getProfileuri()).into(cropView);
 
         }
-
-
 
 
         etDate.setOnClickListener(new View.OnClickListener() {
@@ -532,7 +530,7 @@ public class TeacherPageActivity extends AppCompatActivity {
             public void onClick(View v) {
                 DatePickerDialog datePickerDialog = new DatePickerDialog(
                         TeacherPageActivity.this, android.R.style.Theme_Holo_Light_Dialog_MinWidth,
-                        setListener,year,month,day);
+                        setListener, year, month, day);
                 datePickerDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
                 datePickerDialog.show();
             }
@@ -541,12 +539,11 @@ public class TeacherPageActivity extends AppCompatActivity {
         setListener = new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker view, int year, int month, int day) {
-                month = month+1;
-                String date = day+"/"+month+"/"+year;
+                month = month + 1;
+                String date = day + "/" + month + "/" + year;
                 etDate.setText(date);
             }
         };
-
 
 
         Button buttonCancel = dialog.findViewById(R.id.buttonCancel);
@@ -577,18 +574,14 @@ public class TeacherPageActivity extends AppCompatActivity {
                 String adrs = address.getText().toString();
 
 
-
                 welcometext.setText(nickName.getText().toString());
 
 
-
-                Teacher t = new Teacher("" ,fName,nName,dob,cNumber,eID,adrs);
+                Teacher t = new Teacher("", fName, nName, dob, cNumber, eID, adrs);
 
                 if (imageUri != null) {
-                    uploadToFirebase(imageUri,t);
-                }
-
-                else {
+                    uploadToFirebase(imageUri, t);
+                } else {
                     uploadTeacher(t);
                 }
 
@@ -598,7 +591,6 @@ public class TeacherPageActivity extends AppCompatActivity {
 //
                         setProfileImage(teacher.getProfileuri());
                         teacher = t;
-
 
 
                     }
@@ -621,7 +613,7 @@ public class TeacherPageActivity extends AppCompatActivity {
         dialog.show();
 
 
-     } //openProfileEdit close
+    } //openProfileEdit close
 
 
 //    private void getUserinfo() {
@@ -695,13 +687,13 @@ public class TeacherPageActivity extends AppCompatActivity {
 //        }
 //    }
 
-//    back error start
-    private void getTeacher(TeacherCallback callback){
+    //    back error start
+    private void getTeacher(TeacherCallback callback) {
 
         databaseReference.child("teachers").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if(snapshot.hasChild(uname)){
+                if (snapshot.hasChild(uname)) {
                     Teacher value = snapshot.child(uname).getValue(Teacher.class);
                     //Log.i("test",value.fullName);
                     callback.onCallback(value);
@@ -711,10 +703,9 @@ public class TeacherPageActivity extends AppCompatActivity {
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
 
-               // System.out.println("unable to connect to db");
+                // System.out.println("unable to connect to db");
             }
         });
-
 
 
     }
@@ -724,13 +715,11 @@ public class TeacherPageActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (resultCode==-1 && requestCode==101)
-        {
-            String result=data.getStringExtra("RESULT");
-            Uri resultUri=null;
-            if (result!=null)
-            {
-                resultUri=Uri.parse(result);
+        if (resultCode == -1 && requestCode == 101) {
+            String result = data.getStringExtra("RESULT");
+            Uri resultUri = null;
+            if (result != null) {
+                resultUri = Uri.parse(result);
                 imageUri = resultUri;
             }
             cropView.setImageURI(resultUri);
@@ -758,7 +747,7 @@ public class TeacherPageActivity extends AppCompatActivity {
 //        return uri;
 //    }
 
-    private void uploadToFirebase(Uri uri,Teacher t){
+    private void uploadToFirebase(Uri uri, Teacher t) {
         final StorageReference fileRef = storageReference.child(uname + "." + getFileExtension(uri));
         fileRef.putFile(uri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
             @Override
@@ -782,7 +771,7 @@ public class TeacherPageActivity extends AppCompatActivity {
                     }
                 });
             }
-        }) .addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
+        }).addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
             @Override
             public void onProgress(@NonNull UploadTask.TaskSnapshot snapshot) {
 //                progressBar.setVisibility(View.VISIBLE);
@@ -798,7 +787,7 @@ public class TeacherPageActivity extends AppCompatActivity {
 
     }
 
-    private void uploadTeacher(Teacher t){
+    private void uploadTeacher(Teacher t) {
         databaseReference.child("teachers").child(uname).setValue(t);
         progressBar.setVisibility(View.GONE);
         TastyToast.makeText(TeacherPageActivity.this, "Saved changes", TastyToast.LENGTH_SHORT, TastyToast.SUCCESS);
@@ -812,8 +801,8 @@ public class TeacherPageActivity extends AppCompatActivity {
         return mime.getExtensionFromMimeType(cr.getType(uri));
     }
 
-    private void setProfileImage(String uri){
-                Glide.with(this).load(uri).into(profileEdit);
+    private void setProfileImage(String uri) {
+        Glide.with(this).load(uri).into(profileEdit);
     }
 
 }

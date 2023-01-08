@@ -29,8 +29,10 @@ import io.paperdb.Paper;
 public class ScheduleStud extends AppCompatActivity {
 
     ImageView schedule_back;
-    EditText mondayMaths,mondayScience,tuesdayMaths,tuesdayScience,wednesdayMaths,wednesdayScience,thursdayMaths,thursdayScience,fridayMaths,fridayScience,saturdayMaths,saturdayScience,sundayMaths,sundayScience;
-    TextView grade10_schedule,grade11_schedule;
+    EditText mondayMaths, mondayScience, tuesdayMaths, tuesdayScience, wednesdayMaths, wednesdayScience,
+            thursdayMaths, thursdayScience, fridayMaths, fridayScience, saturdayMaths, saturdayScience,
+            sundayMaths, sundayScience;
+    TextView grade10_schedule, grade11_schedule;
     FloatingActionButton saveSchedule;
     List<String> mathsList;
     List<String> scienceList;
@@ -132,118 +134,10 @@ public class ScheduleStud extends AppCompatActivity {
             }
         });
 
-
-//        if (getgrade==10){
-//            grade11_schedule.setVisibility(View.GONE);
-//            grade10_schedule.setVisibility(View.VISIBLE);
-//            grade10_schedule.setTextColor(getResources().getColor(R.color.white));
-//            grade10_schedule.setBackground(getDrawable(R.drawable.switch_trcks));
-//            grade = "Grade 10";
-//
-//            databaseReference1 = FirebaseDatabase.getInstance().getReference().child("Schedule").child(grade).child("Maths");
-//            databaseReference1.addValueEventListener(new ValueEventListener() {
-//                @Override
-//                public void onDataChange(@NonNull DataSnapshot snapshot) {
-//                    for (DataSnapshot dataSnapshot: snapshot.getChildren()){
-//                        String s = dataSnapshot.getValue(String.class);
-//                        mathsList.add(s);
-//                    }
-//                    mondayMaths.setText(mathsList.get(0));
-//                    tuesdayMaths.setText(mathsList.get(1));
-//                    wednesdayMaths.setText(mathsList.get(2));
-//                    thursdayMaths.setText(mathsList.get(3));
-//                    fridayMaths.setText(mathsList.get(4));
-//                    saturdayMaths.setText(mathsList.get(5));
-//                    sundayMaths.setText(mathsList.get(6));
-//                }
-//
-//                @Override
-//                public void onCancelled(@NonNull DatabaseError error) {
-//
-//                }
-//            });
-//
-//            databaseReference2 = FirebaseDatabase.getInstance().getReference().child("Schedule").child(grade).child("Science");
-//            databaseReference2.addValueEventListener(new ValueEventListener() {
-//                @Override
-//                public void onDataChange(@NonNull DataSnapshot snapshot) {
-//                    for (DataSnapshot dataSnapshot: snapshot.getChildren()){
-//                        String s = dataSnapshot.getValue(String.class);
-//                        scienceList.add(s);
-//                    }
-//                    mondayScience.setText(scienceList.get(0));
-//                    tuesdayScience.setText(scienceList.get(1));
-//                    wednesdayScience.setText(scienceList.get(2));
-//                    thursdayScience.setText(scienceList.get(3));
-//                    fridayScience.setText(scienceList.get(4));
-//                    saturdayScience.setText(scienceList.get(5));
-//                    sundayScience.setText(scienceList.get(6));
-//                }
-//
-//                @Override
-//                public void onCancelled(@NonNull DatabaseError error) {
-//
-//                }
-//            });
-//
-//        } else {
-//            grade11_schedule.setVisibility(View.VISIBLE);
-//            grade10_schedule.setVisibility(View.GONE);
-//            grade11_schedule.setTextColor(getResources().getColor(R.color.white));
-//            grade11_schedule.setBackground(getDrawable(R.drawable.switch_trcks));
-//            grade = "Grade 11";
-//
-//            databaseReference3 = FirebaseDatabase.getInstance().getReference().child("Schedule").child(grade).child("Maths");
-//            databaseReference3.addValueEventListener(new ValueEventListener() {
-//                @Override
-//                public void onDataChange(@NonNull DataSnapshot snapshot) {
-//                    for (DataSnapshot dataSnapshot: snapshot.getChildren()){
-//                        String s = dataSnapshot.getValue(String.class);
-//                        mathsList.add(s);
-//                    }
-//                    mondayMaths.setText(mathsList.get(0));
-//                    tuesdayMaths.setText(mathsList.get(1));
-//                    wednesdayMaths.setText(mathsList.get(2));
-//                    thursdayMaths.setText(mathsList.get(3));
-//                    fridayMaths.setText(mathsList.get(4));
-//                    saturdayMaths.setText(mathsList.get(5));
-//                    sundayMaths.setText(mathsList.get(6));
-//                }
-//
-//                @Override
-//                public void onCancelled(@NonNull DatabaseError error) {
-//
-//                }
-//            });
-//
-//            databaseReference4 = FirebaseDatabase.getInstance().getReference().child("Schedule").child(grade).child("Science");
-//            databaseReference4.addValueEventListener(new ValueEventListener() {
-//                @Override
-//                public void onDataChange(@NonNull DataSnapshot snapshot) {
-//                    for (DataSnapshot dataSnapshot: snapshot.getChildren()){
-//                        String s = dataSnapshot.getValue(String.class);
-//                        scienceList.add(s);
-//                    }
-//                    mondayScience.setText(scienceList.get(0));
-//                    tuesdayScience.setText(scienceList.get(1));
-//                    wednesdayScience.setText(scienceList.get(2));
-//                    thursdayScience.setText(scienceList.get(3));
-//                    fridayScience.setText(scienceList.get(4));
-//                    saturdayScience.setText(scienceList.get(5));
-//                    sundayScience.setText(scienceList.get(6));
-//                }
-//
-//                @Override
-//                public void onCancelled(@NonNull DatabaseError error) {
-//
-//                }
-//            });
-//
-//        }
     }
 
     private void getSchedule(int grade) {
-        if (grade==10){
+        if (grade == 10) {
             grade11_schedule.setVisibility(View.GONE);
             grade10_schedule.setVisibility(View.VISIBLE);
             grade10_schedule.setTextColor(getResources().getColor(R.color.white));
@@ -254,7 +148,7 @@ public class ScheduleStud extends AppCompatActivity {
             databaseReference1.addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
-                    for (DataSnapshot dataSnapshot: snapshot.getChildren()){
+                    for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
                         String s = dataSnapshot.getValue(String.class);
                         mathsList.add(s);
                     }
@@ -277,7 +171,7 @@ public class ScheduleStud extends AppCompatActivity {
             databaseReference2.addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
-                    for (DataSnapshot dataSnapshot: snapshot.getChildren()){
+                    for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
                         String s = dataSnapshot.getValue(String.class);
                         scienceList.add(s);
                     }
@@ -307,7 +201,7 @@ public class ScheduleStud extends AppCompatActivity {
             databaseReference3.addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
-                    for (DataSnapshot dataSnapshot: snapshot.getChildren()){
+                    for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
                         String s = dataSnapshot.getValue(String.class);
                         mathsList.add(s);
                     }
@@ -330,7 +224,7 @@ public class ScheduleStud extends AppCompatActivity {
             databaseReference4.addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
-                    for (DataSnapshot dataSnapshot: snapshot.getChildren()){
+                    for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
                         String s = dataSnapshot.getValue(String.class);
                         scienceList.add(s);
                     }

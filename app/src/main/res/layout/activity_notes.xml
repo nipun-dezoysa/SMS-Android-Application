@@ -1,47 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="830dp"
-    android:orientation="vertical"
     android:background="#EBF4F3"
+    android:orientation="vertical"
     tools:context=".others.NotesActivity">
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="120dp"
-        android:background="@color/darkgreen">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:background="@color/darkgreen">
+
+            <ImageView
+                android:id="@+id/notes_back"
+                android:layout_width="40dp"
+                android:layout_height="35dp"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="10dp"
+                android:background="@drawable/back" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="Notes"
+                android:textColor="@color/white"
+                android:textSize="30dp"
+                android:textStyle="bold|normal" />
+
+
+        </RelativeLayout>
+
 
         <ImageView
-            android:id="@+id/notes_back"
-            android:layout_width="40dp"
-            android:layout_height="35dp"
-            android:layout_marginStart="10dp"
-            android:layout_centerVertical="true"
-            android:background="@drawable/back"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:text="Notes"
-            android:textSize="30dp"
-            android:textColor="@color/white"
-            android:textStyle="bold|normal" />
-
-
-    </RelativeLayout>
-
-
-    <ImageView
-        android:layout_width="400dp"
-        android:layout_height="400dp"
-        android:layout_gravity="center"
-        android:src="@drawable/logo_transparentnew" />
+            android:layout_width="400dp"
+            android:layout_height="400dp"
+            android:layout_gravity="center"
+            android:src="@drawable/logo_transparentnew" />
 
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -53,21 +54,21 @@
             android:layout_gravity="bottom|end"
             android:layout_marginEnd="30dp"
             android:layout_marginBottom="30dp"
+            android:contentDescription="@string/todo"
             android:src="@drawable/add_btn"
-            app:maxImageSize="40dp"
-            android:contentDescription="@string/todo">
+            app:maxImageSize="40dp">
 
         </com.google.android.material.floatingactionbutton.FloatingActionButton>
 
         <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerview"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="150dp"
-        android:scrollbars="vertical">
+            android:id="@+id/recyclerview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="150dp"
+            android:scrollbars="vertical">
 
 
-    </androidx.recyclerview.widget.RecyclerView>
+        </androidx.recyclerview.widget.RecyclerView>
     </androidx.cardview.widget.CardView>
 
 </RelativeLayout>

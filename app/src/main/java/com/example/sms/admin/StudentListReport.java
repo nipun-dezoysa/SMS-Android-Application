@@ -77,10 +77,10 @@ public class StudentListReport extends AppCompatActivity {
                 reportfile = new File("/storage/emulated/0/Report/");
 
                 //check if they exist, if not create them(directory)
-                if ( !reportfile.exists()) {
+                if (!reportfile.exists()) {
                     reportfile.mkdirs();
                 }
-                rFile = new File(reportfile, "Students_List"+".pdf");
+                rFile = new File(reportfile, "Students_List" + ".pdf");
 
                 //fetch details;
                 fetchStudentList();
@@ -96,6 +96,7 @@ public class StudentListReport extends AppCompatActivity {
             Manifest.permission.WRITE_EXTERNAL_STORAGE
     };
     public static int PERMISSION_ALL = 12;
+
     public boolean hasPermissions(Context context, String... permissions) {
         if (context != null && permissions != null) {
             for (String permission : permissions) {
@@ -113,7 +114,6 @@ public class StudentListReport extends AppCompatActivity {
         BaseColor grayColor = WebColors.getRGBColor("#425066");
 
 
-
         Font white = new Font(Font.FontFamily.HELVETICA, 15.0f, Font.BOLD, colorWhite);
         FileOutputStream output = new FileOutputStream(rFile);
         Document document = new Document(PageSize.A4);
@@ -124,32 +124,32 @@ public class StudentListReport extends AppCompatActivity {
         table.setWidthPercentage(100);
         table.getDefaultCell().setVerticalAlignment(Element.ALIGN_MIDDLE);
 
-        Chunk noText = new Chunk("\n"+"No.", white);
+        Chunk noText = new Chunk("\n" + "No.", white);
         PdfPCell noCell = new PdfPCell(new Phrase(noText));
         noCell.setFixedHeight(50);
         noCell.setHorizontalAlignment(Element.ALIGN_CENTER);
         noCell.setVerticalAlignment(Element.ALIGN_CENTER);
 
-        Chunk nameText = new Chunk("\n"+"Student Name", white);
+        Chunk nameText = new Chunk("\n" + "Student Name", white);
         PdfPCell nameCell = new PdfPCell(new Phrase(nameText));
         nameCell.setFixedHeight(50);
         nameCell.setHorizontalAlignment(Element.ALIGN_CENTER);
         nameCell.setVerticalAlignment(Element.ALIGN_CENTER);
 
-        Chunk subject = new Chunk("\n"+"Subject", white);
+        Chunk subject = new Chunk("\n" + "Subject", white);
         PdfPCell selectedSubject = new PdfPCell(new Phrase(subject));
         selectedSubject.setFixedHeight(50);
         selectedSubject.setHorizontalAlignment(Element.ALIGN_CENTER);
         selectedSubject.setVerticalAlignment(Element.ALIGN_CENTER);
 
-        Chunk grade = new Chunk("\n"+"Grade", white);
+        Chunk grade = new Chunk("\n" + "Grade", white);
         PdfPCell gradesCell = new PdfPCell(new Phrase(grade));
         gradesCell.setFixedHeight(50);
         gradesCell.setHorizontalAlignment(Element.ALIGN_CENTER);
         gradesCell.setVerticalAlignment(Element.ALIGN_CENTER);
 
         count = studentList.size();
-        Chunk footerText = new Chunk("\n\n"+"Total number of students is: "+count);
+        Chunk footerText = new Chunk("\n\n" + "Total number of students is: " + count);
         PdfPCell footCell = new PdfPCell(new Phrase(footerText));
         footCell.setFixedHeight(70);
         footCell.setHorizontalAlignment(Element.ALIGN_CENTER);
@@ -182,7 +182,7 @@ public class StudentListReport extends AppCompatActivity {
 
             table.addCell(id + ". ");
             table.addCell(name);
-            table.addCell(sub+"");
+            table.addCell(sub + "");
             table.addCell(String.valueOf(studentGrade));
 
         }
@@ -235,7 +235,7 @@ public class StudentListReport extends AppCompatActivity {
     private void DisplayReport() {
         pdfView.fromFile(rFile)
 //                .pages(0,2,1,3,3,3)
-                .pages(0,1,2,3,4)
+                .pages(0, 1, 2, 3, 4)
                 .enableSwipe(true)
                 .swipeHorizontal(false)
                 .enableDoubletap(true)

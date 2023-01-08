@@ -54,7 +54,7 @@ public class HomeworkStud extends AppCompatActivity {
     ImageView homework_stud_back;
     String uname;
     DatabaseReference databaseReference;
-    private Button chooseFile,uploadFile;
+    private Button chooseFile, uploadFile;
     private TextView setFileName;
     Uri fileUri;
 
@@ -112,17 +112,17 @@ public class HomeworkStud extends AppCompatActivity {
                 grade = snapshot.child(uname).child("grade").getValue(int.class);
 
 
-                if (grade==10 && sub.equals("Maths")){
+                if (grade == 10 && sub.equals("Maths")) {
                     loadAllGrade10MathsQuestions();
-                } else if (grade==10 && sub.equals("Science")){
+                } else if (grade == 10 && sub.equals("Science")) {
                     loadAllGrade10ScienceQuestions();
-                } else if (grade==10 && sub.equals("Maths Science")){
+                } else if (grade == 10 && sub.equals("Maths Science")) {
                     loadAllGrade10MathsScienceQuestions();
-                } else if (grade==11 && sub.equals("Maths")){
+                } else if (grade == 11 && sub.equals("Maths")) {
                     loadAllGrade11MathsQuestions();
-                } else if (grade==11 && sub.equals("Science")){
+                } else if (grade == 11 && sub.equals("Science")) {
                     loadAllGrade11ScienceQuestions();
-                } else if (grade==11 && sub.equals("Maths Science")){
+                } else if (grade == 11 && sub.equals("Maths Science")) {
                     loadAllGrade11MathsScienceQuestions();
                 }
             }
@@ -132,7 +132,6 @@ public class HomeworkStud extends AppCompatActivity {
 
             }
         });
-
 
 
     }
@@ -151,19 +150,20 @@ public class HomeworkStud extends AppCompatActivity {
         chooseFile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (ContextCompat.checkSelfPermission(HomeworkStud.this, Manifest.permission.READ_EXTERNAL_STORAGE)== PackageManager.PERMISSION_GRANTED){
+                if (ContextCompat.checkSelfPermission(HomeworkStud.this, Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) {
                     selectFile();
-                }
-                else ActivityCompat.requestPermissions(HomeworkStud.this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},9);
+                } else
+                    ActivityCompat.requestPermissions(HomeworkStud.this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, 9);
             }
         });
 
         uploadFile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (fileUri!=null)
+                if (fileUri != null)
                     uploadFiles(fileUri);
-                else TastyToast.makeText(HomeworkStud.this, "Please select a File", TastyToast.LENGTH_SHORT, TastyToast.INFO);
+                else
+                    TastyToast.makeText(HomeworkStud.this, "Please select a File", TastyToast.LENGTH_SHORT, TastyToast.INFO);
             }
         });
         dialog.show();
@@ -177,9 +177,8 @@ public class HomeworkStud extends AppCompatActivity {
         progressDialog.setProgress(0);
         progressDialog.show();
 
-        String fileName = uname+":"+System.currentTimeMillis();
-//        String fileName = "Test";
-        StorageReference storageReference = storage.getReference().child("Homework Answers").child(uname).child(fileName+"."+getFileExtension(fileUri));
+        String fileName = uname + ":" + System.currentTimeMillis();
+        StorageReference storageReference = storage.getReference().child("Homework Answers").child(uname).child(fileName + "." + getFileExtension(fileUri));
 
         storageReference.putFile(fileUri)
                 .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
@@ -189,7 +188,7 @@ public class HomeworkStud extends AppCompatActivity {
                             @Override
                             public void onSuccess(Uri uri) {
 
-                                databaseReference10  = FirebaseDatabase.getInstance().getReference().child("Answers").child(uname).child(fileName);
+                                databaseReference10 = FirebaseDatabase.getInstance().getReference().child("Answers").child(uname).child(fileName);
 //                                databaseReference10  = FirebaseDatabase.getInstance().getReference().child("Answers").child(uname);
 
                                 databaseReference10.setValue(uri.toString())
@@ -216,7 +215,7 @@ public class HomeworkStud extends AppCompatActivity {
                     @Override
                     public void onProgress(@NonNull UploadTask.TaskSnapshot snapshot) {
                         // track upload progress
-                        int currentProgress = (int) (100*snapshot.getBytesTransferred()/snapshot.getTotalByteCount());
+                        int currentProgress = (int) (100 * snapshot.getBytesTransferred() / snapshot.getTotalByteCount());
                         progressDialog.setProgress(currentProgress);
                     }
                 });
@@ -232,9 +231,10 @@ public class HomeworkStud extends AppCompatActivity {
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
 
-        if (requestCode==9 && grantResults[0]==PackageManager.PERMISSION_GRANTED){
+        if (requestCode == 9 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
             selectFile();
-        } else TastyToast.makeText(this, "Please grand permission", TastyToast.LENGTH_SHORT, TastyToast.INFO);
+        } else
+            TastyToast.makeText(this, "Please grand permission", TastyToast.LENGTH_SHORT, TastyToast.INFO);
     }
 
     private void selectFile() {
@@ -250,162 +250,157 @@ public class HomeworkStud extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
 
 //        check whether a file is selected or not
-        if (requestCode == 86 && resultCode == RESULT_OK && data!=null){
+        if (requestCode == 86 && resultCode == RESULT_OK && data != null) {
             fileUri = data.getData(); //returns uri of the selected file
             setFileName.setText(data.getData().getLastPathSegment());
-        } else TastyToast.makeText(this, "Please Select a File", TastyToast.LENGTH_SHORT, TastyToast.INFO).show();
+        } else
+            TastyToast.makeText(this, "Please Select a File", TastyToast.LENGTH_SHORT, TastyToast.INFO).show();
     }
 
     private void loadAllGrade11MathsScienceQuestions() {
 
-            LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
-            questionArrayList = new ArrayList<>();
-            homework_rv.setLayoutManager(linearLayoutManager);
-            questionAdapter = new QuestionAdapterStud(this, questionArrayList);
-            homework_rv.setAdapter(questionAdapter);
-            linearLayoutManager.setReverseLayout(true);
-            linearLayoutManager.setStackFromEnd(true);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
+        questionArrayList = new ArrayList<>();
+        homework_rv.setLayoutManager(linearLayoutManager);
+        questionAdapter = new QuestionAdapterStud(this, questionArrayList);
+        homework_rv.setAdapter(questionAdapter);
+        linearLayoutManager.setReverseLayout(true);
+        linearLayoutManager.setStackFromEnd(true);
 
 
-            //get all questions
-            DatabaseReference databaseReference1 = FirebaseDatabase.getInstance().getReference();
-            databaseReference1.child("homework").child("Grade 11")
-                    .addValueEventListener(new ValueEventListener() {
-                        @Override
-                        public void onDataChange(@NonNull DataSnapshot snapshot) {
-                            questionArrayList.clear();
-                            for (DataSnapshot dataSnapshot: snapshot.getChildren())
-                            {
-                                Question question = dataSnapshot.getValue(Question.class);
+        //get all questions
+        DatabaseReference databaseReference1 = FirebaseDatabase.getInstance().getReference();
+        databaseReference1.child("homework").child("Grade 11")
+                .addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        questionArrayList.clear();
+                        for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                            Question question = dataSnapshot.getValue(Question.class);
 
-                                    questionArrayList.add(question);
-
-                            }
-                            questionAdapter.notifyDataSetChanged();
-                        }
-
-                        @Override
-                        public void onCancelled(@NonNull DatabaseError error) {
+                            questionArrayList.add(question);
 
                         }
-                    });
+                        questionAdapter.notifyDataSetChanged();
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
     }
 
     private void loadAllGrade11ScienceQuestions() {
 
-            LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
-            questionArrayList = new ArrayList<>();
-            homework_rv.setLayoutManager(linearLayoutManager);
-            questionAdapter = new QuestionAdapterStud(this, questionArrayList);
-            homework_rv.setAdapter(questionAdapter);
-            linearLayoutManager.setReverseLayout(true);
-            linearLayoutManager.setStackFromEnd(true);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
+        questionArrayList = new ArrayList<>();
+        homework_rv.setLayoutManager(linearLayoutManager);
+        questionAdapter = new QuestionAdapterStud(this, questionArrayList);
+        homework_rv.setAdapter(questionAdapter);
+        linearLayoutManager.setReverseLayout(true);
+        linearLayoutManager.setStackFromEnd(true);
 //            Question question = new Question();
 //            Student student = new Student();
 
 
-            //get all questions
-            DatabaseReference databaseReference1 = FirebaseDatabase.getInstance().getReference();
-            databaseReference1.child("homework").child("Grade 11")
-                    .addValueEventListener(new ValueEventListener() {
-                        @Override
-                        public void onDataChange(@NonNull DataSnapshot snapshot) {
-                            questionArrayList.clear();
-                            for (DataSnapshot dataSnapshot: snapshot.getChildren())
-                            {
-                                Question question = dataSnapshot.getValue(Question.class);
-                                if (question.getSubjectName().equals("Science")){
-                                    questionArrayList.add(question);
-                                }
-
+        //get all questions
+        DatabaseReference databaseReference1 = FirebaseDatabase.getInstance().getReference();
+        databaseReference1.child("homework").child("Grade 11")
+                .addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        questionArrayList.clear();
+                        for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                            Question question = dataSnapshot.getValue(Question.class);
+                            if (question.getSubjectName().equals("Science")) {
+                                questionArrayList.add(question);
                             }
-                            questionAdapter.notifyDataSetChanged();
 
                         }
+                        questionAdapter.notifyDataSetChanged();
 
-                        @Override
-                        public void onCancelled(@NonNull DatabaseError error) {
+                    }
 
-                        }
-                    });
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
 
     }
 
     private void loadAllGrade10MathsScienceQuestions() {
 
-            LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
-            questionArrayList = new ArrayList<>();
-            homework_rv.setLayoutManager(linearLayoutManager);
-            questionAdapter = new QuestionAdapterStud(this, questionArrayList);
-            homework_rv.setAdapter(questionAdapter);
-            linearLayoutManager.setReverseLayout(true);
-            linearLayoutManager.setStackFromEnd(true);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
+        questionArrayList = new ArrayList<>();
+        homework_rv.setLayoutManager(linearLayoutManager);
+        questionAdapter = new QuestionAdapterStud(this, questionArrayList);
+        homework_rv.setAdapter(questionAdapter);
+        linearLayoutManager.setReverseLayout(true);
+        linearLayoutManager.setStackFromEnd(true);
 
 
-            //get all questions
-            DatabaseReference databaseReference1 = FirebaseDatabase.getInstance().getReference();
-            databaseReference1.child("homework").child("Grade 10")
-                    .addValueEventListener(new ValueEventListener() {
-                        @Override
-                        public void onDataChange(@NonNull DataSnapshot snapshot) {
-                            questionArrayList.clear();
-                            for (DataSnapshot dataSnapshot: snapshot.getChildren())
-                            {
-                                Question question = dataSnapshot.getValue(Question.class);
-                                    questionArrayList.add(question);
-                            }
-                            questionAdapter.notifyDataSetChanged();
-
+        //get all questions
+        DatabaseReference databaseReference1 = FirebaseDatabase.getInstance().getReference();
+        databaseReference1.child("homework").child("Grade 10")
+                .addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        questionArrayList.clear();
+                        for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                            Question question = dataSnapshot.getValue(Question.class);
+                            questionArrayList.add(question);
                         }
+                        questionAdapter.notifyDataSetChanged();
 
-                        @Override
-                        public void onCancelled(@NonNull DatabaseError error) {
+                    }
 
-                        }
-                    });
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
 
-
+                    }
+                });
 
 
     }
 
     private void loadAllGrade10ScienceQuestions() {
 
-            LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
-            questionArrayList = new ArrayList<>();
-            homework_rv.setLayoutManager(linearLayoutManager);
-            questionAdapter = new QuestionAdapterStud(this, questionArrayList);
-            homework_rv.setAdapter(questionAdapter);
-            linearLayoutManager.setReverseLayout(true);
-            linearLayoutManager.setStackFromEnd(true);
-            Question question = new Question();
-            Student student = new Student();
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
+        questionArrayList = new ArrayList<>();
+        homework_rv.setLayoutManager(linearLayoutManager);
+        questionAdapter = new QuestionAdapterStud(this, questionArrayList);
+        homework_rv.setAdapter(questionAdapter);
+        linearLayoutManager.setReverseLayout(true);
+        linearLayoutManager.setStackFromEnd(true);
+        Question question = new Question();
+        Student student = new Student();
 
 
-            //get all questions
-            DatabaseReference databaseReference1 = FirebaseDatabase.getInstance().getReference();
-            databaseReference1.child("homework").child("Grade 10")
-                    .addValueEventListener(new ValueEventListener() {
-                        @Override
-                        public void onDataChange(@NonNull DataSnapshot snapshot) {
-                            questionArrayList.clear();
-                            for (DataSnapshot dataSnapshot: snapshot.getChildren())
-                            {
-                                Question question = dataSnapshot.getValue(Question.class);
-                                if (question.getSubjectName().equals("Science")){
-                                    questionArrayList.add(question);
-                                }
-
+        //get all questions
+        DatabaseReference databaseReference1 = FirebaseDatabase.getInstance().getReference();
+        databaseReference1.child("homework").child("Grade 10")
+                .addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        questionArrayList.clear();
+                        for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                            Question question = dataSnapshot.getValue(Question.class);
+                            if (question.getSubjectName().equals("Science")) {
+                                questionArrayList.add(question);
                             }
-                            questionAdapter.notifyDataSetChanged();
 
                         }
+                        questionAdapter.notifyDataSetChanged();
 
-                        @Override
-                        public void onCancelled(@NonNull DatabaseError error) {
+                    }
 
-                        }
-                    });
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
 
 
     }
@@ -427,10 +422,9 @@ public class HomeworkStud extends AppCompatActivity {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                         questionArrayList.clear();
-                        for (DataSnapshot dataSnapshot: snapshot.getChildren())
-                        {
+                        for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
                             Question question = dataSnapshot.getValue(Question.class);
-                            if (question.getSubjectName().equals("Maths")){
+                            if (question.getSubjectName().equals("Maths")) {
                                 questionArrayList.add(question);
                             }
 
@@ -463,10 +457,9 @@ public class HomeworkStud extends AppCompatActivity {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                         questionArrayList.clear();
-                        for (DataSnapshot dataSnapshot: snapshot.getChildren())
-                        {
+                        for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
                             Question question = dataSnapshot.getValue(Question.class);
-                            if (question.getSubjectName().equals("Maths")){
+                            if (question.getSubjectName().equals("Maths")) {
                                 questionArrayList.add(question);
                             }
                         }

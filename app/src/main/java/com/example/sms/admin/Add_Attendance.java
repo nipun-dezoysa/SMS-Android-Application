@@ -78,7 +78,7 @@ public class Add_Attendance extends AppCompatActivity {
             public void onClick(View v) {
                 DatePickerDialog datePickerDialog = new DatePickerDialog(
                         Add_Attendance.this, android.R.style.Theme_Holo_Light_Dialog_MinWidth,
-                        setListener,year,month,day);
+                        setListener, year, month, day);
                 datePickerDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
                 datePickerDialog.show();
             }
@@ -87,8 +87,8 @@ public class Add_Attendance extends AppCompatActivity {
         setListener = new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker view, int year, int month, int day) {
-                month = month+1;
-                String date = year+"/"+month+"/"+day;
+                month = month + 1;
+                String date = year + "/" + month + "/" + day;
 //                dateOfMonth = day;
 //                monthOfYear = month;
 //                yearOfYear = year;
@@ -113,7 +113,6 @@ public class Add_Attendance extends AppCompatActivity {
         });
 
 
-
         recyclerView = findViewById(R.id.stud_attendance_recyclerview);
         databaseReference = FirebaseDatabase.getInstance().getReference("students");
         list = new ArrayList<>();
@@ -134,8 +133,7 @@ public class Add_Attendance extends AppCompatActivity {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                         list.clear();
-                        for (DataSnapshot dataSnapshot: snapshot.getChildren())
-                        {
+                        for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
                             Student student = dataSnapshot.getValue(Student.class);
                             if (student.getGrade() == 10) {
                                 String uname = dataSnapshot.getKey();
@@ -146,6 +144,7 @@ public class Add_Attendance extends AppCompatActivity {
                         }
                         attendanceAdapter.notifyDataSetChanged();
                     }
+
                     @Override
                     public void onCancelled(@NonNull DatabaseError error) {
 
@@ -169,8 +168,7 @@ public class Add_Attendance extends AppCompatActivity {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                         list.clear();
-                        for (DataSnapshot dataSnapshot: snapshot.getChildren())
-                        {
+                        for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
                             Student student = dataSnapshot.getValue(Student.class);
                             if (student.getGrade() == 11) {
                                 String uname = dataSnapshot.getKey();
@@ -181,6 +179,7 @@ public class Add_Attendance extends AppCompatActivity {
                         }
                         attendanceAdapter.notifyDataSetChanged();
                     }
+
                     @Override
                     public void onCancelled(@NonNull DatabaseError error) {
 

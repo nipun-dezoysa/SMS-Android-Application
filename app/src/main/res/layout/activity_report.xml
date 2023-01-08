@@ -4,37 +4,38 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     tools:context=".admin.ReportActivity">
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-    <RelativeLayout
-        android:background="@color/darkgreen"
-        android:layout_width="match_parent"
-        android:layout_height="120dp">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:background="@color/darkgreen">
 
-        <TextView
-            android:id="@+id/reportBack"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:text="Report"
-            android:textColor="@color/white"
-            android:textSize="30dp"
-            android:textStyle="bold|normal" />
+            <TextView
+                android:id="@+id/reportBack"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="Report"
+                android:textColor="@color/white"
+                android:textSize="30dp"
+                android:textStyle="bold|normal" />
 
-        <ImageView
-            android:id="@+id/report_back"
-            android:layout_width="40dp"
-            android:layout_height="35dp"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="10dp"
-            android:background="@drawable/back" />
+            <ImageView
+                android:id="@+id/report_back"
+                android:layout_width="40dp"
+                android:layout_height="35dp"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="10dp"
+                android:background="@drawable/back" />
 
 
-    </RelativeLayout>
+        </RelativeLayout>
 
         <ImageView
             android:layout_width="400dp"
@@ -49,45 +50,45 @@
             android:layout_marginTop="160dp">
 
             <GridLayout
-                android:columnCount="2"
-                android:rowCount="3"
-                android:alignmentMode="alignMargins"
-                android:columnOrderPreserved="false"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:alignmentMode="alignMargins"
+                android:columnCount="2"
+                android:columnOrderPreserved="false"
+                android:rowCount="3">
 
                 <androidx.cardview.widget.CardView
-                    android:layout_height="wrap_content"
                     android:layout_width="wrap_content"
-                    android:layout_columnWeight="1"
+                    android:layout_height="wrap_content"
                     android:layout_rowWeight="1"
-                    app:cardElevation="6dp"
+                    android:layout_columnWeight="1"
+                    android:layout_margin="12dp"
                     app:cardCornerRadius="25dp"
-                    android:layout_margin="12dp">
+                    app:cardElevation="6dp">
 
 
                     <LinearLayout
                         android:id="@+id/studListReport"
-                        android:orientation="vertical"
-                        android:padding="16dp"
-                        android:gravity="center"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent">
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:padding="16dp">
 
                         <ImageView
-                            android:src="@drawable/students"
                             android:layout_width="80dp"
                             android:layout_height="80dp"
-                            android:layout_marginTop="10dp"/>
+                            android:layout_marginTop="10dp"
+                            android:src="@drawable/students" />
 
                         <TextView
-                            android:textColor="@color/cardview_dark_background"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
                             android:layout_marginTop="12dp"
                             android:text="Student List"
+                            android:textColor="@color/cardview_dark_background"
                             android:textSize="17sp"
-                            android:textStyle="bold"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"/>
+                            android:textStyle="bold" />
 
                     </LinearLayout>
 
@@ -95,36 +96,36 @@
                 </androidx.cardview.widget.CardView>
 
                 <androidx.cardview.widget.CardView
-                    android:layout_height="wrap_content"
                     android:layout_width="wrap_content"
-                    android:layout_columnWeight="1"
+                    android:layout_height="wrap_content"
                     android:layout_rowWeight="1"
-                    app:cardElevation="6dp"
+                    android:layout_columnWeight="1"
+                    android:layout_margin="12dp"
                     app:cardCornerRadius="25dp"
-                    android:layout_margin="12dp">
+                    app:cardElevation="6dp">
 
                     <LinearLayout
                         android:id="@+id/examResults"
-                        android:orientation="vertical"
-                        android:padding="16dp"
-                        android:gravity="center"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent">
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:padding="16dp">
 
                         <ImageView
-                            android:src="@drawable/exam_report"
                             android:layout_width="80dp"
                             android:layout_height="80dp"
-                            android:layout_marginTop="10dp"/>
+                            android:layout_marginTop="10dp"
+                            android:src="@drawable/exam_report" />
 
                         <TextView
-                            android:textColor="@color/cardview_dark_background"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
                             android:layout_marginTop="12dp"
                             android:text="Exam Report"
+                            android:textColor="@color/cardview_dark_background"
                             android:textSize="18sp"
-                            android:textStyle="bold"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"/>
+                            android:textStyle="bold" />
 
                     </LinearLayout>
 
@@ -132,37 +133,36 @@
                 </androidx.cardview.widget.CardView>
 
                 <androidx.cardview.widget.CardView
-                    android:layout_height="wrap_content"
                     android:layout_width="wrap_content"
-                    android:layout_columnWeight="1"
+                    android:layout_height="wrap_content"
                     android:layout_rowWeight="1"
-                    app:cardElevation="6dp"
-                    app:cardCornerRadius="25dp"
+                    android:layout_columnWeight="1"
                     android:layout_margin="12dp"
-                    >
+                    app:cardCornerRadius="25dp"
+                    app:cardElevation="6dp">
 
                     <LinearLayout
                         android:id="@+id/studentContacts"
-                        android:orientation="vertical"
-                        android:padding="16dp"
-                        android:gravity="center"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent">
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:padding="16dp">
 
                         <ImageView
-                            android:src="@drawable/contact"
                             android:layout_width="80dp"
                             android:layout_height="80dp"
-                            android:layout_marginTop="10dp"/>
+                            android:layout_marginTop="10dp"
+                            android:src="@drawable/contact" />
 
                         <TextView
-                            android:textColor="@color/cardview_dark_background"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
                             android:layout_marginTop="12dp"
                             android:text="    Contacts   "
+                            android:textColor="@color/cardview_dark_background"
                             android:textSize="18sp"
-                            android:textStyle="bold"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"/>
+                            android:textStyle="bold" />
 
                     </LinearLayout>
 
@@ -170,36 +170,36 @@
                 </androidx.cardview.widget.CardView>
 
                 <androidx.cardview.widget.CardView
-                    android:layout_height="wrap_content"
                     android:layout_width="wrap_content"
-                    android:layout_columnWeight="1"
+                    android:layout_height="wrap_content"
                     android:layout_rowWeight="1"
-                    app:cardElevation="6dp"
+                    android:layout_columnWeight="1"
+                    android:layout_margin="12dp"
                     app:cardCornerRadius="25dp"
-                    android:layout_margin="12dp">
+                    app:cardElevation="6dp">
 
                     <LinearLayout
                         android:id="@+id/attendanceReport"
-                        android:orientation="vertical"
-                        android:padding="16dp"
-                        android:gravity="center"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent">
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:padding="16dp">
 
                         <ImageView
-                            android:src="@drawable/attendancenew"
                             android:layout_width="80dp"
                             android:layout_height="80dp"
-                            android:layout_marginTop="10dp"/>
+                            android:layout_marginTop="10dp"
+                            android:src="@drawable/attendancenew" />
 
                         <TextView
-                            android:textColor="@color/cardview_dark_background"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
                             android:layout_marginTop="12dp"
                             android:text="Attendance"
+                            android:textColor="@color/cardview_dark_background"
                             android:textSize="18sp"
-                            android:textStyle="bold"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"/>
+                            android:textStyle="bold" />
 
                     </LinearLayout>
 
@@ -207,36 +207,36 @@
                 </androidx.cardview.widget.CardView>
 
                 <androidx.cardview.widget.CardView
-                    android:layout_height="wrap_content"
                     android:layout_width="wrap_content"
-                    android:layout_columnWeight="1"
+                    android:layout_height="wrap_content"
                     android:layout_rowWeight="1"
-                    app:cardElevation="6dp"
+                    android:layout_columnWeight="1"
+                    android:layout_margin="12dp"
                     app:cardCornerRadius="25dp"
-                    android:layout_margin="12dp">
+                    app:cardElevation="6dp">
 
                     <LinearLayout
                         android:id="@+id/id"
-                        android:orientation="vertical"
-                        android:padding="16dp"
-                        android:gravity="center"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent">
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:padding="16dp">
 
                         <ImageView
-                            android:src="@drawable/studymaterial"
                             android:layout_width="80dp"
                             android:layout_height="80dp"
-                            android:layout_marginTop="10dp"/>
+                            android:layout_marginTop="10dp"
+                            android:src="@drawable/studymaterial" />
 
                         <TextView
-                            android:textColor="@color/cardview_dark_background"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
                             android:layout_marginTop="12dp"
                             android:text=".."
+                            android:textColor="@color/cardview_dark_background"
                             android:textSize="18sp"
-                            android:textStyle="bold"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"/>
+                            android:textStyle="bold" />
 
                     </LinearLayout>
 

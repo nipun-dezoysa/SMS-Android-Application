@@ -27,8 +27,10 @@ import java.util.List;
 public class ScheduleActivity extends AppCompatActivity {
 
     ImageView schedule_back;
-    EditText mondayMaths,mondayScience,tuesdayMaths,tuesdayScience,wednesdayMaths,wednesdayScience,thursdayMaths,thursdayScience,fridayMaths,fridayScience,saturdayMaths,saturdayScience,sundayMaths,sundayScience;
-    TextView grade10_schedule,grade11_schedule;
+    EditText mondayMaths, mondayScience, tuesdayMaths, tuesdayScience, wednesdayMaths, wednesdayScience,
+            thursdayMaths, thursdayScience, fridayMaths, fridayScience, saturdayMaths, saturdayScience,
+            sundayMaths, sundayScience;
+    TextView grade10_schedule, grade11_schedule;
     FloatingActionButton saveSchedule;
     List<String> mathsList;
     List<String> scienceList;
@@ -118,7 +120,7 @@ public class ScheduleActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 databaseReference = FirebaseDatabase.getInstance().getReference().child("Schedule");
-                if(validateTimeSlot()){
+                if (validateTimeSlot()) {
                     mathsList.clear();
                     scienceList.clear();
                     addToList();
@@ -127,7 +129,7 @@ public class ScheduleActivity extends AppCompatActivity {
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
                             databaseReference.child(grade).child("Maths").setValue(mathsList);
                             databaseReference.child(grade).child("Science").setValue(scienceList);
-                            TastyToast.makeText(ScheduleActivity.this, "Schedule updated Successfully", TastyToast.LENGTH_SHORT,TastyToast.SUCCESS);
+                            TastyToast.makeText(ScheduleActivity.this, "Schedule updated Successfully", TastyToast.LENGTH_SHORT, TastyToast.SUCCESS);
                         }
 
                         @Override
@@ -149,7 +151,7 @@ public class ScheduleActivity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 getMathsList.clear();
-                for (DataSnapshot dataSnapshot: snapshot.getChildren()){
+                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
                     String s = dataSnapshot.getValue(String.class);
                     getMathsList.add(s);
                 }
@@ -175,7 +177,7 @@ public class ScheduleActivity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 getMathsList.clear();
-                for (DataSnapshot dataSnapshot: snapshot.getChildren()){
+                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
                     String s = dataSnapshot.getValue(String.class);
                     getMathsList.add(s);
                 }
@@ -204,7 +206,7 @@ public class ScheduleActivity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 getMathsList.clear();
-                for (DataSnapshot dataSnapshot: snapshot.getChildren()){
+                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
                     String s = dataSnapshot.getValue(String.class);
                     getMathsList.add(s);
                 }
@@ -230,7 +232,7 @@ public class ScheduleActivity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 getMathsList.clear();
-                for (DataSnapshot dataSnapshot: snapshot.getChildren()){
+                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
                     String s = dataSnapshot.getValue(String.class);
                     getMathsList.add(s);
                 }
@@ -270,17 +272,17 @@ public class ScheduleActivity extends AppCompatActivity {
         scienceList.add(sundayScience.getText().toString());
     }
 
-    private boolean validateTimeSlot(){
-        if(mondayMaths.getText().toString().equals("") && mondayScience.getText().toString().equals("")
+    private boolean validateTimeSlot() {
+        if (mondayMaths.getText().toString().equals("") && mondayScience.getText().toString().equals("")
                 && tuesdayMaths.getText().toString().equals("") && tuesdayScience.getText().toString().equals("")
                 && wednesdayMaths.getText().toString().equals("") && wednesdayScience.getText().toString().equals("")
                 && thursdayMaths.getText().toString().equals("") && thursdayScience.getText().toString().equals("")
                 && fridayMaths.getText().toString().equals("") && fridayScience.getText().toString().equals("")
                 && saturdayMaths.getText().toString().equals("") && saturdayScience.getText().toString().equals("")
-                && sundayMaths.getText().toString().equals("") && sundayScience.getText().toString().equals("")){
-            TastyToast.makeText(this, "Please fill Time Slot", TastyToast.LENGTH_SHORT,TastyToast.ERROR);
+                && sundayMaths.getText().toString().equals("") && sundayScience.getText().toString().equals("")) {
+            TastyToast.makeText(this, "Please fill Time Slot", TastyToast.LENGTH_SHORT, TastyToast.ERROR);
             return false;
-        }else
+        } else
             return true;
     }
 }

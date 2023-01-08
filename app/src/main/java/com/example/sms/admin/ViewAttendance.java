@@ -39,7 +39,7 @@ public class ViewAttendance extends AppCompatActivity {
         grade11 = findViewById(R.id.grade11_atn);
 
         int intYear = Year.now().getValue();
-        year = ""+intYear;
+        year = "" + intYear;
 
         view_attendance_back = findViewById(R.id.view_attendance_back);
 
@@ -51,7 +51,6 @@ public class ViewAttendance extends AppCompatActivity {
         });
 
         databaseReference = FirebaseDatabase.getInstance().getReference();
-
 
 
         grade10.setOnClickListener(new View.OnClickListener() {

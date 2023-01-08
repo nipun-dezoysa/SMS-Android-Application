@@ -17,23 +17,21 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
 
-public class ViewDayAttendanceAdapter extends RecyclerView.Adapter<ViewDayAttendanceAdapter.MyViewHolderViewAttendance>{
+public class ViewDayAttendanceAdapter extends RecyclerView.Adapter<ViewDayAttendanceAdapter.MyViewHolderViewAttendance> {
 
     Context context;
     ArrayList<String> list;
-//    private DatabaseReference databaseRef;
 
     public ViewDayAttendanceAdapter(Context context, ArrayList<String> list) {
         this.context = context;
         this.list = list;
-//        databaseRef = FirebaseDatabase.getInstance().getReference();
 
     }
 
     @NonNull
     @Override
     public ViewDayAttendanceAdapter.MyViewHolderViewAttendance onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.day_attendance_entry,parent,false);
+        View view = LayoutInflater.from(context).inflate(R.layout.day_attendance_entry, parent, false);
         return new ViewDayAttendanceAdapter.MyViewHolderViewAttendance(view);
     }
 
@@ -59,6 +57,7 @@ public class ViewDayAttendanceAdapter extends RecyclerView.Adapter<ViewDayAttend
 
     public class MyViewHolderViewAttendance extends RecyclerView.ViewHolder {
         TextView dayOfMonth;
+
         public MyViewHolderViewAttendance(@NonNull View itemView) {
             super(itemView);
             dayOfMonth = itemView.findViewById(R.id.attendance_day);

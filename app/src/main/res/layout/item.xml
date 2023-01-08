@@ -7,16 +7,16 @@
 
 
     <ImageView
+        android:id="@+id/m_image"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/m_image"
-        android:scaleType="centerCrop"/>
+        android:scaleType="centerCrop" />
 
     <ImageView
         android:id="@+id/deletePhoto"
         android:layout_width="30dp"
         android:layout_height="35dp"
-        android:src="@drawable/delete"
-        android:layout_gravity="end|center"/>
+        android:layout_gravity="end|center"
+        android:src="@drawable/delete" />
 
 </androidx.cardview.widget.CardView>

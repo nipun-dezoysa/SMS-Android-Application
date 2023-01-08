@@ -7,9 +7,9 @@
     tools:context=".others.ShowActivity">
 
     <RelativeLayout
-        android:background="@color/darkgreen"
         android:layout_width="match_parent"
         android:layout_height="120dp"
+        android:background="@color/darkgreen"
         tools:ignore="MissingConstraints">
 
         <ImageView
@@ -28,7 +28,6 @@
             android:textColor="@color/white"
             android:textSize="30dp"
             android:textStyle="bold|normal" />
-
 
 
     </RelativeLayout>

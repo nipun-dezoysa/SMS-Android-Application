@@ -10,44 +10,41 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-    <RelativeLayout
-        android:id="@+id/menu"
-        android:background="@color/darkgreen"
-        android:layout_width="match_parent"
-        android:layout_height="120dp">
+        <RelativeLayout
+            android:id="@+id/menu"
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:background="@color/darkgreen">
+
+            <ImageView
+                android:id="@+id/addNote_back"
+                android:layout_width="40dp"
+                android:layout_height="35dp"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="10dp"
+                android:background="@drawable/back" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="Add a Note"
+                android:textColor="@color/white"
+                android:textSize="30dp"
+                android:textStyle="bold|normal" />
+
+
+        </RelativeLayout>
+        <!--    <androidx.appcompat.widget.Toolbar-->
+        <!--        android:id="@+id/toolbarofcreatenote"-->
+        <!--        android:layout_width="match_parent"-->
+        <!--        android:layout_height="?attr/actionBarSize">-->
 
         <ImageView
-            android:id="@+id/addNote_back"
-            android:layout_width="40dp"
-            android:layout_height="35dp"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="10dp"
-            android:background="@drawable/back" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:text="Add a Note"
-            android:textColor="@color/white"
-            android:textSize="30dp"
-            android:textStyle="bold|normal" />
-
-
-
-
-
-    </RelativeLayout>
-<!--    <androidx.appcompat.widget.Toolbar-->
-<!--        android:id="@+id/toolbarofcreatenote"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="?attr/actionBarSize">-->
-
-    <ImageView
-        android:layout_width="400dp"
-        android:layout_height="400dp"
-        android:layout_gravity="center"
-        android:src="@drawable/logo_transparentnew" />
+            android:layout_width="400dp"
+            android:layout_height="400dp"
+            android:layout_gravity="center"
+            android:src="@drawable/logo_transparentnew" />
 
 
         <!--    </androidx.appcompat.widget.Toolbar>-->
@@ -57,12 +54,12 @@
             android:id="@+id/createtitleofnote"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingLeft="20dp"
-            android:hint="Enter your note title here"
             android:layout_marginTop="140dp"
+            android:hint="Enter your note title here"
+            android:paddingLeft="20dp"
             android:textColor="@color/black"
             android:textSize="20dp"
-            android:textStyle="bold"/>
+            android:textStyle="bold" />
 
         <EditText
             android:id="@+id/createcontentofnote"
@@ -70,27 +67,27 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="200dp"
             android:background="#faf7f7"
-            android:paddingLeft="20dp"
             android:hint="Enter your note content here"
             android:padding="15dp"
+            android:paddingLeft="20dp"
             android:textColor="@color/black"
             android:textSize="15dp">
 
         </EditText>
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
-                android:id="@+id/savenote"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_alignParentBottom="true"
-                android:layout_gravity="bottom|end"
-                android:layout_marginRight="30dp"
-                android:layout_marginBottom="30dp"
-                android:src="@drawable/save1"
-                app:maxImageSize="40dp">
+            android:id="@+id/savenote"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            android:layout_gravity="bottom|end"
+            android:layout_marginRight="30dp"
+            android:layout_marginBottom="30dp"
+            android:src="@drawable/save1"
+            app:maxImageSize="40dp">
 
-            </com.google.android.material.floatingactionbutton.FloatingActionButton>
+        </com.google.android.material.floatingactionbutton.FloatingActionButton>
 
         <ProgressBar
             android:id="@+id/progressBarOfCreateNote"
@@ -98,7 +95,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:visibility="invisible"/>
+            android:visibility="invisible" />
 
 
     </androidx.cardview.widget.CardView>

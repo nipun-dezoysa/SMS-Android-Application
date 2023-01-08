@@ -8,9 +8,9 @@
     tools:context=".admin.TextRecognition">
 
     <RelativeLayout
-        android:background="@color/darkgreen"
         android:layout_width="match_parent"
-        android:layout_height="120dp">
+        android:layout_height="120dp"
+        android:background="@color/darkgreen">
 
         <ImageView
             android:id="@+id/txt_rec_back"
@@ -30,14 +30,13 @@
             android:textStyle="bold|normal" />
 
 
-
     </RelativeLayout>
 
     <LinearLayout
-        android:padding="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:padding="10dp">
 
         <Button
             android:id="@+id/input_img"
@@ -45,59 +44,57 @@
             android:layout_height="match_parent"
             android:layout_marginEnd="5dp"
             android:layout_weight="1"
-            android:text="Take Image"
             android:background="@drawable/btn"
+            android:text="Take Image"
             android:textColor="@color/white"
             app:cornerRadius="5dp"
-            app:icon="@drawable/cam_add"
-            />
+            app:icon="@drawable/cam_add" />
 
         <Button
             android:id="@+id/input_scan"
-            android:text="Recognize Text"
-            app:cornerRadius="5dp"
-            android:layout_marginStart="5dp"
-            android:layout_weight="1"
-            android:textColor="@color/white"
-            android:background="@drawable/btn"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:icon="@drawable/scan"
-            />
+            android:layout_marginStart="5dp"
+            android:layout_weight="1"
+            android:background="@drawable/btn"
+            android:text="Recognize Text"
+            android:textColor="@color/white"
+            app:cornerRadius="5dp"
+            app:icon="@drawable/scan" />
 
     </LinearLayout>
 
     <ScrollView
-        android:padding="10dp"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:padding="10dp">
 
         <LinearLayout
-            android:padding="10dp"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:padding="10dp">
 
             <com.google.android.material.imageview.ShapeableImageView
                 android:id="@+id/img_iv"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:src="@drawable/img"
                 android:adjustViewBounds="true"
-                app:strokeWidth="5dp"/>
+                android:src="@drawable/img"
+                app:strokeWidth="5dp" />
 
             <TextView
                 style="@style/TextAppearance.MaterialComponents.Headline4"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:text="Recognized Text:"/>
+                android:text="Recognized Text:" />
 
             <EditText
                 android:id="@+id/recog_txt_et"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="12dp"/>
+                android:textSize="12dp" />
         </LinearLayout>
 
 

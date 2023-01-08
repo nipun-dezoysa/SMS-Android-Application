@@ -32,7 +32,7 @@ public class MyAdapterStd extends RecyclerView.Adapter<MyAdapterStd.MyViewHolder
     @NonNull
     @Override
     public MyViewHolderStd onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.userentry,parent,false);
+        View view = LayoutInflater.from(context).inflate(R.layout.userentry, parent, false);
         return new MyViewHolderStd(view);
     }
 
@@ -43,7 +43,7 @@ public class MyAdapterStd extends RecyclerView.Adapter<MyAdapterStd.MyViewHolder
         holder.email.setText(user.getEmail());
         holder.contact.setText(user.getContact());
         holder.subject.setText(user.getSubject());
-        holder.grade.setText(user.getGrade()+"");
+        holder.grade.setText(user.getGrade() + "");
 
 
         holder.cardViewUE.setOnLongClickListener(new View.OnLongClickListener() {
@@ -62,9 +62,10 @@ public class MyAdapterStd extends RecyclerView.Adapter<MyAdapterStd.MyViewHolder
         return list.size();
     }
 
-    public static class MyViewHolderStd extends RecyclerView.ViewHolder{
+    public static class MyViewHolderStd extends RecyclerView.ViewHolder {
         TextView username, contact, email, subject, grade;
         CardView cardViewUE;
+
         public MyViewHolderStd(@NonNull View itemView) {
             super(itemView);
             username = itemView.findViewById(R.id.textusername);

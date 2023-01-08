@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     tools:context=".admin.AttendanceReport">
 
     <androidx.cardview.widget.CardView
@@ -11,9 +12,9 @@
         android:layout_height="match_parent">
 
         <RelativeLayout
-            android:background="@color/darkgreen"
             android:layout_width="match_parent"
             android:layout_height="120dp"
+            android:background="@color/darkgreen"
             tools:ignore="MissingConstraints">
 
             <ImageView
@@ -98,35 +99,36 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_gravity="center">
+                android:layout_gravity="center"
+                android:orientation="horizontal">
 
                 <EditText
                     android:id="@+id/date"
-                    android:hint="DD"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
+                    android:layout_height="wrap_content"
+                    android:hint="DD" />
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="/"/>
+                    android:text="/" />
 
                 <EditText
                     android:id="@+id/month"
-                    android:hint="MM"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
+                    android:layout_height="wrap_content"
+                    android:hint="MM" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="/"/>
+                    android:text="/" />
 
                 <EditText
                     android:id="@+id/year"
-                    android:hint="YYYY"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
+                    android:layout_height="wrap_content"
+                    android:hint="YYYY" />
 
             </LinearLayout>
 
@@ -135,12 +137,12 @@
                 style="?android:buttonBarButtonStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="44dp"
+                android:layout_gravity="center"
                 android:layout_margin="8dp"
                 android:background="@drawable/btn"
                 android:paddingLeft="15dp"
                 android:paddingRight="15dp"
                 android:text="Generate &amp; Download Report"
-                android:layout_gravity="center"
                 android:textAllCaps="false"
                 android:textColor="@android:color/white"
                 android:textSize="14sp"
@@ -150,7 +152,7 @@
             <com.github.barteksc.pdfviewer.PDFView
                 android:id="@+id/attendanceList_pdf_viewer"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"/>
+                android:layout_height="match_parent" />
 
 
         </LinearLayout>

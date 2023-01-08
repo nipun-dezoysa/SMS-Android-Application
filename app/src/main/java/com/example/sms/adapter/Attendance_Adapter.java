@@ -42,7 +42,7 @@ public class Attendance_Adapter extends RecyclerView.Adapter<Attendance_Adapter.
     @NonNull
     @Override
     public MyViewHolderAttendance onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.attendance_entry,parent,false);
+        View view = LayoutInflater.from(context).inflate(R.layout.attendance_entry, parent, false);
         return new MyViewHolderAttendance(view);
 
     }
@@ -51,17 +51,17 @@ public class Attendance_Adapter extends RecyclerView.Adapter<Attendance_Adapter.
     public void onBindViewHolder(@NonNull Attendance_Adapter.MyViewHolderAttendance holder, @SuppressLint("RecyclerView") int position) {
         Student user = list.get(position);
         holder.username.setText(user.getUsername());
-        Add_Attendance.attendanceList.add(new Attendance(user.getUsername(),"Absent"));
+        Add_Attendance.attendanceList.add(new Attendance(user.getUsername(), "Absent"));
 
         holder.checkBox.setChecked(false);
 
         holder.checkBox.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (holder.checkBox.isChecked()){
-                    Add_Attendance.attendanceList.set(position, new Attendance(user.getUsername(),"Present"));
-                } else{
-                    Add_Attendance.attendanceList.set(position, new Attendance(user.getUsername(),"Absent"));
+                if (holder.checkBox.isChecked()) {
+                    Add_Attendance.attendanceList.set(position, new Attendance(user.getUsername(), "Present"));
+                } else {
+                    Add_Attendance.attendanceList.set(position, new Attendance(user.getUsername(), "Absent"));
                 }
             }
         });
@@ -72,9 +72,9 @@ public class Attendance_Adapter extends RecyclerView.Adapter<Attendance_Adapter.
             public void onClick(View v) {
 
                 TextView attendance = Add_Attendance.attendance_date;
-                String attendancetxt = attendance.getText().toString().replace('/','-');
+                String attendancetxt = attendance.getText().toString().replace('/', '-');
 
-                if (attendancetxt.equals("Date")){
+                if (attendancetxt.equals("Date")) {
                     TastyToast.makeText(context, "Please Select a Date", TastyToast.LENGTH_SHORT, TastyToast.INFO);
                 } else {
                     databaseRef.child("Attendance").addListenerForSingleValueEvent(new ValueEventListener() {
@@ -95,7 +95,6 @@ public class Attendance_Adapter extends RecyclerView.Adapter<Attendance_Adapter.
         });
 
 
-
     }
 
     @Override
@@ -103,11 +102,10 @@ public class Attendance_Adapter extends RecyclerView.Adapter<Attendance_Adapter.
         return list.size();
     }
 
-    public static class MyViewHolderAttendance extends RecyclerView.ViewHolder{
-//        public String checkbox;
+    public static class MyViewHolderAttendance extends RecyclerView.ViewHolder {
+
         TextView username;
         CheckBox checkBox;
-        FloatingActionButton save_student_attendance;
 
         public MyViewHolderAttendance(@NonNull View itemView) {
             super(itemView);

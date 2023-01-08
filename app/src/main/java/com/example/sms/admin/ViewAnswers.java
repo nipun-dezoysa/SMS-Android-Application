@@ -49,12 +49,12 @@ public class ViewAnswers extends AppCompatActivity {
             @Override
             public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
 
-                for (DataSnapshot dataSnapshot: snapshot.getChildren()){
+                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
 
                     String fileName = dataSnapshot.getKey();
                     String url = dataSnapshot.getValue(String.class);
 
-                    ((AnswersAdapter)recyclerView.getAdapter()).update(fileName, url);
+                    ((AnswersAdapter) recyclerView.getAdapter()).update(fileName, url);
                 }
 //                String fileName = snapshot.getKey();
 //                String url = snapshot.getValue(String.class);
@@ -85,7 +85,7 @@ public class ViewAnswers extends AppCompatActivity {
         });
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(linearLayoutManager);
-        answersAdapter = new AnswersAdapter(recyclerView,ViewAnswers.this,new ArrayList<>(), new ArrayList<>());
+        answersAdapter = new AnswersAdapter(recyclerView, ViewAnswers.this, new ArrayList<>(), new ArrayList<>());
         recyclerView.setAdapter(answersAdapter);
         linearLayoutManager.setReverseLayout(true);
         linearLayoutManager.setStackFromEnd(true);

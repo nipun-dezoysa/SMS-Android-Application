@@ -27,9 +27,6 @@ public class NoteDetails extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_note_details);
 
-//        Intent i = getIntent();
-//        uname = i.getStringExtra("uname");
-
         Paper.init(NoteDetails.this);
         uname = Paper.book().read(OnlineUsers.UserNamekey);
 
@@ -52,9 +49,9 @@ public class NoteDetails extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(v.getContext(), EditNoteActivity.class);
-                intent.putExtra("title",data.getStringExtra("title"));
-                intent.putExtra("content",data.getStringExtra("content"));
-                intent.putExtra("noteId",data.getStringExtra("noteId"));
+                intent.putExtra("title", data.getStringExtra("title"));
+                intent.putExtra("content", data.getStringExtra("content"));
+                intent.putExtra("noteId", data.getStringExtra("noteId"));
                 intent.putExtra("uname", uname);
                 finish();
                 v.getContext().startActivity(intent);

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:background="@color/white"
+    android:orientation="vertical"
     tools:context=".students.ExamsResultsStud">
 
 
@@ -14,9 +14,9 @@
         android:layout_height="match_parent">
 
         <RelativeLayout
-            android:background="@color/darkgreen"
             android:layout_width="match_parent"
             android:layout_height="120dp"
+            android:background="@color/darkgreen"
             tools:ignore="MissingConstraints">
 
             <ImageView
@@ -93,6 +93,7 @@
                     android:textColor="@color/darkgreen"
                     android:textSize="16dp"
                     android:textStyle="normal|bold" />
+
                 <TextView
                     android:id="@+id/term3_report_stud"
                     android:layout_width="0dp"
@@ -117,12 +118,12 @@
                 style="?android:buttonBarButtonStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="44dp"
+                android:layout_gravity="center"
                 android:layout_margin="8dp"
                 android:background="@drawable/btn"
                 android:paddingLeft="15dp"
                 android:paddingRight="15dp"
                 android:text="Generate &amp; Download Report"
-                android:layout_gravity="center"
                 android:textAllCaps="false"
                 android:textColor="@android:color/white"
                 android:textSize="14sp"
@@ -132,15 +133,13 @@
             <com.github.barteksc.pdfviewer.PDFView
                 android:id="@+id/examResults_pdf_viewer"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"/>
+                android:layout_height="match_parent" />
 
 
         </LinearLayout>
 
 
     </androidx.cardview.widget.CardView>
-
-
 
 
 </LinearLayout>

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/cardView"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    app:cardBackgroundColor="@color/white"
     android:layout_margin="5dp"
-    android:id="@+id/cardView">
+    app:cardBackgroundColor="@color/white">
 
     <LinearLayout
         android:layout_width="340dp"
@@ -41,12 +41,13 @@
 
 
     </LinearLayout>
+
     <ImageView
         android:id="@+id/removeUpdate"
         android:layout_width="25dp"
         android:layout_height="35dp"
         android:layout_gravity="end|center"
-        android:src="@drawable/delete"/>
+        android:src="@drawable/delete" />
 
     <ImageView
         android:id="@+id/editUpdate"
@@ -54,6 +55,6 @@
         android:layout_height="35dp"
         android:layout_gravity="end|center"
         android:layout_marginRight="30dp"
-        android:src="@drawable/edit_note"/>
+        android:src="@drawable/edit_note" />
 
 </androidx.cardview.widget.CardView>

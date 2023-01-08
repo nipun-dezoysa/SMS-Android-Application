@@ -29,10 +29,10 @@ import com.sdsmdg.tastytoast.TastyToast;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Home_Work extends AppCompatActivity{
+public class Home_Work extends AppCompatActivity {
 
 
-    LinearLayout grade10,grade11,viewAnswers;
+    LinearLayout grade10, grade11, viewAnswers;
     ImageView back_btn;
     TextView gradeVal;
     public static String Grade;

@@ -14,7 +14,8 @@ public class Teacher {
     private String address;
 
 
-    public Teacher(){}
+    public Teacher() {
+    }
 
 
     public Teacher(String profileuri, String fullName, String nickName, String dob, String contactNo, String email, String address) {
@@ -29,7 +30,7 @@ public class Teacher {
     }
 
 
-    public String  getProfileuri() {
+    public String getProfileuri() {
         return profileuri;
     }
 

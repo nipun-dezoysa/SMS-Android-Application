@@ -13,9 +13,9 @@
 
 
         <RelativeLayout
-            android:background="@color/darkgreen"
             android:layout_width="match_parent"
-            android:layout_height="120dp">
+            android:layout_height="120dp"
+            android:background="@color/darkgreen">
 
             <ImageView
                 android:id="@+id/view_attendance_back"
@@ -35,14 +35,13 @@
                 android:textStyle="bold|normal" />
 
 
-
         </RelativeLayout>
+
         <ImageView
             android:layout_width="400dp"
             android:layout_height="400dp"
             android:layout_gravity="center"
             android:src="@drawable/logo_transparentnew" />
-
 
 
         <LinearLayout
@@ -51,38 +50,38 @@
             android:layout_gravity="center_horizontal|center">
 
             <GridLayout
-                android:columnCount="1"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:columnCount="1">
 
                 <androidx.cardview.widget.CardView
-                    android:layout_height="100dp"
                     android:layout_width="wrap_content"
-                    android:layout_columnWeight="1"
+                    android:layout_height="100dp"
                     android:layout_rowWeight="1"
-                    app:cardElevation="6dp"
+                    android:layout_columnWeight="1"
                     android:layout_gravity="center_horizontal"
+                    android:layout_margin="12dp"
                     app:cardCornerRadius="25dp"
-                    android:layout_margin="12dp">
+                    app:cardElevation="6dp">
 
                     <LinearLayout
                         android:id="@+id/grade10_atn"
-                        android:orientation="vertical"
-                        android:padding="16dp"
-                        android:gravity="center"
-                        android:background="@color/darkgreen"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent">
+                        android:layout_height="match_parent"
+                        android:background="@color/tableColor"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:padding="16dp">
 
 
                         <TextView
-                            android:textColor="@color/white"
-                            android:text="Grade 10"
-                            android:textSize="25dp"
-                            android:gravity="center_vertical"
-                            android:textStyle="bold"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"/>
+                            android:layout_height="wrap_content"
+                            android:gravity="center_vertical"
+                            android:text="Grade 10"
+                            android:textColor="@color/black"
+                            android:textSize="25dp"
+                            android:textStyle="bold" />
 
                     </LinearLayout>
 
@@ -90,33 +89,33 @@
                 </androidx.cardview.widget.CardView>
 
                 <androidx.cardview.widget.CardView
-                    android:layout_height="100dp"
                     android:layout_width="wrap_content"
-                    android:layout_columnWeight="1"
+                    android:layout_height="100dp"
                     android:layout_rowWeight="1"
-                    app:cardElevation="6dp"
+                    android:layout_columnWeight="1"
                     android:layout_gravity="center_horizontal"
+                    android:layout_margin="12dp"
                     app:cardCornerRadius="25dp"
-                    android:layout_margin="12dp">
+                    app:cardElevation="6dp">
 
                     <LinearLayout
                         android:id="@+id/grade11_atn"
-                        android:orientation="vertical"
-                        android:padding="16dp"
-                        android:gravity="center"
-                        android:background="@color/darkgreen"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent">
+                        android:layout_height="match_parent"
+                        android:background="@color/tableColor"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:padding="16dp">
 
 
                         <TextView
-                            android:textColor="@color/white"
-                            android:text="Grade 11"
-                            android:textSize="25dp"
-                            android:layout_gravity="center_vertical"
-                            android:textStyle="bold"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"/>
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:text="Grade 11"
+                            android:textColor="@color/black"
+                            android:textSize="25dp"
+                            android:textStyle="bold" />
 
 
                     </LinearLayout>

@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="320dp"
     android:layout_height="600dp"
+    android:background="@color/white"
     android:layout_gravity="center"
     android:orientation="vertical">
-
 
 
     <androidx.cardview.widget.CardView
@@ -20,12 +19,11 @@
         app:cardUseCompatPadding="true">
 
 
-
         <ImageView
             android:layout_width="400dp"
             android:layout_height="400dp"
-            android:src="@drawable/logo_transparentnew"
-            android:layout_gravity="center"/>
+            android:layout_gravity="center"
+            android:src="@drawable/logo_transparentnew" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -45,11 +43,11 @@
 
                 <de.hdodenhof.circleimageview.CircleImageView
                     android:id="@+id/cropView"
-                    app:civ_border_color="@color/darkgreen"
-                    app:civ_border_width="2dp"
                     android:layout_width="110dp"
                     android:layout_height="110dp"
                     android:src="@drawable/profile"
+                    app:civ_border_color="@color/darkgreen"
+                    app:civ_border_width="2dp"
                     app:layout_constraintBottom_toTopOf="@+id/editName"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -65,24 +63,23 @@
                 android:gravity="center"
                 android:orientation="vertical"
                 android:padding="20dp">
-<!--                <TextView-->
-<!--                    android:id="@+id/cam_uri"-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="wrap_content">-->
-<!--                </TextView>-->
-
+                <!--                <TextView-->
+                <!--                    android:id="@+id/cam_uri"-->
+                <!--                    android:layout_width="wrap_content"-->
+                <!--                    android:layout_height="wrap_content">-->
+                <!--                </TextView>-->
 
 
                 <EditText
                     android:id="@+id/txtFullName"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:padding="5dp"
                     android:background="@drawable/texteditbgn12"
                     android:drawableLeft="@drawable/name"
                     android:drawablePadding="8dp"
                     android:hint="Full Name"
                     android:inputType="textPersonName"
+                    android:padding="5dp"
                     android:paddingLeft="5dp"
                     android:singleLine="true"
                     android:textColor="#0d6e6a"
@@ -93,13 +90,13 @@
                     android:id="@+id/txtNickName"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:padding="5dp"
                     android:layout_marginTop="8dp"
                     android:background="@drawable/texteditbgn12"
                     android:drawableLeft="@drawable/name"
                     android:drawablePadding="5dp"
                     android:hint="Nick Name"
                     android:inputType="textPersonName"
+                    android:padding="5dp"
                     android:paddingLeft="5dp"
                     android:singleLine="true"
                     android:textColor="#0d6e6a"
@@ -110,29 +107,29 @@
                     android:id="@+id/dob1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:padding="5dp"
                     android:layout_marginTop="8dp"
                     android:background="@drawable/texteditbgn12"
                     android:drawableLeft="@drawable/calendar"
                     android:drawablePadding="5dp"
                     android:hint="Date Of Birth"
+                    android:padding="5dp"
                     android:paddingLeft="5dp"
-                    android:textSize="17dp"
                     android:singleLine="true"
                     android:textColor="#0d6e6a"
+                    android:textSize="17dp"
                     android:textStyle="bold" />
 
                 <EditText
                     android:id="@+id/txtContact"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:padding="5dp"
                     android:layout_marginTop="8dp"
                     android:background="@drawable/texteditbgn12"
                     android:drawableLeft="@drawable/mobile"
                     android:drawablePadding="5dp"
                     android:hint="Contact Number"
                     android:inputType="phone"
+                    android:padding="5dp"
                     android:paddingLeft="5dp"
                     android:singleLine="true"
                     android:textColor="#0d6e6a"
@@ -140,18 +137,17 @@
                     android:textStyle="bold" />
 
 
-
                 <EditText
                     android:id="@+id/txtEmail"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
-                    android:padding="5dp"
                     android:background="@drawable/texteditbgn12"
                     android:drawableLeft="@drawable/mail"
                     android:drawablePadding="5dp"
                     android:hint="Email ID"
                     android:inputType="textMultiLine"
+                    android:padding="5dp"
                     android:paddingLeft="5dp"
                     android:textColor="#0d6e6a"
                     android:textSize="16sp"
@@ -161,19 +157,17 @@
                     android:id="@+id/txtAddress"
                     android:layout_width="match_parent"
                     android:layout_height="60dp"
-                    android:padding="5dp"
                     android:layout_marginTop="8dp"
                     android:background="@drawable/texteditbgn12"
                     android:drawableLeft="@drawable/calendar"
                     android:drawablePadding="5dp"
                     android:hint="Address"
                     android:inputType="textMultiLine"
+                    android:padding="5dp"
                     android:paddingLeft="5dp"
                     android:textColor="#0d6e6a"
                     android:textSize="16sp"
                     android:textStyle="bold" />
-
-
 
 
             </LinearLayout>
@@ -215,11 +209,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical|center_horizontal">
+
             <ProgressBar
                 android:id="@+id/progressBarPop"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:visibility="gone"/>
+                android:visibility="gone" />
 
         </LinearLayout>
     </androidx.cardview.widget.CardView>

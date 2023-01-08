@@ -9,7 +9,8 @@ import android.os.Handler;
 import com.example.sms.R;
 
 public class SplashScreen extends AppCompatActivity {
-        Handler handler = new Handler();
+    Handler handler = new Handler();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -22,7 +23,7 @@ public class SplashScreen extends AppCompatActivity {
                 finish();
 
             }
-        },3000);
+        }, 3000);
 
     }
 }

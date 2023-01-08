@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/cardView"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    app:cardBackgroundColor="@color/white"
     android:layout_margin="5dp"
-    android:id="@+id/cardView">
+    app:cardBackgroundColor="@color/white">
 
     <TextView
         android:id="@+id/text_sub_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
         android:hint="Subject Name"
-        android:textColor="@color/black"
-        android:layout_gravity="center_horizontal"/>
+        android:textColor="@color/black" />
 
     <LinearLayout
         android:layout_width="340dp"
@@ -26,8 +26,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="5dp"
-            android:padding="5dp"
             android:hint="Unit Name:"
+            android:padding="5dp"
             android:textColor="@color/black"
             android:textColorHint="@color/black"
             android:textSize="20dp">
@@ -49,12 +49,13 @@
 
 
     </LinearLayout>
+
     <ImageView
         android:id="@+id/remove_qstn"
         android:layout_width="25dp"
         android:layout_height="35dp"
         android:layout_gravity="end|center"
-        android:src="@drawable/delete"/>
+        android:src="@drawable/delete" />
 
     <ImageView
         android:id="@+id/edit_qstn"
@@ -62,6 +63,6 @@
         android:layout_height="35dp"
         android:layout_gravity="end|center"
         android:layout_marginRight="30dp"
-        android:src="@drawable/edit_note"/>
+        android:src="@drawable/edit_note" />
 
 </androidx.cardview.widget.CardView>

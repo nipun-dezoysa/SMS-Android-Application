@@ -32,7 +32,7 @@ public class EditUpdatesActivity extends AppCompatActivity {
 
     Intent intent;
 
-    String updateID,updateTitle,updateContent;
+    String updateID, updateTitle, updateContent;
 
     List<String> subjectlist = new ArrayList<>();
 
@@ -74,24 +74,25 @@ public class EditUpdatesActivity extends AppCompatActivity {
 
                 databaseReference = FirebaseDatabase.getInstance().getReference();
 
-                if (editContentTxt.isEmpty() || editTitleTxt.isEmpty()){
+                if (editContentTxt.isEmpty() || editTitleTxt.isEmpty()) {
                     TastyToast.makeText(EditUpdatesActivity.this, "Fields cannot be empty", TastyToast.LENGTH_SHORT, TastyToast.INFO).show();
-                } else databaseReference.child("updates").addListenerForSingleValueEvent(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        databaseReference.child("updates").child(updateID).child("updateID").setValue(updateID);
-                        databaseReference.child("updates").child(updateID).child("title").setValue(editTitleTxt);
-                        databaseReference.child("updates").child(updateID).child("content").setValue(editContentTxt);
+                } else
+                    databaseReference.child("updates").addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+                            databaseReference.child("updates").child(updateID).child("updateID").setValue(updateID);
+                            databaseReference.child("updates").child(updateID).child("title").setValue(editTitleTxt);
+                            databaseReference.child("updates").child(updateID).child("content").setValue(editContentTxt);
 
-                        TastyToast.makeText(EditUpdatesActivity.this, "Records Updated", TastyToast.LENGTH_SHORT, TastyToast.SUCCESS).show();
-                        finish();
-                    }
+                            TastyToast.makeText(EditUpdatesActivity.this, "Records Updated", TastyToast.LENGTH_SHORT, TastyToast.SUCCESS).show();
+                            finish();
+                        }
 
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError error) {
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
 
-                    }
-                });
+                        }
+                    });
             }
         });
     }

@@ -45,8 +45,7 @@ import java.util.List;
 public class ExamsResultsReport extends AppCompatActivity {
 
     ImageView examResultsReport_back;
-    TextView grade10_list_report,grade11_list_report,maths_list_report,science_list_report,term1_report
-            ,term2_report,term3_report;
+    TextView grade10_list_report, grade11_list_report, maths_list_report, science_list_report, term1_report, term2_report, term3_report;
     Button generate_results_button;
 
     public static File rFile;
@@ -54,8 +53,8 @@ public class ExamsResultsReport extends AppCompatActivity {
     private PDFView pdfView;
     List<Results> results;
 
-    String subject,studGrade,term;
-    Float highestMarks,lowestMarks;
+    String subject, studGrade, term;
+    Float highestMarks, lowestMarks;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -194,13 +193,13 @@ public class ExamsResultsReport extends AppCompatActivity {
                 reportfile = new File("/storage/emulated/0/Report/");
 
                 //check if they exist, if not create them(directory)
-                if ( !reportfile.exists()) {
+                if (!reportfile.exists()) {
                     reportfile.mkdirs();
                 }
-                rFile = new File(reportfile, term+studGrade+subject+"Students_Exam_Results"+".pdf");
+                rFile = new File(reportfile, term + studGrade + subject + "Students_Exam_Results" + ".pdf");
 
                 //fetch details;
-                fetchStudentResults(term,subject,studGrade);
+                fetchStudentResults(term, subject, studGrade);
                 previewExamResultsReport(view);
 
             }
@@ -215,6 +214,7 @@ public class ExamsResultsReport extends AppCompatActivity {
             Manifest.permission.WRITE_EXTERNAL_STORAGE
     };
     public static int PERMISSION_ALL = 12;
+
     public boolean hasPermissions(Context context, String... permissions) {
         if (context != null && permissions != null) {
             for (String permission : permissions) {
@@ -225,11 +225,11 @@ public class ExamsResultsReport extends AppCompatActivity {
         }
         return true;
     }
+
     private void createResultsReport(List<Results> results) throws DocumentException, FileNotFoundException {
         BaseColor colorWhite = WebColors.getRGBColor("#ffffff");
         BaseColor colorBlue = WebColors.getRGBColor("#056FAA");
         BaseColor grayColor = WebColors.getRGBColor("#425066");
-
 
 
         Font white = new Font(Font.FontFamily.HELVETICA, 15.0f, Font.BOLD, colorWhite);
@@ -242,37 +242,37 @@ public class ExamsResultsReport extends AppCompatActivity {
         table.setWidthPercentage(100);
         table.getDefaultCell().setVerticalAlignment(Element.ALIGN_MIDDLE);
 
-        Chunk noText = new Chunk("\n"+"No.", white);
+        Chunk noText = new Chunk("\n" + "No.", white);
         PdfPCell noCell = new PdfPCell(new Phrase(noText));
         noCell.setFixedHeight(50);
         noCell.setHorizontalAlignment(Element.ALIGN_CENTER);
         noCell.setVerticalAlignment(Element.ALIGN_CENTER);
 
-        Chunk nameText = new Chunk("\n"+"Student", white);
+        Chunk nameText = new Chunk("\n" + "Student", white);
         PdfPCell nameCell = new PdfPCell(new Phrase(nameText));
         nameCell.setFixedHeight(50);
         nameCell.setHorizontalAlignment(Element.ALIGN_CENTER);
         nameCell.setVerticalAlignment(Element.ALIGN_CENTER);
 
-        Chunk part1 = new Chunk("\n"+"Part 1", white);
+        Chunk part1 = new Chunk("\n" + "Part 1", white);
         PdfPCell part1Cell = new PdfPCell(new Phrase(part1));
         part1Cell.setFixedHeight(50);
         part1Cell.setHorizontalAlignment(Element.ALIGN_CENTER);
         part1Cell.setVerticalAlignment(Element.ALIGN_CENTER);
 
-        Chunk part2 = new Chunk("\n"+"Part 2", white);
+        Chunk part2 = new Chunk("\n" + "Part 2", white);
         PdfPCell part2Cell = new PdfPCell(new Phrase(part2));
         part2Cell.setFixedHeight(50);
         part2Cell.setHorizontalAlignment(Element.ALIGN_CENTER);
         part2Cell.setVerticalAlignment(Element.ALIGN_CENTER);
 
-        Chunk totalMarks = new Chunk("\n"+"Total", white);
+        Chunk totalMarks = new Chunk("\n" + "Total", white);
         PdfPCell totalMarksCell = new PdfPCell(new Phrase(totalMarks));
         totalMarksCell.setFixedHeight(50);
         totalMarksCell.setHorizontalAlignment(Element.ALIGN_CENTER);
         totalMarksCell.setVerticalAlignment(Element.ALIGN_CENTER);
 
-        Chunk grades = new Chunk("\n"+"Grades", white);
+        Chunk grades = new Chunk("\n" + "Grades", white);
         PdfPCell gradesCell = new PdfPCell(new Phrase(grades));
         gradesCell.setFixedHeight(50);
         gradesCell.setHorizontalAlignment(Element.ALIGN_CENTER);
@@ -319,10 +319,10 @@ public class ExamsResultsReport extends AppCompatActivity {
 
 //            int newMarks = Math.round(marks);
 
-            if (marks >= highestMarks){
+            if (marks >= highestMarks) {
                 highestMarks = marks;
             }
-            if (marks <= lowestMarks){
+            if (marks <= lowestMarks) {
                 lowestMarks = marks;
             }
 
@@ -332,13 +332,13 @@ public class ExamsResultsReport extends AppCompatActivity {
             table.addCell(name);
             table.addCell(String.valueOf(part1Marks));
             table.addCell(String.valueOf(part2Marks));
-            table.addCell(marks+"");
+            table.addCell(marks + "");
             table.addCell(grade);
 
         }
 
         int count = results.size();
-        Chunk footerText = new Chunk("\n\n"+"Total number of students is: "+count + "\n\n" + "Highest marks: "+highestMarks+"\n\n"+"Lowest marks: "+ lowestMarks);
+        Chunk footerText = new Chunk("\n\n" + "Total number of students is: " + count + "\n\n" + "Highest marks: " + highestMarks + "\n\n" + "Lowest marks: " + lowestMarks);
         PdfPCell footCell = new PdfPCell(new Phrase(footerText));
         footCell.setFixedHeight(100);
         footCell.setHorizontalAlignment(Element.ALIGN_CENTER);
@@ -353,7 +353,7 @@ public class ExamsResultsReport extends AppCompatActivity {
         PdfWriter.getInstance(document, output);
         document.open();
         Font g = new Font(Font.FontFamily.HELVETICA, 25.0f, Font.NORMAL, grayColor);
-        document.add(new Paragraph(term+" Grade "+studGrade+" "+subject+" Results"+"\n\n", g));
+        document.add(new Paragraph(term + " Grade " + studGrade + " " + subject + " Results" + "\n\n", g));
         document.add(table);
         document.add(footTable);
 
@@ -361,8 +361,7 @@ public class ExamsResultsReport extends AppCompatActivity {
     }
 
     //function to fetch data from the database
-    private void fetchStudentResults(String term, String subject, String studGrade)
-    {
+    private void fetchStudentResults(String term, String subject, String studGrade) {
 
         DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child("Results")
                 .child("2023").child(term).child(studGrade).child(subject);
@@ -392,11 +391,10 @@ public class ExamsResultsReport extends AppCompatActivity {
     }
 
 
-    private void DisplayReport()
-    {
+    private void DisplayReport() {
         pdfView.fromFile(rFile)
 //                .pages(0,2,1,3,3,3)
-                .pages(0,1,2,3,4)
+                .pages(0, 1, 2, 3, 4)
                 .enableSwipe(true)
                 .swipeHorizontal(false)
                 .enableDoubletap(true)

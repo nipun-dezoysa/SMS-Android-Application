@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="320dp"
     android:layout_height="600dp"
     android:layout_gravity="center"
@@ -19,18 +18,16 @@
         app:cardUseCompatPadding="true">
 
 
-
         <ImageView
             android:layout_width="400dp"
             android:layout_height="400dp"
-            android:src="@drawable/logo_transparentnew"
-            android:layout_gravity="center"/>
+            android:layout_gravity="center"
+            android:src="@drawable/logo_transparentnew" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
-
 
 
             <LinearLayout
@@ -46,14 +43,14 @@
                     android:id="@+id/findUname"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/texteditbgn12"
-                    android:hint="Username"
-                    android:drawablePadding="5dp"
-                    android:drawableStart="@drawable/person_24"
-                    android:paddingStart="8dp"
-                    android:padding="15dp"
                     android:layout_marginTop="40dp"
+                    android:background="@drawable/texteditbgn12"
+                    android:drawableStart="@drawable/person_24"
+                    android:drawablePadding="5dp"
+                    android:hint="Username"
                     android:inputType="textPersonName"
+                    android:padding="15dp"
+                    android:paddingStart="8dp"
                     android:paddingLeft="20dp"
                     android:singleLine="true"
                     android:textColor="#0d6e6a"
@@ -65,16 +62,16 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="15dp"
                     android:background="@drawable/texteditbgn12"
-                    android:hint="Edit Email ID"
-                    android:padding="15dp"
-                    android:drawablePadding="5dp"
                     android:drawableStart="@drawable/mail"
-                    android:paddingStart="8dp"
+                    android:drawablePadding="5dp"
+                    android:hint="Edit Email ID"
                     android:inputType="textEmailAddress"
+                    android:padding="15dp"
+                    android:paddingStart="8dp"
                     android:paddingLeft="20dp"
                     android:singleLine="true"
                     android:textColor="#0d6e6a"
-                    android:textStyle="bold"/>
+                    android:textStyle="bold" />
 
                 <EditText
                     android:id="@+id/changeContact"
@@ -82,31 +79,31 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="15dp"
                     android:background="@drawable/texteditbgn12"
-                    android:hint="Edit Contact Number"
-                    android:padding="15dp"
-                    android:drawablePadding="5dp"
                     android:drawableStart="@drawable/mobile"
-                    android:paddingStart="8dp"
+                    android:drawablePadding="5dp"
+                    android:hint="Edit Contact Number"
                     android:inputType="phone"
+                    android:padding="15dp"
+                    android:paddingStart="8dp"
                     android:paddingLeft="20dp"
                     android:singleLine="true"
                     android:textColor="#0d6e6a"
-                    android:textStyle="bold"/>
+                    android:textStyle="bold" />
 
 
                 <LinearLayout
                     android:id="@+id/checkboxview1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
                     android:orientation="horizontal"
-                    android:padding="15dp"
-                    android:layout_marginTop="20dp">
+                    android:padding="15dp">
 
                     <CheckBox
                         android:id="@+id/changeCheckBoxMaths"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Maths"/>
+                        android:text="Maths" />
 
                     <CheckBox
                         android:id="@+id/changeCheckBoxScience"
@@ -177,11 +174,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical|center_horizontal">
+
             <ProgressBar
                 android:id="@+id/progressBarPop1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:visibility="gone"/>
+                android:visibility="gone" />
 
         </LinearLayout>
     </androidx.cardview.widget.CardView>

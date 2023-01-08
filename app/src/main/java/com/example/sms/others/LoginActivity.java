@@ -90,24 +90,23 @@ public class LoginActivity extends AppCompatActivity {
         login_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-             String uname = username.getText().toString();
-             String pword = password.getText().toString();
+                String uname = username.getText().toString();
+                String pword = password.getText().toString();
 
-             if(uname.equals("") || pword.equals(""))
-             {
-                 TastyToast.makeText(v.getContext(), "Username or Password is empty", TastyToast.LENGTH_SHORT, TastyToast.ERROR);
+                if (uname.equals("") || pword.equals("")) {
+                    TastyToast.makeText(v.getContext(), "Username or Password is empty", TastyToast.LENGTH_SHORT, TastyToast.ERROR);
 
-             }else{
-                 try {
-                     outputPassword = encrypt(pword, pword);
-                     encryptedPassword = outputPassword;
-                 } catch (Exception e) {
-                     e.printStackTrace();
-                 }
-                 loginUser(uname,encryptedPassword);
-                 progressBarOfLogin.setVisibility(View.VISIBLE);
+                } else {
+                    try {
+                        outputPassword = encrypt(pword, pword);
+                        encryptedPassword = outputPassword;
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                    loginUser(uname, encryptedPassword);
+                    progressBarOfLogin.setVisibility(View.VISIBLE);
 //                 finish();
-             }
+                }
             }
         });
 
@@ -142,8 +141,8 @@ public class LoginActivity extends AppCompatActivity {
                 final int DRAWABLE_RIGHT = 2;
                 final int DRAWABLE_BOTTOM = 3;
 
-                if (event.getAction() == MotionEvent.ACTION_UP){
-                    if (event.getRawX() >= (newpwd_fp.getRight()-
+                if (event.getAction() == MotionEvent.ACTION_UP) {
+                    if (event.getRawX() >= (newpwd_fp.getRight() -
                             newpwd_fp.getCompoundDrawables()[DRAWABLE_RIGHT].getBounds().width())) {
                         AlertDialog.Builder builder = new AlertDialog.Builder(v.getContext());
                         builder.setTitle("Password Patterns")
@@ -174,12 +173,12 @@ public class LoginActivity extends AppCompatActivity {
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                         username = uname_validate.getText().toString();
                         String email = email_validate.getText().toString();
-                        if (username.isEmpty() || email.isEmpty()){
+                        if (username.isEmpty() || email.isEmpty()) {
                             TastyToast.makeText(LoginActivity.this, "Please fill all fields", TastyToast.LENGTH_SHORT, TastyToast.INFO).show();
-                        }else if (snapshot.hasChild(username)){
+                        } else if (snapshot.hasChild(username)) {
                             String dbEmail = snapshot.child(username).child("email").getValue(String.class);
-                            int x =1;
-                            if (dbEmail.equals(email)){
+                            int x = 1;
+                            if (dbEmail.equals(email)) {
                                 TastyToast.makeText(LoginActivity.this, "User is validated", TastyToast.LENGTH_SHORT, TastyToast.SUCCESS).show();
                                 validate_user_layout.setVisibility(View.GONE);
                                 reset_password_layout.setVisibility(View.VISIBLE);
@@ -193,17 +192,19 @@ public class LoginActivity extends AppCompatActivity {
                             databaseReference1.child("students").addListenerForSingleValueEvent(new ValueEventListener() {
                                 @Override
                                 public void onDataChange(@NonNull DataSnapshot snapshot) {
-                                    if (snapshot.hasChild(username)){
+                                    if (snapshot.hasChild(username)) {
                                         String dbEmail = snapshot.child(username).child("email").getValue(String.class);
-                                        if (dbEmail.equals(email)){
+                                        if (dbEmail.equals(email)) {
                                             TastyToast.makeText(LoginActivity.this, "User is validated", TastyToast.LENGTH_SHORT, TastyToast.SUCCESS).show();
                                             validate_user_layout.setVisibility(View.GONE);
                                             reset_password_layout.setVisibility(View.VISIBLE);
                                             progressBarOfLogin.setVisibility(View.GONE);
                                             dbChild = "students";
-                                        } else TastyToast.makeText(LoginActivity.this, "Validation failed", TastyToast.LENGTH_SHORT, TastyToast.ERROR).show();
+                                        } else
+                                            TastyToast.makeText(LoginActivity.this, "Validation failed", TastyToast.LENGTH_SHORT, TastyToast.ERROR).show();
                                         progressBarOfLogin.setVisibility(View.GONE);
-                                    } else TastyToast.makeText(LoginActivity.this, "Validation failed", TastyToast.LENGTH_SHORT, TastyToast.ERROR).show();
+                                    } else
+                                        TastyToast.makeText(LoginActivity.this, "Validation failed", TastyToast.LENGTH_SHORT, TastyToast.ERROR).show();
                                 }
 
                                 @Override
@@ -229,13 +230,13 @@ public class LoginActivity extends AppCompatActivity {
                 String newPassword = newpwd_fp.getText().toString();
                 String confirmNewPassword = confirmnewpwd_fp.getText().toString();
 
-                if (newPassword.equals("") || confirmNewPassword.equals("")){
+                if (newPassword.equals("") || confirmNewPassword.equals("")) {
                     TastyToast.makeText(LoginActivity.this, "Please fill all fields", TastyToast.LENGTH_SHORT, TastyToast.ERROR);
                     progressBarOfLogin.setVisibility(View.GONE);
-                } else if (!newPassword.equals(confirmNewPassword)){
+                } else if (!newPassword.equals(confirmNewPassword)) {
                     TastyToast.makeText(LoginActivity.this, "Passwords Mismatch", TastyToast.LENGTH_SHORT, TastyToast.ERROR);
                     progressBarOfLogin.setVisibility(View.GONE);
-                } else if (newPassword.equals(confirmNewPassword)){
+                } else if (newPassword.equals(confirmNewPassword)) {
                     try {
                         newOutputPassword = encrypt(newPassword, newPassword);
                         newEncryptedPassword = newOutputPassword;
@@ -268,38 +269,37 @@ public class LoginActivity extends AppCompatActivity {
         databaseReference.child("users").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if(snapshot.hasChild(userNameKey)){
+                if (snapshot.hasChild(userNameKey)) {
                     String dbPassword = snapshot.child(userNameKey).child("password").getValue(String.class);
 
-                    if(dbPassword.equals(userPasswordKey)){
+                    if (dbPassword.equals(userPasswordKey)) {
                         Intent loginIntent = new Intent(LoginActivity.this, AdminFingerPrintAuth.class);
                         progressBarOfLogin.setVisibility(View.INVISIBLE);
                         startActivity(loginIntent);
                         finish();
-                    } else{
+                    } else {
                         TastyToast.makeText(LoginActivity.this, "It seems you have changed your password. Please login with your new password.", TastyToast.LENGTH_LONG, TastyToast.INFO);
                         progressBarOfLogin.setVisibility(View.INVISIBLE);
                     }
-                }else {
+                } else {
                     databaseReference.child("students").addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
-                            if(snapshot.hasChild(userNameKey)){
+                            if (snapshot.hasChild(userNameKey)) {
                                 String dbPassword = snapshot.child(userNameKey).child("password").getValue(String.class);
 
-                                if(dbPassword.equals(userPasswordKey)){
+                                if (dbPassword.equals(userPasswordKey)) {
                                     Intent studentLoginIntent = new Intent(LoginActivity.this, StudentFingerPrintAuth.class);
                                     studentLoginIntent.putExtra("uname", userNameKey);
                                     progressBarOfLogin.setVisibility(View.INVISIBLE);
                                     startActivity(studentLoginIntent);
 
 
-
-                                } else{
+                                } else {
                                     TastyToast.makeText(LoginActivity.this, "It seems you have changed your password. Please login with your new password.", TastyToast.LENGTH_LONG, TastyToast.INFO);
                                     progressBarOfLogin.setVisibility(View.INVISIBLE);
                                 }
-                            }else {
+                            } else {
                                 progressBarOfLogin.setVisibility(View.INVISIBLE);
                             }
 
@@ -324,7 +324,7 @@ public class LoginActivity extends AppCompatActivity {
 
     }
 
-    private String  encrypt(String data, String password) throws Exception {
+    private String encrypt(String data, String password) throws Exception {
         SecretKeySpec key = generateKey(password);
         Cipher c = Cipher.getInstance(AES);
         c.init(Cipher.ENCRYPT_MODE, key);
@@ -342,14 +342,14 @@ public class LoginActivity extends AppCompatActivity {
         return secretKeySpec;
     }
 
-    private void loginUser(String uname, String pword){
+    private void loginUser(String uname, String pword) {
         databaseReference.child("users").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if(snapshot.hasChild(uname)){
+                if (snapshot.hasChild(uname)) {
                     String dbPassword = snapshot.child(uname).child("password").getValue(String.class);
 
-                    if(dbPassword.equals(pword)){
+                    if (dbPassword.equals(pword)) {
                         TastyToast.makeText(LoginActivity.this, "Login successful", TastyToast.LENGTH_SHORT, TastyToast.SUCCESS);
                         Intent teacherLoginIntent = new Intent(LoginActivity.this, TeacherPageActivity.class);
                         Paper.book().write(OnlineUsers.UserNamekey, uname);
@@ -357,18 +357,18 @@ public class LoginActivity extends AppCompatActivity {
                         progressBarOfLogin.setVisibility(View.INVISIBLE);
                         startActivity(teacherLoginIntent);
                         finish();
-                    } else{
+                    } else {
                         TastyToast.makeText(LoginActivity.this, "Username or Password is wrong", TastyToast.LENGTH_SHORT, TastyToast.ERROR);
                         progressBarOfLogin.setVisibility(View.INVISIBLE);
                     }
-                }else{
+                } else {
                     databaseReference.child("students").addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
-                            if(snapshot.hasChild(uname)){
+                            if (snapshot.hasChild(uname)) {
                                 String dbPassword = snapshot.child(uname).child("password").getValue(String.class);
 
-                                if(dbPassword.equals(pword)){
+                                if (dbPassword.equals(pword)) {
                                     TastyToast.makeText(LoginActivity.this, "Login successful", TastyToast.LENGTH_SHORT, TastyToast.SUCCESS);
                                     Intent studentLoginIntent = new Intent(LoginActivity.this, StudentPageActivity.class);
                                     Paper.book().write(OnlineUsers.UserNamekey, uname);
@@ -376,10 +376,10 @@ public class LoginActivity extends AppCompatActivity {
                                     startActivity(studentLoginIntent);
 
 
-                                } else{
+                                } else {
                                     TastyToast.makeText(LoginActivity.this, "Username or Password is wrong", TastyToast.LENGTH_SHORT, TastyToast.ERROR);
                                 }
-                            } else{
+                            } else {
                                 TastyToast.makeText(LoginActivity.this, "Username or Password is wrong", TastyToast.LENGTH_SHORT, TastyToast.ERROR);
                             }
                             progressBarOfLogin.setVisibility(View.INVISIBLE);

@@ -27,11 +27,11 @@ import java.util.List;
 public class EditReference extends AppCompatActivity {
 
     Intent intent;
-    String referenceID,subject,unitName,reference;
+    String referenceID, subject, unitName, reference;
 
     ImageView editRef_back;
     AppCompatSpinner editSubRef;
-    EditText editUnitNameRef,editReferenceLink;
+    EditText editUnitNameRef, editReferenceLink;
     FloatingActionButton saveEditedReference;
 
     List<String> subjectlist = new ArrayList<>();
@@ -55,16 +55,15 @@ public class EditReference extends AppCompatActivity {
         unitName = intent.getStringExtra("unitName");
         reference = intent.getStringExtra("reference");
 
-        subjectlist.add( 0,subject);
+        subjectlist.add(0, subject);
 
-        if(subject.equals("Science"))
+        if (subject.equals("Science"))
             subjectlist.add("Maths");
         else
             subjectlist.add("Science");
 
 
-
-        ArrayAdapter arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item,subjectlist);
+        ArrayAdapter arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, subjectlist);
         editSubRef.setAdapter(arrayAdapter);
 
         editUnitNameRef.setText(unitName);
@@ -87,28 +86,29 @@ public class EditReference extends AppCompatActivity {
 
                 DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference();
 
-                if (editedSubject.isEmpty() || editedUnitName.isEmpty() || reference.isEmpty()){
+                if (editedSubject.isEmpty() || editedUnitName.isEmpty() || reference.isEmpty()) {
 
                     TastyToast.makeText(EditReference.this, "Please fill all fields", TastyToast.LENGTH_SHORT, TastyToast.ERROR).show();
 
-                } else databaseReference.child("studyMaterials").addListenerForSingleValueEvent(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                } else
+                    databaseReference.child("studyMaterials").addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshot) {
 
-                        databaseReference.child("studyMaterials").child(referenceID).child("referenceID").setValue(referenceID);
-                        databaseReference.child("studyMaterials").child(referenceID).child("subject").setValue(editedSubject);
-                        databaseReference.child("studyMaterials").child(referenceID).child("unitName").setValue(editedUnitName);
-                        databaseReference.child("studyMaterials").child(referenceID).child("referenceLink").setValue(reference);
+                            databaseReference.child("studyMaterials").child(referenceID).child("referenceID").setValue(referenceID);
+                            databaseReference.child("studyMaterials").child(referenceID).child("subject").setValue(editedSubject);
+                            databaseReference.child("studyMaterials").child(referenceID).child("unitName").setValue(editedUnitName);
+                            databaseReference.child("studyMaterials").child(referenceID).child("referenceLink").setValue(reference);
 
-                        TastyToast.makeText(EditReference.this, "Reference Updated", TastyToast.LENGTH_SHORT, TastyToast.SUCCESS).show();
-                        finish();
-                    }
+                            TastyToast.makeText(EditReference.this, "Reference Updated", TastyToast.LENGTH_SHORT, TastyToast.SUCCESS).show();
+                            finish();
+                        }
 
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError error) {
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
 
-                    }
-                });
+                        }
+                    });
 
             }
         });

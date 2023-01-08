@@ -25,7 +25,7 @@ import java.util.ArrayList;
 public class MonthAttendanceList extends AppCompatActivity {
 
     RecyclerView recyclerView;
-    ArrayList<String>list;
+    ArrayList<String> list;
     ViewMonthAttendance_Adapter viewMonthAttendance_adapter;
     DatabaseReference databaseReference;
     StaggeredGridLayoutManager staggeredGridLayoutManager;
@@ -52,23 +52,21 @@ public class MonthAttendanceList extends AppCompatActivity {
         });
 
 
-
         databaseReference = FirebaseDatabase.getInstance().getReference("Attendance").child(year);
         list = new ArrayList<>();
         recyclerView = findViewById(R.id.monthAttendance_recyclerview);
         recyclerView.setHasFixedSize(true);
-        staggeredGridLayoutManager=new StaggeredGridLayoutManager(2,StaggeredGridLayoutManager.VERTICAL);
+        staggeredGridLayoutManager = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
         recyclerView.setLayoutManager(staggeredGridLayoutManager);
 //        recyclerView.setLayoutManager(new LinearLayoutManager(this));
         viewMonthAttendance_adapter = new ViewMonthAttendance_Adapter(this, list);
         recyclerView.setAdapter(viewMonthAttendance_adapter);
 
 
-
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                for (DataSnapshot dataSnapshot: snapshot.getChildren()){
+                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
                     list.add(dataSnapshot.getKey());
                 }
                 viewMonthAttendance_adapter.notifyDataSetChanged();

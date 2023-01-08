@@ -24,7 +24,7 @@ import io.paperdb.Paper;
 
 public class CreateNotesActivity extends AppCompatActivity {
 
-    EditText mcreatetitleofnote,mcreatecontentofnote;
+    EditText mcreatetitleofnote, mcreatecontentofnote;
     FloatingActionButton msavenote;
     FirebaseFirestore firebaseFirestore;
     private String uname;
@@ -38,9 +38,6 @@ public class CreateNotesActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_notes);
 
-//        Intent i = getIntent();
-//        uname = i.getStringExtra("uname");
-
         Paper.init(CreateNotesActivity.this);
         uname = Paper.book().read(OnlineUsers.UserNamekey);
 
@@ -50,7 +47,6 @@ public class CreateNotesActivity extends AppCompatActivity {
         back_btn = findViewById(R.id.addNote_back);
 
         progressBar = findViewById(R.id.progressBarOfCreateNote);
-
 
 
         firebaseFirestore = FirebaseFirestore.getInstance();
@@ -68,15 +64,14 @@ public class CreateNotesActivity extends AppCompatActivity {
             public void onClick(View v) {
                 String title = mcreatetitleofnote.getText().toString();
                 String content = mcreatecontentofnote.getText().toString();
-                if (title.isEmpty() || content.isEmpty())
-                {
+                if (title.isEmpty() || content.isEmpty()) {
                     TastyToast.makeText(CreateNotesActivity.this, "Both fields are required", TastyToast.LENGTH_SHORT, TastyToast.ERROR).show();
                 } else {
                     progressBar.setVisibility(View.VISIBLE);
                     DocumentReference documentReference = firebaseFirestore.collection("notes").document(uname).collection("myNotes").document();
                     Map<String, Object> note = new HashMap<>();
                     note.put("title", title);
-                    note.put("content",content );
+                    note.put("content", content);
 
                     documentReference.set(note).addOnSuccessListener(new OnSuccessListener<Void>() {
                         @Override
@@ -99,14 +94,4 @@ public class CreateNotesActivity extends AppCompatActivity {
 
     }
 
-
-//    @Override
-//    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-//
-//        if (item.getItemId()==android.R.id.home)
-//        {
-//            onBackPressed();
-//        }
-//        return super.onOptionsItemSelected(item);
-//    }
 }

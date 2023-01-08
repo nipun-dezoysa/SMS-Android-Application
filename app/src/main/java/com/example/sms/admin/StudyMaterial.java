@@ -35,7 +35,7 @@ import java.util.List;
 public class StudyMaterial extends AppCompatActivity {
 
     ImageView back_btn;
-    EditText study_material_unitName,study_material_reference;
+    EditText study_material_unitName, study_material_reference;
     AppCompatSpinner study_material_spinner_sub;
     Button study_material_add;
     RecyclerView study_material_recyclerview;
@@ -70,7 +70,7 @@ public class StudyMaterial extends AppCompatActivity {
         sublist.add("Maths");
         sublist.add("Science");
 
-        ArrayAdapter arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item,sublist);
+        ArrayAdapter arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, sublist);
         study_material_spinner_sub.setAdapter(arrayAdapter);
 
         loadAllReferences();
@@ -85,7 +85,7 @@ public class StudyMaterial extends AppCompatActivity {
                 String reference = study_material_reference.getText().toString();
                 final String referenceID = "" + System.currentTimeMillis();
 
-                if (subjectText.isEmpty() || unitNameTxt.isEmpty() || reference.isEmpty()){
+                if (subjectText.isEmpty() || unitNameTxt.isEmpty() || reference.isEmpty()) {
                     TastyToast.makeText(StudyMaterial.this, "Please fill all fields", TastyToast.LENGTH_SHORT, TastyToast.INFO).show();
                 } else if (subjectText.equals("Subject")) {
                     TastyToast.makeText(StudyMaterial.this, "Please choose a subject", TastyToast.LENGTH_SHORT, TastyToast.INFO).show();
@@ -133,7 +133,7 @@ public class StudyMaterial extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 referenceList.clear();
-                for (DataSnapshot dataSnapshot: snapshot.getChildren()){
+                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
 
                     Materials materials = dataSnapshot.getValue(Materials.class);
                     referenceList.add(materials);

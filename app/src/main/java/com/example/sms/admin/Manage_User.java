@@ -160,8 +160,8 @@ public class Manage_User extends AppCompatActivity {
                 final int DRAWABLE_RIGHT = 2;
                 final int DRAWABLE_BOTTOM = 3;
 
-                if (event.getAction() == MotionEvent.ACTION_UP){
-                    if (event.getRawX() >= (passwordTouch.getRight()-
+                if (event.getAction() == MotionEvent.ACTION_UP) {
+                    if (event.getRawX() >= (passwordTouch.getRight() -
                             passwordTouch.getCompoundDrawables()[DRAWABLE_RIGHT].getBounds().width())) {
                         AlertDialog.Builder builder = new AlertDialog.Builder(v.getContext());
                         builder.setTitle("Password Patterns")
@@ -169,7 +169,7 @@ public class Manage_User extends AppCompatActivity {
                                 .setPositiveButton("Okay", new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialog, int which) {
-                                                dialog.dismiss();
+                                        dialog.dismiss();
 
                                     }
                                 })
@@ -316,23 +316,21 @@ public class Manage_User extends AppCompatActivity {
                 String editpwd1Txt = editpwd1.getText().toString();
                 final String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
                 final String passwordPattern = "((?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%]).{6,15})";
-                final String mobileNumberPattern= "^\\d{10}$";
+                final String mobileNumberPattern = "^\\d{10}$";
 
                 if (uNameTxt.isEmpty() || editEmailTxt.isEmpty() || editContactTxt.isEmpty() || editpwdTxt.isEmpty() || editpwd1Txt.isEmpty() || !(checkBoxMathsEdit.isChecked() || checkBoxScienceEdit.isChecked())) {
                     TastyToast.makeText(Manage_User.this, "Please fill all fields", TastyToast.LENGTH_SHORT, TastyToast.INFO);
-                } else if (!editEmailTxt.matches(emailPattern)){
+                } else if (!editEmailTxt.matches(emailPattern)) {
                     TastyToast.makeText(Manage_User.this, "Please enter a valid email address", TastyToast.LENGTH_SHORT, TastyToast.INFO);
-                } else if (!editContactTxt.matches(mobileNumberPattern)){
+                } else if (!editContactTxt.matches(mobileNumberPattern)) {
                     TastyToast.makeText(Manage_User.this, "Please enter 10 digit contact number", TastyToast.LENGTH_SHORT, TastyToast.INFO);
-                } else if (editpwdTxt.length() < 6){
+                } else if (editpwdTxt.length() < 6) {
                     TastyToast.makeText(Manage_User.this, "Password should be more than 6 characters", TastyToast.LENGTH_SHORT, TastyToast.INFO);
-                }
-                else if (editpwdTxt.length() > 15){
+                } else if (editpwdTxt.length() > 15) {
                     TastyToast.makeText(Manage_User.this, "Password should not be exceed 15 characters ", TastyToast.LENGTH_SHORT, TastyToast.INFO);
-                } else if (!editpwdTxt.matches(passwordPattern)){
+                } else if (!editpwdTxt.matches(passwordPattern)) {
                     TastyToast.makeText(Manage_User.this, "Please follow password pattern to make a strong password", TastyToast.LENGTH_SHORT, TastyToast.INFO);
-                }
-                else if (!editpwdTxt.equals(editpwd1Txt)) {
+                } else if (!editpwdTxt.equals(editpwd1Txt)) {
                     TastyToast.makeText(Manage_User.this, "Passwords do not match", TastyToast.LENGTH_SHORT, TastyToast.INFO);
                 } else {
                     searchUname.setEnabled(true);
@@ -426,24 +424,23 @@ public class Manage_User extends AppCompatActivity {
                 String ConfirmPwdTxt = ConfirmPwd.getText().toString();
                 final String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
                 final String passwordPattern = "((?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%]).{6,15})";
-                final String mobileNumberPattern= "^\\d{10}$";
+                final String mobileNumberPattern = "^\\d{10}$";
 
                 if (UsernameTxt.isEmpty() || EmailIDTxt.isEmpty() || ContactTxt.isEmpty() || PasswordTxt.isEmpty() || ConfirmPwdTxt.isEmpty() || subjectValidation() || gradeValidation()) {
                     TastyToast.makeText(v.getContext(), "Please fill all fields", TastyToast.LENGTH_SHORT, TastyToast.ERROR);
-                } else if (!EmailIDTxt.matches(emailPattern)){
+                } else if (!EmailIDTxt.matches(emailPattern)) {
                     TastyToast.makeText(v.getContext(), "Please enter a valid email address", TastyToast.LENGTH_SHORT, TastyToast.ERROR);
-                } else if (!ContactTxt.matches(mobileNumberPattern)){
+                } else if (!ContactTxt.matches(mobileNumberPattern)) {
                     TastyToast.makeText(v.getContext(), "Please enter 10 digit contact number", TastyToast.LENGTH_SHORT, TastyToast.ERROR);
-                } else if (PasswordTxt.length() < 6){
+                } else if (PasswordTxt.length() < 6) {
                     TastyToast.makeText(v.getContext(), "Password should be more than 6 characters", TastyToast.LENGTH_SHORT, TastyToast.ERROR);
-                } else if (PasswordTxt.length() > 15){
+                } else if (PasswordTxt.length() > 15) {
                     TastyToast.makeText(v.getContext(), "Password should not be exceed 15 characters ", TastyToast.LENGTH_SHORT, TastyToast.ERROR);
-                } else if (!PasswordTxt.matches(passwordPattern)){
+                } else if (!PasswordTxt.matches(passwordPattern)) {
                     TastyToast.makeText(v.getContext(), "Please follow password pattern to make a strong password", TastyToast.LENGTH_SHORT, TastyToast.ERROR);
                 } else if (!PasswordTxt.equals(ConfirmPwdTxt)) {
                     TastyToast.makeText(v.getContext(), "Passwords do not match", TastyToast.LENGTH_SHORT, TastyToast.ERROR);
-                }
-                    else {
+                } else {
                     try {
                         outputPassword = encrypt(PasswordTxt, ConfirmPwdTxt);
                         encryptedPassword = outputPassword;
@@ -459,7 +456,7 @@ public class Manage_User extends AppCompatActivity {
 
     }
 
-    private String  encrypt(String data, String password) throws Exception {
+    private String encrypt(String data, String password) throws Exception {
         SecretKeySpec key = generateKey(password);
         Cipher c = Cipher.getInstance(AES);
         c.init(Cipher.ENCRYPT_MODE, key);
@@ -486,7 +483,6 @@ public class Manage_User extends AppCompatActivity {
 //        String decryptedValue = new String((decVal));
 //        return decryptedValue;
 //    }
-
 
 
     private void RegisterAccount() {
@@ -529,35 +525,32 @@ public class Manage_User extends AppCompatActivity {
 
     }
 
-    private boolean subjectValidation(){
-           if (!checkBoxMaths.isChecked() && !checkBoxScience.isChecked()){
-               return true;
-           }
-           return false;
-    }
-
-    private String getSubject(){
-        if (checkBoxMaths.isChecked()&&checkBoxScience.isChecked()){
-            return "Maths Science";
-        }
-        else if(checkBoxMaths.isChecked()){
-            return "Maths";
-        }
-        else return "Science";
-    }
-
-    private boolean gradeValidation(){
-        if (!radioBtnGrade10.isChecked() && !radioBtnGrade11.isChecked()){
+    private boolean subjectValidation() {
+        if (!checkBoxMaths.isChecked() && !checkBoxScience.isChecked()) {
             return true;
         }
         return false;
     }
 
-    private int getGrade(){
-        if (radioBtnGrade10.isChecked()){
-            return 10;
+    private String getSubject() {
+        if (checkBoxMaths.isChecked() && checkBoxScience.isChecked()) {
+            return "Maths Science";
+        } else if (checkBoxMaths.isChecked()) {
+            return "Maths";
+        } else return "Science";
+    }
+
+    private boolean gradeValidation() {
+        if (!radioBtnGrade10.isChecked() && !radioBtnGrade11.isChecked()) {
+            return true;
         }
-        else return 11;
+        return false;
+    }
+
+    private int getGrade() {
+        if (radioBtnGrade10.isChecked()) {
+            return 10;
+        } else return 11;
     }
 
     private void getEditStudentDetails(EditStudentDetailsCallback studentDetailsCallback) {
@@ -578,51 +571,44 @@ public class Manage_User extends AppCompatActivity {
         });
     }
 
-    private void getSubject(String subject){
-        if (subject.equals("Maths Science")){
+    private void getSubject(String subject) {
+        if (subject.equals("Maths Science")) {
             checkBoxMathsEdit.setChecked(true);
             checkBoxScienceEdit.setChecked(true);
-        }
-        else if (subject.equals("Maths")){
+        } else if (subject.equals("Maths")) {
             checkBoxMathsEdit.setChecked(true);
             checkBoxScienceEdit.setChecked(false);
-        }
-
-        else {
+        } else {
             checkBoxScienceEdit.setChecked(true);
             checkBoxMathsEdit.setChecked(false);
         }
     }
 
-    private String setSubject(){
-        if (checkBoxMathsEdit.isChecked() && checkBoxScienceEdit.isChecked()){
+    private String setSubject() {
+        if (checkBoxMathsEdit.isChecked() && checkBoxScienceEdit.isChecked()) {
             return "Maths Science";
-        }
-        else if (checkBoxMathsEdit.isChecked()){
+        } else if (checkBoxMathsEdit.isChecked()) {
             return "Maths";
-        }
-        else if (checkBoxScienceEdit.isChecked()){
+        } else if (checkBoxScienceEdit.isChecked()) {
             return "Science";
         }
         return "";
     }
 
-    private void getGrade(int grade){
-        if (grade==10){
+    private void getGrade(int grade) {
+        if (grade == 10) {
             radioBtnGrade10Edit.setChecked(true);
             radioBtnGrade11Edit.setChecked(false);
-        }
-        else {
+        } else {
             radioBtnGrade11Edit.setChecked(true);
             radioBtnGrade10Edit.setChecked(false);
         }
     }
 
-    private int setGrade(){
-        if (radioBtnGrade10Edit.isChecked()){
+    private int setGrade() {
+        if (radioBtnGrade10Edit.isChecked()) {
             return 10;
-        }
-        else return 11;
+        } else return 11;
     }
 
 }

@@ -12,7 +12,7 @@ import com.example.sms.R;
 
 public class ResultsHome extends AppCompatActivity {
 
-    LinearLayout term1,term2,term3;
+    LinearLayout term1, term2, term3;
 
     public static String term;
 

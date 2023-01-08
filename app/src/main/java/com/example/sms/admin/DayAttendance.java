@@ -36,7 +36,7 @@ public class DayAttendance extends AppCompatActivity {
 
     Intent intent;
     ImageView day_atn_back;
-    TextView setGrade,setMonth;
+    TextView setGrade, setMonth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,12 +56,12 @@ public class DayAttendance extends AppCompatActivity {
 
         int m = Integer.parseInt(month);
 
-        Calendar cal=Calendar.getInstance();
+        Calendar cal = Calendar.getInstance();
         SimpleDateFormat month_date = new SimpleDateFormat("MMMM");
-        cal.set(Calendar.MONTH, m-1);
+        cal.set(Calendar.MONTH, m - 1);
         String month_name = month_date.format(cal.getTime());
 
-        Log.e("",""+month_name);
+        Log.e("", "" + month_name);
 
         setMonth.setText(month_name);
 
@@ -79,7 +79,7 @@ public class DayAttendance extends AppCompatActivity {
         databaseReference = FirebaseDatabase.getInstance().getReference("Attendance").child(year).child(month);
         list = new ArrayList<>();
         recyclerView.setHasFixedSize(true);
-        staggeredGridLayoutManager=new StaggeredGridLayoutManager(4,StaggeredGridLayoutManager.VERTICAL);
+        staggeredGridLayoutManager = new StaggeredGridLayoutManager(4, StaggeredGridLayoutManager.VERTICAL);
         recyclerView.setLayoutManager(staggeredGridLayoutManager);
 //        recyclerView.setLayoutManager(new LinearLayoutManager(this));
         viewDayAttendance_adapter = new ViewDayAttendanceAdapter(this, list);
@@ -88,8 +88,8 @@ public class DayAttendance extends AppCompatActivity {
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                for (DataSnapshot dataSnapshot: snapshot.getChildren()){
-                    if(dataSnapshot.hasChild(grade))
+                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                    if (dataSnapshot.hasChild(grade))
                         list.add(dataSnapshot.getKey());
                 }
                 viewDayAttendance_adapter.notifyDataSetChanged();

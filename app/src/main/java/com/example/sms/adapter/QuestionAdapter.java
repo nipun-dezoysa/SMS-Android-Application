@@ -36,12 +36,11 @@ public class QuestionAdapter extends RecyclerView.Adapter<QuestionAdapter.Questi
     }
 
 
-
     @NonNull
     @Override
     public QuestionView onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
-        View view = LayoutInflater.from(context).inflate(R.layout.question_model,parent,false);
+        View view = LayoutInflater.from(context).inflate(R.layout.question_model, parent, false);
 
         return new QuestionView(view);
     }
@@ -57,6 +56,7 @@ public class QuestionAdapter extends RecyclerView.Adapter<QuestionAdapter.Questi
 
         holder.remove.setOnClickListener(new View.OnClickListener() {
             Question question;
+
             @Override
             public void onClick(View v) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(v.getContext());
@@ -83,7 +83,6 @@ public class QuestionAdapter extends RecyclerView.Adapter<QuestionAdapter.Questi
         });
 
 
-
         holder.edit_qst.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -105,17 +104,17 @@ public class QuestionAdapter extends RecyclerView.Adapter<QuestionAdapter.Questi
         return questionArrayList.size();
     }
 
-    class QuestionView extends RecyclerView.ViewHolder{
+    class QuestionView extends RecyclerView.ViewHolder {
 
         public TextView textQuestion, textSubject, setUnitName;
         CardView cardView;
-        ImageView remove,edit_qst;
+        ImageView remove, edit_qst;
 
         public QuestionView(@NonNull View itemView) {
             super(itemView);
 
             textQuestion = itemView.findViewById(R.id.text_sub_question);
-            textSubject =  itemView.findViewById(R.id.text_sub_name);
+            textSubject = itemView.findViewById(R.id.text_sub_name);
             cardView = itemView.findViewById(R.id.cardView);
             remove = itemView.findViewById(R.id.remove_qstn);
             edit_qst = itemView.findViewById(R.id.edit_qstn);

@@ -30,7 +30,7 @@ public class StudentReferenceAdapter extends RecyclerView.Adapter<StudentReferen
     @NonNull
     @Override
     public StudentReferenceAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.studymaterial_model,parent,false);
+        View view = LayoutInflater.from(context).inflate(R.layout.studymaterial_model, parent, false);
 
         return new ViewHolder(view);
     }
@@ -73,9 +73,9 @@ public class StudentReferenceAdapter extends RecyclerView.Adapter<StudentReferen
         return referenceArrayList.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder{
-        TextView sub_name_sm,unitName_sm,reference_sm;
-        ImageView remove_reference,edit_reference;
+    public class ViewHolder extends RecyclerView.ViewHolder {
+        TextView sub_name_sm, unitName_sm, reference_sm;
+        ImageView remove_reference, edit_reference;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);

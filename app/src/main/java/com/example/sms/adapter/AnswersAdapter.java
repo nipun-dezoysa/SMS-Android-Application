@@ -23,7 +23,7 @@ public class AnswersAdapter extends RecyclerView.Adapter<AnswersAdapter.ViewHold
     ArrayList<String> items = new ArrayList<>();
     ArrayList<String> urls = new ArrayList<>();
 
-    public void update(String name, String url){
+    public void update(String name, String url) {
         items.add(name);
         urls.add(url);
         notifyDataSetChanged();
@@ -40,7 +40,7 @@ public class AnswersAdapter extends RecyclerView.Adapter<AnswersAdapter.ViewHold
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
-        View view = LayoutInflater.from(context).inflate(R.layout.answers_model,parent,false);
+        View view = LayoutInflater.from(context).inflate(R.layout.answers_model, parent, false);
         return new ViewHolder(view);
     }
 
@@ -54,9 +54,10 @@ public class AnswersAdapter extends RecyclerView.Adapter<AnswersAdapter.ViewHold
         return items.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder{
+    public class ViewHolder extends RecyclerView.ViewHolder {
 
         TextView answers_tv;
+
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             answers_tv = itemView.findViewById(R.id.answers_tv);
@@ -70,7 +71,6 @@ public class AnswersAdapter extends RecyclerView.Adapter<AnswersAdapter.ViewHold
                     intent.setData(Uri.parse(urls.get(position)));
                     intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     intent.setPackage("com.android.chrome");
-//                    context.startActivity(intent);
 
                     try {
                         context.startActivity(intent);

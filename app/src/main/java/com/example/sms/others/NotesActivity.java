@@ -50,7 +50,7 @@ public class NotesActivity extends AppCompatActivity {
 
     FirebaseFirestore firebaseFirestore;
 
-    FirestoreRecyclerAdapter<FirebaseModel,NoteViewHolder> noteAdapter;
+    FirestoreRecyclerAdapter<FirebaseModel, NoteViewHolder> noteAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,9 +71,9 @@ public class NotesActivity extends AppCompatActivity {
             }
         });
 
-        mcreateNotes=findViewById(R.id.createNote);
+        mcreateNotes = findViewById(R.id.createNote);
 
-        firebaseFirestore=FirebaseFirestore.getInstance();
+        firebaseFirestore = FirebaseFirestore.getInstance();
 
 //        getSupportActionBar().setTitle("All Notes");
 
@@ -82,17 +82,17 @@ public class NotesActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Intent createIntent = new Intent(NotesActivity.this,CreateNotesActivity.class);
+                Intent createIntent = new Intent(NotesActivity.this, CreateNotesActivity.class);
                 startActivity(createIntent);
 
             }
         });
 
-        Query query=firebaseFirestore.collection("notes").document(uname).collection("myNotes").orderBy("title",Query.Direction.ASCENDING);
+        Query query = firebaseFirestore.collection("notes").document(uname).collection("myNotes").orderBy("title", Query.Direction.ASCENDING);
 
-        FirestoreRecyclerOptions<FirebaseModel> allUserNotes= new FirestoreRecyclerOptions.Builder<FirebaseModel>().setQuery(query,FirebaseModel.class).build();
+        FirestoreRecyclerOptions<FirebaseModel> allUserNotes = new FirestoreRecyclerOptions.Builder<FirebaseModel>().setQuery(query, FirebaseModel.class).build();
 
-        noteAdapter= new FirestoreRecyclerAdapter<FirebaseModel, NoteViewHolder>(allUserNotes) {
+        noteAdapter = new FirestoreRecyclerAdapter<FirebaseModel, NoteViewHolder>(allUserNotes) {
             @RequiresApi(api = Build.VERSION_CODES.M)
             @Override
             protected void onBindViewHolder(@NonNull NoteViewHolder holder, int position, @NonNull FirebaseModel model) {
@@ -101,7 +101,7 @@ public class NotesActivity extends AppCompatActivity {
 
 
                 int colourCode = getRandomColour();
-                holder.mnote.setBackgroundColor(holder.itemView.getResources().getColor(colourCode,null));
+                holder.mnote.setBackgroundColor(holder.itemView.getResources().getColor(colourCode, null));
 
                 holder.notetitle.setText(model.getTitle());
                 holder.notecontent.setText(model.getContent());
@@ -113,7 +113,7 @@ public class NotesActivity extends AppCompatActivity {
                     public void onClick(View v) {
 //                        click open note detail
 
-                        Intent intent1 = new Intent(v.getContext(),NoteDetails.class);
+                        Intent intent1 = new Intent(v.getContext(), NoteDetails.class);
                         intent1.putExtra("title", model.getTitle());
                         intent1.putExtra("content", model.getContent());
                         intent1.putExtra("noteId", documentId);
@@ -126,13 +126,13 @@ public class NotesActivity extends AppCompatActivity {
                 popupMenuButton.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        PopupMenu popupMenu = new PopupMenu(v.getContext(),v);
+                        PopupMenu popupMenu = new PopupMenu(v.getContext(), v);
                         popupMenu.setGravity(Gravity.END);
                         popupMenu.getMenu().add("Edit").setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
                             @Override
                             public boolean onMenuItemClick(MenuItem item) {
 
-                                Intent intent1 = new Intent(v.getContext(),EditNoteActivity.class);
+                                Intent intent1 = new Intent(v.getContext(), EditNoteActivity.class);
 
                                 intent1.putExtra("title", model.getTitle());
                                 intent1.putExtra("content", model.getContent());
@@ -173,31 +173,30 @@ public class NotesActivity extends AppCompatActivity {
             @NonNull
             @Override
             public NoteViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-                View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.notes_layout,parent,false);
+                View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.notes_layout, parent, false);
                 return new NoteViewHolder(view);
             }
         };
 
-        mrecyclerView=findViewById(R.id.recyclerview);
+        mrecyclerView = findViewById(R.id.recyclerview);
         mrecyclerView.setHasFixedSize(true);
-        staggeredGridLayoutManager=new StaggeredGridLayoutManager(2,StaggeredGridLayoutManager.VERTICAL);
+        staggeredGridLayoutManager = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
         mrecyclerView.setLayoutManager(staggeredGridLayoutManager);
         mrecyclerView.setAdapter(noteAdapter);
 
 
     }
 
-    public class NoteViewHolder extends RecyclerView.ViewHolder
-    {
+    public class NoteViewHolder extends RecyclerView.ViewHolder {
         private TextView notetitle;
         private TextView notecontent;
         LinearLayout mnote;
 
         public NoteViewHolder(@NonNull View itemView) {
             super(itemView);
-            notetitle=itemView.findViewById(R.id.notetitle);
-            notecontent=itemView.findViewById(R.id.notecontent);
-            mnote=itemView.findViewById(R.id.note);
+            notetitle = itemView.findViewById(R.id.notetitle);
+            notecontent = itemView.findViewById(R.id.notecontent);
+            mnote = itemView.findViewById(R.id.note);
         }
     }
 
@@ -232,14 +231,12 @@ public class NotesActivity extends AppCompatActivity {
     @Override
     protected void onStop() {
         super.onStop();
-        if (noteAdapter!=null)
-        {
+        if (noteAdapter != null) {
             noteAdapter.startListening();
         }
     }
 
-    private int getRandomColour()
-    {
+    private int getRandomColour() {
         List<Integer> colourCode = new ArrayList<>();
         colourCode.add(R.color.grey);
         colourCode.add(R.color.green);

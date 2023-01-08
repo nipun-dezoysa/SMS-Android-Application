@@ -39,7 +39,7 @@ public class ExamsResults extends AppCompatActivity {
     String subject;
 
     List<String> studentList;
-    List<Float> part1,part2,total;
+    List<Float> part1, part2, total;
     public static List<Results> resultsList = new ArrayList<>();
 
     ResultsAdapter resultsAdapter;
@@ -138,8 +138,8 @@ public class ExamsResults extends AppCompatActivity {
             public void onClick(View v) {
                 DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference();
                 databaseReference.child("Results").child("2023")
-                        .child(ResultsHome.term).child(grade+"").child(subject).setValue(resultsList);
-                TastyToast.makeText(ExamsResults.this, "Marks Added Successfully", TastyToast.LENGTH_SHORT,TastyToast.SUCCESS).show();
+                        .child(ResultsHome.term).child(grade + "").child(subject).setValue(resultsList);
+                TastyToast.makeText(ExamsResults.this, "Marks Added Successfully", TastyToast.LENGTH_SHORT, TastyToast.SUCCESS).show();
             }
         });
 
@@ -154,7 +154,7 @@ public class ExamsResults extends AppCompatActivity {
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         studentList = new ArrayList<>();
         resultsList_rv.setLayoutManager(linearLayoutManager);
-        resultsAdapter = new ResultsAdapter(this, studentList, part1,part2,total);
+        resultsAdapter = new ResultsAdapter(this, studentList, part1, part2, total);
         resultsList_rv.setAdapter(resultsAdapter);
         linearLayoutManager.setReverseLayout(true);
         linearLayoutManager.setStackFromEnd(true);
@@ -173,7 +173,7 @@ public class ExamsResults extends AppCompatActivity {
                             part1.add(0f);
                             part2.add(0f);
                             total.add(0f);
-                            resultsList.add(new Results(dataSnapshot.getKey(),0f,0f,0f,"W"));
+                            resultsList.add(new Results(dataSnapshot.getKey(), 0f, 0f, 0f, "W"));
                         }
                     }
                 }

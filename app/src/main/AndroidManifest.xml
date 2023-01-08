@@ -124,9 +124,6 @@
             <!-- </intent-filter> -->
         </activity>
         <activity
-            android:name=".others.Test"
-            android:exported="false" />
-        <activity
             android:name=".students.UpdateStud"
             android:exported="false" />
         <activity
@@ -156,7 +153,6 @@
         <activity
             android:name=".students.MySubjects"
             android:exported="false" />
-        <activity android:name=".others.ActivityQuestions" />
         <activity
             android:name=".admin.TextRecognition"
             android:exported="false">

@@ -28,8 +28,8 @@ public class ResultsAdapter extends RecyclerView.Adapter<ResultsAdapter.ViewHold
 
     Context context;
     List<String> studentList;
-    List<Results> results= ExamsResults.resultsList;
-    List<Float> part1Marks,part2Marks,totalMarks;
+    List<Results> results = ExamsResults.resultsList;
+    List<Float> part1Marks, part2Marks, totalMarks;
 
 
     public ResultsAdapter(Context context, List<String> studentList, List<Float> part1Marks, List<Float> part2Marks, List<Float> totalMarks) {
@@ -45,7 +45,7 @@ public class ResultsAdapter extends RecyclerView.Adapter<ResultsAdapter.ViewHold
     @NonNull
     @Override
     public ResultsAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.results_model,parent,false);
+        View view = LayoutInflater.from(context).inflate(R.layout.results_model, parent, false);
 
         return new ViewHolder(view);
     }
@@ -72,20 +72,20 @@ public class ResultsAdapter extends RecyclerView.Adapter<ResultsAdapter.ViewHold
 
             @Override
             public void afterTextChanged(Editable s) {
-                String value =  holder.part1.getText().toString();
+                String value = holder.part1.getText().toString();
                 int i = holder.getAdapterPosition();
-                if(!value.equals("")){
+                if (!value.equals("")) {
                     Float part1Mark = Float.parseFloat(value);
-                    if (part1Mark<=50){
+                    if (part1Mark <= 50) {
                         part1Marks.set(i, part1Mark);
-                        Float total = part1Marks.get(i)+part2Marks.get(i);
+                        Float total = part1Marks.get(i) + part2Marks.get(i);
                         holder.total.setText(total + "");
-                        totalMarks.set(i,total);
-                        results.set(i,new Results(studentList.get(i),part1Mark,part2Marks.get(i),total,getGrade(total)));
+                        totalMarks.set(i, total);
+                        results.set(i, new Results(studentList.get(i), part1Mark, part2Marks.get(i), total, getGrade(total)));
                         holder.grades.setText(getGrade(total));
                     } else {
-                        TastyToast.makeText(context, "Marks should be less than or equal 50", TastyToast.LENGTH_SHORT,TastyToast.ERROR).show();
-                        holder.part1.setText(0+"");
+                        TastyToast.makeText(context, "Marks should be less than or equal 50", TastyToast.LENGTH_SHORT, TastyToast.ERROR).show();
+                        holder.part1.setText(0 + "");
 
                     }
                 }
@@ -106,12 +106,12 @@ public class ResultsAdapter extends RecyclerView.Adapter<ResultsAdapter.ViewHold
 
             @Override
             public void afterTextChanged(Editable s) {
-                String value =  holder.part2.getText().toString();
+                String value = holder.part2.getText().toString();
 
                 int i = holder.getAdapterPosition();
-                if (!value.equals("")){
+                if (!value.equals("")) {
                     Float part2Mark = Float.parseFloat(holder.part2.getText().toString());
-                    if (part2Mark<=50) {
+                    if (part2Mark <= 50) {
                         part2Marks.set(i, part2Mark);
                         Float total = part1Marks.get(i) + part2Marks.get(i);
                         holder.total.setText(total + "");
@@ -133,10 +133,10 @@ public class ResultsAdapter extends RecyclerView.Adapter<ResultsAdapter.ViewHold
         return studentList.size();
     }
 
-    public static class ViewHolder extends RecyclerView.ViewHolder{
+    public static class ViewHolder extends RecyclerView.ViewHolder {
 
-        TextView term,total,name,grades;
-        EditText part1,part2;
+        TextView term, total, name, grades;
+        EditText part1, part2;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -150,14 +150,14 @@ public class ResultsAdapter extends RecyclerView.Adapter<ResultsAdapter.ViewHold
         }
     }
 
-    private String getGrade(float marks){
-        if (marks>=75){
+    private String getGrade(float marks) {
+        if (marks >= 75) {
             return "A";
-        } else if (marks>=65) {
+        } else if (marks >= 65) {
             return "B";
-        } else if (marks>=55){
+        } else if (marks >= 55) {
             return "C";
-        } else if (marks>=35){
+        } else if (marks >= 35) {
             return "S";
         } else {
             return "W";

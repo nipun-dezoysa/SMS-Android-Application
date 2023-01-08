@@ -1,27 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:background="@color/white"
+    android:orientation="vertical"
     tools:context=".admin.ScheduleActivity">
 
 
     <RelativeLayout
-            android:background="@color/darkgreen"
-            android:layout_width="match_parent"
-            android:layout_height="120dp">
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:background="@color/darkgreen">
 
 
-            <ImageView
-                android:id="@+id/schedule_back"
-                android:layout_width="40dp"
-                android:layout_height="35dp"
-                android:layout_centerVertical="true"
-                android:layout_marginLeft="10dp"
-                android:background="@drawable/back" />
+        <ImageView
+            android:id="@+id/schedule_back"
+            android:layout_width="40dp"
+            android:layout_height="35dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:background="@drawable/back" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -33,15 +33,15 @@
             android:textStyle="bold|normal" />
 
 
-        </RelativeLayout>
+    </RelativeLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/swtch_tymbs"
         android:layout_marginStart="20dp"
         android:layout_marginTop="30dp"
         android:layout_marginEnd="20dp"
+        android:background="@drawable/swtch_tymbs"
         android:gravity="center"
         android:orientation="horizontal"
         android:weightSum="2">
@@ -83,287 +83,286 @@
     </LinearLayout>
 
 
-
     <HorizontalScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-    <TableLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:padding="10dp"
-        android:layout_marginTop="50dp">
+            <TableLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="50dp"
+                android:padding="10dp">
 
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
 
-            <TextView
-                android:padding="10dp"
-                android:textStyle="bold"
-                android:textSize="20dp"/>
+                    <TextView
+                        android:padding="10dp"
+                        android:textSize="20dp"
+                        android:textStyle="bold" />
 
-            <TextView
-                android:text="Maths"
-                android:gravity="center"
-                android:width="130dp"
-                android:padding="10dp"
-                android:textStyle="bold"
-                android:textColor="@color/black"
-                android:textSize="20dp"
-                android:background="@drawable/weeklayout"/>
+                    <TextView
+                        android:width="130dp"
+                        android:background="@drawable/weeklayout"
+                        android:gravity="center"
+                        android:padding="10dp"
+                        android:text="Maths"
+                        android:textColor="@color/black"
+                        android:textSize="20dp"
+                        android:textStyle="bold" />
 
-            <TextView
-                android:text="Science"
-                android:width="130dp"
-                android:gravity="center"
-                android:padding="10dp"
-                android:textColor="@color/black"
-                android:textStyle="bold"
-                android:textSize="20dp"
-                android:background="@drawable/weeklayout"/>
-        </TableRow>
+                    <TextView
+                        android:width="130dp"
+                        android:background="@drawable/weeklayout"
+                        android:gravity="center"
+                        android:padding="10dp"
+                        android:text="Science"
+                        android:textColor="@color/black"
+                        android:textSize="20dp"
+                        android:textStyle="bold" />
+                </TableRow>
 
-        <TableRow
-            android:id="@+id/tableRow2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+                <TableRow
+                    android:id="@+id/tableRow2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
 
-            <TextView
-                android:text="Monday"
-                android:padding="10dp"
-                android:textStyle="bold"
-                android:textSize="20dp"
-                android:textColor="@color/black"
-                android:background="@drawable/weeklayout"/>
+                    <TextView
+                        android:background="@drawable/weeklayout"
+                        android:padding="10dp"
+                        android:text="Monday"
+                        android:textColor="@color/black"
+                        android:textSize="20dp"
+                        android:textStyle="bold" />
 
-            <EditText
-                android:id="@+id/mondayMaths"
-                android:hint="-"
-                android:padding="10dp"
-                android:gravity="center"
-                android:textStyle="bold"
-                android:textSize="18dp"
-                android:background="@drawable/tablelayout"/>
+                    <EditText
+                        android:id="@+id/mondayMaths"
+                        android:background="@drawable/tablelayout"
+                        android:gravity="center"
+                        android:hint="-"
+                        android:padding="10dp"
+                        android:textSize="18dp"
+                        android:textStyle="bold" />
 
-            <EditText
-                android:id="@+id/mondayScience"
-                android:hint="-"
-                android:padding="10dp"
-                android:gravity="center"
-                android:textStyle="bold"
-                android:textSize="18dp"
-                android:background="@drawable/tablelayout"/>
-        </TableRow>
+                    <EditText
+                        android:id="@+id/mondayScience"
+                        android:background="@drawable/tablelayout"
+                        android:gravity="center"
+                        android:hint="-"
+                        android:padding="10dp"
+                        android:textSize="18dp"
+                        android:textStyle="bold" />
+                </TableRow>
 
-        <TableRow
-            android:id="@+id/tableRow3"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+                <TableRow
+                    android:id="@+id/tableRow3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
 
-            <TextView
-                android:text="Tuesday"
-                android:padding="10dp"
-                android:textStyle="bold"
-                android:textSize="20dp"
-                android:textColor="@color/black"
-                android:background="@drawable/weeklayout"/>
+                    <TextView
+                        android:background="@drawable/weeklayout"
+                        android:padding="10dp"
+                        android:text="Tuesday"
+                        android:textColor="@color/black"
+                        android:textSize="20dp"
+                        android:textStyle="bold" />
 
-            <EditText
-                android:id="@+id/tuesdayMaths"
-                android:hint="-"
-                android:padding="10dp"
-                android:gravity="center"
-                android:textStyle="bold"
-                android:textSize="18dp"
-                android:background="@drawable/tablelayout"/>
+                    <EditText
+                        android:id="@+id/tuesdayMaths"
+                        android:background="@drawable/tablelayout"
+                        android:gravity="center"
+                        android:hint="-"
+                        android:padding="10dp"
+                        android:textSize="18dp"
+                        android:textStyle="bold" />
 
-            <EditText
-                android:id="@+id/tuesdayScience"
-                android:hint="-"
-                android:padding="10dp"
-                android:gravity="center"
-                android:textStyle="bold"
-                android:textSize="18dp"
-                android:background="@drawable/tablelayout"/>
-        </TableRow>
+                    <EditText
+                        android:id="@+id/tuesdayScience"
+                        android:background="@drawable/tablelayout"
+                        android:gravity="center"
+                        android:hint="-"
+                        android:padding="10dp"
+                        android:textSize="18dp"
+                        android:textStyle="bold" />
+                </TableRow>
 
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
 
-            <TextView
-                android:text="Wednesday"
-                android:padding="10dp"
-                android:textStyle="bold"
-                android:textSize="20dp"
-                android:textColor="@color/black"
-                android:background="@drawable/weeklayout"/>
+                    <TextView
+                        android:background="@drawable/weeklayout"
+                        android:padding="10dp"
+                        android:text="Wednesday"
+                        android:textColor="@color/black"
+                        android:textSize="20dp"
+                        android:textStyle="bold" />
 
-            <EditText
-                android:id="@+id/wednesdayMaths"
-                android:hint="-"
-                android:padding="10dp"
-                android:gravity="center"
-                android:textStyle="bold"
-                android:textSize="18dp"
-                android:background="@drawable/tablelayout"/>
+                    <EditText
+                        android:id="@+id/wednesdayMaths"
+                        android:background="@drawable/tablelayout"
+                        android:gravity="center"
+                        android:hint="-"
+                        android:padding="10dp"
+                        android:textSize="18dp"
+                        android:textStyle="bold" />
 
-            <EditText
-                android:id="@+id/wednesdayScience"
-                android:hint="-"
-                android:padding="10dp"
-                android:gravity="center"
-                android:textStyle="bold"
-                android:textSize="18dp"
-                android:background="@drawable/tablelayout"/>
-        </TableRow>
+                    <EditText
+                        android:id="@+id/wednesdayScience"
+                        android:background="@drawable/tablelayout"
+                        android:gravity="center"
+                        android:hint="-"
+                        android:padding="10dp"
+                        android:textSize="18dp"
+                        android:textStyle="bold" />
+                </TableRow>
 
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
 
-            <TextView
-                android:text="Thursday"
-                android:padding="10dp"
-                android:textStyle="bold"
-                android:textSize="20dp"
-                android:textColor="@color/black"
-                android:background="@drawable/weeklayout"/>
+                    <TextView
+                        android:background="@drawable/weeklayout"
+                        android:padding="10dp"
+                        android:text="Thursday"
+                        android:textColor="@color/black"
+                        android:textSize="20dp"
+                        android:textStyle="bold" />
 
-            <EditText
-                android:id="@+id/thursdayMaths"
-                android:hint="-"
-                android:padding="10dp"
-                android:gravity="center"
-                android:textStyle="bold"
-                android:textSize="18dp"
-                android:background="@drawable/tablelayout"/>
+                    <EditText
+                        android:id="@+id/thursdayMaths"
+                        android:background="@drawable/tablelayout"
+                        android:gravity="center"
+                        android:hint="-"
+                        android:padding="10dp"
+                        android:textSize="18dp"
+                        android:textStyle="bold" />
 
-            <EditText
-                android:id="@+id/thursdayScience"
-                android:hint="-"
-                android:padding="10dp"
-                android:gravity="center"
-                android:textStyle="bold"
-                android:textSize="18dp"
-                android:background="@drawable/tablelayout"/>
-        </TableRow>
+                    <EditText
+                        android:id="@+id/thursdayScience"
+                        android:background="@drawable/tablelayout"
+                        android:gravity="center"
+                        android:hint="-"
+                        android:padding="10dp"
+                        android:textSize="18dp"
+                        android:textStyle="bold" />
+                </TableRow>
 
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
 
-            <TextView
-                android:text="Friday"
-                android:padding="10dp"
-                android:textStyle="bold"
-                android:textSize="20dp"
-                android:textColor="@color/black"
-                android:background="@drawable/weeklayout"/>
+                    <TextView
+                        android:background="@drawable/weeklayout"
+                        android:padding="10dp"
+                        android:text="Friday"
+                        android:textColor="@color/black"
+                        android:textSize="20dp"
+                        android:textStyle="bold" />
 
-            <EditText
-                android:id="@+id/fridayMaths"
-                android:hint="-"
-                android:padding="10dp"
-                android:gravity="center"
-                android:textStyle="bold"
-                android:textSize="18dp"
-                android:background="@drawable/tablelayout"/>
+                    <EditText
+                        android:id="@+id/fridayMaths"
+                        android:background="@drawable/tablelayout"
+                        android:gravity="center"
+                        android:hint="-"
+                        android:padding="10dp"
+                        android:textSize="18dp"
+                        android:textStyle="bold" />
 
-            <EditText
-                android:id="@+id/fridayScience"
-                android:hint="-"
-                android:padding="10dp"
-                android:gravity="center"
-                android:textStyle="bold"
-                android:textSize="18dp"
-                android:background="@drawable/tablelayout"/>
-        </TableRow>
+                    <EditText
+                        android:id="@+id/fridayScience"
+                        android:background="@drawable/tablelayout"
+                        android:gravity="center"
+                        android:hint="-"
+                        android:padding="10dp"
+                        android:textSize="18dp"
+                        android:textStyle="bold" />
+                </TableRow>
 
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
 
-            <TextView
-                android:text="Saturday"
-                android:padding="10dp"
-                android:textStyle="bold"
-                android:textSize="20dp"
-                android:textColor="@color/black"
-                android:background="@drawable/weeklayout"/>
+                    <TextView
+                        android:background="@drawable/weeklayout"
+                        android:padding="10dp"
+                        android:text="Saturday"
+                        android:textColor="@color/black"
+                        android:textSize="20dp"
+                        android:textStyle="bold" />
 
-            <EditText
-                android:id="@+id/saturdayMaths"
-                android:hint="-"
-                android:padding="10dp"
-                android:gravity="center"
-                android:textStyle="bold"
-                android:textSize="18dp"
-                android:background="@drawable/tablelayout"/>
+                    <EditText
+                        android:id="@+id/saturdayMaths"
+                        android:background="@drawable/tablelayout"
+                        android:gravity="center"
+                        android:hint="-"
+                        android:padding="10dp"
+                        android:textSize="18dp"
+                        android:textStyle="bold" />
 
-            <EditText
-                android:id="@+id/saturdayScience"
-                android:hint="-"
-                android:padding="10dp"
-                android:gravity="center"
-                android:textStyle="bold"
-                android:textSize="18dp"
-                android:background="@drawable/tablelayout"/>
-        </TableRow>
+                    <EditText
+                        android:id="@+id/saturdayScience"
+                        android:background="@drawable/tablelayout"
+                        android:gravity="center"
+                        android:hint="-"
+                        android:padding="10dp"
+                        android:textSize="18dp"
+                        android:textStyle="bold" />
+                </TableRow>
 
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
 
-            <TextView
-                android:text="Sunday"
-                android:padding="10dp"
-                android:textStyle="bold"
-                android:textSize="20dp"
-                android:textColor="@color/black"
-                android:background="@drawable/weeklayout"/>
+                    <TextView
+                        android:background="@drawable/weeklayout"
+                        android:padding="10dp"
+                        android:text="Sunday"
+                        android:textColor="@color/black"
+                        android:textSize="20dp"
+                        android:textStyle="bold" />
 
-            <EditText
-                android:id="@+id/sundayMaths"
-                android:hint="-"
-                android:padding="10dp"
-                android:gravity="center"
-                android:textStyle="bold"
-                android:textSize="18dp"
-                android:background="@drawable/tablelayout"/>
+                    <EditText
+                        android:id="@+id/sundayMaths"
+                        android:background="@drawable/tablelayout"
+                        android:gravity="center"
+                        android:hint="-"
+                        android:padding="10dp"
+                        android:textSize="18dp"
+                        android:textStyle="bold" />
 
-            <EditText
-                android:id="@+id/sundayScience"
-                android:hint="-"
-                android:padding="10dp"
-                android:gravity="center"
-                android:textStyle="bold"
-                android:textSize="18dp"
-                android:background="@drawable/tablelayout"/>
-        </TableRow>
+                    <EditText
+                        android:id="@+id/sundayScience"
+                        android:background="@drawable/tablelayout"
+                        android:gravity="center"
+                        android:hint="-"
+                        android:padding="10dp"
+                        android:textSize="18dp"
+                        android:textStyle="bold" />
+                </TableRow>
 
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/saveSchedule"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_gravity="bottom|end"
-            android:layout_marginRight="30dp"
-            android:layout_marginTop="100dp"
-            android:src="@drawable/save1"
-            app:maxImageSize="40dp">
+                <com.google.android.material.floatingactionbutton.FloatingActionButton
+                    android:id="@+id/saveSchedule"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_gravity="bottom|end"
+                    android:layout_marginTop="100dp"
+                    android:layout_marginRight="30dp"
+                    android:src="@drawable/save1"
+                    app:maxImageSize="40dp">
 
-        </com.google.android.material.floatingactionbutton.FloatingActionButton>
+                </com.google.android.material.floatingactionbutton.FloatingActionButton>
 
-    </TableLayout>
+            </TableLayout>
 
-    </ScrollView>
+        </ScrollView>
     </HorizontalScrollView>
-
 
 
 </LinearLayout>

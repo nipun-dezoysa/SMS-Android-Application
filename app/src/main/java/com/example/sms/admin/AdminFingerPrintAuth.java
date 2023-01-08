@@ -23,18 +23,16 @@ public class AdminFingerPrintAuth extends AppCompatActivity {
     androidx.biometric.BiometricPrompt.PromptInfo promptInfo;
 
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
 
 
         Paper.init(AdminFingerPrintAuth.this);
         uname = Paper.book().read(OnlineUsers.UserNamekey);
 
         BiometricManager biometricManager = BiometricManager.from(this);
-        switch (biometricManager.canAuthenticate()){
+        switch (biometricManager.canAuthenticate()) {
             case BiometricManager.BIOMETRIC_ERROR_NO_HARDWARE:
                 TastyToast.makeText(this, "Your device doesn't have fingerprint", TastyToast.LENGTH_SHORT, TastyToast.INFO);
                 break;

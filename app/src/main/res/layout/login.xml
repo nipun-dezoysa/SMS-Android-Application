@@ -1,100 +1,100 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
-    android:gravity="center_horizontal">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
+    <LinearLayout
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:layout_marginTop="100dp"
+        android:background="@drawable/logo_transparentnew"
+        app:layout_constraintBottom_toBottomOf="@+id/linearLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/linearLayout">
 
-    <ImageView
-        android:layout_width="420dp"
-        android:layout_height="350dp"
-        android:src="@drawable/teacherbg"
-        android:layout_marginTop="20dp"/>
+    </LinearLayout>
 
-    <ProgressBar
-        android:id="@+id/progressBarOfTeacherLogin"
-        style="?android:attr/progressBarStyle"
+    <LinearLayout
+        android:id="@+id/linearLayout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:visibility="invisible" />
+        android:layout_height="match_parent"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Login"
-        android:textStyle="bold"
-        android:textColor="@color/darkgreen"
-        android:textSize="40sp"
-        android:layout_marginTop="1dp"
-        android:letterSpacing="0.05"/>
+        <ImageView
+            android:layout_width="420dp"
+            android:layout_height="350dp"
+            android:layout_marginTop="20dp"
+            android:src="@drawable/teacherbg" />
 
-<!--    <TextView-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:text="Login as a teacher"-->
-<!--        android:textSize="20dp"-->
-<!--        android:textStyle="bold"-->
-<!--        android:textColor="#0d6e6a"-->
-<!--        android:letterSpacing="0.02"/>-->
+        <ProgressBar
+            android:id="@+id/progressBarOfTeacherLogin"
+            style="?android:attr/progressBarStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="invisible" />
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="1dp"
+            android:letterSpacing="0.05"
+            android:text="Login"
+            android:textColor="@color/darkgreen"
+            android:textSize="40sp"
+            android:textStyle="bold" />
 
+        <EditText
+            android:id="@+id/txtTeaUserName"
+            android:layout_width="350dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/texteditbg"
+            android:drawableStart="@drawable/person_24"
+            android:drawablePadding="5dp"
+            android:hint="Username"
+            android:paddingLeft="20dp"
+            android:singleLine="true"
+            android:textColor="#0d6e6a"
+            android:textStyle="bold" />
 
-    <EditText
-        android:layout_width="350dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="15dp"
-        android:background="@drawable/texteditbg"
-        android:hint="Username"
-        android:drawableStart="@drawable/person_24"
-        android:drawablePadding="5dp"
-        android:id="@+id/txtTeaUserName"
-        android:singleLine="true"
-        android:paddingLeft="20dp"
-        android:textColor="#0d6e6a"
-        android:textStyle="bold"
-        />
+        <EditText
+            android:id="@+id/txtTeaPassWord"
+            android:layout_width="350dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/texteditbg"
+            android:drawableStart="@drawable/key_24"
+            android:drawablePadding="5dp"
+            android:hint="Password"
+            android:inputType="textPassword"
+            android:paddingLeft="20dp"
+            android:textColor="#0d6e6a"
+            android:textStyle="bold" />
 
+        <TextView
+            android:id="@+id/forgotPassword"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:layout_marginRight="35dp"
+            android:minHeight="48dp"
+            android:text="Forgot Password?"
+            android:textColor="@color/darkgreen"
+            android:textSize="18dp"
+            android:textStyle="bold" />
 
-    <EditText
-        android:layout_width="350dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="15dp"
-        android:background="@drawable/texteditbg"
-        android:inputType="textPassword"
-        android:paddingLeft="20dp"
-        android:hint="Password"
-        android:drawableStart="@drawable/key_24"
-        android:drawablePadding="5dp"
-        android:id="@+id/txtTeaPassWord"
-        android:textColor="#0d6e6a"
-        android:textStyle="bold" />
-
-
-
-    <TextView
-        android:id="@+id/forgotPassword"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="end"
-        android:layout_marginRight="35dp"
-        android:minHeight="48dp"
-        android:text="Forgot Password?"
-        android:textColor="@color/darkgreen"
-        android:textSize="18dp"
-        android:textStyle="bold" />
-
-    <Button
-        android:layout_marginBottom="20dp"
-        android:layout_width="350dp"
-        android:layout_height="48dp"
-        android:background="@drawable/btn"
-        android:text="Login"
-        android:textSize="20dp"
-        android:textAllCaps="false"
-        android:id="@+id/btnLogin"
-        android:textColor="@color/colorWhite" />
-
-</LinearLayout>
+        <Button
+            android:id="@+id/btnLogin"
+            android:layout_width="350dp"
+            android:layout_height="48dp"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/btn"
+            android:text="Login"
+            android:textAllCaps="false"
+            android:textColor="@color/colorWhite"
+            android:textSize="20dp" />
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

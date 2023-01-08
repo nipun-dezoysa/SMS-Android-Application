@@ -48,9 +48,9 @@ import java.util.List;
 public class AttendanceReport extends AppCompatActivity {
 
     Button generate_attendanceList;
-    EditText date,month,year;
+    EditText date, month, year;
     ImageView attendanceListReport_back;
-    TextView grade10_list_attendance,grade11_list_attendance;
+    TextView grade10_list_attendance, grade11_list_attendance;
 
     String grade;
 
@@ -123,15 +123,14 @@ public class AttendanceReport extends AppCompatActivity {
                 String monthTxt = month.getText().toString();
                 String yearTxt = year.getText().toString();
                 //check if they exist, if not create them(directory)
-                if ( !reportfile.exists()) {
+                if (!reportfile.exists()) {
                     reportfile.mkdirs();
                 }
 //                rFile = new File(reportfile, grade+yearTxt+"/"+monthTxt+"/"+dateTxt+"Attendance_List"+".pdf");
-                rFile = new File(reportfile, grade+yearTxt+monthTxt+dateTxt+"Attendance_List"+".pdf");
+                rFile = new File(reportfile, grade + yearTxt + monthTxt + dateTxt + "Attendance_List" + ".pdf");
 
 
-
-                if (dateTxt.isEmpty()||monthTxt.isEmpty()||yearTxt.isEmpty()){
+                if (dateTxt.isEmpty() || monthTxt.isEmpty() || yearTxt.isEmpty()) {
                     TastyToast.makeText(AttendanceReport.this, "Please Enter a Date", TastyToast.LENGTH_SHORT, TastyToast.ERROR).show();
                 } else {
                     //fetch details;
@@ -147,6 +146,7 @@ public class AttendanceReport extends AppCompatActivity {
             Manifest.permission.WRITE_EXTERNAL_STORAGE
     };
     public static int PERMISSION_ALL = 12;
+
     public boolean hasPermissions(Context context, String... permissions) {
         if (context != null && permissions != null) {
             for (String permission : permissions) {
@@ -164,7 +164,6 @@ public class AttendanceReport extends AppCompatActivity {
         BaseColor grayColor = WebColors.getRGBColor("#425066");
 
 
-
         Font white = new Font(Font.FontFamily.HELVETICA, 15.0f, Font.BOLD, colorWhite);
         FileOutputStream output = new FileOutputStream(rFile);
         Document document = new Document(PageSize.A4);
@@ -175,19 +174,19 @@ public class AttendanceReport extends AppCompatActivity {
         table.setWidthPercentage(100);
         table.getDefaultCell().setVerticalAlignment(Element.ALIGN_MIDDLE);
 
-        Chunk noText = new Chunk("\n"+"No.", white);
+        Chunk noText = new Chunk("\n" + "No.", white);
         PdfPCell noCell = new PdfPCell(new Phrase(noText));
         noCell.setFixedHeight(50);
         noCell.setHorizontalAlignment(Element.ALIGN_CENTER);
         noCell.setVerticalAlignment(Element.ALIGN_CENTER);
 
-        Chunk nameText = new Chunk("\n"+"Student Name", white);
+        Chunk nameText = new Chunk("\n" + "Student Name", white);
         PdfPCell nameCell = new PdfPCell(new Phrase(nameText));
         nameCell.setFixedHeight(50);
         nameCell.setHorizontalAlignment(Element.ALIGN_CENTER);
         nameCell.setVerticalAlignment(Element.ALIGN_CENTER);
 
-        Chunk status = new Chunk("\n"+"Status", white);
+        Chunk status = new Chunk("\n" + "Status", white);
         PdfPCell statusCell = new PdfPCell(new Phrase(status));
         statusCell.setFixedHeight(50);
         statusCell.setHorizontalAlignment(Element.ALIGN_CENTER);
@@ -196,7 +195,7 @@ public class AttendanceReport extends AppCompatActivity {
 
         int presentCount = presentList.size();
         int absentCount = absentList.size();
-        Chunk footerText = new Chunk("\n\n"+"Total number of Present is: "+ presentCount +"\n\n"+"Total number of Absent is: "+absentCount);
+        Chunk footerText = new Chunk("\n\n" + "Total number of Present is: " + presentCount + "\n\n" + "Total number of Absent is: " + absentCount);
         PdfPCell footCell = new PdfPCell(new Phrase(footerText));
         footCell.setFixedHeight(70);
         footCell.setHorizontalAlignment(Element.ALIGN_CENTER);
@@ -257,9 +256,9 @@ public class AttendanceReport extends AppCompatActivity {
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                     Attendance attendance = snapshot.getValue(Attendance.class);
                     attendanceList.add(attendance);
-                    if (attendance.getStatus().equals("Present")){
+                    if (attendance.getStatus().equals("Present")) {
                         presentList.add(attendance);
-                    } else if (attendance.getStatus().equals("Absent")){
+                    } else if (attendance.getStatus().equals("Absent")) {
                         absentList.add(attendance);
                     }
                 }
@@ -285,7 +284,7 @@ public class AttendanceReport extends AppCompatActivity {
     private void DisplayReport() {
         pdfView.fromFile(rFile)
 //                .pages(0,2,1,3,3,3)
-                .pages(0,1,2,3,4)
+                .pages(0, 1, 2, 3, 4)
                 .enableSwipe(true)
                 .swipeHorizontal(false)
                 .enableDoubletap(true)

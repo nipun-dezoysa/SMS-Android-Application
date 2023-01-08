@@ -46,8 +46,6 @@ public class EditNoteActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_note);
 
-//        Intent i = getIntent();
-//        uname = i.getStringExtra("uname");
 
         Paper.init(EditNoteActivity.this);
         uname = Paper.book().read(OnlineUsers.UserNamekey);
@@ -78,14 +76,11 @@ public class EditNoteActivity extends AppCompatActivity {
                 String newTitle = editTitleOfNote.getText().toString();
                 String newContent = editContentOfNote.getText().toString();
 
-                if (newTitle.isEmpty()||newContent.isEmpty())
-                {
+                if (newTitle.isEmpty() || newContent.isEmpty()) {
                     TastyToast.makeText(EditNoteActivity.this, "Please fill all fields", TastyToast.LENGTH_SHORT, TastyToast.ERROR).show();
 
                     return;
-                }
-                else
-                {
+                } else {
                     DocumentReference documentReference = firebaseFirestore.collection("notes").document(uname).collection("myNotes").document(data.getStringExtra("noteId"));
                     Map<String, Object> note = new HashMap<>();
                     note.put("title", newTitle);

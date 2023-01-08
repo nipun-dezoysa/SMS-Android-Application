@@ -55,7 +55,7 @@ public class ContactsReport extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_cotacts_report);
+        setContentView(R.layout.activity_contacts_report);
 
         generate_contactsList = findViewById(R.id.generate_contactsList);
         contactsReport_back = findViewById(R.id.contactsReport_back);
@@ -78,10 +78,10 @@ public class ContactsReport extends AppCompatActivity {
                 reportfile = new File("/storage/emulated/0/Report/");
 
                 //check if they exist, if not create them(directory)
-                if ( !reportfile.exists()) {
+                if (!reportfile.exists()) {
                     reportfile.mkdirs();
                 }
-                rFile = new File(reportfile, "Contacts_List"+".pdf");
+                rFile = new File(reportfile, "Contacts_List" + ".pdf");
 
                 //fetch details;
                 fetchStudentContacts();
@@ -91,7 +91,6 @@ public class ContactsReport extends AppCompatActivity {
         });
 
 
-
     }
 
     public static String[] PERMISSIONS = {
@@ -99,6 +98,7 @@ public class ContactsReport extends AppCompatActivity {
             Manifest.permission.WRITE_EXTERNAL_STORAGE
     };
     public static int PERMISSION_ALL = 12;
+
     public boolean hasPermissions(Context context, String... permissions) {
         if (context != null && permissions != null) {
             for (String permission : permissions) {
@@ -116,7 +116,6 @@ public class ContactsReport extends AppCompatActivity {
         BaseColor grayColor = WebColors.getRGBColor("#425066");
 
 
-
         Font white = new Font(Font.FontFamily.HELVETICA, 15.0f, Font.BOLD, colorWhite);
         FileOutputStream output = new FileOutputStream(rFile);
         Document document = new Document(PageSize.A4);
@@ -127,32 +126,32 @@ public class ContactsReport extends AppCompatActivity {
         table.setWidthPercentage(100);
         table.getDefaultCell().setVerticalAlignment(Element.ALIGN_MIDDLE);
 
-        Chunk noText = new Chunk("\n"+"No.", white);
+        Chunk noText = new Chunk("\n" + "No.", white);
         PdfPCell noCell = new PdfPCell(new Phrase(noText));
         noCell.setFixedHeight(50);
         noCell.setHorizontalAlignment(Element.ALIGN_CENTER);
         noCell.setVerticalAlignment(Element.ALIGN_CENTER);
 
-        Chunk nameText = new Chunk("\n"+"Student Name", white);
+        Chunk nameText = new Chunk("\n" + "Student Name", white);
         PdfPCell nameCell = new PdfPCell(new Phrase(nameText));
         nameCell.setFixedHeight(50);
         nameCell.setHorizontalAlignment(Element.ALIGN_CENTER);
         nameCell.setVerticalAlignment(Element.ALIGN_CENTER);
 
-        Chunk phoneNo = new Chunk("\n"+"Phone Number", white);
+        Chunk phoneNo = new Chunk("\n" + "Phone Number", white);
         PdfPCell contactCell = new PdfPCell(new Phrase(phoneNo));
         contactCell.setFixedHeight(50);
         contactCell.setHorizontalAlignment(Element.ALIGN_CENTER);
         contactCell.setVerticalAlignment(Element.ALIGN_CENTER);
 
-        Chunk email = new Chunk("\n"+"Email ID", white);
+        Chunk email = new Chunk("\n" + "Email ID", white);
         PdfPCell emailCell = new PdfPCell(new Phrase(email));
         emailCell.setFixedHeight(50);
         emailCell.setHorizontalAlignment(Element.ALIGN_CENTER);
         emailCell.setVerticalAlignment(Element.ALIGN_CENTER);
 
         int count = studentList.size();
-        Chunk footerText = new Chunk("\n\n"+"Total number of students is: "+count);
+        Chunk footerText = new Chunk("\n\n" + "Total number of students is: " + count);
         PdfPCell footCell = new PdfPCell(new Phrase(footerText));
         footCell.setFixedHeight(70);
         footCell.setHorizontalAlignment(Element.ALIGN_CENTER);
@@ -185,7 +184,7 @@ public class ContactsReport extends AppCompatActivity {
 
             table.addCell(id + ". ");
             table.addCell(name);
-            table.addCell(contactNumber+"");
+            table.addCell(contactNumber + "");
             table.addCell(emailID);
 
         }
@@ -237,7 +236,7 @@ public class ContactsReport extends AppCompatActivity {
     private void DisplayReport() {
         pdfView.fromFile(rFile)
 //                .pages(0,2,1,3,3,3)
-                .pages(0,1,2,3,4)
+                .pages(0, 1, 2, 3, 4)
                 .enableSwipe(true)
                 .swipeHorizontal(false)
                 .enableDoubletap(true)

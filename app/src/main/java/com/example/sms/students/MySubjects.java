@@ -53,10 +53,10 @@ public class MySubjects extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 sub = snapshot.child(uname).child("subject").getValue(String.class);
 
-                if (sub.equals("Maths")){
+                if (sub.equals("Maths")) {
                     maths.setVisibility(View.VISIBLE);
                     science.setVisibility(View.GONE);
-                } else if (sub.equals("Science")){
+                } else if (sub.equals("Science")) {
                     science.setVisibility(View.VISIBLE);
                     maths.setVisibility(View.GONE);
                 } else {

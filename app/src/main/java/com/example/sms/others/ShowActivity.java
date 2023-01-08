@@ -35,12 +35,12 @@ public class ShowActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_show);
 
-        back_btn =findViewById(R.id.gallery_back);
+        back_btn = findViewById(R.id.gallery_back);
         recyclerView = findViewById(R.id.recyclerview);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         list = new ArrayList<>();
-        adapter = new MyAdapter(this , list);
+        adapter = new MyAdapter(this, list);
         recyclerView.setAdapter(adapter);
 
         back_btn.setOnClickListener(new View.OnClickListener() {
@@ -53,7 +53,7 @@ public class ShowActivity extends AppCompatActivity {
         root.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                for (DataSnapshot dataSnapshot : snapshot.getChildren()){
+                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
                     PhotoModel model = dataSnapshot.getValue(PhotoModel.class);
                     list.add(model);
                 }

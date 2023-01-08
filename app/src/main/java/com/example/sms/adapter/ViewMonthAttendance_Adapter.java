@@ -22,7 +22,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 
-public class ViewMonthAttendance_Adapter extends RecyclerView.Adapter<ViewMonthAttendance_Adapter.MyViewHolderViewAttendance>{
+public class ViewMonthAttendance_Adapter extends RecyclerView.Adapter<ViewMonthAttendance_Adapter.MyViewHolderViewAttendance> {
 
     Context context;
     ArrayList<String> list;
@@ -38,8 +38,9 @@ public class ViewMonthAttendance_Adapter extends RecyclerView.Adapter<ViewMonthA
     @NonNull
     @Override
     public ViewMonthAttendance_Adapter.MyViewHolderViewAttendance onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.attendance_month,parent,false);
-        return new ViewMonthAttendance_Adapter.MyViewHolderViewAttendance(view);    }
+        View view = LayoutInflater.from(context).inflate(R.layout.attendance_month, parent, false);
+        return new ViewMonthAttendance_Adapter.MyViewHolderViewAttendance(view);
+    }
 
     @Override
     public void onBindViewHolder(@NonNull ViewMonthAttendance_Adapter.MyViewHolderViewAttendance holder, int position) {
@@ -47,12 +48,12 @@ public class ViewMonthAttendance_Adapter extends RecyclerView.Adapter<ViewMonthA
 
         int m = Integer.parseInt(s);
 
-        Calendar cal=Calendar.getInstance();
+        Calendar cal = Calendar.getInstance();
         SimpleDateFormat month_date = new SimpleDateFormat("MMMM");
-        cal.set(Calendar.MONTH, m-1);
+        cal.set(Calendar.MONTH, m - 1);
         String month_name = month_date.format(cal.getTime());
 
-        Log.e("",""+month_name);
+        Log.e("", "" + month_name);
 
         holder.attendace_month.setText(month_name);
 
@@ -72,7 +73,7 @@ public class ViewMonthAttendance_Adapter extends RecyclerView.Adapter<ViewMonthA
         return list.size();
     }
 
-    public static class MyViewHolderViewAttendance extends RecyclerView.ViewHolder{
+    public static class MyViewHolderViewAttendance extends RecyclerView.ViewHolder {
         TextView attendace_month;
 
         public MyViewHolderViewAttendance(View itemView) {

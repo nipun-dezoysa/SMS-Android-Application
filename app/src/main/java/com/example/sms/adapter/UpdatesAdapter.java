@@ -43,7 +43,7 @@ public class UpdatesAdapter extends RecyclerView.Adapter<UpdatesAdapter.UpdatesV
     @Override
     public UpdatesAdapter.UpdatesView onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
-        View view = LayoutInflater.from(context).inflate(R.layout.update_model,parent,false);
+        View view = LayoutInflater.from(context).inflate(R.layout.update_model, parent, false);
 
         return new UpdatesView(view);
     }
@@ -101,8 +101,8 @@ public class UpdatesAdapter extends RecyclerView.Adapter<UpdatesAdapter.UpdatesV
 
     public class UpdatesView extends RecyclerView.ViewHolder {
 
-        TextView titleUpdate,contentUpdate;
-        ImageView removeUpdate,editUpdate;
+        TextView titleUpdate, contentUpdate;
+        ImageView removeUpdate, editUpdate;
 
         public UpdatesView(@NonNull View itemView) {
             super(itemView);

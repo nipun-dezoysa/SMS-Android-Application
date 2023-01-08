@@ -12,9 +12,9 @@
 
         <RelativeLayout
             android:id="@+id/menu"
-            android:background="@color/darkgreen"
             android:layout_width="match_parent"
-            android:layout_height="120dp">
+            android:layout_height="120dp"
+            android:background="@color/darkgreen">
 
             <ImageView
                 android:id="@+id/editNote_back"
@@ -32,7 +32,6 @@
                 android:textColor="@color/white"
                 android:textSize="30dp"
                 android:textStyle="bold|normal" />
-
 
 
         </RelativeLayout>
@@ -55,11 +54,11 @@
             android:id="@+id/editTitleofNote"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingLeft="20dp"
             android:layout_marginTop="140dp"
+            android:paddingLeft="20dp"
             android:textColor="@color/black"
             android:textSize="20dp"
-            android:textStyle="bold"/>
+            android:textStyle="bold" />
 
         <EditText
             android:id="@+id/editContentOfNote"
@@ -67,8 +66,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="200dp"
             android:background="#faf7f7"
-            android:paddingLeft="20dp"
             android:padding="15dp"
+            android:paddingLeft="20dp"
             android:textColor="@color/black"
             android:textSize="15dp">
 
@@ -87,8 +86,6 @@
             app:maxImageSize="40dp">
 
         </com.google.android.material.floatingactionbutton.FloatingActionButton>
-
-
 
 
     </androidx.cardview.widget.CardView>

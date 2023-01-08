@@ -58,12 +58,12 @@ public class Grade11HW extends AppCompatActivity {
 
         homework_rv = findViewById(R.id.homework_recyclerview11);
 
-        subjectlist.add( 0,"Subject");
+        subjectlist.add(0, "Subject");
         subjectlist.add("Maths");
         subjectlist.add("Science");
         spinner_sub11 = findViewById(R.id.spinner_sub11);
 
-        ArrayAdapter arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item,subjectlist);
+        ArrayAdapter arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, subjectlist);
         spinner_sub11.setAdapter(arrayAdapter);
 
 //        Grade = intent.getStringExtra("Grade 10");
@@ -85,10 +85,9 @@ public class Grade11HW extends AppCompatActivity {
                 final String timestamp = "" + System.currentTimeMillis();
 
 
-                if (subjectText.isEmpty() || homework_qstn_txt.isEmpty()){
+                if (subjectText.isEmpty() || homework_qstn_txt.isEmpty()) {
                     TastyToast.makeText(Grade11HW.this, "Please fill all fields", TastyToast.LENGTH_SHORT, TastyToast.ERROR).show();
-                }
-                else if (subjectText.equals("Subject")) {
+                } else if (subjectText.equals("Subject")) {
                     TastyToast.makeText(Grade11HW.this, "Please choose a subject", TastyToast.LENGTH_SHORT, TastyToast.ERROR).show();
                 } else
                     databaseReference.child("homework").addListenerForSingleValueEvent(new ValueEventListener() {
@@ -133,8 +132,7 @@ public class Grade11HW extends AppCompatActivity {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                         questionArrayList.clear();
-                        for (DataSnapshot dataSnapshot: snapshot.getChildren())
-                        {
+                        for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
                             Question question = dataSnapshot.getValue(Question.class);
                             questionArrayList.add(question);
                         }

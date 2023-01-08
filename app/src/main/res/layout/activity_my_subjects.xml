@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:background="@color/white"
+    android:orientation="vertical"
     tools:context=".students.MySubjects">
 
     <RelativeLayout
-        android:background="@color/darkgreen"
         android:layout_width="match_parent"
-        android:layout_height="120dp">
+        android:layout_height="120dp"
+        android:background="@color/darkgreen">
 
         <ImageView
             android:id="@+id/mysub_back"
@@ -26,14 +26,12 @@
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:text="My Subjects"
-            android:textSize="30dp"
             android:textColor="@color/white"
+            android:textSize="30dp"
             android:textStyle="bold|normal" />
 
 
-
     </RelativeLayout>
-
 
 
     <GridLayout
@@ -52,9 +50,9 @@
             android:layout_columnWeight="1"
             android:layout_gravity="center_horizontal"
             android:layout_margin="12dp"
+            android:visibility="visible"
             app:cardCornerRadius="25dp"
-            app:cardElevation="6dp"
-            android:visibility="visible">
+            app:cardElevation="6dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -87,9 +85,9 @@
             android:layout_columnWeight="1"
             android:layout_gravity="center_horizontal"
             android:layout_margin="12dp"
+            android:visibility="visible"
             app:cardCornerRadius="25dp"
-            app:cardElevation="6dp"
-            android:visibility="visible">
+            app:cardElevation="6dp">
 
             <LinearLayout
                 android:layout_width="match_parent"

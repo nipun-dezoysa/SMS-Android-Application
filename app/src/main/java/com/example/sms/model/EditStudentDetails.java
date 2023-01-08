@@ -11,8 +11,7 @@ public class EditStudentDetails {
     private String password;
 
 
-
-    public EditStudentDetails(String uNameTxt, String editEmailTxt, String editContactTxt, String editSubjectTxt, int editGrade, String editpwdTxt){
+    public EditStudentDetails(String uNameTxt, String editEmailTxt, String editContactTxt, String editSubjectTxt, int editGrade, String editpwdTxt) {
         this.username = uNameTxt;
         this.email = editEmailTxt;
         this.contact = editContactTxt;
@@ -49,9 +48,13 @@ public class EditStudentDetails {
         this.contact = contact;
     }
 
-    public String getSubject() { return subject; }
+    public String getSubject() {
+        return subject;
+    }
 
-    public void setSubject(String subject) { this.subject = subject; }
+    public void setSubject(String subject) {
+        this.subject = subject;
+    }
 
     public int getGrade() {
         return grade;

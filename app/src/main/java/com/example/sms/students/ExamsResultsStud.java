@@ -56,7 +56,7 @@ public class ExamsResultsStud extends AppCompatActivity {
 
     ImageView examresult_stud_back;
     Button generate_exam_report;
-    TextView term1_report_stud,term2_report_stud,term3_report_stud;
+    TextView term1_report_stud, term2_report_stud, term3_report_stud;
     String currentYear;
 
     public static File rFile;
@@ -64,8 +64,8 @@ public class ExamsResultsStud extends AppCompatActivity {
     private PDFView pdfView;
     List<Results> mathsResultsList = new ArrayList<>();
     List<Results1> scienceResultsList;
-    String uname,term;
-    HashMap<String,Results> resultsHashMap;
+    String uname, term;
+    HashMap<String, Results> resultsHashMap;
 
     String username;
 
@@ -83,7 +83,7 @@ public class ExamsResultsStud extends AppCompatActivity {
         term3_report_stud = findViewById(R.id.term3_report_stud);
 
         int intYear = Year.now().getValue();
-        currentYear = intYear+"";
+        currentYear = intYear + "";
 
         examresult_stud_back.setOnClickListener(new View.OnClickListener() {
 
@@ -162,10 +162,10 @@ public class ExamsResultsStud extends AppCompatActivity {
                 reportfile = new File("/storage/emulated/0/Report/");
 
                 //check if they exist, if not create them(directory)
-                if ( !reportfile.exists()) {
+                if (!reportfile.exists()) {
                     reportfile.mkdirs();
                 }
-                rFile = new File(reportfile, uname+"Results_List"+".pdf");
+                rFile = new File(reportfile, uname + "Results_List" + ".pdf");
 
 //                //fetch details;
 //                fetchResultsList();
@@ -177,7 +177,7 @@ public class ExamsResultsStud extends AppCompatActivity {
                         int g = snapshot.child("grade").getValue(int.class);
                         String grade = Integer.toString(g);
 
-                        if (sub.equals("Maths Science")){
+                        if (sub.equals("Maths Science")) {
                             String subjectMaths = "Maths";
                             String subjectScience = "Science";
                             //fetch details;
@@ -185,7 +185,7 @@ public class ExamsResultsStud extends AppCompatActivity {
                             fetchResultsList(subjectScience, grade);
                         } else {
                             //fetch details;
-                            fetchResultsList(sub,grade);
+                            fetchResultsList(sub, grade);
                         }
                         previewResultssListReport(view);
 
@@ -208,6 +208,7 @@ public class ExamsResultsStud extends AppCompatActivity {
             Manifest.permission.WRITE_EXTERNAL_STORAGE
     };
     public static int PERMISSION_ALL = 12;
+
     public boolean hasPermissions(Context context, String... permissions) {
         if (context != null && permissions != null) {
             for (String permission : permissions) {
@@ -219,11 +220,10 @@ public class ExamsResultsStud extends AppCompatActivity {
         return true;
     }
 
-    private void createStudentListReport(HashMap<String,Results> list) throws DocumentException, FileNotFoundException {
+    private void createStudentListReport(HashMap<String, Results> list) throws DocumentException, FileNotFoundException {
         BaseColor colorWhite = WebColors.getRGBColor("#ffffff");
         BaseColor colorBlue = WebColors.getRGBColor("#056FAA");
         BaseColor grayColor = WebColors.getRGBColor("#425066");
-
 
 
         Font white = new Font(Font.FontFamily.HELVETICA, 15.0f, Font.BOLD, colorWhite);
@@ -237,43 +237,43 @@ public class ExamsResultsStud extends AppCompatActivity {
         table.getDefaultCell().setVerticalAlignment(Element.ALIGN_MIDDLE);
 
 
-        Chunk noText = new Chunk("\n"+"No.", white);
+        Chunk noText = new Chunk("\n" + "No.", white);
         PdfPCell noCell = new PdfPCell(new Phrase(noText));
         noCell.setFixedHeight(50);
         noCell.setHorizontalAlignment(Element.ALIGN_CENTER);
         noCell.setVerticalAlignment(Element.ALIGN_CENTER);
 
-        Chunk nameText = new Chunk("\n"+"Student", white);
+        Chunk nameText = new Chunk("\n" + "Student", white);
         PdfPCell nameCell = new PdfPCell(new Phrase(nameText));
         nameCell.setFixedHeight(50);
         nameCell.setHorizontalAlignment(Element.ALIGN_CENTER);
         nameCell.setVerticalAlignment(Element.ALIGN_CENTER);
 
-        Chunk subject = new Chunk("\n"+"Subject", white);
+        Chunk subject = new Chunk("\n" + "Subject", white);
         PdfPCell selectedSubject = new PdfPCell(new Phrase(subject));
         selectedSubject.setFixedHeight(50);
         selectedSubject.setHorizontalAlignment(Element.ALIGN_CENTER);
         selectedSubject.setVerticalAlignment(Element.ALIGN_CENTER);
 
-        Chunk part1 = new Chunk("\n"+"Part 1", white);
+        Chunk part1 = new Chunk("\n" + "Part 1", white);
         PdfPCell part1Cell = new PdfPCell(new Phrase(part1));
         part1Cell.setFixedHeight(50);
         part1Cell.setHorizontalAlignment(Element.ALIGN_CENTER);
         part1Cell.setVerticalAlignment(Element.ALIGN_CENTER);
 
-        Chunk part2 = new Chunk("\n"+"Part 2", white);
+        Chunk part2 = new Chunk("\n" + "Part 2", white);
         PdfPCell part2Cell = new PdfPCell(new Phrase(part2));
         part2Cell.setFixedHeight(50);
         part2Cell.setHorizontalAlignment(Element.ALIGN_CENTER);
         part2Cell.setVerticalAlignment(Element.ALIGN_CENTER);
 
-        Chunk total = new Chunk("\n"+"Total", white);
+        Chunk total = new Chunk("\n" + "Total", white);
         PdfPCell totalCell = new PdfPCell(new Phrase(total));
         totalCell.setFixedHeight(50);
         totalCell.setHorizontalAlignment(Element.ALIGN_CENTER);
         totalCell.setVerticalAlignment(Element.ALIGN_CENTER);
 
-        Chunk grade = new Chunk("\n"+"Grade", white);
+        Chunk grade = new Chunk("\n" + "Grade", white);
         PdfPCell gradesCell = new PdfPCell(new Phrase(grade));
         gradesCell.setFixedHeight(50);
         gradesCell.setHorizontalAlignment(Element.ALIGN_CENTER);
@@ -298,33 +298,32 @@ public class ExamsResultsStud extends AppCompatActivity {
         PdfPCell[] cells = table.getRow(0).getCells();
 
 
-
         for (PdfPCell cell : cells) {
             cell.setBackgroundColor(grayColor);
         }
 
 
-        int i =0 ;
+        int i = 0;
 
-            for (Map.Entry<String,Results> resultsEntry:resultsHashMap.entrySet()){
-                String newSubject = resultsEntry.getKey();
-                username = resultsEntry.getValue().getUsername();
-                float part1Mark = resultsEntry.getValue().getPart1();
-                float part2Mark = resultsEntry.getValue().getPart2();
-                float totalMark = resultsEntry.getValue().getTotal();
-                String newGrade = resultsEntry.getValue().getGrades();
+        for (Map.Entry<String, Results> resultsEntry : resultsHashMap.entrySet()) {
+            String newSubject = resultsEntry.getKey();
+            username = resultsEntry.getValue().getUsername();
+            float part1Mark = resultsEntry.getValue().getPart1();
+            float part2Mark = resultsEntry.getValue().getPart2();
+            float totalMark = resultsEntry.getValue().getTotal();
+            String newGrade = resultsEntry.getValue().getGrades();
 
-                i = i+1;
+            i = i + 1;
 
-                table.addCell(i + ". ");
-                table.addCell(username);
-                table.addCell(newSubject);
-                table.addCell(String.valueOf(part1Mark));
-                table.addCell(String.valueOf(part2Mark));
-                table.addCell(String.valueOf(totalMark));
-                table.addCell(newGrade);
+            table.addCell(i + ". ");
+            table.addCell(username);
+            table.addCell(newSubject);
+            table.addCell(String.valueOf(part1Mark));
+            table.addCell(String.valueOf(part2Mark));
+            table.addCell(String.valueOf(totalMark));
+            table.addCell(newGrade);
 
-            }
+        }
         PdfPTable footTable = new PdfPTable(new float[]{8, 18, 18, 14, 14, 14, 14});
         footTable.setTotalWidth(PageSize.A4.getWidth());
         footTable.setWidthPercentage(100);
@@ -333,7 +332,7 @@ public class ExamsResultsStud extends AppCompatActivity {
         PdfWriter.getInstance(document, output);
         document.open();
         Font g = new Font(Font.FontFamily.HELVETICA, 25.0f, Font.NORMAL, grayColor);
-        document.add(new Paragraph(term+" marks for "+username+"\n\n", g));
+        document.add(new Paragraph(term + " marks for " + username + "\n\n", g));
         document.add(table);
         document.add(footTable);
 
@@ -349,15 +348,15 @@ public class ExamsResultsStud extends AppCompatActivity {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                    if (subject.equals("Maths")){
+                    if (subject.equals("Maths")) {
                         Results results = snapshot.getValue(Results.class);
-                        if (results.getUsername().equals(uname)){
+                        if (results.getUsername().equals(uname)) {
                             resultsHashMap.put("Maths", results);
                         }
                     }
-                    if (subject.equals("Science")){
+                    if (subject.equals("Science")) {
                         Results results = snapshot.getValue(Results.class);
-                        if (results.getUsername().equals(uname)){
+                        if (results.getUsername().equals(uname)) {
                             resultsHashMap.put("Science", results);
                         }
                     }
@@ -385,7 +384,7 @@ public class ExamsResultsStud extends AppCompatActivity {
     private void DisplayReport() {
         pdfView.fromFile(rFile)
 //                .pages(0,2,1,3,3,3)
-                .pages(0,1,2,3,4)
+                .pages(0, 1, 2, 3, 4)
                 .enableSwipe(true)
                 .swipeHorizontal(false)
                 .enableDoubletap(true)

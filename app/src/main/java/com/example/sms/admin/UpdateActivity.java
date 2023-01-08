@@ -31,7 +31,7 @@ import java.util.ArrayList;
 public class UpdateActivity extends AppCompatActivity {
 
     ImageView update_back;
-    EditText titleOfUpdate,contentOfUpdate;
+    EditText titleOfUpdate, contentOfUpdate;
     Button add_update;
     RecyclerView update_rv;
     DatabaseReference databaseReference;
@@ -71,7 +71,7 @@ public class UpdateActivity extends AppCompatActivity {
 
                 databaseReference = FirebaseDatabase.getInstance().getReference();
 
-                if (titleOfUpdateTxt.isEmpty() || contentOfUpdateTxt.isEmpty()){
+                if (titleOfUpdateTxt.isEmpty() || contentOfUpdateTxt.isEmpty()) {
                     TastyToast.makeText(UpdateActivity.this, "Fields cannot be empty", TastyToast.LENGTH_SHORT, TastyToast.INFO).show();
                 } else {
                     databaseReference.child("updates").addListenerForSingleValueEvent(new ValueEventListener() {
@@ -83,6 +83,7 @@ public class UpdateActivity extends AppCompatActivity {
 
                             TastyToast.makeText(UpdateActivity.this, "Updates Added Successfully", TastyToast.LENGTH_SHORT, TastyToast.SUCCESS).show();
                         }
+
                         @Override
                         public void onCancelled(@NonNull DatabaseError error) {
 
@@ -111,8 +112,7 @@ public class UpdateActivity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 updatesArrayList.clear();
-                for (DataSnapshot dataSnapshot : snapshot.getChildren())
-                {
+                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
                     Updates updates = dataSnapshot.getValue(Updates.class);
                     updatesArrayList.add(updates);
                 }

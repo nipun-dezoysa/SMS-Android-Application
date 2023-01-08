@@ -23,7 +23,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
     private ArrayList<PhotoModel> mList;
     private Context context;
 
-    public MyAdapter(Context context, ArrayList<PhotoModel> mList){
+    public MyAdapter(Context context, ArrayList<PhotoModel> mList) {
 
         this.context = context;
         this.mList = mList;
@@ -54,9 +54,10 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
         return mList.size();
     }
 
-    public static class MyViewHolder extends RecyclerView.ViewHolder{
+    public static class MyViewHolder extends RecyclerView.ViewHolder {
 
-        ImageView imageView,removephoto;
+        ImageView imageView, removephoto;
+
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
 

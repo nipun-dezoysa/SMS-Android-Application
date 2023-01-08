@@ -26,7 +26,6 @@ public class AttendanceActivity extends AppCompatActivity {
         view_attendance = findViewById(R.id.view_attendance);
 
 
-
         attendance_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -37,7 +36,7 @@ public class AttendanceActivity extends AppCompatActivity {
         add_attendance.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(AttendanceActivity.this,Add_Attendance.class);
+                Intent intent = new Intent(AttendanceActivity.this, Add_Attendance.class);
                 startActivity(intent);
             }
         });

@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:gravity="center_horizontal">
+    android:gravity="center_horizontal"
+    android:orientation="vertical">
 
     <ImageView
         android:layout_width="420dp"
@@ -18,7 +17,7 @@
         style="?android:attr/progressBarStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:visibility="invisible"/>
+        android:visibility="invisible" />
 
     <TextView
         android:id="@+id/btnTxtStdLogin"
@@ -34,36 +33,36 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:letterSpacing="0.03"
         android:text="Login as a student"
-        android:textSize="20dp"
-        android:textStyle="bold"
         android:textColor="@color/darkgreen"
-        android:letterSpacing="0.03"/>
+        android:textSize="20dp"
+        android:textStyle="bold" />
 
     <EditText
+        android:id="@+id/txtStdUserName"
         android:layout_width="350dp"
         android:layout_height="48dp"
         android:layout_marginTop="15dp"
         android:background="@drawable/texteditbg"
-        android:paddingLeft="20dp"
-        android:hint="Username"
-        android:drawablePadding="5dp"
-        android:id="@+id/txtStdUserName"
         android:drawableStart="@drawable/person_24"
+        android:drawablePadding="5dp"
+        android:hint="Username"
+        android:paddingLeft="20dp"
         android:singleLine="true"
         android:textColor="#0d6e6a"
         android:textStyle="bold" />
 
     <EditText
+        android:id="@+id/txtStdPassword"
         android:layout_width="350dp"
         android:layout_height="48dp"
         android:layout_marginTop="15dp"
         android:background="@drawable/texteditbg"
-        android:hint="Password"
         android:drawableStart="@drawable/key_24"
         android:drawablePadding="5dp"
+        android:hint="Password"
         android:inputType="textPassword"
-        android:id="@+id/txtStdPassword"
         android:paddingLeft="20dp"
         android:textColor="#0d6e6a"
         android:textStyle="bold" />
@@ -80,12 +79,12 @@
         android:textStyle="bold" />
 
     <Button
+        android:id="@+id/btnStdLogin"
         android:layout_width="350dp"
         android:layout_height="48dp"
         android:layout_marginTop="5dp"
         android:background="@drawable/btn"
         android:text="login"
-        android:id="@+id/btnStdLogin"
         android:textColor="@color/colorWhite" />
 
 

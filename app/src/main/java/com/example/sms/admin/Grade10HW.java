@@ -51,7 +51,7 @@ public class Grade10HW extends AppCompatActivity {
 
     private AppCompatSpinner spinner_sub;
     private EditText homework_questions, unitName;
-    private Button add_questions,chooseFile,uploadFile;
+    private Button add_questions, chooseFile, uploadFile;
     private TextView setFileName;
     private ImageView grade10_back;
 
@@ -84,12 +84,12 @@ public class Grade10HW extends AppCompatActivity {
 
         homework_rv = findViewById(R.id.homework_recyclerview);
 
-        subjectlist.add( 0,"Subject");
+        subjectlist.add(0, "Subject");
         subjectlist.add("Maths");
         subjectlist.add("Science");
         spinner_sub = findViewById(R.id.spinner_sub);
 
-        ArrayAdapter arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item,subjectlist);
+        ArrayAdapter arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, subjectlist);
         spinner_sub.setAdapter(arrayAdapter);
 
         loadAllQuestions();
@@ -109,10 +109,9 @@ public class Grade10HW extends AppCompatActivity {
                 final String timestamp = "" + System.currentTimeMillis();
 
 
-                if (subjectText.isEmpty() || homework_qstn_txt.isEmpty() || unitNameTxt.isEmpty()){
+                if (subjectText.isEmpty() || homework_qstn_txt.isEmpty() || unitNameTxt.isEmpty()) {
                     TastyToast.makeText(Grade10HW.this, "Please fill all fields", TastyToast.LENGTH_SHORT, TastyToast.ERROR).show();
-                }
-                else if (subjectText.equals("Subject")) {
+                } else if (subjectText.equals("Subject")) {
                     TastyToast.makeText(Grade10HW.this, "Please choose a subject", TastyToast.LENGTH_SHORT, TastyToast.ERROR).show();
                 } else
                     databaseReference.child("homework").addListenerForSingleValueEvent(new ValueEventListener() {
@@ -158,8 +157,7 @@ public class Grade10HW extends AppCompatActivity {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                         questionArrayList.clear();
-                        for (DataSnapshot dataSnapshot: snapshot.getChildren())
-                        {
+                        for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
                             Question question = dataSnapshot.getValue(Question.class);
                             questionArrayList.add(question);
                         }

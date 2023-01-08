@@ -23,28 +23,7 @@ public class MainActivity extends AppCompatActivity {
                 finish();
 
             }
-        },3000);
-
-//        Button btn_student = (Button) findViewById(R.id.student);
-//        Button btn_teacher = (Button) findViewById(R.id.teacher);
-
-//        btn_student.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent studentLoginIntent = new Intent(MainActivity.this, StudentLoginActivity.class);
-//                startActivity(studentLoginIntent);
-//                finish();
-//            }
-//        });
-//
-//        btn_teacher.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent teacherLoginIntent = new Intent(MainActivity.this, LoginActivity.class);
-//                startActivity(teacherLoginIntent);
-//                finish();
-//            }
-//        });
+        }, 3000);
 
     }
 

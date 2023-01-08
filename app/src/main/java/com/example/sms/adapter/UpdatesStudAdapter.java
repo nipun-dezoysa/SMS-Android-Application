@@ -15,7 +15,7 @@ import com.example.sms.model.Updates;
 
 import java.util.ArrayList;
 
-public class UpdatesStudAdapter extends RecyclerView.Adapter<UpdatesStudAdapter.UpdatesStudView>{
+public class UpdatesStudAdapter extends RecyclerView.Adapter<UpdatesStudAdapter.UpdatesStudView> {
 
     private Context context;
     private ArrayList<Updates> updatesArrayList;
@@ -29,7 +29,7 @@ public class UpdatesStudAdapter extends RecyclerView.Adapter<UpdatesStudAdapter.
     @Override
     public UpdatesStudAdapter.UpdatesStudView onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
-        View view = LayoutInflater.from(context).inflate(R.layout.update_model,parent,false);
+        View view = LayoutInflater.from(context).inflate(R.layout.update_model, parent, false);
 
         return new UpdatesStudAdapter.UpdatesStudView(view);
     }
@@ -54,8 +54,8 @@ public class UpdatesStudAdapter extends RecyclerView.Adapter<UpdatesStudAdapter.
 
     public class UpdatesStudView extends RecyclerView.ViewHolder {
 
-        TextView titleUpdate,contentUpdate;
-        ImageView removeUpdate,editUpdate;
+        TextView titleUpdate, contentUpdate;
+        ImageView removeUpdate, editUpdate;
 
         public UpdatesStudView(@NonNull View itemView) {
             super(itemView);

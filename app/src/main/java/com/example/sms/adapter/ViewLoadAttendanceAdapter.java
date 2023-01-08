@@ -29,7 +29,7 @@ public class ViewLoadAttendanceAdapter extends RecyclerView.Adapter<ViewLoadAtte
     @NonNull
     @Override
     public ViewLoadAttendanceAdapter.MyViewHolderViewAttendance onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.load_attendance_entry,parent,false);
+        View view = LayoutInflater.from(context).inflate(R.layout.load_attendance_entry, parent, false);
         return new ViewLoadAttendanceAdapter.MyViewHolderViewAttendance(view);
     }
 
@@ -42,10 +42,10 @@ public class ViewLoadAttendanceAdapter extends RecyclerView.Adapter<ViewLoadAtte
 
         String result = attendance.getStatus();
 
-        if (result.equals("Present")){
+        if (result.equals("Present")) {
             holder.statusPresent.setVisibility(View.VISIBLE);
             holder.statusAbsent.setVisibility(View.GONE);
-        } else{
+        } else {
             holder.statusPresent.setVisibility(View.GONE);
             holder.statusAbsent.setVisibility(View.VISIBLE);
         }
@@ -59,7 +59,7 @@ public class ViewLoadAttendanceAdapter extends RecyclerView.Adapter<ViewLoadAtte
 
     public class MyViewHolderViewAttendance extends RecyclerView.ViewHolder {
 
-        TextView attendance_username,status;
+        TextView attendance_username, status;
         LinearLayout statusPresent, statusAbsent;
 
         public MyViewHolderViewAttendance(@NonNull View itemView) {

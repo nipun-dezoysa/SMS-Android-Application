@@ -30,12 +30,11 @@ public class QuestionAdapterStud extends RecyclerView.Adapter<QuestionAdapterStu
     }
 
 
-
     @NonNull
     @Override
     public QuestionView onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
-        View view = LayoutInflater.from(context).inflate(R.layout.question_model,parent,false);
+        View view = LayoutInflater.from(context).inflate(R.layout.question_model, parent, false);
 
         return new QuestionView(view);
     }
@@ -59,16 +58,17 @@ public class QuestionAdapterStud extends RecyclerView.Adapter<QuestionAdapterStu
         return questionArrayList.size();
     }
 
-    class QuestionView extends RecyclerView.ViewHolder{
+    class QuestionView extends RecyclerView.ViewHolder {
 
         TextView textQuestion, textSubject, setUnitName;
         CardView cardView;
-        ImageView remove,edit;
+        ImageView remove, edit;
+
         public QuestionView(@NonNull View itemView) {
             super(itemView);
 
             textQuestion = itemView.findViewById(R.id.text_sub_question);
-            textSubject =  itemView.findViewById(R.id.text_sub_name);
+            textSubject = itemView.findViewById(R.id.text_sub_name);
             cardView = itemView.findViewById(R.id.cardView);
             remove = itemView.findViewById(R.id.remove_qstn);
             edit = itemView.findViewById(R.id.edit_qstn);

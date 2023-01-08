@@ -61,12 +61,12 @@ public class StudyMaterialStud extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 String subject = snapshot.child(uname).child("subject").getValue(String.class);
-                
-                if (subject.equals("Maths Science")){
+
+                if (subject.equals("Maths Science")) {
                     loadAllReferences();
-                } else if (subject.equals("Maths")){
+                } else if (subject.equals("Maths")) {
                     loadMathsReferences();
-                } else if (subject.equals("Science")){
+                } else if (subject.equals("Science")) {
                     loadScienceReferences();
                 }
             }
@@ -94,7 +94,7 @@ public class StudyMaterialStud extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 referenceList.clear();
-                for (DataSnapshot dataSnapshot: snapshot.getChildren()){
+                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
 
                     Materials materials = dataSnapshot.getValue(Materials.class);
                     referenceList.add(materials);
@@ -123,10 +123,10 @@ public class StudyMaterialStud extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 referenceList.clear();
-                for (DataSnapshot dataSnapshot: snapshot.getChildren()){
+                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
 
                     Materials materials = dataSnapshot.getValue(Materials.class);
-                    if (materials.getSubject().equals("Maths")){
+                    if (materials.getSubject().equals("Maths")) {
                         referenceList.add(materials);
                     }
                 }
@@ -154,10 +154,10 @@ public class StudyMaterialStud extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 referenceList.clear();
-                for (DataSnapshot dataSnapshot: snapshot.getChildren()){
+                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
 
                     Materials materials = dataSnapshot.getValue(Materials.class);
-                    if (materials.getSubject().equals("Science")){
+                    if (materials.getSubject().equals("Science")) {
                         referenceList.add(materials);
                     }
                 }

@@ -37,7 +37,7 @@ public class EditHWActivity extends AppCompatActivity {
     DatabaseReference databaseReference;
 
     Intent intent;
-    String subject,question,questionId, editUnitNameTxt;
+    String subject, question, questionId, editUnitNameTxt;
 
     List<String> subjectlist = new ArrayList<>();
 
@@ -71,15 +71,15 @@ public class EditHWActivity extends AppCompatActivity {
             }
         });
 
-        subjectlist.add( 0,subject);
+        subjectlist.add(0, subject);
 
-        if(subject.equals("Science"))
+        if (subject.equals("Science"))
             subjectlist.add("Maths");
         else
             subjectlist.add("Science");
         editSubject = findViewById(R.id.editSubject);
 
-        ArrayAdapter arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item,subjectlist);
+        ArrayAdapter arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, subjectlist);
         editSubject.setAdapter(arrayAdapter);
 
         editQuestion.setText(question);
@@ -95,26 +95,27 @@ public class EditHWActivity extends AppCompatActivity {
 
                 databaseReference = FirebaseDatabase.getInstance().getReference();
 
-                if (subjectText.isEmpty() || homework_qstn_txt.isEmpty() || editedUnitName.isEmpty()){
+                if (subjectText.isEmpty() || homework_qstn_txt.isEmpty() || editedUnitName.isEmpty()) {
                     TastyToast.makeText(EditHWActivity.this, "Please fill all fields", TastyToast.LENGTH_SHORT, TastyToast.ERROR).show();
-                } else databaseReference.child("homework").addListenerForSingleValueEvent(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                } else
+                    databaseReference.child("homework").addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshot) {
 
-                        databaseReference.child("homework").child(grade).child(questionId).child("subjectName").setValue(subjectText);
-                        databaseReference.child("homework").child(grade).child(questionId).child("question").setValue(homework_qstn_txt);
-                        databaseReference.child("homework").child(grade).child(questionId).child("timestamp").setValue(questionId);
-                        databaseReference.child("homework").child(grade).child(questionId).child("unitName").setValue(editedUnitName);
+                            databaseReference.child("homework").child(grade).child(questionId).child("subjectName").setValue(subjectText);
+                            databaseReference.child("homework").child(grade).child(questionId).child("question").setValue(homework_qstn_txt);
+                            databaseReference.child("homework").child(grade).child(questionId).child("timestamp").setValue(questionId);
+                            databaseReference.child("homework").child(grade).child(questionId).child("unitName").setValue(editedUnitName);
 
-                        TastyToast.makeText(EditHWActivity.this, "Question updated successfully", TastyToast.LENGTH_SHORT, TastyToast.SUCCESS).show();
+                            TastyToast.makeText(EditHWActivity.this, "Question updated successfully", TastyToast.LENGTH_SHORT, TastyToast.SUCCESS).show();
 
-                    }
+                        }
 
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError error) {
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
 
-                    }
-                });
+                        }
+                    });
                 finish();
             }
         });

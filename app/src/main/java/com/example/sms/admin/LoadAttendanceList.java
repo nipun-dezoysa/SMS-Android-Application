@@ -57,34 +57,33 @@ public class LoadAttendanceList extends AppCompatActivity {
         String year = ViewAttendance.year;
         String month = ViewAttendance.month;
         String dmonth = ViewAttendance.month;
-        if(Integer.parseInt(month)<10)
-            dmonth="0"+dmonth;
+        if (Integer.parseInt(month) < 10)
+            dmonth = "0" + dmonth;
 
         String grade = ViewAttendance.grade;
         String day = intent.getStringExtra("day");
         String dday = day;
-        if (Integer.parseInt(day)<10)
-            dday = "0"+dday;
+        if (Integer.parseInt(day) < 10)
+            dday = "0" + dday;
 
         finalAttendanceDate = findViewById(R.id.finalAttendanceDate);
 
-        finalAttendanceDate.setText(year+"-"+ dmonth + "-"+dday);
+        finalAttendanceDate.setText(year + "-" + dmonth + "-" + dday);
 
         recyclerView = findViewById(R.id.load_attendance_rv);
         databaseReference = FirebaseDatabase.getInstance().getReference("Attendance").child(year).child(month).child(day).child(grade);
         list = new ArrayList<>();
         recyclerView.setHasFixedSize(true);
-        staggeredGridLayoutManager=new StaggeredGridLayoutManager(2,StaggeredGridLayoutManager.VERTICAL);
+        staggeredGridLayoutManager = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
         recyclerView.setLayoutManager(staggeredGridLayoutManager);
         viewLoadAttendance_adapter = new ViewLoadAttendanceAdapter(this, list);
         recyclerView.setAdapter(viewLoadAttendance_adapter);
 
 
-
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                for (DataSnapshot dataSnapshot: snapshot.getChildren()){
+                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
                     Attendance attendance = dataSnapshot.getValue(Attendance.class);
                     list.add(attendance);
                 }

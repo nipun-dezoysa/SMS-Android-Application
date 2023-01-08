@@ -10,7 +10,6 @@ public class Student {
     private String subject;
     private int grade;
     private String password;
-//    private boolean checkBoxSelected;
 
     public Student() {
     }
