@@ -211,7 +211,7 @@ public class ExamsResultsReport extends AppCompatActivity {
 
     public static String[] PERMISSIONS = {
             Manifest.permission.READ_EXTERNAL_STORAGE,
-            Manifest.permission.WRITE_EXTERNAL_STORAGE
+            Manifest.permission.WRITE_EXTERNAL_STORAGE,
     };
     public static int PERMISSION_ALL = 12;
 

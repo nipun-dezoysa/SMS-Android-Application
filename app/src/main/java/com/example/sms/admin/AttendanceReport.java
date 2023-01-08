@@ -8,6 +8,8 @@ import android.Manifest;
 import android.content.Context;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -81,6 +83,83 @@ public class AttendanceReport extends AppCompatActivity {
         grade11_list_attendance.setBackground(null);
         grade11_list_attendance.setTextColor(getResources().getColor(R.color.darkgreen));
         grade = "Grade 10";
+
+        date.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+                if (s.toString().trim().length() == 1 && s.toString().trim().equals("0")) {
+
+                    date.getText().clear();
+                }
+                if (s.toString().trim().length() > 2 ){
+                    TastyToast.makeText(AttendanceReport.this, "Please give a valid date", TastyToast.LENGTH_SHORT, TastyToast.INFO).show();
+                    date.getText().clear();
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+//                int ddate = Integer.parseInt(date.getText().toString());
+//                if (ddate>31){
+//                    TastyToast.makeText(AttendanceReport.this, "Please give a valid date ", TastyToast.LENGTH_SHORT, TastyToast.INFO).show();
+//                }
+            }
+        });
+        month.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+                if (s.toString().trim().length() == 1 && s.toString().trim().equals("0")) {
+
+                    month.getText().clear();
+                }
+                if (s.toString().trim().length() > 2 ){
+                    TastyToast.makeText(AttendanceReport.this, "Please give a valid month", TastyToast.LENGTH_SHORT, TastyToast.INFO).show();
+                    month.getText().clear();
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
+
+        year.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+                if (s.toString().trim().length() == 1 && s.toString().trim().equals("0")) {
+
+                    year.getText().clear();
+                }
+                if (s.toString().trim().length() > 4 ){
+                    TastyToast.makeText(AttendanceReport.this, "Please give a valid month", TastyToast.LENGTH_SHORT, TastyToast.INFO).show();
+                    year.getText().clear();
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
 
         grade10_list_attendance.setOnClickListener(new View.OnClickListener() {
             @Override

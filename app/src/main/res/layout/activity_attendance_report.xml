@@ -104,6 +104,8 @@
 
                 <EditText
                     android:id="@+id/date"
+                    android:maxLines="1"
+                    android:inputType="number"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:hint="DD" />
@@ -115,6 +117,8 @@
 
                 <EditText
                     android:id="@+id/month"
+                    android:maxLines="1"
+                    android:inputType="number"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:hint="MM" />
@@ -126,6 +130,8 @@
 
                 <EditText
                     android:id="@+id/year"
+                    android:maxLines="1"
+                    android:inputType="number"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:hint="YYYY" />
