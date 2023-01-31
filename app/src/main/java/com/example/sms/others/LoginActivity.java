@@ -162,7 +162,6 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
-
         validateUser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -175,6 +174,7 @@ public class LoginActivity extends AppCompatActivity {
                         String email = email_validate.getText().toString();
                         if (username.isEmpty() || email.isEmpty()) {
                             TastyToast.makeText(LoginActivity.this, "Please fill all fields", TastyToast.LENGTH_SHORT, TastyToast.INFO).show();
+                            progressBarOfLogin.setVisibility(View.INVISIBLE);
                         } else if (snapshot.hasChild(username)) {
                             String dbEmail = snapshot.child(username).child("email").getValue(String.class);
                             int x = 1;
@@ -182,11 +182,11 @@ public class LoginActivity extends AppCompatActivity {
                                 TastyToast.makeText(LoginActivity.this, "User is validated", TastyToast.LENGTH_SHORT, TastyToast.SUCCESS).show();
                                 validate_user_layout.setVisibility(View.GONE);
                                 reset_password_layout.setVisibility(View.VISIBLE);
-                                progressBarOfLogin.setVisibility(View.GONE);
+                                progressBarOfLogin.setVisibility(View.INVISIBLE);
                                 dbChild = "users";
                             } else {
                                 TastyToast.makeText(LoginActivity.this, "Validation failed", TastyToast.LENGTH_SHORT, TastyToast.ERROR).show();
-                                progressBarOfLogin.setVisibility(View.GONE);
+                                progressBarOfLogin.setVisibility(View.INVISIBLE);
                             }
                         } else {
                             databaseReference1.child("students").addListenerForSingleValueEvent(new ValueEventListener() {
@@ -198,7 +198,7 @@ public class LoginActivity extends AppCompatActivity {
                                             TastyToast.makeText(LoginActivity.this, "User is validated", TastyToast.LENGTH_SHORT, TastyToast.SUCCESS).show();
                                             validate_user_layout.setVisibility(View.GONE);
                                             reset_password_layout.setVisibility(View.VISIBLE);
-                                            progressBarOfLogin.setVisibility(View.GONE);
+                                            progressBarOfLogin.setVisibility(View.INVISIBLE);
                                             dbChild = "students";
                                         } else
                                             TastyToast.makeText(LoginActivity.this, "Validation failed", TastyToast.LENGTH_SHORT, TastyToast.ERROR).show();

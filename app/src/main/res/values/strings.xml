@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">SMS</string>
+    <string name="app_name">ASMS</string>
     <string name="login_as_a_student">Login as a student</string>
     <string name="todo">TODO</string>
 </resources>
