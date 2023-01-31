@@ -47,7 +47,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="160dp">
+            android:layout_gravity="center">
 
             <GridLayout
                 android:layout_width="match_parent"
@@ -206,42 +206,42 @@
 
                 </androidx.cardview.widget.CardView>
 
-                <androidx.cardview.widget.CardView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_rowWeight="1"
-                    android:layout_columnWeight="1"
-                    android:layout_margin="12dp"
-                    app:cardCornerRadius="25dp"
-                    app:cardElevation="6dp">
+<!--                <androidx.cardview.widget.CardView-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_rowWeight="1"-->
+<!--                    android:layout_columnWeight="1"-->
+<!--                    android:layout_margin="12dp"-->
+<!--                    app:cardCornerRadius="25dp"-->
+<!--                    app:cardElevation="6dp">-->
 
-                    <LinearLayout
-                        android:id="@+id/id"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:gravity="center"
-                        android:orientation="vertical"
-                        android:padding="16dp">
+<!--                    <LinearLayout-->
+<!--                        android:id="@+id/id"-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="match_parent"-->
+<!--                        android:gravity="center"-->
+<!--                        android:orientation="vertical"-->
+<!--                        android:padding="16dp">-->
 
-                        <ImageView
-                            android:layout_width="80dp"
-                            android:layout_height="80dp"
-                            android:layout_marginTop="10dp"
-                            android:src="@drawable/studymaterial" />
+<!--                        <ImageView-->
+<!--                            android:layout_width="80dp"-->
+<!--                            android:layout_height="80dp"-->
+<!--                            android:layout_marginTop="10dp"-->
+<!--                            android:src="@drawable/studymaterial" />-->
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="12dp"
-                            android:text=".."
-                            android:textColor="@color/cardview_dark_background"
-                            android:textSize="18sp"
-                            android:textStyle="bold" />
+<!--                        <TextView-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:layout_marginTop="12dp"-->
+<!--                            android:text=".."-->
+<!--                            android:textColor="@color/cardview_dark_background"-->
+<!--                            android:textSize="18sp"-->
+<!--                            android:textStyle="bold" />-->
 
-                    </LinearLayout>
+<!--                    </LinearLayout>-->
 
 
-                </androidx.cardview.widget.CardView>
+<!--                </androidx.cardview.widget.CardView>-->
 
 
             </GridLayout>
