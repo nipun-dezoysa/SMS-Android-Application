@@ -97,7 +97,7 @@ public class AttendanceReport extends AppCompatActivity {
 
                     date.getText().clear();
                 }
-                if (s.toString().trim().length() > 2 ){
+                if (s.toString().trim().length() > 2) {
                     TastyToast.makeText(AttendanceReport.this, "Please give a valid date", TastyToast.LENGTH_SHORT, TastyToast.INFO).show();
                     date.getText().clear();
                 }
@@ -124,7 +124,7 @@ public class AttendanceReport extends AppCompatActivity {
 
                     month.getText().clear();
                 }
-                if (s.toString().trim().length() > 2 ){
+                if (s.toString().trim().length() > 2) {
                     TastyToast.makeText(AttendanceReport.this, "Please give a valid month", TastyToast.LENGTH_SHORT, TastyToast.INFO).show();
                     month.getText().clear();
                 }
@@ -149,7 +149,7 @@ public class AttendanceReport extends AppCompatActivity {
 
                     year.getText().clear();
                 }
-                if (s.toString().trim().length() > 4 ){
+                if (s.toString().trim().length() > 4) {
                     TastyToast.makeText(AttendanceReport.this, "Please give a valid month", TastyToast.LENGTH_SHORT, TastyToast.INFO).show();
                     year.getText().clear();
                 }
