@@ -3,8 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="830dp"
-    android:background="#EBF4F3"
+    android:layout_height="match_parent"
+    android:background="@color/white"
     android:orientation="vertical"
     tools:context=".others.NotesActivity">
 
@@ -14,7 +14,7 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="120dp"
+            android:layout_height="100dp"
             android:background="@color/darkgreen">
 
             <ImageView
@@ -54,7 +54,6 @@
             android:layout_gravity="bottom|end"
             android:layout_marginEnd="30dp"
             android:layout_marginBottom="30dp"
-            android:contentDescription="@string/todo"
             android:src="@drawable/add_btn"
             app:maxImageSize="40dp">
 
@@ -64,7 +63,7 @@
             android:id="@+id/recyclerview"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="150dp"
+            android:layout_marginTop="120dp"
             android:scrollbars="vertical">
 
 
