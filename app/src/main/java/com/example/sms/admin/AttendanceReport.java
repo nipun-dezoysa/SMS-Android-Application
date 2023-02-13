@@ -101,6 +101,14 @@ public class AttendanceReport extends AppCompatActivity {
                     TastyToast.makeText(AttendanceReport.this, "Please give a valid date", TastyToast.LENGTH_SHORT, TastyToast.INFO).show();
                     date.getText().clear();
                 }
+
+//                String d = date.getText().toString();
+//                int dd = Integer.parseInt(d);
+//                if (dd>31){
+//                    TastyToast.makeText(AttendanceReport.this, "Please give a valid date", TastyToast.LENGTH_SHORT, TastyToast.INFO).show();
+//                    date.getText().clear();
+//                }
+
             }
 
             @Override
@@ -109,6 +117,7 @@ public class AttendanceReport extends AppCompatActivity {
 //                if (ddate>31){
 //                    TastyToast.makeText(AttendanceReport.this, "Please give a valid date ", TastyToast.LENGTH_SHORT, TastyToast.INFO).show();
 //                }
+
             }
         });
         month.addTextChangedListener(new TextWatcher() {

@@ -38,11 +38,11 @@
         </RelativeLayout>
 
 
-        <ImageView
-            android:layout_width="400dp"
-            android:layout_height="400dp"
-            android:layout_gravity="center"
-            android:src="@drawable/logo_transparentnew" />
+<!--        <ImageView-->
+<!--            android:layout_width="400dp"-->
+<!--            android:layout_height="400dp"-->
+<!--            android:layout_gravity="center"-->
+<!--            android:src="@drawable/logo_transparentnew" />-->
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/save_results"

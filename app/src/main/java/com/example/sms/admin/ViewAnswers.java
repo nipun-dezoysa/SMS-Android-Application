@@ -49,17 +49,17 @@ public class ViewAnswers extends AppCompatActivity {
             @Override
             public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
 
-                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
-
-                    String fileName = dataSnapshot.getKey();
-                    String url = dataSnapshot.getValue(String.class);
-
-                    ((AnswersAdapter) recyclerView.getAdapter()).update(fileName, url);
-                }
-//                String fileName = snapshot.getKey();
-//                String url = snapshot.getValue(String.class);
+//                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
 //
-//                ((AnswersAdapter)recyclerView.getAdapter()).update(fileName, url);
+//                    String fileName = dataSnapshot.getKey();
+//                    String url = dataSnapshot.getValue(String.class);
+//
+//                    ((AnswersAdapter) recyclerView.getAdapter()).update(fileName, url);
+//                }
+                String fileName = snapshot.getKey();
+                String url = snapshot.getValue(String.class);
+
+                ((AnswersAdapter)recyclerView.getAdapter()).update(fileName, url);
 
             }
 
